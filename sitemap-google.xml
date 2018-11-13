@@ -135,6 +135,13 @@
   </url>
   
   <url>
+    <loc>http://tcatche.site/2017/07/where-is-webassembly-now-and-whats-next/</loc>
+    
+    <lastmod>2018-08-01T10:41:24.093Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>http://tcatche.site/2017/06/web-browser-console/</loc>
     
     <lastmod>2018-08-01T10:41:24.093Z</lastmod>
@@ -149,14 +156,14 @@
   </url>
   
   <url>
-    <loc>http://tcatche.site/2017/07/where-is-webassembly-now-and-whats-next/</loc>
+    <loc>http://tcatche.site/2017/04/symbol-base-type/</loc>
     
-    <lastmod>2018-08-01T10:41:24.093Z</lastmod>
+    <lastmod>2018-08-01T10:41:24.092Z</lastmod>
     
   </url>
   
   <url>
-    <loc>http://tcatche.site/2017/04/symbol-base-type/</loc>
+    <loc>http://tcatche.site/2017/08/stacking-context-and-z-index/</loc>
     
     <lastmod>2018-08-01T10:41:24.092Z</lastmod>
     
@@ -177,21 +184,14 @@
   </url>
   
   <url>
-    <loc>http://tcatche.site/2017/08/stacking-context-and-z-index/</loc>
-    
-    <lastmod>2018-08-01T10:41:24.092Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://tcatche.site/2017/08/repaint-and-reflow/</loc>
+    <loc>http://tcatche.site/2017/03/reflect-object/</loc>
     
     <lastmod>2018-08-01T10:41:24.091Z</lastmod>
     
   </url>
   
   <url>
-    <loc>http://tcatche.site/2017/03/reflect-object/</loc>
+    <loc>http://tcatche.site/2017/08/repaint-and-reflow/</loc>
     
     <lastmod>2018-08-01T10:41:24.091Z</lastmod>
     
@@ -205,14 +205,7 @@
   </url>
   
   <url>
-    <loc>http://tcatche.site/2017/06/react-reactdom/</loc>
-    
-    <lastmod>2018-08-01T10:41:24.090Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://tcatche.site/2017/07/react-mixins-considered-harmful/</loc>
+    <loc>http://tcatche.site/2018/01/react-reconciliation/</loc>
     
     <lastmod>2018-08-01T10:41:24.090Z</lastmod>
     
@@ -226,6 +219,13 @@
   </url>
   
   <url>
+    <loc>http://tcatche.site/2017/06/react-reactdom/</loc>
+    
+    <lastmod>2018-08-01T10:41:24.090Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>http://tcatche.site/2017/06/react-refs/</loc>
     
     <lastmod>2018-08-01T10:41:24.090Z</lastmod>
@@ -233,7 +233,7 @@
   </url>
   
   <url>
-    <loc>http://tcatche.site/2018/01/react-reconciliation/</loc>
+    <loc>http://tcatche.site/2017/07/react-mixins-considered-harmful/</loc>
     
     <lastmod>2018-08-01T10:41:24.090Z</lastmod>
     
@@ -275,14 +275,14 @@
   </url>
   
   <url>
-    <loc>http://tcatche.site/2016/05/react-components-life-cicle/</loc>
+    <loc>http://tcatche.site/2018/01/react-fragments/</loc>
     
     <lastmod>2018-08-01T10:41:24.087Z</lastmod>
     
   </url>
   
   <url>
-    <loc>http://tcatche.site/2018/01/react-fragments/</loc>
+    <loc>http://tcatche.site/2016/05/react-components-life-cicle/</loc>
     
     <lastmod>2018-08-01T10:41:24.087Z</lastmod>
     
@@ -359,6 +359,13 @@
   </url>
   
   <url>
+    <loc>http://tcatche.site/2017/08/how-javascript-work-part-1-overview/</loc>
+    
+    <lastmod>2018-08-01T10:41:24.080Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>http://tcatche.site/2017/04/function-program-pure-function/</loc>
     
     <lastmod>2018-08-01T10:41:24.080Z</lastmod>
@@ -373,14 +380,14 @@
   </url>
   
   <url>
-    <loc>http://tcatche.site/2017/08/how-javascript-work-part-1-overview/</loc>
+    <loc>http://tcatche.site/2018/02/dom_native_elements_and_node_query/</loc>
     
-    <lastmod>2018-08-01T10:41:24.080Z</lastmod>
+    <lastmod>2018-08-01T10:41:24.079Z</lastmod>
     
   </url>
   
   <url>
-    <loc>http://tcatche.site/2018/02/dom_native_elements_and_node_query/</loc>
+    <loc>http://tcatche.site/2017/07/form-validator-design/</loc>
     
     <lastmod>2018-08-01T10:41:24.079Z</lastmod>
     
@@ -394,9 +401,9 @@
   </url>
   
   <url>
-    <loc>http://tcatche.site/2017/07/form-validator-design/</loc>
+    <loc>http://tcatche.site/2017/03/debounce-throttle/</loc>
     
-    <lastmod>2018-08-01T10:41:24.079Z</lastmod>
+    <lastmod>2018-08-01T10:41:24.078Z</lastmod>
     
   </url>
   
@@ -415,23 +422,9 @@
   </url>
   
   <url>
-    <loc>http://tcatche.site/2017/03/debounce-throttle/</loc>
-    
-    <lastmod>2018-08-01T10:41:24.078Z</lastmod>
-    
-  </url>
-  
-  <url>
     <loc>http://tcatche.site/2016/03/css3-transition-transform-animation/</loc>
     
     <lastmod>2018-08-01T10:41:24.078Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://tcatche.site/2016/03/css-media-query/</loc>
-    
-    <lastmod>2018-08-01T10:41:24.077Z</lastmod>
     
   </url>
   
@@ -443,9 +436,9 @@
   </url>
   
   <url>
-    <loc>http://tcatche.site/2017/06/creating-and-working-with-webassembly-modules/</loc>
+    <loc>http://tcatche.site/2016/03/css-media-query/</loc>
     
-    <lastmod>2018-08-01T10:41:24.076Z</lastmod>
+    <lastmod>2018-08-01T10:41:24.077Z</lastmod>
     
   </url>
   
@@ -457,9 +450,9 @@
   </url>
   
   <url>
-    <loc>http://tcatche.site/2017/03/combineReducers/</loc>
+    <loc>http://tcatche.site/2017/06/creating-and-working-with-webassembly-modules/</loc>
     
-    <lastmod>2018-08-01T10:41:24.075Z</lastmod>
+    <lastmod>2018-08-01T10:41:24.076Z</lastmod>
     
   </url>
   
@@ -472,6 +465,13 @@
   
   <url>
     <loc>http://tcatche.site/2017/03/compose/</loc>
+    
+    <lastmod>2018-08-01T10:41:24.075Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://tcatche.site/2017/03/combineReducers/</loc>
     
     <lastmod>2018-08-01T10:41:24.075Z</lastmod>
     
@@ -492,14 +492,14 @@
   </url>
   
   <url>
-    <loc>http://tcatche.site/2017/07/avoiding-race-conditions-in-sharedarraybuffers-with-atomics/</loc>
+    <loc>http://tcatche.site/2018/01/broswer_common_mouse_event/</loc>
     
     <lastmod>2018-08-01T10:41:24.071Z</lastmod>
     
   </url>
   
   <url>
-    <loc>http://tcatche.site/2018/01/broswer_common_mouse_event/</loc>
+    <loc>http://tcatche.site/2017/07/avoiding-race-conditions-in-sharedarraybuffers-with-atomics/</loc>
     
     <lastmod>2018-08-01T10:41:24.071Z</lastmod>
     
@@ -520,6 +520,13 @@
   </url>
   
   <url>
+    <loc>http://tcatche.site/2017/05/array-like-object/</loc>
+    
+    <lastmod>2018-08-01T10:41:24.070Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>http://tcatche.site/2017/06/a-crash-course-in-memory-management/</loc>
     
     <lastmod>2018-08-01T10:41:24.070Z</lastmod>
@@ -528,13 +535,6 @@
   
   <url>
     <loc>http://tcatche.site/2017/02/applyMiddleware/</loc>
-    
-    <lastmod>2018-08-01T10:41:24.070Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://tcatche.site/2017/05/array-like-object/</loc>
     
     <lastmod>2018-08-01T10:41:24.070Z</lastmod>
     

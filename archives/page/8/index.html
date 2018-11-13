@@ -136,28 +136,34 @@ var _hmt = _hmt || [];
         
     
         <h1 class="article-title" itemprop="name">
-        <a href="/2017/03/bindActionCreators/">bindActionCreators.js 源码阅读笔记</a>
+        <a href="/2017/03/compose/">compose.js 源码阅读笔记</a>
         </h1>
     
 
         <p class="article-excerpt">
             
-Turns an object whose values are action creators, into an object with the same keys, but with every action creator wrapped into a dispatch call so th…
+Composes functions from right to left..
+
+接口
+compose(…arguments)
+
+
+arguments (Function): 需要进行函数合成的多个函数，每个函数接收单一的参数，它的返回值将作为一个参数提供给它左边的函数调用，而最右边的函数可以接收…
         </p>
         <div class="article-meta">
             <div class="article-count">
-                <a href="/2017/03/bindActionCreators/" class="article-date hide">
+                <a href="/2017/03/compose/" class="article-date hide">
     <i class="icon fa fa-calendar"></i>
     <time datetime="2017-03-01T06:32:00.000Z" itemprop="datePublished">2017-03-01</time>
 </a>
                 
     <span class="word-count">
       <i class="icon fa fa-file-text"></i>
-      字数: 863 
+      字数: 552 
     </span>
     <span class="word-count">
       <i class="icon fa fa-clock-o"></i>
-      阅读时长: 4mins 
+      阅读时长: 2mins 
     </span>
 
             </div>
@@ -476,6 +482,65 @@ componentWillRec…
         
     
         <h1 class="article-title" itemprop="name">
+        <a href="/2016/03/Javascript变量及执行环境/">Javascript变量及执行环境</a>
+        </h1>
+    
+
+        <p class="article-excerpt">
+            变量作用域
+一个变量的作用域表示这个变量存在的上下文。它指定了你可以访问哪些变量以及你是否有权限访问某个变量。
+
+
+js的变量作用域是基于其特有的作用域链的。
+js没有块级作用域，函数是唯一拥有自身作用域的结构。
+js只拥有函数作用域，函数中声明的变量在整个函数中都有定义。
+
+JavaScript的…
+        </p>
+        <div class="article-meta">
+            <div class="article-count">
+                <a href="/2016/03/Javascript变量及执行环境/" class="article-date hide">
+    <i class="icon fa fa-calendar"></i>
+    <time datetime="2016-03-31T03:55:09.000Z" itemprop="datePublished">2016-03-31</time>
+</a>
+                
+    <span class="word-count">
+      <i class="icon fa fa-file-text"></i>
+      字数: 732 
+    </span>
+    <span class="word-count">
+      <i class="icon fa fa-clock-o"></i>
+      阅读时长: 3mins 
+    </span>
+
+            </div>
+            <div class="article-dir hide">
+                
+    <div class="article-category">
+    <i class="icon fa fa-list-ul"></i>
+    <a class="article-category-link" href="/categories/js/">js</a>
+    </div>
+
+                
+            </div>
+        </div>
+    </div>
+</article>
+
+
+  
+  
+  
+  <article class="article article-summary">
+    <div class="article-summary-inner">
+        
+        <span class="meta-block">
+            <i class="icon fa fa-calendar"></i>
+            <time datetime="2016-03-31T03:55:09.000Z" itemprop="datePublished">2016-03-31</time>
+        </span>
+        
+    
+        <h1 class="article-title" itemprop="name">
         <a href="/2016/03/Jquery-source-code-study/">Jquery整体架构</a>
         </h1>
     
@@ -529,90 +594,34 @@ componentWillRec…
         
     
         <h1 class="article-title" itemprop="name">
-        <a href="/2016/03/Javascript-async-program/">Javascript异步编程</a>
+        <a href="/2016/03/css-hack-in-all-browser/">各大浏览器CSSHack收集</a>
         </h1>
     
 
         <p class="article-excerpt">
-            Callbacks 回调函数回调函数是异步编程的最基本方法。考虑到以下两个函数 f1() 、 和 f2()  ，f2()等待f1()的执行结果：
-function f1(cb) &#123;2setTimeout(function() &#123;22var records = [];22recor…
+            所谓的Hack就是只有特定浏览器才能识别这段hack代码。Hack 不是什么好东西，除非没有办法，我们尽量还是不要用着玩意。 下面是各个浏览器的CSS Hack 列表。
+Firefox 浏览器
+@-moz-document url-prefix() &#123;  .selector &#123; …
         </p>
         <div class="article-meta">
             <div class="article-count">
-                <a href="/2016/03/Javascript-async-program/" class="article-date hide">
+                <a href="/2016/03/css-hack-in-all-browser/" class="article-date hide">
     <i class="icon fa fa-calendar"></i>
     <time datetime="2016-03-31T03:55:09.000Z" itemprop="datePublished">2016-03-31</time>
 </a>
                 
     <span class="word-count">
       <i class="icon fa fa-file-text"></i>
-      字数: 960 
+      字数: 204 
     </span>
     <span class="word-count">
       <i class="icon fa fa-clock-o"></i>
-      阅读时长: 4mins 
+      阅读时长: 1mins 
     </span>
 
             </div>
             <div class="article-dir hide">
                 
-    <div class="article-category">
-    <i class="icon fa fa-list-ul"></i>
-    <a class="article-category-link" href="/categories/js/">js</a>
-    </div>
-
-                
-            </div>
-        </div>
-    </div>
-</article>
-
-
-  
-  
-  
-  <article class="article article-summary">
-    <div class="article-summary-inner">
-        
-        <span class="meta-block">
-            <i class="icon fa fa-calendar"></i>
-            <time datetime="2016-03-31T03:55:09.000Z" itemprop="datePublished">2016-03-31</time>
-        </span>
-        
-    
-        <h1 class="article-title" itemprop="name">
-        <a href="/2016/03/css3-transition-transform-animation/">css3特效</a>
-        </h1>
-    
-
-        <p class="article-excerpt">
-            Transform 转换Transform 属性向元素应用 2D 或 3D 转换，该属性允许我们对元素进行旋转、缩放、移动或倾斜，主要有以下几个方法：translate()、rotate()、scale()、skew()、matrix()。
-JavaScript 语法: object.style.t…
-        </p>
-        <div class="article-meta">
-            <div class="article-count">
-                <a href="/2016/03/css3-transition-transform-animation/" class="article-date hide">
-    <i class="icon fa fa-calendar"></i>
-    <time datetime="2016-03-31T03:55:09.000Z" itemprop="datePublished">2016-03-31</time>
-</a>
-                
-    <span class="word-count">
-      <i class="icon fa fa-file-text"></i>
-      字数: 1,804 
-    </span>
-    <span class="word-count">
-      <i class="icon fa fa-clock-o"></i>
-      阅读时长: 8mins 
-    </span>
-
-            </div>
-            <div class="article-dir hide">
-                
-    <div class="article-category">
-    <i class="icon fa fa-list-ul"></i>
-    <a class="article-category-link" href="/categories/css/">css</a>
-    </div>
-
                 
     <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/css/">css</a></li></ul>
 
@@ -635,35 +644,29 @@ JavaScript 语法: object.style.t…
         
     
         <h1 class="article-title" itemprop="name">
-        <a href="/2016/03/Javascript变量及执行环境/">Javascript变量及执行环境</a>
+        <a href="/2016/03/css-media-query/">Css媒体查询</a>
         </h1>
     
 
         <p class="article-excerpt">
-            变量作用域
-一个变量的作用域表示这个变量存在的上下文。它指定了你可以访问哪些变量以及你是否有权限访问某个变量。
-
-
-js的变量作用域是基于其特有的作用域链的。
-js没有块级作用域，函数是唯一拥有自身作用域的结构。
-js只拥有函数作用域，函数中声明的变量在整个函数中都有定义。
-
-JavaScript的…
+            响应式Web设计(Responsive Web design)的理念是：页面的设计与开发应当根据用户行为以及设备环境(系统平台、屏幕尺寸、屏幕定向等)进行相应的响应和调整。
+媒体查询准备工作设置Meta标签
+首先我们在使用Media的时候需要先设置下面这段代码，来兼容移动设备的展示效果：&lt;me…
         </p>
         <div class="article-meta">
             <div class="article-count">
-                <a href="/2016/03/Javascript变量及执行环境/" class="article-date hide">
+                <a href="/2016/03/css-media-query/" class="article-date hide">
     <i class="icon fa fa-calendar"></i>
     <time datetime="2016-03-31T03:55:09.000Z" itemprop="datePublished">2016-03-31</time>
 </a>
                 
     <span class="word-count">
       <i class="icon fa fa-file-text"></i>
-      字数: 732 
+      字数: 2,410 
     </span>
     <span class="word-count">
       <i class="icon fa fa-clock-o"></i>
-      阅读时长: 3mins 
+      阅读时长: 9mins 
     </span>
 
             </div>
@@ -671,10 +674,12 @@ JavaScript的…
                 
     <div class="article-category">
     <i class="icon fa fa-list-ul"></i>
-    <a class="article-category-link" href="/categories/js/">js</a>
+    <a class="article-category-link" href="/categories/css/">css</a>
     </div>
 
                 
+    <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/css/">css</a></li></ul>
+
             </div>
         </div>
     </div>

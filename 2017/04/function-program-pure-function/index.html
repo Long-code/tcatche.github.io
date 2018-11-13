@@ -1,0 +1,373 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    
+    <title>函数式编程-纯函数 | TryCatch</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    
+        <meta name="keywords" content="function,函数式" />
+    
+    
+
+    
+
+    
+
+    <link rel="stylesheet" href="/libs/font-awesome/css/font-awesome.min.css">
+    <link rel="stylesheet" href="/libs/titillium-web/styles.css">
+    <link rel="stylesheet" href="/libs/source-code-pro/styles.css">
+
+    <link rel="stylesheet" href="/css/style.css">
+
+    <script src="/libs/jquery/2.0.3/jquery.min.js"></script>
+    
+    
+        <link rel="stylesheet" href="/libs/lightgallery/css/lightgallery.min.css">
+    
+    
+        <script type="text/javascript">
+(function(i,s,o,g,r,a,m) {i['GoogleAnalyticsObject']=r;i[r]=i[r]||function() {
+(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+ga('create', 'UA-92905809-1', 'auto');
+ga('send', 'pageview');
+
+</script>
+    
+    
+        <script>
+var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "//hm.baidu.com/hm.js?409648b1638886ada0891d05cc80dc19";
+  var s = document.getElementsByTagName("script")[0];
+  s.parentNode.insertBefore(hm, s);
+})();
+</script>
+
+    
+    
+        <script>
+(function(){
+    var bp = document.createElement('script');
+    var curProtocol = window.location.protocol.split(':')[0];
+    if (curProtocol === 'https') {
+        bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';        
+    }
+    else {
+        bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+    }
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(bp, s);
+})();
+</script>
+    
+    
+
+</head>
+
+<body>
+  <div id="root">
+    <div id="page-percent">
+      <div></div>
+    </div>
+    <div id="wrap">
+      <header id="header">
+    <div id="header-outer" class="outer">
+        <div class="container">
+            <div id="header-nav" class="nav-container">
+                <div class="container-inner nav-container-inner">
+                    <ul id="main-nav">
+                        
+                                <li class="main-nav-list-item" >
+                                    <a class="main-nav-list-link" href="/">主页</a>
+                                </li>
+                        
+                                <ul class="main-nav-list"><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/Uncategory/">Uncategory</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/css/">css</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/html/">html</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/js/">js</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/翻译/">翻译</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/转载/">转载</a></li></ul>
+                            
+                                <li class="main-nav-list-item" >
+                                    <a class="main-nav-list-link" href="/">index.archives</a>
+                                </li>
+                        
+                    </ul>
+                </div>
+            </div>
+            <div id="header-title" style="display: none">
+                <div class="container-inner">
+                    <h1 class="logo-wrap">
+                        <a href="/" class="logo"></a>
+                    </h1>
+                    
+                        <h2 class="subtitle-wrap">
+                            <p class="subtitle">To try, then catch.</p>
+                        </h2>
+                    
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+      <div class="container">
+        <div class="bg_content">
+          <canvas id="canvas"></canvas>
+        </div>
+        <div class="main-body container-inner">
+          <div class="main-body-inner">
+            <section id="main">
+              <div class="main-body-content">
+                <article id="post-function-program-pure-function" class="article article-single article-type-post" itemscope itemprop="blogPost">
+
+    
+        <h1 class="article-title" itemprop="name">
+        函数式编程-纯函数
+        </h1>
+    
+
+    <div class="article-inner">
+        <header class="article-header" >
+            <div class="article-subtitle">
+                <div class="article-author-avatar">
+                    <img src="/images/avatar.png" alt="Author's avatar" height="44px" width="44px">
+                </div>
+                <div class="article-count">
+                    <div class="article-author">
+                        tcatche
+                    </div>
+                    <a href="/2017/04/function-program-pure-function/" class="article-date">
+    <i class="icon fa fa-calendar"></i>
+    <time datetime="2017-04-13T10:31:00.000Z" itemprop="datePublished">2017-04-13</time>
+</a>
+                    
+    <span class="word-count">
+      <i class="icon fa fa-file-text"></i>
+      字数: 1,103 
+    </span>
+    <span class="word-count">
+      <i class="icon fa fa-clock-o"></i>
+      阅读时长: 4mins 
+    </span>
+
+                </div>
+                <div class="article-dir">
+                    
+    <div class="article-category">
+    <i class="icon fa fa-list-ul"></i>
+    <a class="article-category-link" href="/categories/js/">js</a>
+    </div>
+
+                    
+    <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/function/">function</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/函数式/">函数式</a></li></ul>
+
+                </div>
+            </div>
+        </header>
+        
+        <div class="article-entry" itemprop="articleBody">
+            <h2 id="定义"><a href="#定义" class="headerlink" title="定义"></a>定义</h2><p>实际上纯函数的定义更近似于数学上的函数的定义，数学上的函数定义如下：</p>
+<blockquote>
+<p>设A，B是非空的数集，如果按照某种确定的对应关系f，使对于集合 A 中的任意一个数 x，在集合B中都有唯一确定的数 y 和它对应，那么就称 f:A-&gt;B 为从集合A 到集合B 的一个函数。</p>
+</blockquote>
+<p>而纯函数的定义为：</p>
+<blockquote>
+<p>纯函数定义为这样一种函数：对于相同的输入，其输出的结果永远是相同的，而且没有可见的副作用。</p>
+</blockquote>
+<p>从定义上可以看出，纯函数和数学上的函数都有要求：对于任意相同输入，其输出结果都是 <strong>唯一确定</strong> 的，不存在一个输入对应于多个输出结果的情况。</p>
+<p>纯函数和非纯函数很经常看到，比如数组的 <code>slice</code> 和 <code>splice</code> 函数，一个是纯函数，一个就是非纯函数：</p>
+<p><code>slice</code> 函数是纯函数，执行结果是可预计的、可靠的，每次输入相同的参数，执行操作的结果都一致：</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">var</span> arr = [<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>];</span><br><span class="line"></span><br><span class="line"><span class="comment">// 纯函数的示例：</span></span><br><span class="line">arr.slice(<span class="number">0</span>, <span class="number">2</span>);</span><br><span class="line"><span class="comment">// [1, 2]</span></span><br><span class="line"></span><br><span class="line">arr.slice(<span class="number">0</span>, <span class="number">2</span>);</span><br><span class="line"><span class="comment">// [1, 2]</span></span><br></pre></td></tr></table></figure>
+<p>而 <code>splice</code> 函数不是纯函数，输入相同的参数，每次操作的结果都不一致：</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="comment">// 非纯函数的示例：</span></span><br><span class="line">arr.splice(<span class="number">0</span>, <span class="number">2</span>);</span><br><span class="line"><span class="comment">// [1, 2]</span></span><br><span class="line"></span><br><span class="line">arr.splice(<span class="number">0</span>, <span class="number">2</span>);</span><br><span class="line"><span class="comment">// [3， 4]</span></span><br><span class="line"></span><br><span class="line">arr.splice(<span class="number">0</span>, <span class="number">2</span>);</span><br><span class="line"><span class="comment">// []</span></span><br></pre></td></tr></table></figure>
+<h2 id="副作用"><a href="#副作用" class="headerlink" title="副作用"></a>副作用</h2><p>前面提到纯函数不存在副作用，副作用的影响是这样的：</p>
+<blockquote>
+<p>副作用表示在运算过程中，系统状态的改变或者与外部进行的可观察的交互。如果一个函数与外部的可变状态发生了交互，则认为函数是有副作用的。</p>
+</blockquote>
+<p>可以看个例子：</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">var</span> minAge = <span class="number">21</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 存在副作用的函数</span></span><br><span class="line"><span class="keyword">var</span> checkAge = <span class="function"><span class="params">age</span> =&gt;</span> age &gt; minAge;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 不存在副作用的函数</span></span><br><span class="line"><span class="keyword">var</span> checkAge = <span class="function"><span class="params">age</span> =&gt;</span> &#123;</span><br><span class="line">  <span class="keyword">var</span> minAge = <span class="number">21</span>;</span><br><span class="line">  <span class="keyword">return</span> age &gt; minAge;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>从以上示例可以看到，对于同一个输入，第一个函数存在副作用，这个函数的行为不光取决于函数的参数，而且依赖外部变量 <code>minAge</code> ，如果外部修改了 <code>minAge</code> 的值，函数的执行结果可能发生改变，这种改变是不可预期的，而第二个函数不存在副作用，没有使用或修改任何的外部变量，因此可以保证它的输出结果始终是不会发生改变的。</p>
+<p>对于一个系统而言，依赖外部系统环境的状态会造成额外的复杂度，而使用纯函数可以有效降低系统的复杂度，而且还有一些其他的特性：</p>
+<h2 id="纯函数的特性"><a href="#纯函数的特性" class="headerlink" title="纯函数的特性"></a>纯函数的特性</h2><p>纯函数具有很多可靠的特性：</p>
+<h3 id="可缓存性"><a href="#可缓存性" class="headerlink" title="可缓存性"></a>可缓存性</h3><p>因为纯函数的输出结果是确定的，只和输入有关，因此对于复杂运算可以将结果存储起来，下次直接使用。</p>
+<p>如下定义了一个非常耗时的操作：</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">var</span> complexFunc = <span class="function">(<span class="params">val</span>) =&gt;</span> &#123;</span><br><span class="line">  <span class="comment">// 耗时的操作</span></span><br><span class="line">  <span class="keyword">for</span>(<span class="keyword">var</span> i = <span class="number">0</span>; i &lt; <span class="number">100000000</span>; i ++) &#123;&#125;</span><br><span class="line">  <span class="keyword">return</span> val ++;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="built_in">console</span>.time(<span class="string">'timer'</span>);</span><br><span class="line">complexFunc(<span class="number">1</span>);</span><br><span class="line"><span class="built_in">console</span>.timeEnd(<span class="string">'timer'</span>);</span><br><span class="line"><span class="comment">// timer: 257ms</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 重复调用，函数重新运行，运行时间没有怎么发生变化。</span></span><br><span class="line"><span class="built_in">console</span>.time(<span class="string">'timer'</span>);</span><br><span class="line">complexFunc(<span class="number">1</span>);</span><br><span class="line"><span class="built_in">console</span>.timeEnd(<span class="string">'timer'</span>);</span><br><span class="line"><span class="comment">// timer: 227ms</span></span><br></pre></td></tr></table></figure>
+<p>这个操作执行较慢，每次都要花费大量时间，但是这是个纯函数，每次执行的结果是可预期的，因此，可以对其执行结果进行缓存：</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="comment">//一个缓存函数结果的简单的实现</span></span><br><span class="line"><span class="keyword">var</span> memoize = <span class="function"><span class="keyword">function</span>(<span class="params">f</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">var</span> _cache = &#123;&#125;;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">return</span> <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="keyword">var</span> argsStr = <span class="built_in">JSON</span>.stringify(<span class="built_in">arguments</span>);</span><br><span class="line">    _cache[argsStr] = _cache.hasOwnProperty(argsStr) ? _cache[argsStr] : f(<span class="built_in">arguments</span>);</span><br><span class="line">    <span class="keyword">return</span> _cache[argsStr];</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> memoizedFunc = memoize(complexFunc);</span><br></pre></td></tr></table></figure>
+<p>然后再次执行这个函数：</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="comment">// 第一次执行未缓存</span></span><br><span class="line"><span class="built_in">console</span>.time(<span class="string">'timer'</span>);</span><br><span class="line">memoizedFunc(<span class="number">1</span>);</span><br><span class="line"><span class="built_in">console</span>.timeEnd(<span class="string">'timer'</span>);</span><br><span class="line"><span class="comment">// timer: 250ms</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 此时运行结果已经被缓存，运行速度大幅增加。</span></span><br><span class="line"><span class="built_in">console</span>.time(<span class="string">'timer'</span>);</span><br><span class="line">memoizedFunc(<span class="number">1</span>);</span><br><span class="line"><span class="built_in">console</span>.timeEnd(<span class="string">'timer'</span>);</span><br><span class="line"><span class="comment">// timer: 0.0149ms</span></span><br></pre></td></tr></table></figure>
+<p>通过将执行结果缓存起来，虽然第一次调用的执行时间人就很长，但是当函数第二次被调用的时候，可以直接从缓存的数据中读取结果，函数的时间大大缩短。</p>
+<h3 id="可并行化"><a href="#可并行化" class="headerlink" title="可并行化"></a>可并行化</h3><p>因为纯函数不需要访问共享数据，不会受外部状态影响而进行资源竞争，纯函数可以很容易的实行并行代码或者并行操作。</p>
+<h2 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h2><ul>
+<li><a href="https://github.com/MostlyAdequate/mostly-adequate-guide/blob/master/ch3.md" target="_blank" rel="external">mostly-adequate-guide</a></li>
+</ul>
+
+        </div>
+        <footer class="article-footer">
+            
+    <div class="jiathis_style_24x24">
+    <span class="jiathis_txt">分享到：</span>
+    <a class="jiathis_button_qzone"></a>
+    <a class="jiathis_button_tsina"</a>
+    <a class="jiathis_button_weixin"></a>
+    <a class="jiathis_button_douban"></a>
+    <a class="jiathis_button_fb"></a>
+    <a class="jiathis_button_twitter"></a>
+    <a href="http://www.jiathis.com/share" class="jiathis jiathis_txt jiathis_separator jtico jtico_jiathis" target="_blank"></a>
+    <a class="jiathis_counter_style"></a>
+</div>
+<script type="text/javascript" src="http://v3.jiathis.com/code/jia.js" charset="utf-8"></script>
+<style>
+    .jiathis_style div:first-child:not(.jiadiv_01) {
+        width: auto !important;
+        border: none !important;
+    }
+    .jiathis_style .jiadiv_01 {
+        margin: 10px 0;
+        border-radius: 4px;
+        border: #e1e1e1 solid 1px;
+    }
+    .jiathis_style .jiadiv_01 div:first-child {
+        display: none;
+    }
+    .jiathis_style .jiadiv_02 {
+        padding: 7px 0 !important;
+    }
+    .jiathis_style .jiadiv_02 .jiatitle {
+        width: 85px;
+        border: none;
+        height: auto;
+        margin: 3px 10px;
+        padding: 6px 10px;
+        border-radius: 4px;
+    }
+    .jiathis_style .jiadiv_02 .jiatitle:hover {
+        border: none;
+    }
+    .jiathis_style .jiadiv_02 .jiatitle:nth-child(even) {
+        margin-left: 0;
+    }
+    .jiathis_style .jtico:hover {
+        opacity: 1;
+    }
+    .jiathis_style .ckepopBottom,
+    .jiathis_style .centerBottom {
+        width: auto !important;
+        padding: 5px;
+        background: #f7f7f7;
+    }
+</style>
+
+
+
+
+        </footer>
+
+    </div>
+</article>
+
+    <section id="comments">
+    
+        
+    <div id="disqus_thread">
+        <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+    </div>
+
+    
+    </section>
+
+
+              </div>
+            </section>
+            
+          </div>
+        </div>
+      </div>
+      <footer id="footer">
+    <div class="container">
+        <div class="container-inner">
+            <div class="credit">
+                <h1 class="logo-wrap">
+                    <a href="/" class="logo"></a>
+                </h1>
+                <p>&copy; 2018 tcatche</p>
+                <p>Powered by <a href="//hexo.io/" target="_blank">Hexo</a>. </p>
+                <p>Theme based <a href="//github.com/ppoffice" target="_blank">PPOffice</a> and modify by Tcatche. </p>
+                <p>Hosted by <a  href="https://pages.github.com/">Github Pages</a>. </p>
+            </div>
+        </div>
+    </div>
+</footer>
+      <div id="fixed">
+  <i class="fa fa-align-justify ins-search-icon"></i>
+  <div class="ins-search">
+    <div class="ins-search-mask"></div>
+    <div class="ins-search-container">
+        <div class="ins-input-wrapper">
+            <input type="text" class="ins-search-input" placeholder="想要查找什么..." />
+            <span class="ins-close ins-selectable"><i class="fa fa-times-circle"></i></span>
+        </div>
+        <div class="ins-section-wrapper">
+            <div class="ins-section-container"></div>
+        </div>
+    </div>
+</div>
+<script>
+(function (window) {
+    var INSIGHT_CONFIG = {
+        TRANSLATION: {
+            POSTS: '文章',
+            PAGES: '页面',
+            CATEGORIES: '分类',
+            TAGS: '标签',
+            UNTITLED: '(未命名)',
+        },
+        ROOT_URL: '/',
+        CONTENT_URL: '/content.json',
+    };
+    window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+})(window);
+</script>
+<script src="/js/insight.js"></script>
+  <i id="back-to-top" class="fa fa-arrow-up goto-top"></i>
+</div>
+      
+    
+    <script>
+    var disqus_shortname = 'tcatche';
+    
+    
+    var disqus_url = 'http://tcatche.site/2017/04/function-program-pure-function/';
+    
+    (function() {
+    var dsq = document.createElement('script');
+    dsq.type = 'text/javascript';
+    dsq.async = true;
+    dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+    </script>
+
+
+
+
+    
+        <script src="/libs/lightgallery/js/lightgallery.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-thumbnail.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-pager.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-autoplay.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-fullscreen.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-zoom.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-hash.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-share.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-video.min.js"></script>
+    
+
+
+<!-- Custom Scripts -->
+<script src="/js/main.js"></script>
+
+    </div>
+  </div>
+</body>
+</html>

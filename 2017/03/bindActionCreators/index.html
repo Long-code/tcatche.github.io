@@ -1,0 +1,379 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    
+    <title>bindActionCreators.js 源码阅读笔记 | TryCatch</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    
+        <meta name="keywords" content="react,redux" />
+    
+    
+
+    
+
+    
+
+    <link rel="stylesheet" href="/libs/font-awesome/css/font-awesome.min.css">
+    <link rel="stylesheet" href="/libs/titillium-web/styles.css">
+    <link rel="stylesheet" href="/libs/source-code-pro/styles.css">
+
+    <link rel="stylesheet" href="/css/style.css">
+
+    <script src="/libs/jquery/2.0.3/jquery.min.js"></script>
+    
+    
+        <link rel="stylesheet" href="/libs/lightgallery/css/lightgallery.min.css">
+    
+    
+        <script type="text/javascript">
+(function(i,s,o,g,r,a,m) {i['GoogleAnalyticsObject']=r;i[r]=i[r]||function() {
+(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+ga('create', 'UA-92905809-1', 'auto');
+ga('send', 'pageview');
+
+</script>
+    
+    
+        <script>
+var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "//hm.baidu.com/hm.js?409648b1638886ada0891d05cc80dc19";
+  var s = document.getElementsByTagName("script")[0];
+  s.parentNode.insertBefore(hm, s);
+})();
+</script>
+
+    
+    
+        <script>
+(function(){
+    var bp = document.createElement('script');
+    var curProtocol = window.location.protocol.split(':')[0];
+    if (curProtocol === 'https') {
+        bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';        
+    }
+    else {
+        bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+    }
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(bp, s);
+})();
+</script>
+    
+    
+
+</head>
+
+<body>
+  <div id="root">
+    <div id="page-percent">
+      <div></div>
+    </div>
+    <div id="wrap">
+      <header id="header">
+    <div id="header-outer" class="outer">
+        <div class="container">
+            <div id="header-nav" class="nav-container">
+                <div class="container-inner nav-container-inner">
+                    <ul id="main-nav">
+                        
+                                <li class="main-nav-list-item" >
+                                    <a class="main-nav-list-link" href="/">主页</a>
+                                </li>
+                        
+                                <ul class="main-nav-list"><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/Uncategory/">Uncategory</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/css/">css</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/html/">html</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/js/">js</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/翻译/">翻译</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/转载/">转载</a></li></ul>
+                            
+                                <li class="main-nav-list-item" >
+                                    <a class="main-nav-list-link" href="/">index.archives</a>
+                                </li>
+                        
+                    </ul>
+                </div>
+            </div>
+            <div id="header-title" style="display: none">
+                <div class="container-inner">
+                    <h1 class="logo-wrap">
+                        <a href="/" class="logo"></a>
+                    </h1>
+                    
+                        <h2 class="subtitle-wrap">
+                            <p class="subtitle">To try, then catch.</p>
+                        </h2>
+                    
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+      <div class="container">
+        <div class="bg_content">
+          <canvas id="canvas"></canvas>
+        </div>
+        <div class="main-body container-inner">
+          <div class="main-body-inner">
+            <section id="main">
+              <div class="main-body-content">
+                <article id="post-bindActionCreators" class="article article-single article-type-post" itemscope itemprop="blogPost">
+
+    
+        <h1 class="article-title" itemprop="name">
+        bindActionCreators.js 源码阅读笔记
+        </h1>
+    
+
+    <div class="article-inner">
+        <header class="article-header" >
+            <div class="article-subtitle">
+                <div class="article-author-avatar">
+                    <img src="/images/avatar.png" alt="Author's avatar" height="44px" width="44px">
+                </div>
+                <div class="article-count">
+                    <div class="article-author">
+                        tcatche
+                    </div>
+                    <a href="/2017/03/bindActionCreators/" class="article-date">
+    <i class="icon fa fa-calendar"></i>
+    <time datetime="2017-03-01T06:32:00.000Z" itemprop="datePublished">2017-03-01</time>
+</a>
+                    
+    <span class="word-count">
+      <i class="icon fa fa-file-text"></i>
+      字数: 863 
+    </span>
+    <span class="word-count">
+      <i class="icon fa fa-clock-o"></i>
+      阅读时长: 4mins 
+    </span>
+
+                </div>
+                <div class="article-dir">
+                    
+    <div class="article-category">
+    <i class="icon fa fa-list-ul"></i>
+    <a class="article-category-link" href="/categories/js/">js</a>
+    </div>
+
+                    
+    <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/react/">react</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/redux/">redux</a></li></ul>
+
+                </div>
+            </div>
+        </header>
+        
+        <div class="article-entry" itemprop="articleBody">
+            <blockquote>
+<p>Turns an object whose values are action creators, into an object with the same keys, but with every action creator wrapped into a dispatch call so they may be invoked directly.</p>
+</blockquote>
+<h2 id="接口"><a href="#接口" class="headerlink" title="接口"></a>接口</h2><blockquote>
+<p>bindActionCreators(actionCreators, dispatch)</p>
+</blockquote>
+<ul>
+<li><strong>actionCreators (Function | Object):</strong> <code>action creator</code> 函数，或者键值是 <code>action creators</code> 的对象。</li>
+<li><strong>dispatch (Function):</strong> <code>dispatch action</code> 的函数。</li>
+<li><strong>return (Function | Object):</strong> 返回一个 <code>dispatcher</code> 函数或者对象，对象的每个属性值都是一个 <code>dispatcher</code>, 即可以dispatch action 的函数 </li>
+</ul>
+<h2 id="理解"><a href="#理解" class="headerlink" title="理解"></a>理解</h2><p><code>bindActionCreators</code> 文档里是这么说的：把 <code>action creators</code> 转换成有相同 <code>keys</code> 的对象，并把每个 <code>action creator</code> 使用 <code>dispatch</code> 包围起来，这样可以直接调用它们。</p>
+<p>这种说法听起来很绕口，先看个例子：</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">var</span> addTodo = <span class="function"><span class="params">todo</span> =&gt;</span> (&#123;</span><br><span class="line">  type: <span class="string">'ADD_TODO'</span>,</span><br><span class="line">  todo</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> removeTodo = <span class="function"><span class="params">todo</span> =&gt;</span> (&#123;</span><br><span class="line">  type: <span class="string">'REMOVE_TODO'</span>,</span><br><span class="line">  todo</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> reducer = <span class="function">(<span class="params">state, action</span>) =&gt;</span> &#123;</span><br><span class="line">  <span class="keyword">switch</span> (action.type) &#123;</span><br><span class="line">    <span class="keyword">case</span> <span class="string">'ADD_TODO'</span>:</span><br><span class="line">        <span class="keyword">return</span> state.add(action.text);</span><br><span class="line">    <span class="keyword">case</span> <span class="string">'REMOVE_TODO'</span>:</span><br><span class="line">        <span class="keyword">return</span> state.remove(action.text);</span><br><span class="line">    <span class="keyword">default</span>:</span><br><span class="line">        <span class="keyword">return</span> state;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> store = redux.createStore(reducer, []);</span><br></pre></td></tr></table></figure>
+<p>这是一个很常见的 redux 的例子，我们触发 <code>ADD_TODO</code> 通过 <code>store.dispatch(addTodo(&quot;To read.&quot;))</code>,<code>bindActionCreators</code> 实际上就是对这个过程做了处理：</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="comment">// 单独为每个action创建：</span></span><br><span class="line"><span class="keyword">var</span> addTodoDispatcher = bindActionCreators(TodoActionCreators, dispatch);</span><br><span class="line"><span class="keyword">var</span> removeTodoDispatcher = bindActionCreators(TodoActionCreators, dispatch);</span><br><span class="line"></span><br><span class="line"><span class="comment">// 或者组合为所有action创建：</span></span><br><span class="line"><span class="keyword">var</span> todoDispatchers = bindActionCreators(&#123;</span><br><span class="line">  addTodo: addTodo,</span><br><span class="line">  removeTodo: removeTodo</span><br><span class="line">&#125;, dispatch);</span><br></pre></td></tr></table></figure>
+<p>这个时候可以通过 <code>addTodoDispatcher(&quot;To read.&quot;)</code> 或者 <code>todoDispatchers.addTodo(&quot;To read.&quot;)</code> 触发这个 action。</p>
+<p>看起来这个只是省略了一个dispatch调用的代码，官方文档是这么说明的：</p>
+<blockquote>
+<p>The only use case for <code>bindActionCreators</code> is when you want to pass some <code>action creators</code> down to a component that isn’t aware of Redux, and you don’t want to pass <code>dispatch</code> or the <code>Redux store</code> to it.<br>（惟一使用 <code>bindActionCreators</code> 的场景是当你需要把 <code>action creator</code> 往下传到一个组件上，却不想让这个组件觉察到 <code>Redux</code> 的存在，而且不希望把 <code>Redux store</code> 或 <code>dispatch</code> 传给它。）</p>
+</blockquote>
+<p>也就是说它的主要应用场景是对某个组件隐藏 redux 的存在：</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="comment">// 不使用 bindActionCreators</span></span><br><span class="line"><span class="comment">// 组件内调用 dispatch(addTodo("sth"))、dispatch(addTodo("sth"))</span></span><br><span class="line"><span class="comment">// 组件需要了解 redux action 的触发方式</span></span><br><span class="line">&lt;TodoList todos=&#123;todos&#125; dispatch=&#123;dispatch&#125; addTodo=&#123;addTodo&#125; removeTodo=&#123;removeTodo&#125;/&gt;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 使用 bindActionCreators</span></span><br><span class="line"><span class="comment">// 组件内调用 addTodo("sth")、removeTodo("sth")</span></span><br><span class="line"><span class="comment">// 组件不需要知道 redux 的存在，直接调用函数</span></span><br><span class="line">&lt;TodoList todos=&#123;todos&#125; &#123;...todoDispatchers&#125; /&gt;</span><br></pre></td></tr></table></figure>
+<h2 id="源码注释"><a href="#源码注释" class="headerlink" title="源码注释"></a>源码注释</h2><p>去除参数类型检查相关的一些代码后源代码如下：</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> <span class="function"><span class="keyword">function</span> <span class="title">bindActionCreators</span>(<span class="params">actionCreators, dispatch</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">if</span> (<span class="keyword">typeof</span> actionCreators === <span class="string">'function'</span>) &#123;</span><br><span class="line">    <span class="keyword">return</span> bindActionCreator(actionCreators, dispatch)</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="comment">// actionCreators 类型不是函数和对象 或者 actionCreators 是空，抛出异常</span></span><br><span class="line">  <span class="keyword">if</span> (<span class="keyword">typeof</span> actionCreators !== <span class="string">'object'</span> || actionCreators === <span class="literal">null</span>) &#123;</span><br><span class="line">    <span class="keyword">throw</span> ...</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">var</span> keys = <span class="built_in">Object</span>.keys(actionCreators)</span><br><span class="line">  <span class="keyword">var</span> boundActionCreators = &#123;&#125;</span><br><span class="line">  <span class="keyword">for</span> (<span class="keyword">var</span> i = <span class="number">0</span>; i &lt; keys.length; i++) &#123;</span><br><span class="line">    <span class="keyword">var</span> key = keys[i]</span><br><span class="line">    <span class="keyword">var</span> actionCreator = actionCreators[key]</span><br><span class="line">    <span class="comment">// 当 actionCreators 类型是对象时</span></span><br><span class="line">    <span class="comment">// 返回的对象仅保留其属性值类型为函数的属性，其他类型不保留</span></span><br><span class="line">    <span class="keyword">if</span> (<span class="keyword">typeof</span> actionCreator === <span class="string">'function'</span>) &#123;</span><br><span class="line">      boundActionCreators[key] = bindActionCreator(actionCreator, dispatch)</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">return</span> boundActionCreators</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">bindActionCreator</span>(<span class="params">actionCreator, dispatch</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">return</span> <span class="function">(<span class="params">...args</span>) =&gt;</span> dispatch(actionCreator(...args))</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>代码很简单，如果传递的 <code>actionCreators</code> 的类型是函数，则返回内容是一个 <code>dispatcher</code>，即： <code>(...args) =&gt; dispatch(actionCreator(...args))</code>，如果传递 actionCreators 的类型是一个对象，则返回一个相似结构的对象，只不过对象的每个属性值都是 <code>dispatcher</code>。</p>
+<p>简单来说，如果 <code>actionCreators</code> 是 addTodo 返回值为 todo =&gt; dispatch(addTodo(todo)), 如果：</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="comment">// actionCreators 类型是函数</span></span><br><span class="line"><span class="keyword">var</span> addTodoDispatcher = bindActionCreators(addTodo, dispatch);</span><br><span class="line"><span class="comment">//等价于：</span></span><br><span class="line"><span class="keyword">var</span> addTodoDispatcher = <span class="function"><span class="params">todo</span> =&gt;</span> dispatch(addTodo(todo));</span><br><span class="line"></span><br><span class="line"><span class="comment">// actionCreators 类型是对象</span></span><br><span class="line"><span class="keyword">var</span> todoDispatchers = bindActionCreators(&#123;addTodo, removeTodo, ..., otherTodo&#125;, dispatch);</span><br><span class="line"><span class="comment">//等价于：</span></span><br><span class="line"><span class="keyword">var</span> todoDispatchers = &#123;</span><br><span class="line">  addTodo:　<span class="function"><span class="params">todo</span> =&gt;</span> dispatch(addTodo(todo)),</span><br><span class="line">  removeTodo:　<span class="function"><span class="params">todo</span> =&gt;</span> dispatch(removeTodo(todo)),</span><br><span class="line">  otherTodo:　<span class="function">(<span class="params">...args</span>) =&gt;</span> dispatch(otherTodo(args)),</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="相关"><a href="#相关" class="headerlink" title="相关"></a>相关</h2><p><code>Redux</code> 源码阅读笔记：</p>
+<ul>
+<li><a href="/2017/03/createStore/">createStore.js 源码阅读笔记</a></li>
+<li><a href="/2017/03/combineReducers/">combineReducers.js 源码阅读笔记</a></li>
+<li><a href="/2017/03/bindActionCreators/">bindActionCreators.js 源码阅读笔记</a></li>
+<li><a href="/2017/02/applyMiddleware/">applyMiddleware.js 源码阅读笔记</a></li>
+<li><a href="/2017/03/compose/">compose.js 源码阅读笔记</a></li>
+</ul>
+<h2 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h2><p>本文阅读代码版本 <code>3.5.2</code> </p>
+<ul>
+<li><a href="https://github.com/reactjs/redux" target="_blank" rel="external">redux源代码</a></li>
+<li><a href="http://redux.js.org/docs/api/bindActionCreators.html" target="_blank" rel="external">redux文档</a></li>
+</ul>
+
+        </div>
+        <footer class="article-footer">
+            
+    <div class="jiathis_style_24x24">
+    <span class="jiathis_txt">分享到：</span>
+    <a class="jiathis_button_qzone"></a>
+    <a class="jiathis_button_tsina"</a>
+    <a class="jiathis_button_weixin"></a>
+    <a class="jiathis_button_douban"></a>
+    <a class="jiathis_button_fb"></a>
+    <a class="jiathis_button_twitter"></a>
+    <a href="http://www.jiathis.com/share" class="jiathis jiathis_txt jiathis_separator jtico jtico_jiathis" target="_blank"></a>
+    <a class="jiathis_counter_style"></a>
+</div>
+<script type="text/javascript" src="http://v3.jiathis.com/code/jia.js" charset="utf-8"></script>
+<style>
+    .jiathis_style div:first-child:not(.jiadiv_01) {
+        width: auto !important;
+        border: none !important;
+    }
+    .jiathis_style .jiadiv_01 {
+        margin: 10px 0;
+        border-radius: 4px;
+        border: #e1e1e1 solid 1px;
+    }
+    .jiathis_style .jiadiv_01 div:first-child {
+        display: none;
+    }
+    .jiathis_style .jiadiv_02 {
+        padding: 7px 0 !important;
+    }
+    .jiathis_style .jiadiv_02 .jiatitle {
+        width: 85px;
+        border: none;
+        height: auto;
+        margin: 3px 10px;
+        padding: 6px 10px;
+        border-radius: 4px;
+    }
+    .jiathis_style .jiadiv_02 .jiatitle:hover {
+        border: none;
+    }
+    .jiathis_style .jiadiv_02 .jiatitle:nth-child(even) {
+        margin-left: 0;
+    }
+    .jiathis_style .jtico:hover {
+        opacity: 1;
+    }
+    .jiathis_style .ckepopBottom,
+    .jiathis_style .centerBottom {
+        width: auto !important;
+        padding: 5px;
+        background: #f7f7f7;
+    }
+</style>
+
+
+
+
+        </footer>
+
+    </div>
+</article>
+
+    <section id="comments">
+    
+        
+    <div id="disqus_thread">
+        <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+    </div>
+
+    
+    </section>
+
+
+              </div>
+            </section>
+            
+          </div>
+        </div>
+      </div>
+      <footer id="footer">
+    <div class="container">
+        <div class="container-inner">
+            <div class="credit">
+                <h1 class="logo-wrap">
+                    <a href="/" class="logo"></a>
+                </h1>
+                <p>&copy; 2018 tcatche</p>
+                <p>Powered by <a href="//hexo.io/" target="_blank">Hexo</a>. </p>
+                <p>Theme based <a href="//github.com/ppoffice" target="_blank">PPOffice</a> and modify by Tcatche. </p>
+                <p>Hosted by <a  href="https://pages.github.com/">Github Pages</a>. </p>
+            </div>
+        </div>
+    </div>
+</footer>
+      <div id="fixed">
+  <i class="fa fa-align-justify ins-search-icon"></i>
+  <div class="ins-search">
+    <div class="ins-search-mask"></div>
+    <div class="ins-search-container">
+        <div class="ins-input-wrapper">
+            <input type="text" class="ins-search-input" placeholder="想要查找什么..." />
+            <span class="ins-close ins-selectable"><i class="fa fa-times-circle"></i></span>
+        </div>
+        <div class="ins-section-wrapper">
+            <div class="ins-section-container"></div>
+        </div>
+    </div>
+</div>
+<script>
+(function (window) {
+    var INSIGHT_CONFIG = {
+        TRANSLATION: {
+            POSTS: '文章',
+            PAGES: '页面',
+            CATEGORIES: '分类',
+            TAGS: '标签',
+            UNTITLED: '(未命名)',
+        },
+        ROOT_URL: '/',
+        CONTENT_URL: '/content.json',
+    };
+    window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+})(window);
+</script>
+<script src="/js/insight.js"></script>
+  <i id="back-to-top" class="fa fa-arrow-up goto-top"></i>
+</div>
+      
+    
+    <script>
+    var disqus_shortname = 'tcatche';
+    
+    
+    var disqus_url = 'http://tcatche.site/2017/03/bindActionCreators/';
+    
+    (function() {
+    var dsq = document.createElement('script');
+    dsq.type = 'text/javascript';
+    dsq.async = true;
+    dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+    </script>
+
+
+
+
+    
+        <script src="/libs/lightgallery/js/lightgallery.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-thumbnail.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-pager.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-autoplay.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-fullscreen.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-zoom.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-hash.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-share.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-video.min.js"></script>
+    
+
+
+<!-- Custom Scripts -->
+<script src="/js/main.js"></script>
+
+    </div>
+  </div>
+</body>
+</html>

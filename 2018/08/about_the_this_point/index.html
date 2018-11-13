@@ -1,0 +1,375 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    
+    <title>JS 中的 this | TryCatch</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    
+        <meta name="keywords" content="js,this" />
+    
+    
+
+    
+
+    
+
+    <link rel="stylesheet" href="/libs/font-awesome/css/font-awesome.min.css">
+    <link rel="stylesheet" href="/libs/titillium-web/styles.css">
+    <link rel="stylesheet" href="/libs/source-code-pro/styles.css">
+
+    <link rel="stylesheet" href="/css/style.css">
+
+    <script src="/libs/jquery/2.0.3/jquery.min.js"></script>
+    
+    
+        <link rel="stylesheet" href="/libs/lightgallery/css/lightgallery.min.css">
+    
+    
+        <script type="text/javascript">
+(function(i,s,o,g,r,a,m) {i['GoogleAnalyticsObject']=r;i[r]=i[r]||function() {
+(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+ga('create', 'UA-92905809-1', 'auto');
+ga('send', 'pageview');
+
+</script>
+    
+    
+        <script>
+var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "//hm.baidu.com/hm.js?409648b1638886ada0891d05cc80dc19";
+  var s = document.getElementsByTagName("script")[0];
+  s.parentNode.insertBefore(hm, s);
+})();
+</script>
+
+    
+    
+        <script>
+(function(){
+    var bp = document.createElement('script');
+    var curProtocol = window.location.protocol.split(':')[0];
+    if (curProtocol === 'https') {
+        bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';        
+    }
+    else {
+        bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+    }
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(bp, s);
+})();
+</script>
+    
+    
+
+</head>
+
+<body>
+  <div id="root">
+    <div id="page-percent">
+      <div></div>
+    </div>
+    <div id="wrap">
+      <header id="header">
+    <div id="header-outer" class="outer">
+        <div class="container">
+            <div id="header-nav" class="nav-container">
+                <div class="container-inner nav-container-inner">
+                    <ul id="main-nav">
+                        
+                                <li class="main-nav-list-item" >
+                                    <a class="main-nav-list-link" href="/">主页</a>
+                                </li>
+                        
+                                <ul class="main-nav-list"><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/Uncategory/">Uncategory</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/css/">css</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/html/">html</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/js/">js</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/翻译/">翻译</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/转载/">转载</a></li></ul>
+                            
+                                <li class="main-nav-list-item" >
+                                    <a class="main-nav-list-link" href="/">index.archives</a>
+                                </li>
+                        
+                    </ul>
+                </div>
+            </div>
+            <div id="header-title" style="display: none">
+                <div class="container-inner">
+                    <h1 class="logo-wrap">
+                        <a href="/" class="logo"></a>
+                    </h1>
+                    
+                        <h2 class="subtitle-wrap">
+                            <p class="subtitle">To try, then catch.</p>
+                        </h2>
+                    
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+      <div class="container">
+        <div class="bg_content">
+          <canvas id="canvas"></canvas>
+        </div>
+        <div class="main-body container-inner">
+          <div class="main-body-inner">
+            <section id="main">
+              <div class="main-body-content">
+                <article id="post-about_the_this_point" class="article article-single article-type-post" itemscope itemprop="blogPost">
+
+    
+        <h1 class="article-title" itemprop="name">
+        JS 中的 this
+        </h1>
+    
+
+    <div class="article-inner">
+        <header class="article-header" >
+            <div class="article-subtitle">
+                <div class="article-author-avatar">
+                    <img src="/images/avatar.png" alt="Author's avatar" height="44px" width="44px">
+                </div>
+                <div class="article-count">
+                    <div class="article-author">
+                        tcatche
+                    </div>
+                    <a href="/2018/08/about_the_this_point/" class="article-date">
+    <i class="icon fa fa-calendar"></i>
+    <time datetime="2018-08-08T08:01:00.000Z" itemprop="datePublished">2018-08-08</time>
+</a>
+                    
+    <span class="word-count">
+      <i class="icon fa fa-file-text"></i>
+      字数: 1,273 
+    </span>
+    <span class="word-count">
+      <i class="icon fa fa-clock-o"></i>
+      阅读时长: 5mins 
+    </span>
+
+                </div>
+                <div class="article-dir">
+                    
+    <div class="article-category">
+    <i class="icon fa fa-list-ul"></i>
+    <a class="article-category-link" href="/categories/js/">js</a>
+    </div>
+
+                    
+    <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/js/">js</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/this/">this</a></li></ul>
+
+                </div>
+            </div>
+        </header>
+        
+        <div class="article-entry" itemprop="articleBody">
+            <p>JS 中的 this 是一个很容易让人迷糊的概念，本文主要总结了各种情况下的 this 指向。</p>
+<h2 id="全局环境中的-this"><a href="#全局环境中的-this" class="headerlink" title="全局环境中的 this"></a>全局环境中的 this</h2><p>全局环境中的 this 总是指向全局对象 window 上的。</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">this</span>.a1 = <span class="number">10</span>;</span><br><span class="line"><span class="keyword">var</span> a2 = <span class="number">20</span>;</span><br><span class="line"></span><br><span class="line"><span class="built_in">console</span>.log(a1); <span class="comment">// 10</span></span><br><span class="line"><span class="built_in">console</span>.log(<span class="keyword">this</span>.a2); <span class="comment">// 20</span></span><br></pre></td></tr></table></figure>
+<h2 id="非箭头函数中的this"><a href="#非箭头函数中的this" class="headerlink" title="非箭头函数中的this"></a>非箭头函数中的this</h2><p>需要记住一点：<strong>在一个函数上下文中，函数中的 this 始终是由函数的调用者提供，若不存在调用者，则非严格模式下 this 指向全局顶级对象（浏览器中为 window 对象），而严格模式下 this 为 undefined</strong>。接下来看几个例子：</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">var</span> person = &#123;</span><br><span class="line">  name: <span class="string">"Jack"</span>,</span><br><span class="line">  greet: <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">"Hello, "</span> + <span class="keyword">this</span>.name);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;;</span><br><span class="line">person.greet(); <span class="comment">// "Hello, Jack"</span></span><br></pre></td></tr></table></figure>
+<p>很明显，函数的调用者是 person，所以 this 指向 person。</p>
+<p>看起来很简单，再看个例子试试：</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">var</span> name = <span class="string">'Global window'</span></span><br><span class="line"><span class="keyword">var</span> personJack = &#123;</span><br><span class="line">  name: <span class="string">"Jack"</span>,</span><br><span class="line">  greet: <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">"Hello, "</span> + <span class="keyword">this</span>.name);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;;</span><br><span class="line"><span class="keyword">var</span> greet = personJack.greet;</span><br><span class="line"><span class="keyword">var</span> personMack = &#123;</span><br><span class="line">  name: <span class="string">"Mack"</span>,</span><br><span class="line">  greet: greet</span><br><span class="line">&#125;</span><br><span class="line">greet(); <span class="comment">// 输出 "Hello, Global window"</span></span><br><span class="line">personMack.greet();<span class="comment">// 输出 "Hello, Jack"</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 输出</span></span><br><span class="line"><span class="comment">// </span></span><br><span class="line"><span class="string">"Hello, Global window"</span></span><br><span class="line"><span class="comment">// greet 的调用者为 personJack，所以 this.name 指向 personJack.name</span></span><br><span class="line"><span class="string">"Hello, Jack"</span></span><br></pre></td></tr></table></figure>
+<p>注意，判断函数中 this 的指向，是在执行的时候决定的，而语句 <code>greet()</code> 在执行时，<code>greet</code> 函数并没有调用者，所以，this 指向全局对象 <code>window</code>，所以输出 <code>window.name</code>。</p>
+<p>而语句 <code>personMack.greet()</code> 在执行时，greet 的调用者为 <code>personJack</code>，所以 <code>this.name</code> 指向 <code>personJack.name</code>。</p>
+<p>再看另一个例子：</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">var</span> name = <span class="string">'Global'</span>;</span><br><span class="line"><span class="keyword">var</span> person = &#123;</span><br><span class="line">  name: <span class="string">'Person'</span>,</span><br><span class="line">  full: &#123;</span><br><span class="line">    name: <span class="string">'Person Full'</span>,</span><br><span class="line">    getName: <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">      <span class="keyword">return</span> <span class="keyword">this</span>.name;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;,</span><br><span class="line">&#125;;</span><br><span class="line"><span class="built_in">console</span>.log(person.full.getName()); <span class="comment">// Person Full</span></span><br></pre></td></tr></table></figure>
+<p>很明显，这次 <code>getName</code> 的调用者是 <code>person.full</code> ，this 指向它。</p>
+<h2 id="严格模式（use-strict）下的-this"><a href="#严格模式（use-strict）下的-this" class="headerlink" title="严格模式（use strict）下的 this"></a>严格模式（use strict）下的 this</h2><p>在上一节中提到，如果函数的调用者不存在，函数中的 this 则指向全局变量 window，这样无疑在有些情况下会出现难以检查的错误：</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">var</span> name = <span class="string">'global'</span>;</span><br><span class="line"><span class="keyword">var</span> obj = &#123;</span><br><span class="line">  name: <span class="string">'object'</span>,</span><br><span class="line">  getName() &#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="keyword">this</span>.name);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> getName = obj.getName();</span><br><span class="line">getName(); <span class="comment">// global</span></span><br></pre></td></tr></table></figure>
+<p>在上面的例子中，由于 window 对象恰好存在一个 name 属性，所以也不会报错。但是，如果代码规格比较大，定位错误无疑是非常困难的。</p>
+<p>使用严格模式，如果函数不存在调用者，this 将会指向 undefined 而不再是全局对象 window 了:</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="meta">'use strict'</span></span><br><span class="line"><span class="keyword">var</span> name = <span class="string">'global'</span>;</span><br><span class="line"><span class="keyword">var</span> obj = &#123;</span><br><span class="line">  name: <span class="string">'object'</span>,</span><br><span class="line">  getName() &#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="keyword">this</span>.name);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> getName = obj.getName;</span><br><span class="line">getName(); <span class="comment">// Uncaught TypeError: Cannot read property 'name' of undefined</span></span><br></pre></td></tr></table></figure>
+<p>此时会抛出错误，很容易定位到错误的位置。</p>
+<p>关于严格模式的更多细节，请查看 <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Strict_mode" target="_blank" rel="external">MDN</a></p>
+<h2 id="箭头函数中的this"><a href="#箭头函数中的this" class="headerlink" title="箭头函数中的this"></a>箭头函数中的this</h2><p>箭头函数中的 <code>this</code> 指向其在 <strong>声明时所在的最近的一个非箭头函数</strong> 的 <code>this</code> 。并且箭头函数的 this 指向在箭头函数声明后是不会且不能改变的。</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">a</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="keyword">return</span> <span class="function"><span class="params">()</span> =&gt;</span> &#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="function"><span class="params">()</span> =&gt;</span> &#123;</span><br><span class="line">      <span class="built_in">console</span>.log(<span class="keyword">this</span>)</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line">a()()(); <span class="comment">// window</span></span><br></pre></td></tr></table></figure>
+<p>在上面的例子中，最内层箭头函数声明时，最近的非箭头函数是 f(a) 而 f(a) 在执行时没有调用者，this 指向全局变量 window，所以箭头函数的 this 也指向全局变量 window。</p>
+<p>如果改变 f(a) 中 this 的指向呢：</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">var</span> obj = &#123;</span><br><span class="line">  b: b,</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">obj.a()()(); <span class="comment">// obj</span></span><br><span class="line">a.bind(<span class="built_in">window</span>)()()(); <span class="comment">// Window</span></span><br><span class="line">a.bind(obj)()()(); <span class="comment">// obj</span></span><br></pre></td></tr></table></figure>
+<p>前面提到“箭头函数的 this 指向在箭头函数声明后是不会且不能改变”，这和上面的例子并不冲突。也就是说箭头函数的指向在声明阶段就已经确定了，比如在上面的例子，箭头函数中的 this 在声明的时候就确定指向了 <code>f(a)</code> 中的 this，但是 <code>f(a)</code> 中的 this 指向的目标可能是在执行阶段才确定的，再看个例子：</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">b</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="keyword">var</span> self = <span class="keyword">this</span>;</span><br><span class="line">  <span class="keyword">return</span> <span class="function"><span class="params">()</span> =&gt;</span> &#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="function"><span class="params">()</span> =&gt;</span> &#123;</span><br><span class="line">      <span class="built_in">console</span>.log(<span class="keyword">this</span>)</span><br><span class="line">      <span class="built_in">console</span>.log(<span class="keyword">this</span> === self)</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> obj = &#123;</span><br><span class="line">  b: b,</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">obj.b()()(); <span class="comment">// obj true</span></span><br><span class="line">b.bind(<span class="built_in">window</span>)()()(); <span class="comment">// Window true</span></span><br><span class="line">b.bind(obj)()()(); <span class="comment">// obj true</span></span><br></pre></td></tr></table></figure>
+<p>从上面的例子可以看出，箭头函数中的 this 始终指向 f(a) 中的 this。</p>
+<h2 id="参数为函数时的-this"><a href="#参数为函数时的-this" class="headerlink" title="参数为函数时的 this"></a>参数为函数时的 this</h2><p>这种情况看起来很绕，实际上掌握了上面几点后就很简单，看下面的例子：</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">var</span> obj = &#123;</span><br><span class="line">  data: [<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>],</span><br><span class="line">  getDouble: <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">this</span>.data.map(<span class="function"><span class="keyword">function</span>(<span class="params">item</span>) </span>&#123;</span><br><span class="line">      <span class="built_in">console</span>.log(<span class="keyword">this</span>);</span><br><span class="line">      <span class="keyword">return</span> item * <span class="number">2</span></span><br><span class="line">    &#125;);</span><br><span class="line">  &#125;,</span><br><span class="line">  getTreble: <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">this</span>.data.map(<span class="function"><span class="params">item</span> =&gt;</span> &#123;</span><br><span class="line">      <span class="built_in">console</span>.log(<span class="keyword">this</span>);</span><br><span class="line">      <span class="keyword">return</span> item * <span class="number">3</span>;</span><br><span class="line">    &#125;);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">obj.getDouble(); <span class="comment">// log window</span></span><br><span class="line">obj.getTreble(); <span class="comment">// log obj</span></span><br></pre></td></tr></table></figure>
+<p>在调用 obj.getEven() 时，需要了解 map 内部是如何执行的,下面是 map 的一个 polyfill：</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">if</span> (<span class="built_in">Array</span>.prototype.map === <span class="literal">undefined</span>) &#123;</span><br><span class="line">  <span class="built_in">Array</span>.prototype.map = <span class="function"><span class="keyword">function</span>(<span class="params">fn</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">var</span> rv = [];</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">var</span> i=<span class="number">0</span>, l=<span class="keyword">this</span>.length; i&lt;l; i++)</span><br><span class="line">      rv.push(fn(<span class="keyword">this</span>[i]));</span><br><span class="line">    <span class="keyword">return</span> rv;</span><br><span class="line">  &#125;;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>从代码中可以看出，函数在调用时并没有调用者，因此 this 指向 window。而 getTreble 中参数为箭头函数，this 指向和其调用方式没有关系，都指向 obj。</p>
+<h2 id="bind、call、apply"><a href="#bind、call、apply" class="headerlink" title="bind、call、apply"></a>bind、call、apply</h2><p>这三个函数都是用于改变函数中 this 的指向，具体概念及接口不再说明，这里只举一个例子：</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">var</span> obj = &#123;</span><br><span class="line">  print() &#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="keyword">this</span>);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">var</span> a = obj.print;</span><br><span class="line"><span class="keyword">var</span> b = obj.print.bind(obj);</span><br><span class="line">a(); <span class="comment">// window</span></span><br><span class="line">b(); <span class="comment">// obj</span></span><br></pre></td></tr></table></figure>
+<p>还有一个场景，如果想要我们的匿名函数能够访问到指定对象，就可以使用 bind，看下面的例子：</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">var</span> a = <span class="number">10</span>;</span><br><span class="line"><span class="keyword">var</span> obj = &#123;</span><br><span class="line">  a: <span class="number">20</span>,</span><br><span class="line">  getA: <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    setTimeout(<span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">      <span class="built_in">console</span>.log(<span class="keyword">this</span>.a)</span><br><span class="line">    &#125;.bind(<span class="keyword">this</span>), <span class="number">0</span>)</span><br><span class="line">  &#125;,</span><br><span class="line">  getB: <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    setTimeout(<span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">      <span class="built_in">console</span>.log(<span class="keyword">this</span>.a)</span><br><span class="line">    &#125;, <span class="number">1000</span>)</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">obj.getA() <span class="comment">// 10</span></span><br><span class="line">obj.getB() <span class="comment">// 20</span></span><br></pre></td></tr></table></figure>
+
+        </div>
+        <footer class="article-footer">
+            
+    <div class="jiathis_style_24x24">
+    <span class="jiathis_txt">分享到：</span>
+    <a class="jiathis_button_qzone"></a>
+    <a class="jiathis_button_tsina"</a>
+    <a class="jiathis_button_weixin"></a>
+    <a class="jiathis_button_douban"></a>
+    <a class="jiathis_button_fb"></a>
+    <a class="jiathis_button_twitter"></a>
+    <a href="http://www.jiathis.com/share" class="jiathis jiathis_txt jiathis_separator jtico jtico_jiathis" target="_blank"></a>
+    <a class="jiathis_counter_style"></a>
+</div>
+<script type="text/javascript" src="http://v3.jiathis.com/code/jia.js" charset="utf-8"></script>
+<style>
+    .jiathis_style div:first-child:not(.jiadiv_01) {
+        width: auto !important;
+        border: none !important;
+    }
+    .jiathis_style .jiadiv_01 {
+        margin: 10px 0;
+        border-radius: 4px;
+        border: #e1e1e1 solid 1px;
+    }
+    .jiathis_style .jiadiv_01 div:first-child {
+        display: none;
+    }
+    .jiathis_style .jiadiv_02 {
+        padding: 7px 0 !important;
+    }
+    .jiathis_style .jiadiv_02 .jiatitle {
+        width: 85px;
+        border: none;
+        height: auto;
+        margin: 3px 10px;
+        padding: 6px 10px;
+        border-radius: 4px;
+    }
+    .jiathis_style .jiadiv_02 .jiatitle:hover {
+        border: none;
+    }
+    .jiathis_style .jiadiv_02 .jiatitle:nth-child(even) {
+        margin-left: 0;
+    }
+    .jiathis_style .jtico:hover {
+        opacity: 1;
+    }
+    .jiathis_style .ckepopBottom,
+    .jiathis_style .centerBottom {
+        width: auto !important;
+        padding: 5px;
+        background: #f7f7f7;
+    }
+</style>
+
+
+
+
+        </footer>
+
+    </div>
+</article>
+
+    <section id="comments">
+    
+        
+    <div id="disqus_thread">
+        <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+    </div>
+
+    
+    </section>
+
+
+              </div>
+            </section>
+            
+          </div>
+        </div>
+      </div>
+      <footer id="footer">
+    <div class="container">
+        <div class="container-inner">
+            <div class="credit">
+                <h1 class="logo-wrap">
+                    <a href="/" class="logo"></a>
+                </h1>
+                <p>&copy; 2018 tcatche</p>
+                <p>Powered by <a href="//hexo.io/" target="_blank">Hexo</a>. </p>
+                <p>Theme based <a href="//github.com/ppoffice" target="_blank">PPOffice</a> and modify by Tcatche. </p>
+                <p>Hosted by <a  href="https://pages.github.com/">Github Pages</a>. </p>
+            </div>
+        </div>
+    </div>
+</footer>
+      <div id="fixed">
+  <i class="fa fa-align-justify ins-search-icon"></i>
+  <div class="ins-search">
+    <div class="ins-search-mask"></div>
+    <div class="ins-search-container">
+        <div class="ins-input-wrapper">
+            <input type="text" class="ins-search-input" placeholder="想要查找什么..." />
+            <span class="ins-close ins-selectable"><i class="fa fa-times-circle"></i></span>
+        </div>
+        <div class="ins-section-wrapper">
+            <div class="ins-section-container"></div>
+        </div>
+    </div>
+</div>
+<script>
+(function (window) {
+    var INSIGHT_CONFIG = {
+        TRANSLATION: {
+            POSTS: '文章',
+            PAGES: '页面',
+            CATEGORIES: '分类',
+            TAGS: '标签',
+            UNTITLED: '(未命名)',
+        },
+        ROOT_URL: '/',
+        CONTENT_URL: '/content.json',
+    };
+    window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+})(window);
+</script>
+<script src="/js/insight.js"></script>
+  <i id="back-to-top" class="fa fa-arrow-up goto-top"></i>
+</div>
+      
+    
+    <script>
+    var disqus_shortname = 'tcatche';
+    
+    
+    var disqus_url = 'http://tcatche.site/2018/08/about_the_this_point/';
+    
+    (function() {
+    var dsq = document.createElement('script');
+    dsq.type = 'text/javascript';
+    dsq.async = true;
+    dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+    </script>
+
+
+
+
+    
+        <script src="/libs/lightgallery/js/lightgallery.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-thumbnail.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-pager.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-autoplay.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-fullscreen.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-zoom.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-hash.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-share.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-video.min.js"></script>
+    
+
+
+<!-- Custom Scripts -->
+<script src="/js/main.js"></script>
+
+    </div>
+  </div>
+</body>
+</html>

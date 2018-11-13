@@ -1,0 +1,796 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    
+    <title>TryCatch</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    
+    
+
+    
+
+    
+
+    <link rel="stylesheet" href="/libs/font-awesome/css/font-awesome.min.css">
+    <link rel="stylesheet" href="/libs/titillium-web/styles.css">
+    <link rel="stylesheet" href="/libs/source-code-pro/styles.css">
+
+    <link rel="stylesheet" href="/css/style.css">
+
+    <script src="/libs/jquery/2.0.3/jquery.min.js"></script>
+    
+    
+        <link rel="stylesheet" href="/libs/lightgallery/css/lightgallery.min.css">
+    
+    
+        <script type="text/javascript">
+(function(i,s,o,g,r,a,m) {i['GoogleAnalyticsObject']=r;i[r]=i[r]||function() {
+(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+ga('create', 'UA-92905809-1', 'auto');
+ga('send', 'pageview');
+
+</script>
+    
+    
+        <script>
+var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "//hm.baidu.com/hm.js?409648b1638886ada0891d05cc80dc19";
+  var s = document.getElementsByTagName("script")[0];
+  s.parentNode.insertBefore(hm, s);
+})();
+</script>
+
+    
+    
+        <script>
+(function(){
+    var bp = document.createElement('script');
+    var curProtocol = window.location.protocol.split(':')[0];
+    if (curProtocol === 'https') {
+        bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';        
+    }
+    else {
+        bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+    }
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(bp, s);
+})();
+</script>
+    
+    
+
+</head>
+
+<body>
+  <div id="root">
+    <div id="page-percent">
+      <div></div>
+    </div>
+    <div id="wrap">
+      <header id="header">
+    <div id="header-outer" class="outer">
+        <div class="container">
+            <div id="header-nav" class="nav-container">
+                <div class="container-inner nav-container-inner">
+                    <ul id="main-nav">
+                        
+                                <li class="main-nav-list-item" >
+                                    <a class="main-nav-list-link" href="/">主页</a>
+                                </li>
+                        
+                                <ul class="main-nav-list"><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/Uncategory/">Uncategory</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/css/">css</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/html/">html</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/js/">js</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/翻译/">翻译</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/转载/">转载</a></li></ul>
+                            
+                                <li class="main-nav-list-item" >
+                                    <a class="main-nav-list-link" href="/">index.archives</a>
+                                </li>
+                        
+                    </ul>
+                </div>
+            </div>
+            <div id="header-title" style="display: none">
+                <div class="container-inner">
+                    <h1 class="logo-wrap">
+                        <a href="/" class="logo"></a>
+                    </h1>
+                    
+                        <h2 class="subtitle-wrap">
+                            <p class="subtitle">To try, then catch.</p>
+                        </h2>
+                    
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+      <div class="container">
+        <div class="bg_content">
+          <canvas id="canvas"></canvas>
+        </div>
+        <div class="main-body container-inner">
+          <div class="main-body-inner">
+            <section id="main">
+              <div class="main-body-content">
+                
+
+  
+  
+    
+    
+    <section class="archives-wrap">
+      <div class="archives">
+  
+  
+  <article class="article article-summary">
+    <div class="article-summary-inner">
+        
+        <span class="meta-block">
+            <i class="icon fa fa-calendar"></i>
+            <time datetime="2017-06-29T07:12:00.000Z" itemprop="datePublished">2017-06-29</time>
+        </span>
+        
+    
+        <h1 class="article-title" itemprop="name">
+        <a href="/2017/06/a-crash-course-in-just-in-time-jit-compilers/">碰撞课程：即时（JIT）编译器 - A crash course in just-in-time (JIT) compilers</a>
+        </h1>
+    
+
+        <p class="article-excerpt">
+            原文：A crash course in just-in-time (JIT) compilers
+本文译自Lin Clark 关于 WebAssembly 的卡通介绍系列，渣翻译，因此附上英文原文
+
+概述：
+WebAssembly 的漫画介绍
+
+
+背景：
+碰撞课程：即时（JIT）编译器
+碰撞课程：…
+        </p>
+        <div class="article-meta">
+            <div class="article-count">
+                <a href="/2017/06/a-crash-course-in-just-in-time-jit-compilers/" class="article-date hide">
+    <i class="icon fa fa-calendar"></i>
+    <time datetime="2017-06-29T07:12:00.000Z" itemprop="datePublished">2017-06-29</time>
+</a>
+                
+    <span class="word-count">
+      <i class="icon fa fa-file-text"></i>
+      字数: 4,085 
+    </span>
+    <span class="word-count">
+      <i class="icon fa fa-clock-o"></i>
+      阅读时长: 19mins 
+    </span>
+
+            </div>
+            <div class="article-dir hide">
+                
+    <div class="article-category">
+    <i class="icon fa fa-list-ul"></i>
+    <a class="article-category-link" href="/categories/翻译/">翻译</a>
+    </div>
+
+                
+    <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/JIT/">JIT</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/WebAssembly/">WebAssembly</a></li></ul>
+
+            </div>
+        </div>
+    </div>
+</article>
+
+
+  
+  
+  
+  <article class="article article-summary">
+    <div class="article-summary-inner">
+        
+        <span class="meta-block">
+            <i class="icon fa fa-calendar"></i>
+            <time datetime="2017-06-29T02:39:00.000Z" itemprop="datePublished">2017-06-29</time>
+        </span>
+        
+    
+        <h1 class="article-title" itemprop="name">
+        <a href="/2017/06/a-cartoon-intro-to-webassembly/">WebAssembly 的漫画介绍 - A cartoon intro to WebAssembly</a>
+        </h1>
+    
+
+        <p class="article-excerpt">
+            原文：A cartoon intro to WebAssembly
+本文译自Lin Clark 关于 WebAssembly 的卡通介绍系列，渣翻译，因此附上英文原文
+
+概述：
+WebAssembly 的漫画介绍
+
+
+背景：
+碰撞课程：即时（JIT）编译器
+碰撞课程：汇编
+
+
+现在的 WebAsse…
+        </p>
+        <div class="article-meta">
+            <div class="article-count">
+                <a href="/2017/06/a-cartoon-intro-to-webassembly/" class="article-date hide">
+    <i class="icon fa fa-calendar"></i>
+    <time datetime="2017-06-29T02:39:00.000Z" itemprop="datePublished">2017-06-29</time>
+</a>
+                
+    <span class="word-count">
+      <i class="icon fa fa-file-text"></i>
+      字数: 762 
+    </span>
+    <span class="word-count">
+      <i class="icon fa fa-clock-o"></i>
+      阅读时长: 3mins 
+    </span>
+
+            </div>
+            <div class="article-dir hide">
+                
+    <div class="article-category">
+    <i class="icon fa fa-list-ul"></i>
+    <a class="article-category-link" href="/categories/翻译/">翻译</a>
+    </div>
+
+                
+    <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/JIT/">JIT</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/WebAssembly/">WebAssembly</a></li></ul>
+
+            </div>
+        </div>
+    </div>
+</article>
+
+
+  
+  
+  
+  <article class="article article-summary">
+    <div class="article-summary-inner">
+        
+        <span class="meta-block">
+            <i class="icon fa fa-calendar"></i>
+            <time datetime="2017-06-28T09:01:00.000Z" itemprop="datePublished">2017-06-28</time>
+        </span>
+        
+    
+        <h1 class="article-title" itemprop="name">
+        <a href="/2017/06/a-cartoon-intro-to-arraybuffers-and-sharedarraybuffers/">碰撞课程：ArrayBuffers 和 SharedArrayBuffers - A cartoon intro to ArrayBuffers and SharedArrayBuffers</a>
+        </h1>
+    
+
+        <p class="article-excerpt">
+            原文：A cartoon intro to ArrayBuffers and SharedArrayBuffers
+这是系列内三篇文章的第二篇：
+
+内存管理
+ArrayBuffers 和 SharedArrayBuffers 的卡通介绍
+使用 Atom 避免 ArrayBuffers 中的竞态条件 …
+        </p>
+        <div class="article-meta">
+            <div class="article-count">
+                <a href="/2017/06/a-cartoon-intro-to-arraybuffers-and-sharedarraybuffers/" class="article-date hide">
+    <i class="icon fa fa-calendar"></i>
+    <time datetime="2017-06-28T09:01:00.000Z" itemprop="datePublished">2017-06-28</time>
+</a>
+                
+    <span class="word-count">
+      <i class="icon fa fa-file-text"></i>
+      字数: 3,016 
+    </span>
+    <span class="word-count">
+      <i class="icon fa fa-clock-o"></i>
+      阅读时长: 14mins 
+    </span>
+
+            </div>
+            <div class="article-dir hide">
+                
+    <div class="article-category">
+    <i class="icon fa fa-list-ul"></i>
+    <a class="article-category-link" href="/categories/翻译/">翻译</a>
+    </div>
+
+                
+    <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/WebAssembly/">WebAssembly</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/内存管理/">内存管理</a></li></ul>
+
+            </div>
+        </div>
+    </div>
+</article>
+
+
+  
+  
+  
+  <article class="article article-summary">
+    <div class="article-summary-inner">
+        
+        <span class="meta-block">
+            <i class="icon fa fa-calendar"></i>
+            <time datetime="2017-06-28T07:26:00.000Z" itemprop="datePublished">2017-06-28</time>
+        </span>
+        
+    
+        <h1 class="article-title" itemprop="name">
+        <a href="/2017/06/a-crash-course-in-memory-management/">碰撞课程：内存管理 - A crash course in memory management</a>
+        </h1>
+    
+
+        <p class="article-excerpt">
+            原文：A crash course in memory management
+本文译自Lin Clark 内存管理的卡通介绍系列，渣翻译，因此附上英文原文。
+
+内存管理
+ArrayBuffers 和 SharedArrayBuffers 的卡通介绍
+使用 Atom 避免 ArrayBuffers 中…
+        </p>
+        <div class="article-meta">
+            <div class="article-count">
+                <a href="/2017/06/a-crash-course-in-memory-management/" class="article-date hide">
+    <i class="icon fa fa-calendar"></i>
+    <time datetime="2017-06-28T07:26:00.000Z" itemprop="datePublished">2017-06-28</time>
+</a>
+                
+    <span class="word-count">
+      <i class="icon fa fa-file-text"></i>
+      字数: 2,142 
+    </span>
+    <span class="word-count">
+      <i class="icon fa fa-clock-o"></i>
+      阅读时长: 10mins 
+    </span>
+
+            </div>
+            <div class="article-dir hide">
+                
+    <div class="article-category">
+    <i class="icon fa fa-list-ul"></i>
+    <a class="article-category-link" href="/categories/翻译/">翻译</a>
+    </div>
+
+                
+    <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/WebAssembly/">WebAssembly</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/内存管理/">内存管理</a></li></ul>
+
+            </div>
+        </div>
+    </div>
+</article>
+
+
+  
+  
+  
+  <article class="article article-summary">
+    <div class="article-summary-inner">
+        
+        <span class="meta-block">
+            <i class="icon fa fa-calendar"></i>
+            <time datetime="2017-06-27T06:48:00.000Z" itemprop="datePublished">2017-06-27</time>
+        </span>
+        
+    
+        <h1 class="article-title" itemprop="name">
+        <a href="/2017/06/web-browser-console/">Browser Console</a>
+        </h1>
+    
+
+        <p class="article-excerpt">
+            console 对象提供对浏览器控制台的接入，最常用的是 console.log()，但是实际上 console 对象上还有很多有用的函数可以帮助调试。
+使用 console 对象可以执行这些任务：
+
+输出一个定时器来帮助简单的基准测试 
+输出一个表，以便于阅读的格式显示数组或对象 
+使用 CSS …
+        </p>
+        <div class="article-meta">
+            <div class="article-count">
+                <a href="/2017/06/web-browser-console/" class="article-date hide">
+    <i class="icon fa fa-calendar"></i>
+    <time datetime="2017-06-27T06:48:00.000Z" itemprop="datePublished">2017-06-27</time>
+</a>
+                
+    <span class="word-count">
+      <i class="icon fa fa-file-text"></i>
+      字数: 1,093 
+    </span>
+    <span class="word-count">
+      <i class="icon fa fa-clock-o"></i>
+      阅读时长: 5mins 
+    </span>
+
+            </div>
+            <div class="article-dir hide">
+                
+    <div class="article-category">
+    <i class="icon fa fa-list-ul"></i>
+    <a class="article-category-link" href="/categories/js/">js</a>
+    </div>
+
+                
+    <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/bom/">bom</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/develop/">develop</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/test/">test</a></li></ul>
+
+            </div>
+        </div>
+    </div>
+</article>
+
+
+  
+  
+  
+  <article class="article article-summary">
+    <div class="article-summary-inner">
+        
+        <span class="meta-block">
+            <i class="icon fa fa-calendar"></i>
+            <time datetime="2017-06-26T10:10:00.000Z" itemprop="datePublished">2017-06-26</time>
+        </span>
+        
+    
+        <h1 class="article-title" itemprop="name">
+        <a href="/2017/06/call-apply-bind/">apply.call、call.call、call.apply、call.bind</a>
+        </h1>
+    
+
+        <p class="article-excerpt">
+            这三个函数都用于改变函数中 this 指向，但是稍有不同，可以分为两组：all/apply 和 bind。
+call/applycall 和 apply 具有相似的行为，只是接收参数的方式不同，call 方法接收若干个参数的列表，而 apply 接收包含多个参数的数组或类数组对象：
+
+fun.cal…
+        </p>
+        <div class="article-meta">
+            <div class="article-count">
+                <a href="/2017/06/call-apply-bind/" class="article-date hide">
+    <i class="icon fa fa-calendar"></i>
+    <time datetime="2017-06-26T10:10:00.000Z" itemprop="datePublished">2017-06-26</time>
+</a>
+                
+    <span class="word-count">
+      <i class="icon fa fa-file-text"></i>
+      字数: 2,433 
+    </span>
+    <span class="word-count">
+      <i class="icon fa fa-clock-o"></i>
+      阅读时长: 11mins 
+    </span>
+
+            </div>
+            <div class="article-dir hide">
+                
+    <div class="article-category">
+    <i class="icon fa fa-list-ul"></i>
+    <a class="article-category-link" href="/categories/js/">js</a>
+    </div>
+
+                
+            </div>
+        </div>
+    </div>
+</article>
+
+
+  
+  
+  
+  <article class="article article-summary">
+    <div class="article-summary-inner">
+        
+        <span class="meta-block">
+            <i class="icon fa fa-calendar"></i>
+            <time datetime="2017-06-23T07:35:00.000Z" itemprop="datePublished">2017-06-23</time>
+        </span>
+        
+    
+        <h1 class="article-title" itemprop="name">
+        <a href="/2017/06/object-define-property/">Object.defineProperty</a>
+        </h1>
+    
+
+        <p class="article-excerpt">
+            defineProperty 提供了精准控制一个对象属性的能力。一般情况下，我们为对象添加属性是通过赋值(obj.property = value)来创建对象的属性，这样的属性可以被 for...in 或 Object.keys 枚举，可以被改变，也可以被删除。而使用 Object.definePr…
+        </p>
+        <div class="article-meta">
+            <div class="article-count">
+                <a href="/2017/06/object-define-property/" class="article-date hide">
+    <i class="icon fa fa-calendar"></i>
+    <time datetime="2017-06-23T07:35:00.000Z" itemprop="datePublished">2017-06-23</time>
+</a>
+                
+    <span class="word-count">
+      <i class="icon fa fa-file-text"></i>
+      字数: 2,365 
+    </span>
+    <span class="word-count">
+      <i class="icon fa fa-clock-o"></i>
+      阅读时长: 10mins 
+    </span>
+
+            </div>
+            <div class="article-dir hide">
+                
+    <div class="article-category">
+    <i class="icon fa fa-list-ul"></i>
+    <a class="article-category-link" href="/categories/js/">js</a>
+    </div>
+
+                
+    <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/扩展/">扩展</a></li></ul>
+
+            </div>
+        </div>
+    </div>
+</article>
+
+
+  
+  
+  
+  <article class="article article-summary">
+    <div class="article-summary-inner">
+        
+        <span class="meta-block">
+            <i class="icon fa fa-calendar"></i>
+            <time datetime="2017-06-20T07:13:00.000Z" itemprop="datePublished">2017-06-20</time>
+        </span>
+        
+    
+        <h1 class="article-title" itemprop="name">
+        <a href="/2017/06/object-freeze/">对象“冻结”，防止被修改</a>
+        </h1>
+    
+
+        <p class="article-excerpt">
+            在有些应用场合下，我们希望我们的对象是不可以被修改的，比如我们提供给外一个服务，但是不想这个服务被修改，这就需要对象能够防止被修改。
+在另外一些应用场合，比如 React 通常搭配使用的 immutable.js 采用不可变的数据结构，可以保证最大限度的降低副作用。
+对象防止被修改有三个级别：阻止扩…
+        </p>
+        <div class="article-meta">
+            <div class="article-count">
+                <a href="/2017/06/object-freeze/" class="article-date hide">
+    <i class="icon fa fa-calendar"></i>
+    <time datetime="2017-06-20T07:13:00.000Z" itemprop="datePublished">2017-06-20</time>
+</a>
+                
+    <span class="word-count">
+      <i class="icon fa fa-file-text"></i>
+      字数: 2,641 
+    </span>
+    <span class="word-count">
+      <i class="icon fa fa-clock-o"></i>
+      阅读时长: 11mins 
+    </span>
+
+            </div>
+            <div class="article-dir hide">
+                
+    <div class="article-category">
+    <i class="icon fa fa-list-ul"></i>
+    <a class="article-category-link" href="/categories/js/">js</a>
+    </div>
+
+                
+    <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/扩展/">扩展</a></li></ul>
+
+            </div>
+        </div>
+    </div>
+</article>
+
+
+  
+  
+  
+  <article class="article article-summary">
+    <div class="article-summary-inner">
+        
+        <span class="meta-block">
+            <i class="icon fa fa-calendar"></i>
+            <time datetime="2017-06-19T07:19:00.000Z" itemprop="datePublished">2017-06-19</time>
+        </span>
+        
+    
+        <h1 class="article-title" itemprop="name">
+        <a href="/2017/06/react-components-elements-and-instances/">React - Components, Elements, and Instances</a>
+        </h1>
+    
+
+        <p class="article-excerpt">
+            组件（Components）、元素（Elements）和实例（Instances）之间的区别很容易被混淆，本文主要介绍了这几个概念的区别并详细说明了 React 管理 DOM 的思路。
+传统组件自己管理实例（Managing the Instances）在传统的面向对象的 UI 编程中，你需要自己手…
+        </p>
+        <div class="article-meta">
+            <div class="article-count">
+                <a href="/2017/06/react-components-elements-and-instances/" class="article-date hide">
+    <i class="icon fa fa-calendar"></i>
+    <time datetime="2017-06-19T07:19:00.000Z" itemprop="datePublished">2017-06-19</time>
+</a>
+                
+    <span class="word-count">
+      <i class="icon fa fa-file-text"></i>
+      字数: 2,642 
+    </span>
+    <span class="word-count">
+      <i class="icon fa fa-clock-o"></i>
+      阅读时长: 11mins 
+    </span>
+
+            </div>
+            <div class="article-dir hide">
+                
+    <div class="article-category">
+    <i class="icon fa fa-list-ul"></i>
+    <a class="article-category-link" href="/categories/js/">js</a>
+    </div>
+
+                
+    <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/react/">react</a></li></ul>
+
+            </div>
+        </div>
+    </div>
+</article>
+
+
+  
+  
+  
+  <article class="article article-summary">
+    <div class="article-summary-inner">
+        
+        <span class="meta-block">
+            <i class="icon fa fa-calendar"></i>
+            <time datetime="2017-06-12T07:49:00.000Z" itemprop="datePublished">2017-06-12</time>
+        </span>
+        
+    
+        <h1 class="article-title" itemprop="name">
+        <a href="/2017/06/request-frame-animate/">window.requestAnimationFrame</a>
+        </h1>
+    
+
+        <p class="article-excerpt">
+            对于动画而言，设置一个合适的更新周期是非常重要的，更新周期越短，动画则越平滑流畅，但是，间隔时间过短，则会对系统资源的消耗增加，另一方面，大多数显示器的刷新频率是 60HZ ，更新速度超过这个数值并没有什么意义，因为显示器不会刷新，因此动画的最佳执行时间间隔是 1000ms/60 约等于 16.7m…
+        </p>
+        <div class="article-meta">
+            <div class="article-count">
+                <a href="/2017/06/request-frame-animate/" class="article-date hide">
+    <i class="icon fa fa-calendar"></i>
+    <time datetime="2017-06-12T07:49:00.000Z" itemprop="datePublished">2017-06-12</time>
+</a>
+                
+    <span class="word-count">
+      <i class="icon fa fa-file-text"></i>
+      字数: 998 
+    </span>
+    <span class="word-count">
+      <i class="icon fa fa-clock-o"></i>
+      阅读时长: 4mins 
+    </span>
+
+            </div>
+            <div class="article-dir hide">
+                
+    <div class="article-category">
+    <i class="icon fa fa-list-ul"></i>
+    <a class="article-category-link" href="/categories/js/">js</a>
+    </div>
+
+                
+    <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/BOM/">BOM</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/window/">window</a></li></ul>
+
+            </div>
+        </div>
+    </div>
+</article>
+
+
+
+  </div></section>
+
+
+  <nav id="page-nav">
+    <a class="extend prev" rel="prev" href="/page/4/">&laquo;</a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/3/">3</a><a class="page-number" href="/page/4/">4</a><span class="page-number current">5</span><a class="page-number" href="/page/6/">6</a><a class="page-number" href="/page/7/">7</a><span class="space">&hellip;</span><a class="page-number" href="/page/9/">9</a><a class="extend next" rel="next" href="/page/6/">&raquo;</a>
+  </nav>
+
+
+              </div>
+            </section>
+            
+          </div>
+        </div>
+      </div>
+      <footer id="footer">
+    <div class="container">
+        <div class="container-inner">
+            <div class="credit">
+                <h1 class="logo-wrap">
+                    <a href="/" class="logo"></a>
+                </h1>
+                <p>&copy; 2018 tcatche</p>
+                <p>Powered by <a href="//hexo.io/" target="_blank">Hexo</a>. </p>
+                <p>Theme based <a href="//github.com/ppoffice" target="_blank">PPOffice</a> and modify by Tcatche. </p>
+                <p>Hosted by <a  href="https://pages.github.com/">Github Pages</a>. </p>
+            </div>
+        </div>
+    </div>
+</footer>
+      <div id="fixed">
+  <i class="fa fa-align-justify ins-search-icon"></i>
+  <div class="ins-search">
+    <div class="ins-search-mask"></div>
+    <div class="ins-search-container">
+        <div class="ins-input-wrapper">
+            <input type="text" class="ins-search-input" placeholder="想要查找什么..." />
+            <span class="ins-close ins-selectable"><i class="fa fa-times-circle"></i></span>
+        </div>
+        <div class="ins-section-wrapper">
+            <div class="ins-section-container"></div>
+        </div>
+    </div>
+</div>
+<script>
+(function (window) {
+    var INSIGHT_CONFIG = {
+        TRANSLATION: {
+            POSTS: '文章',
+            PAGES: '页面',
+            CATEGORIES: '分类',
+            TAGS: '标签',
+            UNTITLED: '(未命名)',
+        },
+        ROOT_URL: '/',
+        CONTENT_URL: '/content.json',
+    };
+    window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+})(window);
+</script>
+<script src="/js/insight.js"></script>
+  <i id="back-to-top" class="fa fa-arrow-up goto-top"></i>
+</div>
+      
+    
+    <script>
+    var disqus_shortname = 'tcatche';
+    
+    
+    (function() {
+    var dsq = document.createElement('script');
+    dsq.type = 'text/javascript';
+    dsq.async = true;
+    dsq.src = '//' + disqus_shortname + '.disqus.com/count.js';
+    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+    </script>
+
+
+
+
+    
+        <script src="/libs/lightgallery/js/lightgallery.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-thumbnail.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-pager.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-autoplay.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-fullscreen.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-zoom.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-hash.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-share.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-video.min.js"></script>
+    
+
+
+<!-- Custom Scripts -->
+<script src="/js/main.js"></script>
+
+    </div>
+  </div>
+</body>
+</html>

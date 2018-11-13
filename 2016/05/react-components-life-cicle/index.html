@@ -1,0 +1,431 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    
+    <title>React组件的生命周期 | TryCatch</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    
+        <meta name="keywords" content="react" />
+    
+    
+
+    
+
+    
+
+    <link rel="stylesheet" href="/libs/font-awesome/css/font-awesome.min.css">
+    <link rel="stylesheet" href="/libs/titillium-web/styles.css">
+    <link rel="stylesheet" href="/libs/source-code-pro/styles.css">
+
+    <link rel="stylesheet" href="/css/style.css">
+
+    <script src="/libs/jquery/2.0.3/jquery.min.js"></script>
+    
+    
+        <link rel="stylesheet" href="/libs/lightgallery/css/lightgallery.min.css">
+    
+    
+        <script type="text/javascript">
+(function(i,s,o,g,r,a,m) {i['GoogleAnalyticsObject']=r;i[r]=i[r]||function() {
+(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+ga('create', 'UA-92905809-1', 'auto');
+ga('send', 'pageview');
+
+</script>
+    
+    
+        <script>
+var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "//hm.baidu.com/hm.js?409648b1638886ada0891d05cc80dc19";
+  var s = document.getElementsByTagName("script")[0];
+  s.parentNode.insertBefore(hm, s);
+})();
+</script>
+
+    
+    
+        <script>
+(function(){
+    var bp = document.createElement('script');
+    var curProtocol = window.location.protocol.split(':')[0];
+    if (curProtocol === 'https') {
+        bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';        
+    }
+    else {
+        bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+    }
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(bp, s);
+})();
+</script>
+    
+    
+
+</head>
+
+<body>
+  <div id="root">
+    <div id="page-percent">
+      <div></div>
+    </div>
+    <div id="wrap">
+      <header id="header">
+    <div id="header-outer" class="outer">
+        <div class="container">
+            <div id="header-nav" class="nav-container">
+                <div class="container-inner nav-container-inner">
+                    <ul id="main-nav">
+                        
+                                <li class="main-nav-list-item" >
+                                    <a class="main-nav-list-link" href="/">主页</a>
+                                </li>
+                        
+                                <ul class="main-nav-list"><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/Uncategory/">Uncategory</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/css/">css</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/html/">html</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/js/">js</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/翻译/">翻译</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/转载/">转载</a></li></ul>
+                            
+                                <li class="main-nav-list-item" >
+                                    <a class="main-nav-list-link" href="/">index.archives</a>
+                                </li>
+                        
+                    </ul>
+                </div>
+            </div>
+            <div id="header-title" style="display: none">
+                <div class="container-inner">
+                    <h1 class="logo-wrap">
+                        <a href="/" class="logo"></a>
+                    </h1>
+                    
+                        <h2 class="subtitle-wrap">
+                            <p class="subtitle">To try, then catch.</p>
+                        </h2>
+                    
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+      <div class="container">
+        <div class="bg_content">
+          <canvas id="canvas"></canvas>
+        </div>
+        <div class="main-body container-inner">
+          <div class="main-body-inner">
+            <section id="main">
+              <div class="main-body-content">
+                <article id="post-react-components-life-cicle" class="article article-single article-type-post" itemscope itemprop="blogPost">
+
+    
+        <h1 class="article-title" itemprop="name">
+        React组件的生命周期
+        </h1>
+    
+
+    <div class="article-inner">
+        <header class="article-header" >
+            <div class="article-subtitle">
+                <div class="article-author-avatar">
+                    <img src="/images/avatar.png" alt="Author's avatar" height="44px" width="44px">
+                </div>
+                <div class="article-count">
+                    <div class="article-author">
+                        tcatche
+                    </div>
+                    <a href="/2016/05/react-components-life-cicle/" class="article-date">
+    <i class="icon fa fa-calendar"></i>
+    <time datetime="2016-05-20T05:14:00.000Z" itemprop="datePublished">2016-05-20</time>
+</a>
+                    
+    <span class="word-count">
+      <i class="icon fa fa-file-text"></i>
+      字数: 2,725 
+    </span>
+    <span class="word-count">
+      <i class="icon fa fa-clock-o"></i>
+      阅读时长: 12mins 
+    </span>
+
+                </div>
+                <div class="article-dir">
+                    
+    <div class="article-category">
+    <i class="icon fa fa-list-ul"></i>
+    <a class="article-category-link" href="/categories/js/">js</a>
+    </div>
+
+                    
+    <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/react/">react</a></li></ul>
+
+                </div>
+            </div>
+        </header>
+        
+        <div class="article-entry" itemprop="articleBody">
+            <p>React组件的生命周期和生命周期方法可以分为以下三个部分：<br><strong>组件的初始化挂载</strong></p>
+<ul>
+<li>componentWillMount()       : 在初始化渲染执行之前调用；</li>
+<li>componentDidMount()        : 在初始化渲染执行之后调用；</li>
+</ul>
+<p><strong>组件的更新</strong></p>
+<ul>
+<li>componentWillReceiveProps(): 在组件接收到新的 props 的时候调用；</li>
+<li>shouldComponentUpdate()    : 在接收到新的 props 或者 state，将要渲染之前调用；</li>
+<li>componentWillUpdate()      : 在接收到新的 props 或者 state 之前立刻调用，使用该方法做一些更新之前的准备工作；</li>
+<li>componentDidUpdate()       : 在组件的更新已经同步到 DOM 中之后立刻被调用，使用该方法可以在组件更新之后操作 DOM 元素；</li>
+</ul>
+<p><strong>组件的卸载移除</strong></p>
+<ul>
+<li>componentWillUnmount()     : 在组件从 DOM 中移除的时候立刻被调用，在该方法中执行任何必要的清理。</li>
+</ul>
+<h2 id="组件初始化挂载"><a href="#组件初始化挂载" class="headerlink" title="组件初始化挂载"></a>组件初始化挂载</h2><p>组件的初始化挂载完成组件的加载初始化操作，此阶段共包含两个方法 <code>componentWillMount()</code> 和 <code>componentDidMount()</code> 这两个函数分别在组件的挂载前后执行，因此在组件的整个生命周期仅执行一次，示例代码如下：</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Test</span> <span class="keyword">extends</span> <span class="title">React</span>.<span class="title">Component</span> </span>&#123;</span><br><span class="line">2<span class="keyword">constructor</span>() &#123;</span><br><span class="line">22<span class="keyword">super</span>();</span><br><span class="line">22<span class="keyword">this</span>.state=&#123; <span class="attr">value</span>: <span class="number">0</span> &#125;</span><br><span class="line">2&#125;</span><br><span class="line">2componentWillMount() &#123;</span><br><span class="line">22<span class="built_in">console</span>.log(<span class="string">"Test componentWillMount"</span>);</span><br><span class="line">2&#125;</span><br><span class="line">2componentDidMount() &#123;</span><br><span class="line">22<span class="built_in">console</span>.log(<span class="string">"Test componentDidMount"</span>);</span><br><span class="line">2&#125;</span><br><span class="line">2render() &#123;</span><br><span class="line">22<span class="built_in">console</span>.log(<span class="string">"Test component render"</span>);</span><br><span class="line">22<span class="built_in">console</span>.log(<span class="string">"value is: "</span> + <span class="keyword">this</span>.state.value);P</span><br><span class="line">22<span class="keyword">return</span> <span class="literal">null</span>;</span><br><span class="line">2&#125;</span><br><span class="line">&#125;</span><br><span class="line">ReactDOM.render(</span><br><span class="line">2&lt;Test /&gt;,</span><br><span class="line">2<span class="built_in">document</span>.getElementById(<span class="string">"react-root"</span>)</span><br><span class="line">);</span><br><span class="line"></span><br><span class="line"><span class="comment">//控制台输出：</span></span><br><span class="line">Test componentWillMount</span><br><span class="line">Test component render</span><br><span class="line">value is: <span class="number">0</span></span><br><span class="line">Test componentDidMount</span><br></pre></td></tr></table></figure>
+<h3 id="componentWillMount"><a href="#componentWillMount" class="headerlink" title="componentWillMount()"></a>componentWillMount()</h3><blockquote>
+<p>void componentWillMount()</p>
+</blockquote>
+<p>官方文档对这个方法有如下说明：</p>
+<blockquote>
+<p>Invoked once, both on the client and server, immediately before the initial rendering occurs. If you call setState within this method, render() will see the updated state and will be executed only once despite the state change.</p>
+</blockquote>
+<p>方法在组件初始化渲染 render() 执行之前调用，在组件的生命周期中，仅会被执行一次，这个时候 DOM 还没有渲染，在这里可以允许我们在 DOM 渲染之前更改state，<br>即在这个方法内调用 setState，render() 在渲染 DOM 的时候，会使用更新后的 state 渲染 DOM ，代码如下：</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Test</span> <span class="keyword">extends</span> <span class="title">React</span>.<span class="title">Component</span> </span>&#123;</span><br><span class="line">2<span class="keyword">constructor</span>() &#123;</span><br><span class="line">22<span class="keyword">super</span>();</span><br><span class="line">22<span class="keyword">this</span>.state=&#123; <span class="attr">value</span>: <span class="number">0</span> &#125;</span><br><span class="line">2&#125;</span><br><span class="line">2componentWillMount() &#123;</span><br><span class="line">22<span class="built_in">console</span>.log(<span class="string">"Test componentWillMount"</span>);</span><br><span class="line">22<span class="keyword">this</span>.state=&#123; <span class="attr">value</span>: <span class="number">1</span> &#125;</span><br><span class="line">2&#125;</span><br><span class="line">2componentDidMount() &#123;</span><br><span class="line">22<span class="built_in">console</span>.log(<span class="string">"Test componentDidMount"</span>);</span><br><span class="line">2&#125;</span><br><span class="line">2render() &#123;</span><br><span class="line">22<span class="built_in">console</span>.log(<span class="string">"Test component render"</span>);</span><br><span class="line">22<span class="built_in">console</span>.log(<span class="string">"value is: "</span> + <span class="keyword">this</span>.state.value);</span><br><span class="line">22<span class="keyword">return</span> <span class="literal">null</span>;</span><br><span class="line">2&#125;</span><br><span class="line">&#125;</span><br><span class="line">ReactDOM.render(</span><br><span class="line">2&lt;Test /&gt;,</span><br><span class="line">2<span class="built_in">document</span>.getElementById(<span class="string">"react-root"</span>)</span><br><span class="line">);</span><br><span class="line"></span><br><span class="line"><span class="comment">//控制台输出：</span></span><br><span class="line">Test componentWillMount</span><br><span class="line">Test component render</span><br><span class="line">value is: <span class="number">1</span></span><br><span class="line">Test componentDidMount</span><br></pre></td></tr></table></figure>
+<p>注意到 <code>will be executed only once despite the state change</code> 那么，如果在 componentWillMount() 中异步更新 state 会怎样呢，代码如下：</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Test</span> <span class="keyword">extends</span> <span class="title">React</span>.<span class="title">Component</span> </span>&#123;</span><br><span class="line">2<span class="keyword">constructor</span>() &#123;</span><br><span class="line">22<span class="keyword">super</span>();</span><br><span class="line">22<span class="keyword">this</span>.state=&#123; <span class="attr">value</span>: <span class="number">0</span> &#125;</span><br><span class="line">2&#125;</span><br><span class="line">2componentWillMount() &#123;</span><br><span class="line">22<span class="built_in">console</span>.log(<span class="string">"Test componentWillMount"</span>);</span><br><span class="line">22setTimeout(<span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">222<span class="built_in">console</span>.log(<span class="string">"Async load data"</span>)</span><br><span class="line">222<span class="keyword">this</span>.setState=&#123; <span class="attr">value</span>: <span class="number">1</span> &#125;</span><br><span class="line">22&#125;.bind(<span class="keyword">this</span>), <span class="number">100</span>)</span><br><span class="line">2&#125;</span><br><span class="line">2componentDidMount() &#123;</span><br><span class="line">22<span class="built_in">console</span>.log(<span class="string">"Test componentDidMount"</span>);</span><br><span class="line">2&#125;</span><br><span class="line">2render() &#123;</span><br><span class="line">22<span class="built_in">console</span>.log(<span class="string">"Test component render"</span>);</span><br><span class="line">22<span class="built_in">console</span>.log(<span class="string">"value is: "</span> + <span class="keyword">this</span>.state.value);</span><br><span class="line">22<span class="keyword">return</span> <span class="literal">null</span>;</span><br><span class="line">2&#125;</span><br><span class="line">&#125;</span><br><span class="line">ReactDOM.render(</span><br><span class="line">2&lt;Test /&gt;,</span><br><span class="line">2<span class="built_in">document</span>.getElementById(<span class="string">"react-root"</span>)</span><br><span class="line">);</span><br><span class="line"></span><br><span class="line"><span class="comment">//控制台输出：</span></span><br><span class="line">Test componentWillMount</span><br><span class="line">Test component render</span><br><span class="line">value is: <span class="number">0</span></span><br><span class="line">Test componentDidMount</span><br><span class="line">Async load data</span><br></pre></td></tr></table></figure>
+<p>从结果可以看到，异步改变的 state ，并没有影响到原有的 DOM render()， 控制台输出为 <code>value is: 0</code>。而且异步加载完成后对 componentWillMount() 中 state 的改变，控制台并没有再次输出 <code>Test component render</code> 和 <code>value is: 1</code> ，没有再次触发 render() 过程。</p>
+<blockquote>
+<p><strong>总结：</strong><br>componentWillMount() 方法中对 state 的改变，如果是同步操作可以生效，异步操作会被忽略，因为异步操作完成后，组件状态不确定。<br>React 官方不建议在 componentWillMount() 修改 state ，通常建议在 componentDidMount(), 如果需要设置 state 的初始状态，可以在 <code>(es6:)constractor()</code> 或者 <code>(es5:)getInitialState()</code> 中设置。</p>
+</blockquote>
+<h3 id="componentDidMount"><a href="#componentDidMount" class="headerlink" title="componentDidMount"></a>componentDidMount</h3><blockquote>
+<p>void componentDidMount()</p>
+</blockquote>
+<p>方法在组件初始化渲染 render() 执行之后调用，在组件的生命周期中，仅会被执行一次，在执行这个函数的时候，组件已经拥有 DOM 呈现，可以进行 DOM 的操作，而这个时候，组件已经基本完成的渲染工作，通常可以开始与其他类库交互、操作 DOM 、发起 Ajax 请求、异步加载初始数据、设置事件监听和绑定、设置定时器任务 <code>setTimeout</code> 或者 <code>setInterval</code> 等。</p>
+<blockquote>
+<p><strong>注意：</strong><br>组件的渲染是递归操作的，因此子组件的这个方法会比父组件的先调用。</p>
+</blockquote>
+<h2 id="组件的更新"><a href="#组件的更新" class="headerlink" title="组件的更新"></a>组件的更新</h2><p>当组件已经挂载完毕以后，组件通常已经处于运行阶段，当满足一定条件后，比如 <code>state</code> 和 <code>props</code> 发生改变以后，会触发组件的更新操作，组件的更新操作不会再调用组件挂载阶段的两个方法 <code>componentWillMount()</code> 和 <code>componentDidMount()</code> ，在此阶段有四个相关的方会被调用 <code>componentWillReceiveProps</code> 、<code>shouldComponentUpdate</code> 、<code>componentWillUpdate</code> 、<code>componentDidUpdate</code> 。</p>
+<p>这四个与更新相关的方法，<code>componentWillReceiveProps</code>方法接收到新的属性变更时候被调用，在这里可以根据需要更新本组件的状态 、<code>shouldComponentUpdate</code>则是判断是否出发本组件的更新，默认返回 <code>true</code> 更新组件 、<code>componentWillUpdate</code> 和<code>componentDidUpdate</code> 分别在组件更新前后调用，通常进行组件更新前后的一些准备、处理工作。</p>
+<p><code>props</code> 的改变是来自父组件的状态变更，父组件的变动会引发当前组件的状态变更；而 <code>state</code> 是当前组件通过修改 <code>state</code> 改变当前组件的状态。</p>
+<blockquote>
+<p><strong>注意：</strong><br>官方推荐把 <code>this.state</code> 当成不可变变量，修改 state 调用 <code>this.setState()</code> 修改。</p>
+</blockquote>
+<h3 id="this-setState"><a href="#this-setState" class="headerlink" title="this.setState()"></a>this.setState()</h3><blockquote>
+<p><strong>注意：</strong><br>setState() does not immediately mutate this.state but creates a pending state transition. Accessing this.state after calling this method can potentially return the existing value.<br>setState() 的操作不是同步的，可以认为是异步的</p>
+</blockquote>
+<p>setState() 执行完毕后，使用 <code>this.state</code> 获取的 state 值很可能仍然是旧的，代码如下：</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Test</span> <span class="keyword">extends</span> <span class="title">React</span>.<span class="title">Component</span> </span>&#123;</span><br><span class="line">2<span class="keyword">constructor</span>() &#123;</span><br><span class="line">22<span class="keyword">super</span>();</span><br><span class="line">22<span class="keyword">this</span>.state=&#123; <span class="attr">value</span>: <span class="number">0</span> &#125;</span><br><span class="line">2&#125;</span><br><span class="line">2componentDidMount() &#123;</span><br><span class="line">22<span class="built_in">console</span>.log(<span class="string">"Test componentDidMount"</span>);</span><br><span class="line">22<span class="keyword">this</span>.setState(&#123; <span class="attr">value</span>: <span class="number">1</span> &#125;);</span><br><span class="line">22<span class="built_in">console</span>.log(<span class="string">"value is: "</span> + <span class="keyword">this</span>.state.value)</span><br><span class="line">2&#125;</span><br><span class="line">2render() &#123;</span><br><span class="line">22<span class="built_in">console</span>.log(<span class="string">"Test component render"</span>);</span><br><span class="line">22<span class="keyword">return</span> <span class="literal">null</span>;</span><br><span class="line">2&#125;</span><br><span class="line">&#125;</span><br><span class="line">ReactDOM.render(</span><br><span class="line">2&lt;Test /&gt;,</span><br><span class="line">2<span class="built_in">document</span>.getElementById(<span class="string">"react-root"</span>)</span><br><span class="line">);</span><br><span class="line"></span><br><span class="line"><span class="comment">//控制台输出：</span></span><br><span class="line">Test component render</span><br><span class="line">Test componentDidMount</span><br><span class="line">value is: <span class="number">0</span></span><br></pre></td></tr></table></figure>
+<p>如果需要在 <code>setState()</code> 后获取更新后的值，可以放在 <code>setState()</code> 回调里：<br><figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">this</span>.setState(</span><br><span class="line">2&#123; <span class="attr">value</span>: <span class="number">1</span> &#125;,</span><br><span class="line">2<span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">22<span class="built_in">console</span>.log(<span class="string">"callback value is: "</span> + <span class="keyword">this</span>.state.value);</span><br><span class="line">2&#125;</span><br><span class="line">);</span><br></pre></td></tr></table></figure></p>
+<p><code>setState(newState)</code> 更新是把 <code>newState</code> 对象的属性直接复制给 <code>this.state</code>。</p>
+<h3 id="componentWillReceiveProps"><a href="#componentWillReceiveProps" class="headerlink" title="componentWillReceiveProps()"></a>componentWillReceiveProps()</h3><blockquote>
+<p>void componentWillReceiveProps(object nextProps)</p>
+</blockquote>
+<p>在组件接收到新的 props 的时候被调用，组件state变化是不会执行这个函数，参数传递过来的是新的 props ，原来的 props 仍然可以通过 <code>this.props</code> 获取，在这里可以根据根据本组件接收到的属性确定是否需要更新本组件的状态。</p>
+<p>当在本方法更新 state 时，在调用 <code>shouldComponentUpdate</code> 时，收到新的 state 即为本方法更新后的 state 。</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Test</span> <span class="keyword">extends</span> <span class="title">React</span>.<span class="title">Component</span> </span>&#123;</span><br><span class="line">2<span class="keyword">constructor</span>() &#123;</span><br><span class="line">22<span class="keyword">super</span>();</span><br><span class="line">22<span class="keyword">this</span>.state=&#123;</span><br><span class="line">222value: <span class="number">0</span></span><br><span class="line">22&#125;</span><br><span class="line">2&#125;</span><br><span class="line">2componentWillReceiveProps(nextProps) &#123;</span><br><span class="line">22<span class="built_in">console</span>.log(<span class="string">"This receive new props: "</span> + nextProps.value);</span><br><span class="line">22<span class="keyword">this</span>.setState(&#123;</span><br><span class="line">222value: nextProps.value</span><br><span class="line">22&#125;);</span><br><span class="line">22<span class="built_in">console</span>.log(<span class="string">"This change state to: "</span> + nextProps.value);</span><br><span class="line">2&#125;</span><br><span class="line">2shouldComponentUpdate(nextProps, nextState) &#123;</span><br><span class="line">22<span class="built_in">console</span>.log(<span class="string">"This receive new state: "</span> + nextState.value);</span><br><span class="line">22<span class="keyword">return</span> <span class="literal">true</span>;</span><br><span class="line">2&#125;</span><br><span class="line">2render() &#123;</span><br><span class="line">22<span class="keyword">return</span> <span class="literal">null</span>;</span><br><span class="line">2&#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Parent</span> <span class="keyword">extends</span> <span class="title">React</span>.<span class="title">Component</span> </span>&#123;</span><br><span class="line">2<span class="keyword">constructor</span>() &#123;</span><br><span class="line">22<span class="keyword">super</span>();</span><br><span class="line">22<span class="keyword">this</span>.state=&#123; <span class="attr">value</span>: <span class="number">0</span> &#125;</span><br><span class="line">2&#125;</span><br><span class="line">2componentDidMount() &#123;</span><br><span class="line">22<span class="built_in">console</span>.log(<span class="string">"After 5s, Test component will receive new props"</span>);</span><br><span class="line">22setTimeout(<span class="function"><span class="params">()</span> =&gt;</span> <span class="keyword">this</span>.setState(&#123; <span class="attr">value</span>: <span class="number">1</span> &#125;), <span class="number">5000</span>);</span><br><span class="line">2&#125;</span><br><span class="line">2render() &#123;</span><br><span class="line">22<span class="keyword">return</span> <span class="xml"><span class="tag">&lt;<span class="name">Test</span> <span class="attr">value</span>=<span class="string">&#123;this.state.value&#125;</span> /&gt;</span></span></span><br><span class="line"><span class="xml">	&#125;</span></span><br><span class="line"><span class="xml">&#125;</span></span><br><span class="line"><span class="xml">ReactDOM.render(</span></span><br><span class="line"><span class="xml">	<span class="tag">&lt;<span class="name">Parent</span> /&gt;</span>,</span></span><br><span class="line"><span class="xml">	document.getElementById("react-root")</span></span><br><span class="line"><span class="xml">);</span></span><br><span class="line"><span class="xml"></span></span><br><span class="line"><span class="xml">//控制台输出：</span></span><br><span class="line"><span class="xml">After 5s, Test component will receive new props</span></span><br><span class="line"><span class="xml">This receive new props: 1</span></span><br><span class="line"><span class="xml">This change state to: 1</span></span><br><span class="line"><span class="xml">This receive new state: 1</span></span><br></pre></td></tr></table></figure>
+<h3 id="shouldComponentUpdate"><a href="#shouldComponentUpdate" class="headerlink" title="shouldComponentUpdate()"></a>shouldComponentUpdate()</h3><blockquote>
+<p>bool shouldComponentUpdate(object nextProps, object nextState)</p>
+</blockquote>
+<p>在组件在接收到新的 props 或者 state，将要重新渲染之前调用，返回值决定了组件是否更新，如果 <code>shouldComponentUpdate</code> 返回 false，则 render() 将不会执行，直到下一次 state 改变，此外， <code>componentWillUpdate</code> 和 <code>componentDidUpdate</code> 也不会被调用。</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Test</span> <span class="keyword">extends</span> <span class="title">React</span>.<span class="title">Component</span> </span>&#123;</span><br><span class="line">2<span class="keyword">constructor</span>() &#123;</span><br><span class="line">22<span class="keyword">super</span>();</span><br><span class="line">22<span class="keyword">this</span>.state=&#123; <span class="attr">value</span>: <span class="number">0</span> &#125;</span><br><span class="line">2&#125;</span><br><span class="line">2componentDidMount() &#123;</span><br><span class="line">22setTimeout(<span class="function"><span class="params">()</span> =&gt;</span> <span class="keyword">this</span>.setState(&#123; <span class="attr">value</span>: <span class="number">1</span> &#125;), <span class="number">5000</span>);</span><br><span class="line">2&#125;</span><br><span class="line">2shouldComponentUpdate() &#123;</span><br><span class="line">22<span class="built_in">console</span>.log(<span class="string">"componentWillUpdate will be called."</span>);</span><br><span class="line">22<span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">2&#125;</span><br><span class="line">2componentWillUpdate() &#123;</span><br><span class="line">22<span class="built_in">console</span>.log(<span class="string">"componentWillUpdate will not be called."</span>);</span><br><span class="line">2&#125;</span><br><span class="line">2componentDidUpdate() &#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">"componentDidUpdate will not be called."</span>);</span><br><span class="line">2&#125;</span><br><span class="line">2render() &#123;</span><br><span class="line">22<span class="built_in">console</span>.log(<span class="string">"Test component render"</span>);</span><br><span class="line">22<span class="keyword">return</span> <span class="literal">null</span>;</span><br><span class="line">2&#125;</span><br><span class="line">&#125;</span><br><span class="line">ReactDOM.render(</span><br><span class="line">2&lt;Test /&gt;,</span><br><span class="line">2<span class="built_in">document</span>.getElementById(<span class="string">"react-root"</span>)</span><br><span class="line">);</span><br><span class="line"></span><br><span class="line"><span class="comment">//控制台输出：</span></span><br><span class="line">Test component render</span><br><span class="line">componentWillUpdate will be called.</span><br></pre></td></tr></table></figure>
+<p>由输出结果可以看出，<code>shouldComponentUpdate</code> 返回 false 以后，更新流程不再继续往下走了， <code>componentWillUpdate</code> 和 <code>componentDidUpdate</code> 方法也不再执行。</p>
+<blockquote>
+<p><strong>注意：</strong><br>调用 <code>this.forceUpdate()</code> 函数将不会执行 <code>shouldComponentUpdate</code> 方法，因为 <code>this.forceUpdate()</code> 要求强制更新组件，不会因为受 <code>shouldComponentUpdate</code> 的返回值影响，所以跳过该方法， 但是 <code>componentWillUpdate</code> 和 <code>componentDidUpdate</code> 仍然会被调用。另外 <code>this.forceUpdate()</code> 的调用虽然会跳过本组件的 <code>shouldComponentUpdate</code> 方法被执行，对子组件的没有影响。</p>
+</blockquote>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Test</span> <span class="keyword">extends</span> <span class="title">React</span>.<span class="title">Component</span> </span>&#123;</span><br><span class="line">2<span class="keyword">constructor</span>() &#123;</span><br><span class="line">22<span class="keyword">super</span>();</span><br><span class="line">22<span class="keyword">this</span>.state=&#123; <span class="attr">value</span>: <span class="number">0</span> &#125;</span><br><span class="line">2&#125;</span><br><span class="line">2<span class="comment">//5s后强制更新</span></span><br><span class="line">2componentDidMount() &#123;</span><br><span class="line">22setTimeout(<span class="function"><span class="params">()</span> =&gt;</span> <span class="keyword">this</span>.forceUpdate(), <span class="number">5000</span>);</span><br><span class="line">2&#125;</span><br><span class="line">2shouldComponentUpdate() &#123;</span><br><span class="line">22<span class="built_in">console</span>.log(<span class="string">"shouldComponentUpdate not be called."</span>);</span><br><span class="line">2&#125;</span><br><span class="line">2componentWillUpdate() &#123;</span><br><span class="line">22<span class="built_in">console</span>.log(<span class="string">"componentWillUpdate be called."</span>);</span><br><span class="line">2&#125;</span><br><span class="line">2componentDidUpdate() &#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">"componentDidUpdate be called."</span>);</span><br><span class="line">2&#125;</span><br><span class="line">2render() &#123;</span><br><span class="line">22<span class="built_in">console</span>.log(<span class="string">"Test component render"</span>);</span><br><span class="line">22<span class="keyword">return</span> <span class="literal">null</span>;</span><br><span class="line">2&#125;</span><br><span class="line">&#125;</span><br><span class="line">ReactDOM.render(</span><br><span class="line">2&lt;Test /&gt;,</span><br><span class="line">2<span class="built_in">document</span>.getElementById(<span class="string">"react-root"</span>)</span><br><span class="line">);</span><br><span class="line"></span><br><span class="line"><span class="comment">//控制台输出：</span></span><br><span class="line">Test component render</span><br><span class="line">componentWillUpdate be called.</span><br><span class="line">Test component render</span><br><span class="line">componentDidUpdate be called.</span><br></pre></td></tr></table></figure>
+<p>在组件比较多或者比较复杂的项目中，组件的更新成本较大，可以在这里重载默认的逻辑，比较组件的新旧状态和属性值的变化，来确定是否够需要更新组件。</p>
+<h3 id="componentWillUpdate"><a href="#componentWillUpdate" class="headerlink" title="componentWillUpdate()"></a>componentWillUpdate()</h3><blockquote>
+<p>void componentWillUpdate(object nextProps, object nextState)</p>
+</blockquote>
+<p>如果组件的状态或者属性改变，并且组件 <code>shouldComponentUpdate</code> 返回结果为 <code>true</code> ，此方法会被调用，通常在这这里做一些更新前的准备工作。需要注意的是，这个方法执行完毕后，新的 <code>state</code> 和 <code>props</code> 即被更新入 <code>this.state</code> 和 <code>this.props</code> 中,组件即进入 <code>render</code> 阶段。</p>
+<blockquote>
+<p><strong>注意：</strong><br>此时组件必然会更新，进入重新render的过程，在此时已经不允许改变组件的状态了。</p>
+</blockquote>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Test</span> <span class="keyword">extends</span> <span class="title">React</span>.<span class="title">Component</span> </span>&#123;</span><br><span class="line">2<span class="keyword">constructor</span>() &#123;</span><br><span class="line">22<span class="keyword">super</span>();</span><br><span class="line">22<span class="keyword">this</span>.state=&#123; <span class="attr">value</span>: <span class="number">0</span> &#125;</span><br><span class="line">2&#125;</span><br><span class="line">2componentDidMount() &#123;</span><br><span class="line">22setTimeout(<span class="function"><span class="params">()</span> =&gt;</span> <span class="keyword">this</span>.setState(&#123; <span class="attr">value</span>: <span class="number">1</span> &#125;), <span class="number">5000</span>);</span><br><span class="line">2&#125;</span><br><span class="line">2componentWillUpdate() &#123;</span><br><span class="line">22<span class="keyword">this</span>.state=&#123; <span class="attr">value</span>: <span class="number">2</span> &#125;</span><br><span class="line">22<span class="built_in">console</span>.log(<span class="string">"Try to change state.value to 2"</span>);</span><br><span class="line">2&#125;</span><br><span class="line">2render() &#123;</span><br><span class="line">22<span class="built_in">console</span>.log(<span class="string">"Test component render"</span>);</span><br><span class="line">22<span class="built_in">console</span>.log(<span class="string">"Current state.value is: "</span> + <span class="keyword">this</span>.state.value);</span><br><span class="line">22<span class="keyword">return</span> <span class="literal">null</span>;</span><br><span class="line">2&#125;</span><br><span class="line">&#125;</span><br><span class="line">ReactDOM.render(</span><br><span class="line">2&lt;Test /&gt;,</span><br><span class="line">2<span class="built_in">document</span>.getElementById(<span class="string">"react-root"</span>)</span><br><span class="line">);</span><br><span class="line"></span><br><span class="line"><span class="comment">//控制台输出：</span></span><br><span class="line">Test component render</span><br><span class="line">Current state.value is: <span class="number">0</span></span><br><span class="line">Try to change state.value to <span class="number">2</span></span><br><span class="line">Test component render</span><br><span class="line">Current state.value is: <span class="number">1</span></span><br></pre></td></tr></table></figure>
+<p>从输出可以看到 <code>componentWillUpdate</code> 方法中调用 <code>this.setState</code> 后，state没有变化，而且也没有再次触发组件的更新操作。</p>
+<h3 id="componentDidUpdate"><a href="#componentDidUpdate" class="headerlink" title="componentDidUpdate()"></a>componentDidUpdate()</h3><blockquote>
+<p>void componentDidUpdate(object prevProps, object prevState)</p>
+</blockquote>
+<p>组件在更新后执行，在这里已经完成了组件的更新工作了，此时，方法的输入参数变成了更新前的 <code>props</code> 和 <code>state</code> ， 这这里通常进行一些组件更新后的操作，比如，为新增加的DOM元素绑定事件等。</p>
+<h2 id="组件的卸载移除"><a href="#组件的卸载移除" class="headerlink" title="组件的卸载移除"></a>组件的卸载移除</h2><h3 id="componentWillUnmount"><a href="#componentWillUnmount" class="headerlink" title="componentWillUnmount()"></a>componentWillUnmount()</h3><blockquote>
+<p>void componentWillUnmount()</p>
+</blockquote>
+<p>组件被移除前执行，通常在这里执行一些必要的清理工作，比如清除定时器任务、清除事件监听绑定、清除非 React 创建的 DOM 元素等，代码如下：</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Child</span> <span class="keyword">extends</span> <span class="title">React</span>.<span class="title">Component</span> </span>&#123;</span><br><span class="line">2componentDidMount() &#123;</span><br><span class="line">22<span class="built_in">console</span>.log(<span class="string">"Set interval task."</span>);</span><br><span class="line">22<span class="built_in">console</span>.log(<span class="string">"Bind event Listener."</span>);</span><br><span class="line">2&#125;</span><br><span class="line">2componentWillUnmount() &#123;</span><br><span class="line">22<span class="built_in">console</span>.log(<span class="string">"Remove interval task."</span>);</span><br><span class="line">22<span class="built_in">console</span>.log(<span class="string">"Unbind event Listener."</span>);</span><br><span class="line">2&#125;</span><br><span class="line">2render() &#123;</span><br><span class="line">22<span class="built_in">console</span>.log(<span class="string">"Child component render"</span>);</span><br><span class="line">22<span class="keyword">return</span> <span class="literal">null</span>;</span><br><span class="line">2&#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Parent</span> <span class="keyword">extends</span> <span class="title">React</span>.<span class="title">Component</span> </span>&#123;</span><br><span class="line">2<span class="keyword">constructor</span>() &#123;</span><br><span class="line">22<span class="keyword">super</span>();</span><br><span class="line">22<span class="keyword">this</span>.state=&#123; <span class="attr">value</span>: <span class="number">0</span> &#125;</span><br><span class="line">2&#125;</span><br><span class="line">2<span class="comment">//5s后修改state，移除Child</span></span><br><span class="line">2componentDidMount() &#123;</span><br><span class="line">22setTimeout(<span class="function"><span class="params">()</span> =&gt;</span> <span class="keyword">this</span>.setState(&#123;<span class="attr">value</span>: <span class="number">1</span>&#125;), <span class="number">5000</span>)</span><br><span class="line">2&#125;</span><br><span class="line">2componentWillUnmount() &#123;</span><br><span class="line">22<span class="built_in">console</span>.log(<span class="string">"Remove interval task."</span>);</span><br><span class="line">22<span class="built_in">console</span>.log(<span class="string">"Unbind event Listener."</span>);</span><br><span class="line">2&#125;</span><br><span class="line">2render() &#123;</span><br><span class="line">22<span class="keyword">if</span> (<span class="keyword">this</span>.state.value == <span class="number">1</span>) &#123;</span><br><span class="line">222<span class="built_in">console</span>.log(<span class="string">"Child component is unmounted."</span>);</span><br><span class="line">222<span class="keyword">return</span> <span class="literal">null</span>;</span><br><span class="line">22&#125;</span><br><span class="line">22<span class="keyword">else</span> &#123;</span><br><span class="line">222<span class="built_in">console</span>.log(<span class="string">"Child component is mounted."</span>);</span><br><span class="line">222<span class="built_in">console</span>.log(<span class="string">"After 5s, Child component will be unmounted."</span>);</span><br><span class="line">222<span class="keyword">return</span> <span class="xml"><span class="tag">&lt;<span class="name">Child</span> /&gt;</span>;</span></span><br><span class="line"><span class="xml">		&#125;</span></span><br><span class="line"><span class="xml">	&#125;</span></span><br><span class="line"><span class="xml">&#125;</span></span><br><span class="line"><span class="xml">ReactDOM.render(</span></span><br><span class="line"><span class="xml">	<span class="tag">&lt;<span class="name">Parent</span> /&gt;</span>,</span></span><br><span class="line"><span class="xml">	document.getElementById("react-root")</span></span><br><span class="line"><span class="xml">);</span></span><br><span class="line"><span class="xml"></span></span><br><span class="line"><span class="xml">//控制台输出：</span></span><br><span class="line"><span class="xml">Child component is mounted.</span></span><br><span class="line"><span class="xml">After 5s, Child component will be unmounted.</span></span><br><span class="line"><span class="xml">Child component render</span></span><br><span class="line"><span class="xml">Set interval task.</span></span><br><span class="line"><span class="xml">Bind event Listener.</span></span><br><span class="line"><span class="xml">Child component is unmounted.</span></span><br><span class="line"><span class="xml">Remove interval task.</span></span><br><span class="line"><span class="xml">Unbind event Listener.</span></span><br></pre></td></tr></table></figure>
+<h2 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h2><ul>
+<li><a href="https://facebook.github.io/react/docs/component-specs.html" target="_blank" rel="external">Component Specs and Lifecycle</a></li>
+<li><a href="https://segmentfault.com/a/1190000003691119#articleHeader9" target="_blank" rel="external">React Component Lifecycle</a></li>
+<li><a href="http://www.race604.com/react-native-component-lifecycle/" target="_blank" rel="external">React Native 中组件的生命周期</a></li>
+</ul>
+
+        </div>
+        <footer class="article-footer">
+            
+    <div class="jiathis_style_24x24">
+    <span class="jiathis_txt">分享到：</span>
+    <a class="jiathis_button_qzone"></a>
+    <a class="jiathis_button_tsina"</a>
+    <a class="jiathis_button_weixin"></a>
+    <a class="jiathis_button_douban"></a>
+    <a class="jiathis_button_fb"></a>
+    <a class="jiathis_button_twitter"></a>
+    <a href="http://www.jiathis.com/share" class="jiathis jiathis_txt jiathis_separator jtico jtico_jiathis" target="_blank"></a>
+    <a class="jiathis_counter_style"></a>
+</div>
+<script type="text/javascript" src="http://v3.jiathis.com/code/jia.js" charset="utf-8"></script>
+<style>
+    .jiathis_style div:first-child:not(.jiadiv_01) {
+        width: auto !important;
+        border: none !important;
+    }
+    .jiathis_style .jiadiv_01 {
+        margin: 10px 0;
+        border-radius: 4px;
+        border: #e1e1e1 solid 1px;
+    }
+    .jiathis_style .jiadiv_01 div:first-child {
+        display: none;
+    }
+    .jiathis_style .jiadiv_02 {
+        padding: 7px 0 !important;
+    }
+    .jiathis_style .jiadiv_02 .jiatitle {
+        width: 85px;
+        border: none;
+        height: auto;
+        margin: 3px 10px;
+        padding: 6px 10px;
+        border-radius: 4px;
+    }
+    .jiathis_style .jiadiv_02 .jiatitle:hover {
+        border: none;
+    }
+    .jiathis_style .jiadiv_02 .jiatitle:nth-child(even) {
+        margin-left: 0;
+    }
+    .jiathis_style .jtico:hover {
+        opacity: 1;
+    }
+    .jiathis_style .ckepopBottom,
+    .jiathis_style .centerBottom {
+        width: auto !important;
+        padding: 5px;
+        background: #f7f7f7;
+    }
+</style>
+
+
+
+
+        </footer>
+
+    </div>
+</article>
+
+    <section id="comments">
+    
+        
+    <div id="disqus_thread">
+        <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+    </div>
+
+    
+    </section>
+
+
+              </div>
+            </section>
+            
+          </div>
+        </div>
+      </div>
+      <footer id="footer">
+    <div class="container">
+        <div class="container-inner">
+            <div class="credit">
+                <h1 class="logo-wrap">
+                    <a href="/" class="logo"></a>
+                </h1>
+                <p>&copy; 2018 tcatche</p>
+                <p>Powered by <a href="//hexo.io/" target="_blank">Hexo</a>. </p>
+                <p>Theme based <a href="//github.com/ppoffice" target="_blank">PPOffice</a> and modify by Tcatche. </p>
+                <p>Hosted by <a  href="https://pages.github.com/">Github Pages</a>. </p>
+            </div>
+        </div>
+    </div>
+</footer>
+      <div id="fixed">
+  <i class="fa fa-align-justify ins-search-icon"></i>
+  <div class="ins-search">
+    <div class="ins-search-mask"></div>
+    <div class="ins-search-container">
+        <div class="ins-input-wrapper">
+            <input type="text" class="ins-search-input" placeholder="想要查找什么..." />
+            <span class="ins-close ins-selectable"><i class="fa fa-times-circle"></i></span>
+        </div>
+        <div class="ins-section-wrapper">
+            <div class="ins-section-container"></div>
+        </div>
+    </div>
+</div>
+<script>
+(function (window) {
+    var INSIGHT_CONFIG = {
+        TRANSLATION: {
+            POSTS: '文章',
+            PAGES: '页面',
+            CATEGORIES: '分类',
+            TAGS: '标签',
+            UNTITLED: '(未命名)',
+        },
+        ROOT_URL: '/',
+        CONTENT_URL: '/content.json',
+    };
+    window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+})(window);
+</script>
+<script src="/js/insight.js"></script>
+  <i id="back-to-top" class="fa fa-arrow-up goto-top"></i>
+</div>
+      
+    
+    <script>
+    var disqus_shortname = 'tcatche';
+    
+    
+    var disqus_url = 'http://tcatche.site/2016/05/react-components-life-cicle/';
+    
+    (function() {
+    var dsq = document.createElement('script');
+    dsq.type = 'text/javascript';
+    dsq.async = true;
+    dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+    </script>
+
+
+
+
+    
+        <script src="/libs/lightgallery/js/lightgallery.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-thumbnail.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-pager.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-autoplay.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-fullscreen.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-zoom.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-hash.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-share.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-video.min.js"></script>
+    
+
+
+<!-- Custom Scripts -->
+<script src="/js/main.js"></script>
+
+    </div>
+  </div>
+</body>
+</html>

@@ -1,0 +1,445 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    
+    <title>css3特效 | TryCatch</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    
+        <meta name="keywords" content="css" />
+    
+    
+
+    
+
+    
+
+    <link rel="stylesheet" href="/libs/font-awesome/css/font-awesome.min.css">
+    <link rel="stylesheet" href="/libs/titillium-web/styles.css">
+    <link rel="stylesheet" href="/libs/source-code-pro/styles.css">
+
+    <link rel="stylesheet" href="/css/style.css">
+
+    <script src="/libs/jquery/2.0.3/jquery.min.js"></script>
+    
+    
+        <link rel="stylesheet" href="/libs/lightgallery/css/lightgallery.min.css">
+    
+    
+        <script type="text/javascript">
+(function(i,s,o,g,r,a,m) {i['GoogleAnalyticsObject']=r;i[r]=i[r]||function() {
+(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+ga('create', 'UA-92905809-1', 'auto');
+ga('send', 'pageview');
+
+</script>
+    
+    
+        <script>
+var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "//hm.baidu.com/hm.js?409648b1638886ada0891d05cc80dc19";
+  var s = document.getElementsByTagName("script")[0];
+  s.parentNode.insertBefore(hm, s);
+})();
+</script>
+
+    
+    
+        <script>
+(function(){
+    var bp = document.createElement('script');
+    var curProtocol = window.location.protocol.split(':')[0];
+    if (curProtocol === 'https') {
+        bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';        
+    }
+    else {
+        bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+    }
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(bp, s);
+})();
+</script>
+    
+    
+
+</head>
+
+<body>
+  <div id="root">
+    <div id="page-percent">
+      <div></div>
+    </div>
+    <div id="wrap">
+      <header id="header">
+    <div id="header-outer" class="outer">
+        <div class="container">
+            <div id="header-nav" class="nav-container">
+                <div class="container-inner nav-container-inner">
+                    <ul id="main-nav">
+                        
+                                <li class="main-nav-list-item" >
+                                    <a class="main-nav-list-link" href="/">主页</a>
+                                </li>
+                        
+                                <ul class="main-nav-list"><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/Uncategory/">Uncategory</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/css/">css</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/html/">html</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/js/">js</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/翻译/">翻译</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/转载/">转载</a></li></ul>
+                            
+                                <li class="main-nav-list-item" >
+                                    <a class="main-nav-list-link" href="/">index.archives</a>
+                                </li>
+                        
+                    </ul>
+                </div>
+            </div>
+            <div id="header-title" style="display: none">
+                <div class="container-inner">
+                    <h1 class="logo-wrap">
+                        <a href="/" class="logo"></a>
+                    </h1>
+                    
+                        <h2 class="subtitle-wrap">
+                            <p class="subtitle">To try, then catch.</p>
+                        </h2>
+                    
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+      <div class="container">
+        <div class="bg_content">
+          <canvas id="canvas"></canvas>
+        </div>
+        <div class="main-body container-inner">
+          <div class="main-body-inner">
+            <section id="main">
+              <div class="main-body-content">
+                <article id="post-css3-transition-transform-animation" class="article article-single article-type-post" itemscope itemprop="blogPost">
+
+    
+        <h1 class="article-title" itemprop="name">
+        css3特效
+        </h1>
+    
+
+    <div class="article-inner">
+        <header class="article-header" >
+            <div class="article-subtitle">
+                <div class="article-author-avatar">
+                    <img src="/images/avatar.png" alt="Author's avatar" height="44px" width="44px">
+                </div>
+                <div class="article-count">
+                    <div class="article-author">
+                        tcatche
+                    </div>
+                    <a href="/2016/03/css3-transition-transform-animation/" class="article-date">
+    <i class="icon fa fa-calendar"></i>
+    <time datetime="2016-03-31T03:55:09.000Z" itemprop="datePublished">2016-03-31</time>
+</a>
+                    
+    <span class="word-count">
+      <i class="icon fa fa-file-text"></i>
+      字数: 1,804 
+    </span>
+    <span class="word-count">
+      <i class="icon fa fa-clock-o"></i>
+      阅读时长: 8mins 
+    </span>
+
+                </div>
+                <div class="article-dir">
+                    
+    <div class="article-category">
+    <i class="icon fa fa-list-ul"></i>
+    <a class="article-category-link" href="/categories/css/">css</a>
+    </div>
+
+                    
+    <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/css/">css</a></li></ul>
+
+                </div>
+            </div>
+        </header>
+        
+        <div class="article-entry" itemprop="articleBody">
+            <h2 id="Transform-转换"><a href="#Transform-转换" class="headerlink" title="Transform 转换"></a>Transform 转换</h2><p><code>Transform</code> 属性向元素应用 2D 或 3D 转换，该属性允许我们对元素进行旋转、缩放、移动或倾斜，主要有以下几个方法：<br><code>translate()</code>、<code>rotate()</code>、<code>scale()</code>、<code>skew()</code>、<code>matrix()</code>。</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">JavaScript 语法: object.style.transform=&quot;rotate(xdeg)&quot;</span><br><span class="line">Css语法：transform: none|transform-functions;</span><br></pre></td></tr></table></figure>
+<p><strong>Transform 属性:</strong></p>
+<ul>
+<li><code>transform</code> 向元素应用 2D 或 3D 转换。</li>
+<li><code>transform-origin</code> 允许你改变被转换元素的位置。</li>
+<li><code>transform-style</code> 规定被嵌套元素如何在 3D 空间中显示。</li>
+<li><code>perspective</code> 规定 3D 元素的透视效果。</li>
+<li><code>perspective-origin</code> 规定 3D 元素的底部位置。</li>
+<li><code>backface-visibility</code> 定义元素在不面对屏幕时是否可见。</li>
+</ul>
+<p><strong>浏览器支持:</strong></p>
+<ul>
+<li>Internet Explorer 10、Firefox、Opera 支持 transform 属性。</li>
+<li>Safari 和 Chrome 支持替代的 -webkit-transform 属性（3D 和 2D 转换）。</li>
+<li>Internet Explorer 9 要求前缀 -ms- 版本（仅适用于 2D 转换）。</li>
+<li>Opera 只支持 2D 转换。</li>
+</ul>
+<h3 id="translate"><a href="#translate" class="headerlink" title="translate()"></a>translate()</h3><p>元素根据给定的 <code>left</code>（x 坐标） 和 <code>top</code>（y 坐标） 位置参数，从其当前位置移动。</p>
+<ul>
+<li><code>translate(x, y)</code> 定义 2D 转换，沿着 X 和 Y 轴移动元素。</li>
+<li><code>translateX(n)</code> 定义 2D 转换，沿着 X 轴移动元素。</li>
+<li><code>translateY(n)</code> 定义 2D 转换，沿着 Y 轴移动元素。</li>
+<li><code>translateZ(z)</code> 定义 3D 转化，仅使用用于 Z 轴的值。<br><strong>语法：</strong></li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">transform: translate(x, y);</span><br><span class="line">transform: translateX(n);</span><br><span class="line">transform: translateY(n);</span><br></pre></td></tr></table></figure>
+<p><strong>Examples:</strong></p>
+<figure class="highlight css"><table><tr><td class="code"><pre><span class="line"><span class="comment">/* 使div向左偏移10px， 向上偏移20px */</span></span><br><span class="line"><span class="selector-tag">div</span> &#123;</span><br><span class="line">2<span class="attribute">transform         </span>: <span class="built_in">translate</span>(10px, 20px);</span><br><span class="line">2<span class="attribute">-ms-transform     </span>: <span class="built_in">translate</span>(10px, 20px);	<span class="comment">/* IE 9 */</span></span><br><span class="line">2<span class="attribute">-webkit-transform </span>: <span class="built_in">translate</span>(10px, 20px);	<span class="comment">/* Safari and Chrome */</span></span><br><span class="line">2<span class="attribute">-o-transform      </span>: <span class="built_in">translate</span>(10px, 20px);	<span class="comment">/* Opera */</span></span><br><span class="line">2<span class="attribute">-moz-transform    </span>: <span class="built_in">translate</span>(10px, 20px);	<span class="comment">/* Firefox */</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="rotate"><a href="#rotate" class="headerlink" title="rotate()"></a>rotate()</h3><p>元素旋转给定的角度。<br>rotate共包含三个方法：</p>
+<ul>
+<li><code>rotate(n)</code> 元素顺时针旋转给定的角度。允许负值，元素将逆时针旋转（2D转换）。</li>
+<li><code>rotateX(x)</code> 元素围绕其 X 轴以给定的度数进行旋转（3D转换）。</li>
+<li><code>rotateY(y)</code> 元素围绕其 Y 轴以给定的度数进行旋转（3D转换）。</li>
+<li><code>rotate3d(x, y, z, angle)</code> 定义 3D 旋转。<br><strong>语法：</strong></li>
+</ul>
+<figure class="highlight css"><table><tr><td class="code"><pre><span class="line"><span class="selector-tag">transform</span>: <span class="selector-tag">rotate</span>(<span class="selector-tag">n</span>);</span><br><span class="line"><span class="selector-tag">transform</span>: <span class="selector-tag">rotateX</span>(<span class="selector-tag">x</span>);</span><br><span class="line"><span class="selector-tag">transform</span>: <span class="selector-tag">rotateY</span>(<span class="selector-tag">y</span>);</span><br><span class="line"><span class="selector-tag">transform</span>: <span class="selector-tag">rotate3d</span>(<span class="selector-tag">x</span>, <span class="selector-tag">y</span>, <span class="selector-tag">z</span>, <span class="selector-tag">angle</span>);</span><br></pre></td></tr></table></figure>
+<p><strong>Examples:</strong></p>
+<figure class="highlight css"><table><tr><td class="code"><pre><span class="line"><span class="comment">/* 使div顺时针旋转20° */</span></span><br><span class="line"><span class="selector-tag">div</span> &#123;</span><br><span class="line">2<span class="attribute">transform         </span>: <span class="built_in">rotate</span>(20deg);</span><br><span class="line">2<span class="attribute">-ms-transform     </span>: <span class="built_in">rotate</span>(20deg);	<span class="comment">/* IE 9 */</span></span><br><span class="line">2<span class="attribute">-webkit-transform </span>: <span class="built_in">rotate</span>(20deg);	<span class="comment">/* Safari and Chrome */</span></span><br><span class="line">2<span class="attribute">-o-transform      </span>: <span class="built_in">rotate</span>(20deg);	<span class="comment">/* Opera */</span></span><br><span class="line">2<span class="attribute">-moz-transform    </span>: <span class="built_in">rotate</span>(20deg);	<span class="comment">/* Firefox */</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="scale"><a href="#scale" class="headerlink" title="scale()"></a>scale()</h3><p>元素的尺寸会增加或减少，根据给定的宽度（X 轴）和高度（Y 轴）参数。</p>
+<ul>
+<li><code>scale(x, y)</code> 定义 2D 缩放转换，改变元素的宽度和高度。</li>
+<li><code>scale3d(x, y, z)</code> 定义 3D 缩放转换。</li>
+<li><code>scaleX(x)</code> 定义 2D 缩放转换，改变元素的宽度。</li>
+<li><code>scaleY(y)</code> 定义 2D 缩放转换，改变元素的高度。</li>
+<li><code>scaleZ(z)</code> 定义 3D 缩放转换，通过给定一个 Z 轴的值。<br><strong>语法：</strong></li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">transform: scale(x, y);</span><br><span class="line">transform: scaleX(x);</span><br><span class="line">transform: scaleY(y);</span><br></pre></td></tr></table></figure>
+<p><strong>Examples:</strong></p>
+<figure class="highlight css"><table><tr><td class="code"><pre><span class="line"><span class="comment">/* 使div宽度转换为原始尺寸的 2 倍，把高度转换为原始高度的 4 倍。 */</span></span><br><span class="line"><span class="selector-tag">div</span> &#123;</span><br><span class="line">2<span class="attribute">transform         </span>: <span class="built_in">translate</span>(2, 4);</span><br><span class="line">2<span class="attribute">-ms-transform     </span>: <span class="built_in">translate</span>(2, 4);	<span class="comment">/* IE 9 */</span></span><br><span class="line">2<span class="attribute">-webkit-transform </span>: <span class="built_in">translate</span>(2, 4);	<span class="comment">/* Safari and Chrome */</span></span><br><span class="line">2<span class="attribute">-o-transform      </span>: <span class="built_in">translate</span>(2, 4);	<span class="comment">/* Opera */</span></span><br><span class="line">2<span class="attribute">-moz-transform    </span>: <span class="built_in">translate</span>(2, 4);	<span class="comment">/* Firefox */</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="skew"><a href="#skew" class="headerlink" title="skew()"></a>skew()</h3><p>元素翻转给定的角度，根据给定的水平线（X 轴）和垂直线（Y 轴）参数。</p>
+<ul>
+<li><code>skew(x-angle, y-angle)</code> 定义 2D 倾斜转换，沿着 X 和 Y 轴。</li>
+<li><code>skewX(angle)</code> 定义 2D 倾斜转换，沿着 X 轴。</li>
+<li><code>skewY(angle)</code> 定义 2D 倾斜转换，沿着 Y 轴。<br><strong>语法：</strong></li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">transform: skew(x-angle, y-angle);</span><br><span class="line">transform: skewX(angle);</span><br><span class="line">transform: skewY(angle);</span><br></pre></td></tr></table></figure>
+<p><strong>Examples:</strong></p>
+<figure class="highlight css"><table><tr><td class="code"><pre><span class="line"><span class="comment">/* 使div 围绕 X 轴把翻转 30 度，围绕 Y 轴翻转 20 度。 */</span></span><br><span class="line"><span class="selector-tag">div</span> &#123;</span><br><span class="line">2<span class="attribute">transform         </span>: <span class="built_in">translate</span>(20deg, 40deg);</span><br><span class="line">2<span class="attribute">-ms-transform     </span>: <span class="built_in">translate</span>(20deg, 40deg);	<span class="comment">/* IE 9 */</span></span><br><span class="line">2<span class="attribute">-webkit-transform </span>: <span class="built_in">translate</span>(20deg, 40deg);	<span class="comment">/* Safari and Chrome */</span></span><br><span class="line">2<span class="attribute">-o-transform      </span>: <span class="built_in">translate</span>(20deg, 40deg);	<span class="comment">/* Opera */</span></span><br><span class="line">2<span class="attribute">-moz-transform    </span>: <span class="built_in">translate</span>(20deg, 40deg);	<span class="comment">/* Firefox */</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="matrix"><a href="#matrix" class="headerlink" title="matrix()"></a>matrix()</h3><p>暂时跳过，后续研究</p>
+<h2 id="Transition-过渡"><a href="#Transition-过渡" class="headerlink" title="Transition 过渡"></a>Transition 过渡</h2><p>过渡是元素从一种样式逐渐改变为另一种的效果，要实现这一点，必须规定两项内容：</p>
+<ul>
+<li>规定您希望把效果添加到哪个 CSS 属性上</li>
+<li>规定效果的时长</li>
+</ul>
+<p>当指定的 CSS 属性改变值改变出发时（比如hover,必须指定触发后会改变的style样式），过渡效果开始，如果时长未规定，则不会有过渡效果，因为默认值是 0。</p>
+<p><strong>语法：</strong></p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">transition: style time;</span><br><span class="line">transition: style1 time1, style2 time2..., stylen timen;</span><br></pre></td></tr></table></figure>
+<p><strong>过渡属性:</strong></p>
+<ul>
+<li><code>transition</code> 简写属性，用于在一个属性中设置四个过渡属性。</li>
+<li><code>transition-property</code> 规定应用过渡的 CSS 属性的名称。</li>
+<li><code>transition-duration</code> 定义过渡效果花费的时间。默认是 0。</li>
+<li><code>transition-timing-function</code> 规定过渡效果的时间曲线。默认是 “ease”。</li>
+<li><code>transition-delay</code> 规定过渡效果何时开始。默认是 0。</li>
+</ul>
+<p><strong>Examples:</strong></p>
+<figure class="highlight css"><table><tr><td class="code"><pre><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment">div:hover指定了hover时的三个变化的样式：width，height和transform，在transtion属性仅仅指定了</span></span><br><span class="line"><span class="comment">width和transform，因此当div悬停时，width和transform会在两秒内过渡到:hover,而height没有过渡直接变化。</span></span><br><span class="line"><span class="comment">*/</span></span><br><span class="line"><span class="selector-tag">div</span> &#123;</span><br><span class="line">2<span class="attribute">width</span>:<span class="number">100px</span>;</span><br><span class="line">2<span class="attribute">height</span>:<span class="number">100px</span>;</span><br><span class="line">2<span class="attribute">background</span>:yellow;</span><br><span class="line">2<span class="attribute">transition</span>:width <span class="number">2s</span>, transform <span class="number">2s</span>;</span><br><span class="line">2<span class="attribute">-moz-transition</span>:width <span class="number">2s</span>, height <span class="number">2s</span>, -moz-transform <span class="number">2s</span>; <span class="comment">/* Firefox 4 */</span></span><br><span class="line">2<span class="attribute">-webkit-transition</span>:width <span class="number">2s</span>, height <span class="number">2s</span>, -webkit-transform <span class="number">2s</span>; <span class="comment">/* Safari and Chrome */</span></span><br><span class="line">2<span class="attribute">-o-transition</span>:width <span class="number">2s</span>, height <span class="number">2s</span>, -o-transform <span class="number">2s</span>; <span class="comment">/* Opera */</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="selector-tag">div</span><span class="selector-pseudo">:hover</span> &#123;</span><br><span class="line">2<span class="attribute">width</span>:<span class="number">200px</span>;</span><br><span class="line">2<span class="attribute">height</span>:<span class="number">200px</span>;</span><br><span class="line">2<span class="attribute">transform</span>:<span class="built_in">rotate</span>(180deg);</span><br><span class="line">2<span class="attribute">-moz-transform</span>:<span class="built_in">rotate</span>(180deg); <span class="comment">/* Firefox 4 */</span></span><br><span class="line">2<span class="attribute">-webkit-transform</span>:<span class="built_in">rotate</span>(180deg); <span class="comment">/* Safari and Chrome */</span></span><br><span class="line">2<span class="attribute">-o-transform</span>:<span class="built_in">rotate</span>(180deg); <span class="comment">/* Opera */</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><strong>浏览器支持:</strong></p>
+<ul>
+<li>Internet Explorer 10、Firefox、Chrome 以及 Opera 支持 transition 属性。</li>
+<li>Safari 和 Chrome 25 以及更早的版本需要前缀 -webkit-。</li>
+<li>Internet Explorer 9 以及更早的版本，不支持 transition 属性。</li>
+</ul>
+<h2 id="animation和-keyframes动画"><a href="#animation和-keyframes动画" class="headerlink" title="animation和@keyframes动画"></a>animation和@keyframes动画</h2><p><code>@keyframes</code> 规则用于创建动画。在 <code>@keyframes</code> 中规定某项 CSS 样式，就能创建由当前样式逐渐改为新样式的动画效果。<br><code>animation</code> 用于把 <code>@keyframes</code> 中创建的动画捆绑到某个css选择器。<br>用百分比来规定变化发生的时间，或用关键词 <code>from</code> 和 <code>to</code>，等同于 <code>0%</code> 和 <code>100%</code>。<code>0%</code> 是动画的开始，<code>100%</code> 是动画的完成。<br>为了得到最佳的浏览器支持，应该始终定义 <code>0%</code> 和 <code>100%</code> 选择器。<br>必须定义动画的名称和时长。如果忽略时长，则动画不会允许，因为默认值是 0。</p>
+<p><strong>属性:</strong></p>
+<ul>
+<li><code>@keyframes</code> 规定动画。</li>
+<li><code>animation</code> 所有动画属性的简写属性，除了 - `animation-play-state 属性。</li>
+<li><code>animation-name</code> 规定 @keyframes 动画的名称。</li>
+<li><code>animation-duration</code> 规定动画完成一个周期所花费的秒或毫秒。默认是 0。</li>
+<li><code>animation-timing-function</code> 规定动画的速度曲线。默认是 “ease”。</li>
+<li><code>animation-delay</code> 规定动画何时开始。默认是 0。</li>
+<li><code>animation-iteration-count</code> 规定动画被播放的次数。默认是 1。</li>
+<li><code>animation-direction</code> 规定动画是否在下一周期逆向地播放。默认是 “normal”。</li>
+<li><code>animation-play-state</code> 规定动画是否正在运行或暂停。默认是 “running”。</li>
+<li><code>animation-fill-mode</code> 规定对象动画时间之外的状态。</li>
+</ul>
+<p><strong>Examples:</strong></p>
+<figure class="highlight css"><table><tr><td class="code"><pre><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment">@keyframes 定义一个动画</span></span><br><span class="line"><span class="comment">动画开始时背景颜色为red，当动画进度为100%时，背景颜色为yellow</span></span><br><span class="line"><span class="comment">*/</span></span><br><span class="line">@<span class="keyword">keyframes</span> frames &#123;</span><br><span class="line">2<span class="selector-tag">from</span> &#123;</span><br><span class="line">22<span class="attribute">background</span>: red;</span><br><span class="line">2&#125;</span><br><span class="line">2<span class="selector-tag">to</span> &#123;</span><br><span class="line">22<span class="attribute">background</span>: yellow;</span><br><span class="line">2&#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">/* 或者： */</span></span><br><span class="line">@<span class="keyword">keyframes</span> frames &#123;</span><br><span class="line">20% &#123;</span><br><span class="line">22<span class="attribute">background</span>: red;</span><br><span class="line">2&#125;</span><br><span class="line">2100% &#123;</span><br><span class="line">22<span class="attribute">background</span>: yellow;</span><br><span class="line">2&#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">/* Firefox */</span></span><br><span class="line">@-<span class="keyword">moz</span>-<span class="keyword">keyframes</span> frames &#123;</span><br><span class="line">2<span class="selector-tag">from</span> &#123;</span><br><span class="line">22<span class="attribute">background</span>: red;</span><br><span class="line">2&#125;</span><br><span class="line">2<span class="selector-tag">to</span> &#123;</span><br><span class="line">22<span class="attribute">background</span>: yellow;</span><br><span class="line">2&#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">/* Safari 和 Chrome */</span></span><br><span class="line">@-<span class="keyword">webkit</span>-<span class="keyword">keyframes</span> frames &#123;</span><br><span class="line">2<span class="selector-tag">from</span> &#123;</span><br><span class="line">22<span class="attribute">background</span>: red;</span><br><span class="line">2&#125;</span><br><span class="line">2<span class="selector-tag">to</span> &#123;</span><br><span class="line">22<span class="attribute">background</span>: yellow;</span><br><span class="line">2&#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">/* Opera */</span></span><br><span class="line">@-<span class="keyword">o</span>-<span class="keyword">keyframes</span> frames &#123;</span><br><span class="line">2<span class="selector-tag">from</span> &#123;</span><br><span class="line">22<span class="attribute">background</span>: red;</span><br><span class="line">2&#125;</span><br><span class="line">2<span class="selector-tag">to</span> &#123;</span><br><span class="line">22<span class="attribute">background</span>: yellow;</span><br><span class="line">2&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">/* animation 把 "frames" 动画捆绑到 div 元素，时长：5 秒： */</span></span><br><span class="line"><span class="selector-tag">div</span> &#123;</span><br><span class="line">2<span class="attribute">animation</span>: frames <span class="number">5s</span>;</span><br><span class="line">2<span class="attribute">-moz-animation</span>: frames <span class="number">5s</span>;	<span class="comment">/* Firefox */</span></span><br><span class="line">2<span class="attribute">-webkit-animation</span>: frames <span class="number">5s</span>;	<span class="comment">/* Safari 和 Chrome */</span></span><br><span class="line">2<span class="attribute">-o-animation</span>: frames <span class="number">5s</span>;	<span class="comment">/* Opera */</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><strong>浏览器支持:</strong></p>
+<ul>
+<li>Internet Explorer 10、Firefox 以及 Opera 支持 <code>@keyframes</code> 规则和 <code>animation</code> 属性。</li>
+<li>Chrome 和 Safari 需要前缀 <code>-webkit-</code>。</li>
+<li>Internet Explorer 9，以及更早的版本，不支持 <code>@keyframes</code> 规则或 <code>animation</code> 属性。</li>
+</ul>
+<h2 id="参考："><a href="#参考：" class="headerlink" title="参考："></a>参考：</h2><p><a href="http:/* www.w3school.com.cn/css3/index.asp" target="_blank" rel="external">1.CSS3 教程</a></p>
+<h2 id="进阶："><a href="#进阶：" class="headerlink" title="进阶："></a>进阶：</h2><p><a href="http:/* blog.csdn.net/henren555/article/details/9699449" target="_blank" rel="external">1.理解CSS3 transform中的Matrix(矩阵)</a><br><a href="http:/* www.zhangxinxu.com/wordpress/2012/09/css3-3d-transform-perspective-animate-transition/" target="_blank" rel="external">2.好吧，CSS3 3D transform变换，不过如此！</a></p>
+
+        </div>
+        <footer class="article-footer">
+            
+    <div class="jiathis_style_24x24">
+    <span class="jiathis_txt">分享到：</span>
+    <a class="jiathis_button_qzone"></a>
+    <a class="jiathis_button_tsina"</a>
+    <a class="jiathis_button_weixin"></a>
+    <a class="jiathis_button_douban"></a>
+    <a class="jiathis_button_fb"></a>
+    <a class="jiathis_button_twitter"></a>
+    <a href="http://www.jiathis.com/share" class="jiathis jiathis_txt jiathis_separator jtico jtico_jiathis" target="_blank"></a>
+    <a class="jiathis_counter_style"></a>
+</div>
+<script type="text/javascript" src="http://v3.jiathis.com/code/jia.js" charset="utf-8"></script>
+<style>
+    .jiathis_style div:first-child:not(.jiadiv_01) {
+        width: auto !important;
+        border: none !important;
+    }
+    .jiathis_style .jiadiv_01 {
+        margin: 10px 0;
+        border-radius: 4px;
+        border: #e1e1e1 solid 1px;
+    }
+    .jiathis_style .jiadiv_01 div:first-child {
+        display: none;
+    }
+    .jiathis_style .jiadiv_02 {
+        padding: 7px 0 !important;
+    }
+    .jiathis_style .jiadiv_02 .jiatitle {
+        width: 85px;
+        border: none;
+        height: auto;
+        margin: 3px 10px;
+        padding: 6px 10px;
+        border-radius: 4px;
+    }
+    .jiathis_style .jiadiv_02 .jiatitle:hover {
+        border: none;
+    }
+    .jiathis_style .jiadiv_02 .jiatitle:nth-child(even) {
+        margin-left: 0;
+    }
+    .jiathis_style .jtico:hover {
+        opacity: 1;
+    }
+    .jiathis_style .ckepopBottom,
+    .jiathis_style .centerBottom {
+        width: auto !important;
+        padding: 5px;
+        background: #f7f7f7;
+    }
+</style>
+
+
+
+
+        </footer>
+
+    </div>
+</article>
+
+    <section id="comments">
+    
+        
+    <div id="disqus_thread">
+        <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+    </div>
+
+    
+    </section>
+
+
+              </div>
+            </section>
+            
+          </div>
+        </div>
+      </div>
+      <footer id="footer">
+    <div class="container">
+        <div class="container-inner">
+            <div class="credit">
+                <h1 class="logo-wrap">
+                    <a href="/" class="logo"></a>
+                </h1>
+                <p>&copy; 2018 tcatche</p>
+                <p>Powered by <a href="//hexo.io/" target="_blank">Hexo</a>. </p>
+                <p>Theme based <a href="//github.com/ppoffice" target="_blank">PPOffice</a> and modify by Tcatche. </p>
+                <p>Hosted by <a  href="https://pages.github.com/">Github Pages</a>. </p>
+            </div>
+        </div>
+    </div>
+</footer>
+      <div id="fixed">
+  <i class="fa fa-align-justify ins-search-icon"></i>
+  <div class="ins-search">
+    <div class="ins-search-mask"></div>
+    <div class="ins-search-container">
+        <div class="ins-input-wrapper">
+            <input type="text" class="ins-search-input" placeholder="想要查找什么..." />
+            <span class="ins-close ins-selectable"><i class="fa fa-times-circle"></i></span>
+        </div>
+        <div class="ins-section-wrapper">
+            <div class="ins-section-container"></div>
+        </div>
+    </div>
+</div>
+<script>
+(function (window) {
+    var INSIGHT_CONFIG = {
+        TRANSLATION: {
+            POSTS: '文章',
+            PAGES: '页面',
+            CATEGORIES: '分类',
+            TAGS: '标签',
+            UNTITLED: '(未命名)',
+        },
+        ROOT_URL: '/',
+        CONTENT_URL: '/content.json',
+    };
+    window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+})(window);
+</script>
+<script src="/js/insight.js"></script>
+  <i id="back-to-top" class="fa fa-arrow-up goto-top"></i>
+</div>
+      
+    
+    <script>
+    var disqus_shortname = 'tcatche';
+    
+    
+    var disqus_url = 'http://tcatche.site/2016/03/css3-transition-transform-animation/';
+    
+    (function() {
+    var dsq = document.createElement('script');
+    dsq.type = 'text/javascript';
+    dsq.async = true;
+    dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+    </script>
+
+
+
+
+    
+        <script src="/libs/lightgallery/js/lightgallery.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-thumbnail.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-pager.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-autoplay.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-fullscreen.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-zoom.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-hash.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-share.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-video.min.js"></script>
+    
+
+
+<!-- Custom Scripts -->
+<script src="/js/main.js"></script>
+
+    </div>
+  </div>
+</body>
+</html>

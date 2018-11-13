@@ -1,0 +1,395 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    
+    <title>React 内部原理，第二部分：添加 componentWillMount 和 componentDidMount | TryCatch</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    
+        <meta name="keywords" content="react,翻译" />
+    
+    
+
+    
+
+    
+
+    <link rel="stylesheet" href="/libs/font-awesome/css/font-awesome.min.css">
+    <link rel="stylesheet" href="/libs/titillium-web/styles.css">
+    <link rel="stylesheet" href="/libs/source-code-pro/styles.css">
+
+    <link rel="stylesheet" href="/css/style.css">
+
+    <script src="/libs/jquery/2.0.3/jquery.min.js"></script>
+    
+    
+        <link rel="stylesheet" href="/libs/lightgallery/css/lightgallery.min.css">
+    
+    
+        <script type="text/javascript">
+(function(i,s,o,g,r,a,m) {i['GoogleAnalyticsObject']=r;i[r]=i[r]||function() {
+(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+ga('create', 'UA-92905809-1', 'auto');
+ga('send', 'pageview');
+
+</script>
+    
+    
+        <script>
+var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "//hm.baidu.com/hm.js?409648b1638886ada0891d05cc80dc19";
+  var s = document.getElementsByTagName("script")[0];
+  s.parentNode.insertBefore(hm, s);
+})();
+</script>
+
+    
+    
+        <script>
+(function(){
+    var bp = document.createElement('script');
+    var curProtocol = window.location.protocol.split(':')[0];
+    if (curProtocol === 'https') {
+        bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';        
+    }
+    else {
+        bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+    }
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(bp, s);
+})();
+</script>
+    
+    
+
+</head>
+
+<body>
+  <div id="root">
+    <div id="page-percent">
+      <div></div>
+    </div>
+    <div id="wrap">
+      <header id="header">
+    <div id="header-outer" class="outer">
+        <div class="container">
+            <div id="header-nav" class="nav-container">
+                <div class="container-inner nav-container-inner">
+                    <ul id="main-nav">
+                        
+                                <li class="main-nav-list-item" >
+                                    <a class="main-nav-list-link" href="/">主页</a>
+                                </li>
+                        
+                                <ul class="main-nav-list"><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/Uncategory/">Uncategory</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/css/">css</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/html/">html</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/js/">js</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/翻译/">翻译</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/转载/">转载</a></li></ul>
+                            
+                                <li class="main-nav-list-item" >
+                                    <a class="main-nav-list-link" href="/">index.archives</a>
+                                </li>
+                        
+                    </ul>
+                </div>
+            </div>
+            <div id="header-title" style="display: none">
+                <div class="container-inner">
+                    <h1 class="logo-wrap">
+                        <a href="/" class="logo"></a>
+                    </h1>
+                    
+                        <h2 class="subtitle-wrap">
+                            <p class="subtitle">To try, then catch.</p>
+                        </h2>
+                    
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+      <div class="container">
+        <div class="bg_content">
+          <canvas id="canvas"></canvas>
+        </div>
+        <div class="main-body container-inner">
+          <div class="main-body-inner">
+            <section id="main">
+              <div class="main-body-content">
+                <article id="post-react-internals-part-two-componentWillMount-and-componentDidMount" class="article article-single article-type-post" itemscope itemprop="blogPost">
+
+    
+        <h1 class="article-title" itemprop="name">
+        React 内部原理，第二部分：添加 componentWillMount 和 componentDidMount
+        </h1>
+    
+
+    <div class="article-inner">
+        <header class="article-header" >
+            <div class="article-subtitle">
+                <div class="article-author-avatar">
+                    <img src="/images/avatar.png" alt="Author's avatar" height="44px" width="44px">
+                </div>
+                <div class="article-count">
+                    <div class="article-author">
+                        tcatche
+                    </div>
+                    <a href="/2017/07/react-internals-part-two-componentWillMount-and-componentDidMount/" class="article-date">
+    <i class="icon fa fa-calendar"></i>
+    <time datetime="2017-07-25T08:18:00.000Z" itemprop="datePublished">2017-07-25</time>
+</a>
+                    
+    <span class="word-count">
+      <i class="icon fa fa-file-text"></i>
+      字数: 1,261 
+    </span>
+    <span class="word-count">
+      <i class="icon fa fa-clock-o"></i>
+      阅读时长: 6mins 
+    </span>
+
+                </div>
+                <div class="article-dir">
+                    
+    <div class="article-category">
+    <i class="icon fa fa-list-ul"></i>
+    <a class="article-category-link" href="/categories/翻译/">翻译</a>
+    </div>
+
+                    
+    <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/react/">react</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/翻译/">翻译</a></li></ul>
+
+                </div>
+            </div>
+        </header>
+        
+        <div class="article-entry" itemprop="articleBody">
+            <blockquote>
+<p>原文：<a href="http://www.mattgreer.org/articles/react-internals-part-two-componentWillMount-and-componentDidMount/" target="_blank" rel="external">React Internals, Part Two: componentWillMount and componentDidMount</a></p>
+</blockquote>
+<p>In <a href="http://www.mattgreer.org/articles/react-internals-part-one-basic-rendering" target="_blank" rel="external">part one</a> we established basic rendering in Feact. That touched upon the most important lifecycle method, <code>render</code>, and now we’re going to add in <code>componentWillMount</code> and <code>componentDidMount</code> support to Feact.</p>
+<p>在<a href="http://www.mattgreer.org/articles/react-internals-part-one-basic-rendering" target="_blank" rel="external">part one</a> ，我们在 Feact 中建立了基本渲染。这涉及到最重要的生命周期方法，渲染（<code>render</code>），现在我们将在 Feact 添加 <code>componentWillMount</code> 和 <code>componentDidMount</code> 的支持。</p>
+<h2 id="The-series"><a href="#The-series" class="headerlink" title="The series"></a>The series</h2><ul>
+<li><a href="/articles/react-internals-part-one-basic-rendering">part one: basic rendering</a></li>
+<li><strong>part two: componentWillMount and componentDidMount</strong> &lt;- you are here</li>
+<li><a href="/articles/react-internals-part-three-basic-updating">part three: basic updating</a></li>
+<li><a href="/articles/react-internals-part-four-setState">part four: setState</a></li>
+<li><a href="http://www.mattgreer.org/articles/react-internals-part-five-transactions/" target="_blank" rel="external">part five: transactions</a></li>
+</ul>
+<p>全部译文：</p>
+<ul>
+<li><a href="/2017/07/react-internals-part-one-basic-rendering/">第一部分：基础渲染</a></li>
+<li><strong>第二部分：componentWillMount and componentDidMount</strong> &lt;- 当前位置</li>
+<li><a href="/2017/07/react-internals-part-three-basic-updating/">第三部分：基本更新</a></li>
+<li><a href="/2017/07/react-internals-part-four-setState/">第四部分：setState</a></li>
+<li><a href="/2017/08/react-internals-part-five-transactions/">第五部分：事务</a></li>
+</ul>
+<h2 id="首先，修复-createClass（First-fix-createClass）"><a href="#首先，修复-createClass（First-fix-createClass）" class="headerlink" title="首先，修复 createClass（First, fix createClass）"></a>首先，修复 createClass（First, fix createClass）</h2><p><code>createClass</code> back in part one only supported <code>render</code></p>
+<p><code>createClass</code> 在第一部分中仅支持 <code>render</code> 方法：</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">const</span> Feact = &#123;</span><br><span class="line">  createClass(spec) &#123;</span><br><span class="line">    <span class="function"><span class="keyword">function</span> <span class="title">Constructor</span>(<span class="params">props</span>) </span>&#123;</span><br><span class="line">      <span class="keyword">this</span>.props = props;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// we pluck render off and ignore the rest of spec</span></span><br><span class="line">    Constructor.prototype.render = spec.render;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> Constructor;</span><br><span class="line">  &#125;</span><br><span class="line">  ...</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>This is a simple fix, let’s add the entire spec to the component’s prototype. That allows methods like <code>componentWillMount</code>, but it also allows any arbitrary methods the user defined to be used.</p>
+<p>这是一个简单的修复，我们将整个规范的接口添加到组件的原型。这将允许使用如 <code>componentWillMount</code> 的方法，但它也允许使用用户定义的任意方法。</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">const</span> Feact = &#123;</span><br><span class="line">  createClass(spec) &#123;</span><br><span class="line">    <span class="function"><span class="keyword">function</span> <span class="title">Constructor</span>(<span class="params">props</span>) </span>&#123;</span><br><span class="line">      <span class="keyword">this</span>.props = props;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    Constructor.prototype =</span><br><span class="line">      <span class="built_in">Object</span>.assign(Constructor.prototype, spec);</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> Constructor;</span><br><span class="line">  &#125;</span><br><span class="line">  ...</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="解决-mountComponent-的快捷方式（Addressing-mountComponent’s-shortcut）"><a href="#解决-mountComponent-的快捷方式（Addressing-mountComponent’s-shortcut）" class="headerlink" title="解决 mountComponent 的快捷方式（Addressing mountComponent’s shortcut）"></a>解决 mountComponent 的快捷方式（Addressing mountComponent’s shortcut）</h2><p>Back in part one, I noted that <code>FeactCompositeComponentWrapper#mountComponent</code> had taken a shortcut. This shortcut will prevent lifecycle methods such as <code>componentWillMount</code> from getting called.</p>
+<p>回到第一部分，注意到 <code>FeactCompositeComponentWrapper.mountComponent</code> 采取了一个快捷实现。此快捷实现方式将阻止诸如 <code>componentWillMount</code> 之类的生命周期方法被调用。</p>
+<p>Here’s <code>mountComponent</code> as it stood in part one</p>
+<p>这是第一部分的 <code>mountComponent</code>：</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">FeactCompositeComponentWrapper</span> </span>&#123;</span><br><span class="line">  <span class="keyword">constructor</span>(element) &#123;</span><br><span class="line">    <span class="keyword">this</span>._currentElement = element;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  mountComponent(container) &#123;</span><br><span class="line">    <span class="keyword">const</span> Component = <span class="keyword">this</span>._currentElement.type;</span><br><span class="line">    <span class="keyword">const</span> componentInstance = <span class="keyword">new</span> Component(<span class="keyword">this</span>._currentElement.props);</span><br><span class="line"></span><br><span class="line">    <span class="keyword">let</span> element = componentInstance.render();</span><br><span class="line"></span><br><span class="line">    <span class="keyword">while</span> (<span class="keyword">typeof</span> element.type === <span class="string">'function'</span>) &#123;</span><br><span class="line">      element = (<span class="keyword">new</span> element.type(element.props)).render();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">const</span> domComponentInstance = <span class="keyword">new</span> FeactDOMComponent(element);</span><br><span class="line">    <span class="keyword">return</span> domComponentInstance.mountComponent(container);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><code>mountComponent</code> is working its way down to a native element. As long as <code>render()</code> returns a composite component element, it calls <code>render</code> again until it finally gets a native element. The problem is these sub composite components are not privy to the entire lifecycle. In other words, their <code>render</code> method is being called, but that’s it. What we really need to do is properly mount all components.</p>
+<p><code>mountComponent</code> 正在不断向下调用直到返回一个原生元素。只要 <code>render()</code> 返回一个复合组件元素，它就一直调用 <code>render</code> ，直到它最终获得一个原生元素。问题是这些子复合组件不清楚整个生命周期。换句话说，它们的渲染方法被调用，就是这样。我们真正需要做的是正确挂载所有组件。 </p>
+<p>To fix this, let’s have something else do the mounting for us</p>
+<p>为了解决这个问题，让我们为处理挂载</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">FeactCompositeComponentWrapper</span> </span>&#123;</span><br><span class="line">  ...</span><br><span class="line">  mountComponent(container) &#123;</span><br><span class="line">    <span class="keyword">const</span> Component = <span class="keyword">this</span>._currentElement.type;</span><br><span class="line">    <span class="keyword">const</span> componentInstance = <span class="keyword">new</span> Component(<span class="keyword">this</span>._currentElement.props);</span><br><span class="line">    <span class="keyword">this</span>._instance = componentInstance;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">const</span> markup = <span class="keyword">this</span>.performInitialMount(container);</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> markup;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  performInitialMount(container) &#123;</span><br><span class="line">    <span class="keyword">const</span> renderedElement = <span class="keyword">this</span>._instance.render();</span><br><span class="line"></span><br><span class="line">    <span class="keyword">const</span> child = instantiateFeactComponent(renderedElement);</span><br><span class="line">    <span class="keyword">this</span>._renderedComponent = child;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> FeactReconciler.mountComponent(child, container);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> FeactReconciler = &#123;</span><br><span class="line">  mountComponent(internalInstance, container) &#123;</span><br><span class="line">    <span class="keyword">return</span> internalInstance.mountComponent(container);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">instantiateFeactComponent</span>(<span class="params">element</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">if</span> (<span class="keyword">typeof</span> element.type === <span class="string">'string'</span>) &#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">new</span> FeactDOMComponent(element);</span><br><span class="line">  &#125; <span class="keyword">else</span> <span class="keyword">if</span> (<span class="keyword">typeof</span> element.type === <span class="string">'function'</span>) &#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">new</span> FeactCompositeComponentWrapper(element);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>This is a fair amount of new code, but the basic idea is to move mounting out into another layer. That’s the job of <code>FeactReconciler</code>, which will also gain more jobs as we move forward. Over in React, there is <code>ReactReconciler</code> which is serving the same role.</p>
+<p>这是相当数量的新代码，但基本思想是将挂载移至另一层。这是 <code>FeactReconciler</code> 的工作，随着我们的前进，也将有更多的工作要做。在 React 中，<code>ReactReconciler</code> 扮演同样的角色。 </p>
+<blockquote>
+<p>Remember the tight coupling that was called out in part one? It’s gone now, <code>FeactCompositeComponentWrapper</code> is usable in more places now, which is a good thing.</p>
+</blockquote>
+<blockquote>
+<p>还记得在第一部分中提到的紧耦合？现在已经消失了，<code>FeactCompositeComponentWrapper</code> 现在可以在更多的地方使用，这是件好事。</p>
+</blockquote>
+<h2 id="调整-Feact-render-（Tweaking-Feact-render-）"><a href="#调整-Feact-render-（Tweaking-Feact-render-）" class="headerlink" title="调整 Feact.render()（Tweaking Feact.render()）"></a>调整 Feact.render()（Tweaking <code>Feact.render()</code>）</h2><p><code>Feact.render()</code> is calling <code>componentInstance.mountComponent(container)</code> in part one. Let’s change that and instead have <code>FeactReconciler</code> deal with all mounting</p>
+<p><code>Feact.render()</code> 在第一部分中调用 <code>componentInstance.mountComponent(container)</code>。让我们改变一下，使用 <code>FeactReconciler</code> 处理所有的挂载。</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">const</span> Feact = &#123;</span><br><span class="line">  ...</span><br><span class="line">  render(element, container) &#123;</span><br><span class="line">    <span class="keyword">const</span> wrapperElement = <span class="keyword">this</span>.createElement(TopLevelWrapper, element);</span><br><span class="line"></span><br><span class="line">    <span class="keyword">const</span> componentInstance = <span class="keyword">new</span> FeactCompositeComponentWrapper(wrapperElement);</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> FeactReconciler.mountComponent(</span><br><span class="line">      componentInstance,</span><br><span class="line">      container</span><br><span class="line">    );</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>And with that, all composite component elements will get properly mounted. This sets them up properly for participating in the entire Feact lifecycle.</p>
+<p>现在，所有复合组件元素都将正确挂载。可以开始参与整个 Feact 生命周期。</p>
+<h2 id="最后添加-componentWillMount-和-componentDidMount（Finally-adding-componentWillMount-and-componentDidMount）"><a href="#最后添加-componentWillMount-和-componentDidMount（Finally-adding-componentWillMount-and-componentDidMount）" class="headerlink" title="最后添加 componentWillMount 和 componentDidMount（Finally adding componentWillMount and componentDidMount）"></a>最后添加 componentWillMount 和 componentDidMount（Finally adding componentWillMount and componentDidMount）</h2><p>Now with all the setup out of the way, actually adding support for these two is simple. Just before mounting, call <code>componentWillMount</code> if it exists. Likewise, just after mounting, call <code>componentDidMount</code> if it exists</p>
+<p>实际上，添加对这两个生命周期方法的支持很简单。在组件挂载之前，如果存在，调用 <code>componentWillMount</code>。同样的，在挂载之后，如果存在，调用 <code>componentDidMount</code>。</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">FeactCompositeComponentWrapper</span> </span>&#123;</span><br><span class="line">  ...</span><br><span class="line">  mountComponent(container) &#123;</span><br><span class="line">    <span class="keyword">const</span> Component = <span class="keyword">this</span>._currentElement.type;</span><br><span class="line">    <span class="keyword">const</span> componentInstance = <span class="keyword">new</span> Component(<span class="keyword">this</span>._currentElement.props);</span><br><span class="line">    <span class="keyword">this</span>._instance = componentInstance;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">if</span> (componentInstance.componentWillMount) &#123;</span><br><span class="line">      componentInstance.componentWillMount();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">const</span> markUp = <span class="keyword">this</span>.performInitialMount(container);</span><br><span class="line"></span><br><span class="line">    <span class="keyword">if</span> (componentInstance.componentDidMount) &#123;</span><br><span class="line">      componentInstance.componentDidMount();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> markUp;</span><br><span class="line">  &#125;,</span><br><span class="line">  ...</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="第二部分总结（Concluding-part-two）"><a href="#第二部分总结（Concluding-part-two）" class="headerlink" title="第二部分总结（Concluding part two）"></a>第二部分总结（Concluding part two）</h2><p>That wraps up part two. Here is a fiddle encompassing all we’ve done</p>
+<p>这就是第二部分，这是一个 fiddle 在线示例，包含我们目前所实现的代码：</p>
+<p>fiddle 在线示例：<a href="https://jsfiddle.net/city41/L5u2z592/3/" target="_blank" rel="external">fiddle</a></p>
+<p>In <a href="http://www.mattgreer.org/articles/react-internals-part-three-basic-updating" target="_blank" rel="external">part three</a>, we’ll add support for updates.</p>
+<p>在 <a href="">第三部分</a> 我们将添加组件更新的支持。</p>
+
+        </div>
+        <footer class="article-footer">
+            
+    <div class="jiathis_style_24x24">
+    <span class="jiathis_txt">分享到：</span>
+    <a class="jiathis_button_qzone"></a>
+    <a class="jiathis_button_tsina"</a>
+    <a class="jiathis_button_weixin"></a>
+    <a class="jiathis_button_douban"></a>
+    <a class="jiathis_button_fb"></a>
+    <a class="jiathis_button_twitter"></a>
+    <a href="http://www.jiathis.com/share" class="jiathis jiathis_txt jiathis_separator jtico jtico_jiathis" target="_blank"></a>
+    <a class="jiathis_counter_style"></a>
+</div>
+<script type="text/javascript" src="http://v3.jiathis.com/code/jia.js" charset="utf-8"></script>
+<style>
+    .jiathis_style div:first-child:not(.jiadiv_01) {
+        width: auto !important;
+        border: none !important;
+    }
+    .jiathis_style .jiadiv_01 {
+        margin: 10px 0;
+        border-radius: 4px;
+        border: #e1e1e1 solid 1px;
+    }
+    .jiathis_style .jiadiv_01 div:first-child {
+        display: none;
+    }
+    .jiathis_style .jiadiv_02 {
+        padding: 7px 0 !important;
+    }
+    .jiathis_style .jiadiv_02 .jiatitle {
+        width: 85px;
+        border: none;
+        height: auto;
+        margin: 3px 10px;
+        padding: 6px 10px;
+        border-radius: 4px;
+    }
+    .jiathis_style .jiadiv_02 .jiatitle:hover {
+        border: none;
+    }
+    .jiathis_style .jiadiv_02 .jiatitle:nth-child(even) {
+        margin-left: 0;
+    }
+    .jiathis_style .jtico:hover {
+        opacity: 1;
+    }
+    .jiathis_style .ckepopBottom,
+    .jiathis_style .centerBottom {
+        width: auto !important;
+        padding: 5px;
+        background: #f7f7f7;
+    }
+</style>
+
+
+
+
+        </footer>
+
+    </div>
+</article>
+
+    <section id="comments">
+    
+        
+    <div id="disqus_thread">
+        <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+    </div>
+
+    
+    </section>
+
+
+              </div>
+            </section>
+            
+          </div>
+        </div>
+      </div>
+      <footer id="footer">
+    <div class="container">
+        <div class="container-inner">
+            <div class="credit">
+                <h1 class="logo-wrap">
+                    <a href="/" class="logo"></a>
+                </h1>
+                <p>&copy; 2018 tcatche</p>
+                <p>Powered by <a href="//hexo.io/" target="_blank">Hexo</a>. </p>
+                <p>Theme based <a href="//github.com/ppoffice" target="_blank">PPOffice</a> and modify by Tcatche. </p>
+                <p>Hosted by <a  href="https://pages.github.com/">Github Pages</a>. </p>
+            </div>
+        </div>
+    </div>
+</footer>
+      <div id="fixed">
+  <i class="fa fa-align-justify ins-search-icon"></i>
+  <div class="ins-search">
+    <div class="ins-search-mask"></div>
+    <div class="ins-search-container">
+        <div class="ins-input-wrapper">
+            <input type="text" class="ins-search-input" placeholder="想要查找什么..." />
+            <span class="ins-close ins-selectable"><i class="fa fa-times-circle"></i></span>
+        </div>
+        <div class="ins-section-wrapper">
+            <div class="ins-section-container"></div>
+        </div>
+    </div>
+</div>
+<script>
+(function (window) {
+    var INSIGHT_CONFIG = {
+        TRANSLATION: {
+            POSTS: '文章',
+            PAGES: '页面',
+            CATEGORIES: '分类',
+            TAGS: '标签',
+            UNTITLED: '(未命名)',
+        },
+        ROOT_URL: '/',
+        CONTENT_URL: '/content.json',
+    };
+    window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+})(window);
+</script>
+<script src="/js/insight.js"></script>
+  <i id="back-to-top" class="fa fa-arrow-up goto-top"></i>
+</div>
+      
+    
+    <script>
+    var disqus_shortname = 'tcatche';
+    
+    
+    var disqus_url = 'http://tcatche.site/2017/07/react-internals-part-two-componentWillMount-and-componentDidMount/';
+    
+    (function() {
+    var dsq = document.createElement('script');
+    dsq.type = 'text/javascript';
+    dsq.async = true;
+    dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+    </script>
+
+
+
+
+    
+        <script src="/libs/lightgallery/js/lightgallery.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-thumbnail.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-pager.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-autoplay.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-fullscreen.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-zoom.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-hash.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-share.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-video.min.js"></script>
+    
+
+
+<!-- Custom Scripts -->
+<script src="/js/main.js"></script>
+
+    </div>
+  </div>
+</body>
+</html>

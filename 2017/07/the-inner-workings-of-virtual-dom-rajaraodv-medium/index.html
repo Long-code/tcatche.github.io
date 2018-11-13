@@ -1,0 +1,527 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    
+    <title>虚拟 DOM 内部是如何工作的？ | TryCatch</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    
+        <meta name="keywords" content="react,虚拟DOM" />
+    
+    
+
+    
+
+    
+
+    <link rel="stylesheet" href="/libs/font-awesome/css/font-awesome.min.css">
+    <link rel="stylesheet" href="/libs/titillium-web/styles.css">
+    <link rel="stylesheet" href="/libs/source-code-pro/styles.css">
+
+    <link rel="stylesheet" href="/css/style.css">
+
+    <script src="/libs/jquery/2.0.3/jquery.min.js"></script>
+    
+    
+        <link rel="stylesheet" href="/libs/lightgallery/css/lightgallery.min.css">
+    
+    
+        <script type="text/javascript">
+(function(i,s,o,g,r,a,m) {i['GoogleAnalyticsObject']=r;i[r]=i[r]||function() {
+(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+ga('create', 'UA-92905809-1', 'auto');
+ga('send', 'pageview');
+
+</script>
+    
+    
+        <script>
+var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "//hm.baidu.com/hm.js?409648b1638886ada0891d05cc80dc19";
+  var s = document.getElementsByTagName("script")[0];
+  s.parentNode.insertBefore(hm, s);
+})();
+</script>
+
+    
+    
+        <script>
+(function(){
+    var bp = document.createElement('script');
+    var curProtocol = window.location.protocol.split(':')[0];
+    if (curProtocol === 'https') {
+        bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';        
+    }
+    else {
+        bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+    }
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(bp, s);
+})();
+</script>
+    
+    
+
+</head>
+
+<body>
+  <div id="root">
+    <div id="page-percent">
+      <div></div>
+    </div>
+    <div id="wrap">
+      <header id="header">
+    <div id="header-outer" class="outer">
+        <div class="container">
+            <div id="header-nav" class="nav-container">
+                <div class="container-inner nav-container-inner">
+                    <ul id="main-nav">
+                        
+                                <li class="main-nav-list-item" >
+                                    <a class="main-nav-list-link" href="/">主页</a>
+                                </li>
+                        
+                                <ul class="main-nav-list"><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/Uncategory/">Uncategory</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/css/">css</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/html/">html</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/js/">js</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/翻译/">翻译</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/转载/">转载</a></li></ul>
+                            
+                                <li class="main-nav-list-item" >
+                                    <a class="main-nav-list-link" href="/">index.archives</a>
+                                </li>
+                        
+                    </ul>
+                </div>
+            </div>
+            <div id="header-title" style="display: none">
+                <div class="container-inner">
+                    <h1 class="logo-wrap">
+                        <a href="/" class="logo"></a>
+                    </h1>
+                    
+                        <h2 class="subtitle-wrap">
+                            <p class="subtitle">To try, then catch.</p>
+                        </h2>
+                    
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+      <div class="container">
+        <div class="bg_content">
+          <canvas id="canvas"></canvas>
+        </div>
+        <div class="main-body container-inner">
+          <div class="main-body-inner">
+            <section id="main">
+              <div class="main-body-content">
+                <article id="post-the-inner-workings-of-virtual-dom-rajaraodv-medium" class="article article-single article-type-post" itemscope itemprop="blogPost">
+
+    
+        <h1 class="article-title" itemprop="name">
+        虚拟 DOM 内部是如何工作的？
+        </h1>
+    
+
+    <div class="article-inner">
+        <header class="article-header" >
+            <div class="article-subtitle">
+                <div class="article-author-avatar">
+                    <img src="/images/avatar.png" alt="Author's avatar" height="44px" width="44px">
+                </div>
+                <div class="article-count">
+                    <div class="article-author">
+                        tcatche
+                    </div>
+                    <a href="/2017/07/the-inner-workings-of-virtual-dom-rajaraodv-medium/" class="article-date">
+    <i class="icon fa fa-calendar"></i>
+    <time datetime="2017-07-05T02:42:00.000Z" itemprop="datePublished">2017-07-05</time>
+</a>
+                    
+    <span class="word-count">
+      <i class="icon fa fa-file-text"></i>
+      字数: 3,140 
+    </span>
+    <span class="word-count">
+      <i class="icon fa fa-clock-o"></i>
+      阅读时长: 12mins 
+    </span>
+
+                </div>
+                <div class="article-dir">
+                    
+    <div class="article-category">
+    <i class="icon fa fa-list-ul"></i>
+    <a class="article-category-link" href="/categories/转载/">转载</a>
+    </div>
+
+                    
+    <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/react/">react</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/虚拟DOM/">虚拟DOM</a></li></ul>
+
+                </div>
+            </div>
+        </header>
+        
+        <div class="article-entry" itemprop="articleBody">
+            <blockquote>
+<p>本文转载自：<a href="http://www.zcfy.cc" target="_blank" rel="external">众成翻译</a><br>译者：<a href="http://www.zcfy.cc/@1992xiao" target="_blank" rel="external">我是搬运工</a><br>链接：<a href="http://www.zcfy.cc/article/3248" target="_blank" rel="external">http://www.zcfy.cc/article/3248</a><br>原文：<a href="https://medium.com/@rajaraodv/the-inner-workings-of-virtual-dom-666ee7ad47cf" target="_blank" rel="external">https://medium.com/@rajaraodv/the-inner-workings-of-virtual-dom-666ee7ad47cf</a></p>
+</blockquote>
+<p><img src="http://p0.qhimg.com/t01650dd501e89e96a2.png" alt=""></p>
+<p>流程图展现VDOM在Preact中如何工作</p>
+<p>虚拟DOM (VDOM 也叫 VNode)非常有魔力 ✨ 但是也非常复杂和难以理解😱. <a href="https://facebook.github.io/react/" target="_blank" rel="external">React</a>, 在<a href="https://preactjs.com" target="_blank" rel="external">Preact</a>和一些类似的JS库的核心代码中使用. 不幸的是我发现没有一篇好的文章或者文档简洁明了的来介绍它。 因此我决定自己写一篇.</p>
+<blockquote>
+<p>注意: 这篇文章很长. 我已经添加尽可能多的图片来使其理解更简单一些，但是我发现这样的话，文章更长了.</p>
+<p>我用的是 <a href="https://github.com/developit/preact/" target="_blank" rel="external">Preact’s</a> 代码 和 VDOM，因为它很小，你可以在将来很舒适的阅读它。 <strong>但是我相信几乎所有的概念同样适用于React.</strong></p>
+<p><strong>我希望你读完这篇文章后，能够很容易的理解像React或者Preact的库，甚至对你写出类似的库也是有帮助的</strong></p>
+</blockquote>
+<p>在这篇博客中，我将会举一些简单示例，并且复习一下不同的小知识，给你一个关于它们到底如何工作的概念。特别地，我会复习：</p>
+<ol>
+<li>Babel 和 JSX</li>
+<li>创建一个VNode - 一个简单的虚拟DOM元素</li>
+<li>处理组件及子组件</li>
+<li>初始化渲染并且创建一个DOM元素</li>
+<li>重新渲染</li>
+<li>移除DOM元素</li>
+<li>替换DOM元素</li>
+</ol>
+<h2 id="关于这个demo"><a href="#关于这个demo" class="headerlink" title="关于这个demo:"></a>关于这个demo:</h2><p>这是一个简单<a href="http://codepen.io/rajaraodv/pen/BQxmjj" target="_blank" rel="external">过滤搜索应用</a>， 仅包含有两个组件“<strong>FilteredList</strong>” 和 “<strong>List</strong>”。这个List组件渲染列表项（默认是“California” 和 “New York”）。这个应用有一个搜索的区域，可以根据字母来过滤列表项。非常的直观。</p>
+<p><img src="http://p0.qhimg.com/t01b37599547858bd50.png" alt=""></p>
+<p>相关图片</p>
+<blockquote>
+<p>应用代码: <a href="http://codepen.io/rajaraodv/pen/BQxmjj" target="_blank" rel="external">http://codepen.io/rajaraodv/pen/BQxmjj</a></p>
+</blockquote>
+<h2 id="大图"><a href="#大图" class="headerlink" title="大图"></a>大图</h2><p>高级一点儿，我们用JSX写了组件，可以通过<a href="http://babeljs.io" target="_blank" rel="external">babel</a>的命令行工具将其转换为原生的JS.然后Preact的“h”函数将它转换为虚拟DOM树（也称为 VNode）。最后Preact的虚拟DOM算法，根据虚拟DOM创建一个真实的DOM，来构成我们的应用。</p>
+<p><img src="http://p0.qhimg.com/t01b1706035bde74895.png" alt=""></p>
+<p>大图</p>
+<p><strong>在我们深入理解VDOM的生命周期之前，让我们理解下JSX，它为库提供了基础</strong></p>
+<h2 id="Babel-和-JSX"><a href="#Babel-和-JSX" class="headerlink" title="Babel 和 JSX"></a>Babel 和 JSX</h2><p>在React中，像Preact这样的库，没有HTML语法，取而代之的是<strong>一切皆Javascript</strong>。因此我们需要用Javascript来写HTML。但是用原生JS写DOM是一种噩梦。 😱</p>
+<p>对于我们的应用，我们将会像下面这样书写HTML:</p>
+<blockquote>
+<p>注意: 等会儿我会介绍“h”</p>
+</blockquote>
+<p><img src="http://p0.qhimg.com/t01962ca01dcca88140.png" alt=""></p>
+<p><img src="http://p0.qhimg.com/t01f5c9f9afe32faf8f.png" alt=""></p>
+<p>这就是JSX的由来，JSX本质上允许我们在Javascript中书写HTML!并且允许我们在HTML中的{}号中使用JS的语法。</p>
+<p>JSX帮助我们像下面这样很容易的书写组件：</p>
+<p><img src="http://p0.qhimg.com/t015003f0947a687084.png" alt=""></p>
+<p><img src="http://p0.qhimg.com/t01caeb3d84508386a6.png" alt=""></p>
+<h3 id="将JSX树转换为Javascript"><a href="#将JSX树转换为Javascript" class="headerlink" title="将JSX树转换为Javascript"></a>将JSX树转换为Javascript</h3><p>JSX很酷，但是不是合法的JS,但是根本上我们还是需要真实的DOM。JSX仅仅是帮助我们书写真实DOM的一种方法。除此之外，它毫无用处。</p>
+<p>因此我们需要一种方法将JSX转换为正确的JSON对象（VDOM 也是一个“树”形的结构），我们需要将JSX作为创建真实DOM的基础。我们函数来做这样的事情.</p>
+<p>在Preact中这个函数就是<a href="https://github.com/developit/preact/blob/master/src/h.js" target="_blank" rel="external">“h”函数</a>.它作用和React中的<a href="https://facebook.github.io/react/docs/react-api.html#createelement" target="_blank" rel="external">React.createElement</a>作用是一样的。</p>
+<blockquote>
+<p>“h”是指 <a href="https://github.com/dominictarr/hyperscript" target="_blank" rel="external">hyperscript</a> - 一种可以通过JS来创建HTML的库。</p>
+</blockquote>
+<p>但是怎样将JSX转换为“h”函数式的调用？这就是<a href="http://babeljs.io" target="_blank" rel="external">Babel</a>的由来。Babel可以很轻松的遍历JSX的节点，然后将它们转换为“h”函数式的调用。</p>
+<p><img src="http://p0.qhimg.com/t01d00183b2ca94d1b5.png" alt=""></p>
+<h3 id="Babel-JSX-React-Vs-Preact"><a href="#Babel-JSX-React-Vs-Preact" class="headerlink" title="Babel JSX (React Vs Preact)"></a><strong>Babel JSX (React Vs Preact)</strong></h3><p>在React中babel会将JSX转换为React.createElement函数调用</p>
+<p><img src="http://p0.qhimg.com/t01b6fed34159efe6ff.png" alt=""></p>
+<p>左边: JSX 右边: React 的JS版本 (点击放大)</p>
+<p>我们可以像下面这样增加[Babel Pragma]配置，可以很轻松为Preact的函数的名字起任何一个你想起的名字。</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line">Option <span class="number">1</span>:</span><br><span class="line"><span class="comment">//.babelrc</span></span><br><span class="line">&#123;   <span class="string">"plugins"</span>: [</span><br><span class="line">      [<span class="string">"transform-react-jsx"</span>, &#123; <span class="string">"pragma"</span>: <span class="string">"h"</span> &#125;]</span><br><span class="line">     ] </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line">Option <span class="number">2</span>:</span><br><span class="line"><span class="comment">//Add the below comment as the 1st line in every JSX file</span></span><br><span class="line"><span class="string">`/** @jsx h */`</span></span><br></pre></td></tr></table></figure>
+<p><img src="http://p0.qhimg.com/t01b0f84460957163e6.png" alt=""></p>
+<p>“h” —通过Babel的配置 (点击放大)</p>
+<h3 id="挂载到真实DOM"><a href="#挂载到真实DOM" class="headerlink" title="挂载到真实DOM"></a>挂载到真实DOM</h3><p>组件的的render方法中的代码不仅被转换为“h”函数，而且开始挂载。</p>
+<p><strong>这是执行和一切的开始</strong></p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="comment">//Mount to real DOM</span></span><br><span class="line">render(<span class="xml"><span class="tag">&lt;<span class="name">FilteredList</span>/&gt;</span></span>, <span class="built_in">document</span>.getElementById(‘app’));</span><br></pre></td></tr></table></figure>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="comment">//Converted to "h":</span></span><br><span class="line">render(**h(FilteredList)**, <span class="built_in">document</span>.getElementById(‘app’));</span><br></pre></td></tr></table></figure>
+<h3 id="“h”函数的输出"><a href="#“h”函数的输出" class="headerlink" title="“h”函数的输出"></a>“h”函数的输出</h3><p>The “h” function takes the output of JSX and creates something called a “VNode” (React’s “createElement” creates ReactElement). A Preact’s “VNode” (or a React’s “Element”) is simply a JS object representation of a single DOM node with it’s properties and children.</p>
+<p>看起来像下面这样:</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line">&#123;</span><br><span class="line">   <span class="string">"nodeName"</span>: <span class="string">""</span>,</span><br><span class="line">   <span class="string">"attributes"</span>: &#123;&#125;,</span><br><span class="line">   <span class="string">"children"</span>: []</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>举个例子，我们的应用的Input表单的VNode像这样：</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line">&#123;</span><br><span class="line">   <span class="string">"nodeName"</span>: <span class="string">"input"</span>,</span><br><span class="line">   <span class="string">"attributes"</span>: &#123;</span><br><span class="line">    <span class="string">"type"</span>: <span class="string">"text"</span>,</span><br><span class="line">    <span class="string">"placeholder"</span>: <span class="string">"Search"</span>,</span><br><span class="line">    <span class="string">"onChange"</span>: <span class="string">""</span></span><br><span class="line">   &#125;,</span><br><span class="line">   <span class="string">"children"</span>: []</span><br><span class="line">  &#125;</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p><strong>Note: “h” function doesn’t create the entire tree!</strong> It simply creates JS object for a given node. But since the “<strong>render</strong>” method already has the DOM JSX in a tree fashion, the end result will be a VNode with children and grand children that looks like a tree.<br><strong>注意“h”函数不会创建完整的树</strong> 它仅仅对于给定的node创建了一个JS对象。但是。 最后的结果将会是一个带有子元素和看起来像树的重要子元素的VNode.</p>
+<p><strong><em>参考代码:</em></strong></p>
+<p><strong><em>“h” :</em></strong><a href="https://github.com/developit/preact/blob/master/src/h.js" target="_blank" rel="external"><em>https://github.com/developit/preact/blob/master/src/h.js</em></a></p>
+<p><strong>VNode</strong>: <a href="https://github.com/developit/preact/blob/master/src/vnode.js" target="_blank" rel="external">https://github.com/developit/preact/blob/master/src/vnode.js</a></p>
+<p><strong><em>“render”:</em></strong> <a href="https://github.com/developit/preact/blob/master/src/render.js" target="_blank" rel="external"><em>https://github.com/developit/preact/blob/master/src/render.js</em></a></p>
+<p><strong>“buildComponentFromVNode:</strong> <a href="https://github.com/developit/preact/blob/master/src/vdom/diff.js#L102" target="_blank" rel="external">https://github.com/developit/preact/blob/master/src/vdom/diff.js#L102</a></p>
+</blockquote>
+<p>好了，让我们看下虚拟DOM如何工作的？</p>
+<h2 id="Preact虚拟DOM的算法流程图"><a href="#Preact虚拟DOM的算法流程图" class="headerlink" title="Preact虚拟DOM的算法流程图"></a>Preact虚拟DOM的算法流程图</h2><p>下面的流程图展现了组件和子组件如何被Preact创建，更新，删除的。也展现了生命周期的不同阶段，对应的回调函数被调用，像“componentWillMount”。</p>
+<blockquote>
+<p>注意： 我们会一步一步的复习每一部分，如果你会觉复杂，不用担心。</p>
+</blockquote>
+<p><img src="http://p0.qhimg.com/t01650dd501e89e96a2.png" alt=""></p>
+<p>是的，立马理解所有的知识很难。让我们一步一步得通过浏览不同的情景，来复习流程图的不同部分。</p>
+<blockquote>
+<p>注意： 当讨论到关键的生命周期的部分我将会用黄色高亮。</p>
+</blockquote>
+<h3 id="APP创建初始化"><a href="#APP创建初始化" class="headerlink" title="APP创建初始化"></a>APP创建初始化</h3><h4 id="对一个给定的组件创建一个VNode"><a href="#对一个给定的组件创建一个VNode" class="headerlink" title=" 对一个给定的组件创建一个VNode"></a> 对一个给定的组件创建一个VNode</h4><p>黄色高亮区域对于一个给定的组件创建虚拟DOM数，初始化处理循环。注意没有为子组件创建虚拟DOM（这是个不同的循环）</p>
+<p><img src="http://p0.qhimg.com/t01664655dceb95a9a1.png" alt=""></p>
+<p>黄色区域展示了虚拟DOM的创建</p>
+<p>下面这张图片展示了当我们应用第一次加载的时候发生了什么。这个库最终为主要组件“FilteredList”创建了一个带有子元素和属性的VNode。</p>
+<blockquote>
+<p>注意： 它连着调用了生命周期方法“componentWillMount” 和 “render”.(看上面图片绿色的部分)</p>
+</blockquote>
+<p><img src="http://p0.qhimg.com/t01fcd8446c6c92d5b0.png" alt=""></p>
+<p>(click to zoom)</p>
+<p>这个时候，我们有了个“<strong>div</strong>”的父元素，它包含了子节点“<strong>input</strong>”和“<strong>list</strong>”。</p>
+<blockquote>
+<p><strong>引用:</strong></p>
+<p><em>大多数的生命周期事件，像componentWillMount,render等等:</em> <a href="https://github.com/developit/preact/blob/master/src/vdom/component.js#L101" target="_blank" rel="external"><em>https://github.com/developit/preact/blob/master/src/vdom/component.j</em></a>_s_</p>
+</blockquote>
+<h4 id="如果不是一个组件，创建一个真实的DOM"><a href="#如果不是一个组件，创建一个真实的DOM" class="headerlink" title=" 如果不是一个组件，创建一个真实的DOM"></a> 如果不是一个组件，创建一个真实的DOM</h4><p>这一步，它仅会对父元素div创建一个真实的DOM，并且对于子节点（“input” 和 “List”）重复这一步骤。</p>
+<p><img src="http://p0.qhimg.com/t01dcb74436f87867b2.png" alt=""></p>
+<p>黄色的循环部分展现了子组件的创建。</p>
+<p>这一步，下面的图片中仅仅“div”被显示出来了。</p>
+<p><img src="http://p0.qhimg.com/t01adebc68f3eb03aea.png" alt=""></p>
+<blockquote>
+<p><strong>引用:</strong></p>
+<p>document.createElement: <a href="https://github.com/developit/preact/blob/master/src/dom/recycler.js" target="_blank" rel="external">https://github.com/developit/preact/blob/master/src/dom/recycler.js</a></p>
+</blockquote>
+<h4 id="对所有的子元素重复这一步"><a href="#对所有的子元素重复这一步" class="headerlink" title=" 对所有的子元素重复这一步"></a> 对所有的子元素重复这一步</h4><p>这一步，对所有的子元素将会重复这一步。在我们的应用中，会对“input” 和 “List” 重复。</p>
+<p><img src="http://p0.qhimg.com/t01966ffb3fa1564b4b.png" alt=""></p>
+<p>对每一个子元素重复</p>
+<h4 id="处理子元素，并且把它加到父元素上"><a href="#处理子元素，并且把它加到父元素上" class="headerlink" title=" 处理子元素，并且把它加到父元素上."></a> 处理子元素，并且把它加到父元素上.</h4><p>这一步我们将会处理子树。既然“input”有一个父元素“div”,我们将会把input作为一个子元素加到div中。然后停止，返回创建“List”（第二个div子元素）。</p>
+<p><img src="http://p0.qhimg.com/t01257885ea61c2992d.png" alt=""></p>
+<p>结束处理子树</p>
+<p>这一步，我们的应用看起来像下面这样:</p>
+<p><img src="http://p0.qhimg.com/t01728594789f678bc4.png" alt=""></p>
+<blockquote>
+<p>注意： “input”被创建后，由于没有任何一个子元素，不会理解循环和创建“List”。它会首先将“input”加入到父元素“div”中，然后返回处理“List”。</p>
+<p><strong>引用:</strong></p>
+<p>appendChild: <a href="https://github.com/developit/preact/blob/master/src/vdom/diff.js" target="_blank" rel="external">https://github.com/developit/preact/blob/master/src/vdom/diff.js</a></p>
+</blockquote>
+<h4 id="处理子组件（们）"><a href="#处理子组件（们）" class="headerlink" title="处理子组件（们）"></a>处理子组件（们）</h4><p>控制流程回到1.1，对“List”组件开始所有的。但是“List”是一个组件，它调用“List”组件的方法<strong>render</strong>，得到一组新的虚DOM，像下面这样</p>
+<p><img src="http://p0.qhimg.com/t01966ffb3fa1564b4b.png" alt=""></p>
+<p>对一个子组件重复所有的操作</p>
+<p>对List组件重复操作之后，返回VNode像下面这样：</p>
+<p><img src="http://p0.qhimg.com/t01859cedc26e787464.png" alt=""></p>
+<blockquote>
+<p><strong>引用:</strong></p>
+<p><strong>“buildComponentFromVNode:</strong> <a href="https://github.com/developit/preact/blob/master/src/vdom/diff.js#L102" target="_blank" rel="external">https://github.com/developit/preact/blob/master/src/vdom/diff.js#L102</a></p>
+</blockquote>
+<h4 id="对所有子节点重复上面四小节的步骤"><a href="#对所有子节点重复上面四小节的步骤" class="headerlink" title="对所有子节点重复上面四小节的步骤"></a>对所有子节点重复上面四小节的步骤</h4><p>它会再一次对每一个节点重复上面的步骤。一旦它到达子节点，就会把它加入到节点的父节点，并且重复处理。</p>
+<p><img src="http://p0.qhimg.com/t01ce6b5e0e66508692.png" alt=""></p>
+<p>重复这一步骤，直到所有的父子节点被创建和添加。</p>
+<p>下面的图片展示了每个节点的添加(提示： 深度优先)</p>
+<p><img src="http://p0.qhimg.com/t0107d4791694611c9e.png" alt=""></p>
+<p>真实的DOM树如何被虚拟DOM算法创建的。</p>
+<h4 id="结束处理"><a href="#结束处理" class="headerlink" title="结束处理"></a>结束处理</h4><p>这一步，结束处理。它仅对所有的组件调用了“componentDidMount”(从子组件到父组件)并且停止。</p>
+<p><img src="http://p0.qhimg.com/t015cf94d166effd233.png" alt=""></p>
+<blockquote>
+<p><strong>重要提示:</strong> 一旦所有所有做完之后，一个真实DOM的引用被添加到每个组件的实例上去。这个引用被用来更新（创建，更新，删除）比较，避免重复创建同样的DOM节点。</p>
+</blockquote>
+<h3 id="删除叶子节点"><a href="#删除叶子节点" class="headerlink" title="删除叶子节点"></a>删除叶子节点</h3><p>当我们输入“cal” 关键字，确认。将会移除掉第二个list节点，保留所有的父节点。</p>
+<p><img src="http://p0.qhimg.com/t01bc4525ca178ab3c2.png" alt=""></p>
+<p>让我们看下，怎么样看这个情景？</p>
+<h4 id="像之前那样创建VNodes"><a href="#像之前那样创建VNodes" class="headerlink" title="像之前那样创建VNodes."></a>像之前那样创建VNodes.</h4><p>当初始化渲染之后，未来的每一个变化都是一个更新。当需要创建VNodes时，更新的周期工作跟创建的周期非常的相似，并且<strong>再一次创建所有的VNodes</strong>。</p>
+<p>既然是一个组件的更新（不是创建），每个组件和子组件都会调用“componentWillReceiveProps”, “shouldComponentUpdate”, 和 “componentWillUpdate”</p>
+<p><strong>另外, update cycle, 如果那些元素已经存在不会重复创建真实的DOM。</strong></p>
+<p><img src="http://p0.qhimg.com/t015a5d5025d8cbbb37.png" alt=""></p>
+<p>更新组件的生命周期</p>
+<blockquote>
+<p><strong>引用</strong></p>
+<p><strong>removeNode:</strong> <a href="https://github.com/developit/preact/blob/master/src/dom/index.js#L9" target="_blank" rel="external">https://github.com/developit/preact/blob/master/src/dom/index.js#L9</a></p>
+<p><strong>insertBefore:</strong> <a href="https://github.com/developit/preact/blob/master/src/vdom/diff.js#L253" target="_blank" rel="external">https://github.com/developit/preact/blob/master/src/vdom/diff.js#L253</a></p>
+</blockquote>
+<h4 id="用引用的真实DOM，避免创建重复的nodes"><a href="#用引用的真实DOM，避免创建重复的nodes" class="headerlink" title="用引用的真实DOM，避免创建重复的nodes"></a>用引用的真实DOM，避免创建重复的nodes</h4><p>像之前提到的，在初始化加载期间，每个组件相对应我们创建的真实DOM树有一个引用。下面这张图片展现了这一刻我们的应用的引用。</p>
+<p><img src="http://p0.qhimg.com/t01db912917e174e1e9.png" alt=""></p>
+<p>显示每一个组件 和 之前的DOM的差异</p>
+<p>当虚拟DOM被创建，每个虚拟DOM的属性都会跟真实DOM的属性进行比较<strong>如果真实DOM存在，循环处理将会进行下一步</strong></p>
+<p><img src="http://p0.qhimg.com/t01f1f88dc5c45f6dbd.png" alt=""></p>
+<p>真实DOM已经存在（在更新期间）</p>
+<blockquote>
+<p><strong>引用</strong></p>
+<p>innerDiffNode: <a href="https://github.com/developit/preact/blob/master/src/vdom/diff.js#L185" target="_blank" rel="external">https://github.com/developit/preact/blob/master/src/vdom/diff.js#L185</a></p>
+</blockquote>
+<h4 id="如果他们在真实的DOM中是额外的节点，移除他们"><a href="#如果他们在真实的DOM中是额外的节点，移除他们" class="headerlink" title="如果他们在真实的DOM中是额外的节点，移除他们"></a>如果他们在真实的DOM中是额外的节点，移除他们</h4><p>下面的图片展现了真实DOM和虚拟DOM的差异</p>
+<p><img src="http://p0.qhimg.com/t017b07b476b9c72aef.png" alt=""></p>
+<p>(click to zoom)</p>
+<p>这里有一点儿不同。在真实节点中的“New York”节点被算法移除了像下面流程图那样。当所有工作进行完毕算法也会调用“componentDidUpdate”。</p>
+<p><img src="http://p0.qhimg.com/t01a84a880aeccf04a9.png" alt=""></p>
+<p>移除DOM节点生命周期</p>
+<h3 id="卸载整个组件"><a href="#卸载整个组件" class="headerlink" title="卸载整个组件"></a>卸载整个组件</h3><p>让我们看看在filter组件中输入<strong>blabla</strong>，既然没有匹配到“California” 和 “New York”, 我们不会渲染子组件“List”,这意味着我们需要卸载整个组件。</p>
+<p><img src="http://p0.qhimg.com/t011fc57fa43c385ab2.png" alt="">如果没有结果的话List组件没有被移除</p>
+<p><img src="http://p0.qhimg.com/t0163a27c31d0e173cb.png" alt="">组件FilteredList的render方法</p>
+<p>删除一个组件跟删除一个单一节点差不多，当我们删除一个相对于组件有引用的节点，框架会调用“componentWillUnmount”,然后安全的删除所有的DOM元素。当所有的元素从真实DOM移除，将会调用引用的组件的“componentDidUnmount”方法。</p>
+<p>下面的图片显示在真实的DOM“ul”中，“List”组件的引用。</p>
+<p><img src="http://p0.qhimg.com/t01efcb4c720da55814.png" alt=""></p>
+<p>下面流程图的高亮部分展现了移除和卸载组件的过程</p>
+<p><img src="http://p0.qhimg.com/t01f8b4703563e3d64b.png" alt=""></p>
+<p>移除和卸载组件</p>
+<blockquote>
+<p><strong>引用</strong></p>
+<p>unmountComponent: <a href="https://github.com/developit/preact/blob/master/src/vdom/component.js#L250" target="_blank" rel="external">https://github.com/developit/preact/blob/master/src/vdom/component.js#L250</a></p>
+</blockquote>
+<h2 id="最后一点"><a href="#最后一点" class="headerlink" title="最后一点:"></a><strong>最后一点:</strong></h2><p>我希望这篇博文能够给你关于虚拟DOM如何工作足够的启示（至少在Preact中）。</p>
+<p>虽然这些覆盖了主要的场景，但是我还没讲到代码的优化。</p>
+<p><strong>如果你发现问题，通知我，我非常乐意更新！如果你想知道更多，也请告诉我！</strong></p>
+<p>就这样! 🙏🏼 👍</p>
+<p><em>🎉🎉🎉</em> <strong><em>如果你喜欢这篇文章, please 1.</em></strong> 💚<strong>在Medium点喜欢 and 2. 在twitter上分享._</strong><em>🎉🎉🎉</em></p>
+<p>你可以在这里找到我: <a href="https://twitter.com/rajaraodv" target="_blank" rel="external">https://twitter.com/rajaraodv</a></p>
+
+        </div>
+        <footer class="article-footer">
+            
+    <div class="jiathis_style_24x24">
+    <span class="jiathis_txt">分享到：</span>
+    <a class="jiathis_button_qzone"></a>
+    <a class="jiathis_button_tsina"</a>
+    <a class="jiathis_button_weixin"></a>
+    <a class="jiathis_button_douban"></a>
+    <a class="jiathis_button_fb"></a>
+    <a class="jiathis_button_twitter"></a>
+    <a href="http://www.jiathis.com/share" class="jiathis jiathis_txt jiathis_separator jtico jtico_jiathis" target="_blank"></a>
+    <a class="jiathis_counter_style"></a>
+</div>
+<script type="text/javascript" src="http://v3.jiathis.com/code/jia.js" charset="utf-8"></script>
+<style>
+    .jiathis_style div:first-child:not(.jiadiv_01) {
+        width: auto !important;
+        border: none !important;
+    }
+    .jiathis_style .jiadiv_01 {
+        margin: 10px 0;
+        border-radius: 4px;
+        border: #e1e1e1 solid 1px;
+    }
+    .jiathis_style .jiadiv_01 div:first-child {
+        display: none;
+    }
+    .jiathis_style .jiadiv_02 {
+        padding: 7px 0 !important;
+    }
+    .jiathis_style .jiadiv_02 .jiatitle {
+        width: 85px;
+        border: none;
+        height: auto;
+        margin: 3px 10px;
+        padding: 6px 10px;
+        border-radius: 4px;
+    }
+    .jiathis_style .jiadiv_02 .jiatitle:hover {
+        border: none;
+    }
+    .jiathis_style .jiadiv_02 .jiatitle:nth-child(even) {
+        margin-left: 0;
+    }
+    .jiathis_style .jtico:hover {
+        opacity: 1;
+    }
+    .jiathis_style .ckepopBottom,
+    .jiathis_style .centerBottom {
+        width: auto !important;
+        padding: 5px;
+        background: #f7f7f7;
+    }
+</style>
+
+
+
+
+        </footer>
+
+    </div>
+</article>
+
+    <section id="comments">
+    
+        
+    <div id="disqus_thread">
+        <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+    </div>
+
+    
+    </section>
+
+
+              </div>
+            </section>
+            
+          </div>
+        </div>
+      </div>
+      <footer id="footer">
+    <div class="container">
+        <div class="container-inner">
+            <div class="credit">
+                <h1 class="logo-wrap">
+                    <a href="/" class="logo"></a>
+                </h1>
+                <p>&copy; 2018 tcatche</p>
+                <p>Powered by <a href="//hexo.io/" target="_blank">Hexo</a>. </p>
+                <p>Theme based <a href="//github.com/ppoffice" target="_blank">PPOffice</a> and modify by Tcatche. </p>
+                <p>Hosted by <a  href="https://pages.github.com/">Github Pages</a>. </p>
+            </div>
+        </div>
+    </div>
+</footer>
+      <div id="fixed">
+  <i class="fa fa-align-justify ins-search-icon"></i>
+  <div class="ins-search">
+    <div class="ins-search-mask"></div>
+    <div class="ins-search-container">
+        <div class="ins-input-wrapper">
+            <input type="text" class="ins-search-input" placeholder="想要查找什么..." />
+            <span class="ins-close ins-selectable"><i class="fa fa-times-circle"></i></span>
+        </div>
+        <div class="ins-section-wrapper">
+            <div class="ins-section-container"></div>
+        </div>
+    </div>
+</div>
+<script>
+(function (window) {
+    var INSIGHT_CONFIG = {
+        TRANSLATION: {
+            POSTS: '文章',
+            PAGES: '页面',
+            CATEGORIES: '分类',
+            TAGS: '标签',
+            UNTITLED: '(未命名)',
+        },
+        ROOT_URL: '/',
+        CONTENT_URL: '/content.json',
+    };
+    window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+})(window);
+</script>
+<script src="/js/insight.js"></script>
+  <i id="back-to-top" class="fa fa-arrow-up goto-top"></i>
+</div>
+      
+    
+    <script>
+    var disqus_shortname = 'tcatche';
+    
+    
+    var disqus_url = 'http://tcatche.site/2017/07/the-inner-workings-of-virtual-dom-rajaraodv-medium/';
+    
+    (function() {
+    var dsq = document.createElement('script');
+    dsq.type = 'text/javascript';
+    dsq.async = true;
+    dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+    </script>
+
+
+
+
+    
+        <script src="/libs/lightgallery/js/lightgallery.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-thumbnail.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-pager.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-autoplay.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-fullscreen.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-zoom.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-hash.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-share.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-video.min.js"></script>
+    
+
+
+<!-- Custom Scripts -->
+<script src="/js/main.js"></script>
+
+    </div>
+  </div>
+</body>
+</html>

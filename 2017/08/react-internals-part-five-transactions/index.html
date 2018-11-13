@@ -1,0 +1,390 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    
+    <title>React 内部实现，第五部分：基本更新 | TryCatch</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    
+        <meta name="keywords" content="react,翻译" />
+    
+    
+
+    
+
+    
+
+    <link rel="stylesheet" href="/libs/font-awesome/css/font-awesome.min.css">
+    <link rel="stylesheet" href="/libs/titillium-web/styles.css">
+    <link rel="stylesheet" href="/libs/source-code-pro/styles.css">
+
+    <link rel="stylesheet" href="/css/style.css">
+
+    <script src="/libs/jquery/2.0.3/jquery.min.js"></script>
+    
+    
+        <link rel="stylesheet" href="/libs/lightgallery/css/lightgallery.min.css">
+    
+    
+        <script type="text/javascript">
+(function(i,s,o,g,r,a,m) {i['GoogleAnalyticsObject']=r;i[r]=i[r]||function() {
+(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+ga('create', 'UA-92905809-1', 'auto');
+ga('send', 'pageview');
+
+</script>
+    
+    
+        <script>
+var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "//hm.baidu.com/hm.js?409648b1638886ada0891d05cc80dc19";
+  var s = document.getElementsByTagName("script")[0];
+  s.parentNode.insertBefore(hm, s);
+})();
+</script>
+
+    
+    
+        <script>
+(function(){
+    var bp = document.createElement('script');
+    var curProtocol = window.location.protocol.split(':')[0];
+    if (curProtocol === 'https') {
+        bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';        
+    }
+    else {
+        bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+    }
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(bp, s);
+})();
+</script>
+    
+    
+
+</head>
+
+<body>
+  <div id="root">
+    <div id="page-percent">
+      <div></div>
+    </div>
+    <div id="wrap">
+      <header id="header">
+    <div id="header-outer" class="outer">
+        <div class="container">
+            <div id="header-nav" class="nav-container">
+                <div class="container-inner nav-container-inner">
+                    <ul id="main-nav">
+                        
+                                <li class="main-nav-list-item" >
+                                    <a class="main-nav-list-link" href="/">主页</a>
+                                </li>
+                        
+                                <ul class="main-nav-list"><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/Uncategory/">Uncategory</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/css/">css</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/html/">html</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/js/">js</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/翻译/">翻译</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/转载/">转载</a></li></ul>
+                            
+                                <li class="main-nav-list-item" >
+                                    <a class="main-nav-list-link" href="/">index.archives</a>
+                                </li>
+                        
+                    </ul>
+                </div>
+            </div>
+            <div id="header-title" style="display: none">
+                <div class="container-inner">
+                    <h1 class="logo-wrap">
+                        <a href="/" class="logo"></a>
+                    </h1>
+                    
+                        <h2 class="subtitle-wrap">
+                            <p class="subtitle">To try, then catch.</p>
+                        </h2>
+                    
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+      <div class="container">
+        <div class="bg_content">
+          <canvas id="canvas"></canvas>
+        </div>
+        <div class="main-body container-inner">
+          <div class="main-body-inner">
+            <section id="main">
+              <div class="main-body-content">
+                <article id="post-react-internals-part-five-transactions" class="article article-single article-type-post" itemscope itemprop="blogPost">
+
+    
+        <h1 class="article-title" itemprop="name">
+        React 内部实现，第五部分：基本更新
+        </h1>
+    
+
+    <div class="article-inner">
+        <header class="article-header" >
+            <div class="article-subtitle">
+                <div class="article-author-avatar">
+                    <img src="/images/avatar.png" alt="Author's avatar" height="44px" width="44px">
+                </div>
+                <div class="article-count">
+                    <div class="article-author">
+                        tcatche
+                    </div>
+                    <a href="/2017/08/react-internals-part-five-transactions/" class="article-date">
+    <i class="icon fa fa-calendar"></i>
+    <time datetime="2017-08-18T03:13:00.000Z" itemprop="datePublished">2017-08-18</time>
+</a>
+                    
+    <span class="word-count">
+      <i class="icon fa fa-file-text"></i>
+      字数: 1,560 
+    </span>
+    <span class="word-count">
+      <i class="icon fa fa-clock-o"></i>
+      阅读时长: 8mins 
+    </span>
+
+                </div>
+                <div class="article-dir">
+                    
+    <div class="article-category">
+    <i class="icon fa fa-list-ul"></i>
+    <a class="article-category-link" href="/categories/翻译/">翻译</a>
+    </div>
+
+                    
+    <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/react/">react</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/翻译/">翻译</a></li></ul>
+
+                </div>
+            </div>
+        </header>
+        
+        <div class="article-entry" itemprop="articleBody">
+            <blockquote>
+<p>原文：<a href="http://www.mattgreer.org/articles/react-internals-part-five-transactions/" target="_blank" rel="external">React Internals, Part Five: transactions</a></p>
+</blockquote>
+<p>In this part, we’ll talk about React’s transactions.</p>
+<h2 id="The-series"><a href="#The-series" class="headerlink" title="The series"></a>The series</h2><ul>
+<li><a href="http://www.mattgreer.org/articles/react-internals-part-one-basic-rendering" target="_blank" rel="external">part one: basic rendering</a></li>
+<li><a href="http://www.mattgreer.org/articles/react-internals-part-two-componentWillMount-and-componentDidMount/" target="_blank" rel="external">part two: componentWillMount and componentDidMount</a></li>
+<li><a href="http://www.mattgreer.org/articles/react-internals-part-three-basic-updating" target="_blank" rel="external">part three: basic updating</a></li>
+<li><a href="http://www.mattgreer.org/articles/react-internals-part-four-setState" target="_blank" rel="external">part four: setState</a></li>
+<li><strong>part five: transactions</strong> &lt;- you are here</li>
+</ul>
+<p>全部译文：</p>
+<ul>
+<li><a href="/2017/07/react-internals-part-one-basic-rendering/">第一部分：基础渲染</a></li>
+<li><a href="/2017/07/react-internals-part-two-componentWillMount-and-componentDidMount/">第二部分：componentWillMount and componentDidMount</a></li>
+<li><a href="/2017/07/react-internals-part-three-basic-updating/">第三部分：基本更新</a></li>
+<li><a href="/2017/07/react-internals-part-four-setState/">第四部分：setState</a></li>
+<li><strong>第五部分：事务</strong> &lt;- 当前位置</li>
+</ul>
+<h2 id="transactions-everywhere"><a href="#transactions-everywhere" class="headerlink" title="transactions everywhere"></a>transactions everywhere</h2><p>At this point, the little React clone we built, Feact, is complete. You can see the final version of it <a href="https://jsfiddle.net/city41/fbw81p5e/5" target="_blank" rel="external">here</a>.</p>
+<p>到了这里，我们所构建的一个小小的 React 克隆 Feact 已经完成。你可以在<a href="https://jsfiddle.net/city41/fbw81p5e/5" target="_blank" rel="external">这里</a>看到它的最终版本。</p>
+<p>But if you decide to dive into React’s source, you’ll quickly notice all these “transactions” everywhere. They obscure the intent of the code, and make it harder to get a sense of what is going on. Rest assured, Feact is following React pretty closely (well, React 15.3 at least), but it purposely doesn’t have transactions to make the actual “meat” of the code more apparent. </p>
+<p>但是，如果您深入查看 React 的源代码，您将很快注意到所有这些 “transactions ” 到处都有。它们掩盖了代码的意图，使得更难了解发生了什么。放心，Feact跟随React相当紧密（好吧，至少是 React 15.3），但它没有transactions ，使代码的实际“肉”更明显。</p>
+<h2 id="what-is-a-transaction"><a href="#what-is-a-transaction" class="headerlink" title="what is a transaction?"></a>what is a transaction?</h2><p>The good news is transactions are simple. They are just a pattern the React team has adopted to make the framework more robust and easier to maintain.</p>
+<p>好消息是transactions 很简单。它们只是 React 团队采用的一种模式，使框架更加健壮，更易于维护。</p>
+<p>Whenever React decides it needs to do something, that “something” usually needs to do a little bit of prep work before, do its main logic, then some clean up work afterwards. This diagram showing how transactions work is taken straight from the React source code</p>
+<p>每当 React 决定需要做某事时，这些“某事”通常需要做一些准备工作，执行主要逻辑，然后再执行一些清理工作。这个图是直接从 React 源代码中获取的，展示了 transactions 是如何工作的。</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">*                       wrappers (injected at creation time)</span><br><span class="line">*                                      +        +</span><br><span class="line">*                                      |        |</span><br><span class="line">*                    +-----------------|--------|--------------+</span><br><span class="line">*                    |                 v        |              |</span><br><span class="line">*                    |      +---------------+   |              |</span><br><span class="line">*                    |   +--|    wrapper1   |---|----+         |</span><br><span class="line">*                    |   |  +---------------+   v    |         |</span><br><span class="line">*                    |   |          +-------------+  |         |</span><br><span class="line">*                    |   |     +----|   wrapper2  |--------+   |</span><br><span class="line">*                    |   |     |    +-------------+  |     |   |</span><br><span class="line">*                    |   |     |                     |     |   |</span><br><span class="line">*                    |   v     v                     v     v   | wrapper</span><br><span class="line">*                    | +---+ +---+   +---------+   +---+ +---+ | invariants</span><br><span class="line">* perform(anyMethod) | |   | |   |   |         |   |   | |   | | maintained</span><br><span class="line">* +-----------------&gt;|-|---|-|---|--&gt;|anyMethod|---|---|-|---|-|--------&gt;</span><br><span class="line">*                    | |   | |   |   |         |   |   | |   | |</span><br><span class="line">*                    | |   | |   |   |         |   |   | |   | |</span><br><span class="line">*                    | |   | |   |   |         |   |   | |   | |</span><br><span class="line">*                    | +---+ +---+   +---------+   +---+ +---+ |</span><br><span class="line">*                    |  initialize                    close    |</span><br><span class="line">*                    +-----------------------------------------+</span><br></pre></td></tr></table></figure>
+<p>If Feact was to add transactions, its (very) simple take would be something like this:</p>
+<p>如果 Feact 添加 transactions ，它（非常）简单的实现将是这样的：</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Transaction</span> </span>&#123;</span><br><span class="line">  <span class="keyword">constructor</span>(wrapper) &#123;</span><br><span class="line">    <span class="keyword">this</span>._wrapper = wrapper;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  perform(method) &#123;</span><br><span class="line">    <span class="keyword">const</span> wrapperValue = <span class="keyword">this</span>._wrapper.initialize();</span><br><span class="line"></span><br><span class="line">    method();</span><br><span class="line"></span><br><span class="line">    <span class="keyword">this</span>._wrapper.close(wrapperValue);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="一个-transactions-的用例（A-use-case-for-transactions）"><a href="#一个-transactions-的用例（A-use-case-for-transactions）" class="headerlink" title="一个 transactions 的用例（A use case for transactions）"></a>一个 transactions 的用例（A use case for transactions）</h2><p>Why all the fuss? Mostly transactions enable React to do what it needs to do while keeping the browser happy.</p>
+<p>为什么大惊小怪？大部分 transactions 确保 React 能够在保持浏览器开放的同时做必要的事情。 </p>
+<p>For example, consider this dumb little React app, it swaps a button and a text input every 5 seconds</p>
+<p>例如，看这个愚蠢的小 React 应用程序，它每5秒交换一个按钮和一个文本输入框的位置：</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">const</span> MyComp = React.createClass(&#123;</span><br><span class="line">  getInitialState() &#123;</span><br><span class="line">    <span class="keyword">return</span> &#123;</span><br><span class="line">      textFirst: <span class="literal">true</span></span><br><span class="line">    &#125;;</span><br><span class="line">  &#125;,</span><br><span class="line"></span><br><span class="line">  componentDidMount() &#123;</span><br><span class="line">    setInterval(<span class="function"><span class="params">()</span> =&gt;</span> &#123;</span><br><span class="line">      <span class="keyword">this</span>.setState(&#123;</span><br><span class="line">        textFirst: !<span class="keyword">this</span>.state.textFirst</span><br><span class="line">      &#125;);</span><br><span class="line">    &#125;, <span class="number">5000</span>);</span><br><span class="line">  &#125;,</span><br><span class="line"></span><br><span class="line">  render() &#123;</span><br><span class="line">    <span class="keyword">let</span> children;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">if</span> (<span class="keyword">this</span>.state.textFirst) &#123;</span><br><span class="line">      children = [</span><br><span class="line">        &lt;input key=<span class="string">"text"</span> type=<span class="string">"text"</span> /&gt;,</span><br><span class="line">        &lt;button key=<span class="string">"button"</span> /&gt;</span><br><span class="line">      ];</span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">      children = [</span><br><span class="line">        &lt;button key=<span class="string">"button"</span> /&gt;,</span><br><span class="line">        &lt;input key=<span class="string">"text"</span> type=<span class="string">"text"</span> /&gt;</span><br><span class="line">      ];</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> (</span><br><span class="line">      &lt;div&gt;&#123;children&#125;&lt;<span class="regexp">/div&gt;</span></span><br><span class="line"><span class="regexp">    );</span></span><br><span class="line"><span class="regexp">  &#125;</span></span><br><span class="line"><span class="regexp">&#125;);</span></span><br><span class="line"><span class="regexp"></span></span><br><span class="line"><span class="regexp">ReactDOM.render(&lt;MyComp /</span>&gt;, <span class="built_in">document</span>.body);</span><br></pre></td></tr></table></figure>
+<p>The trouble with this app is the input element. Whenever you move an input element in the DOM (for example, <code>parentElement.insertBefore(myInputElement, someOtherChild)</code>), the browser clears out its selection. So if the user has highlighted some text in the input, then something about how your app renders causes React to move the input in the DOM, that selection gets cleared, frustrating your user. To solve this problem, React component updates are done in a transaction. During the initialize phase of the transaction, React grabs the current selection state of the browser and stores it. Then in the close phase, it takes that previous value and makes sure it gets restored. The transactions that happen during a React render handle many other things such as maintaining the window’s scroll position, and a lot of other necessary book keeping. Another benefit of the transaction pattern is it becomes easy to store the state of the browser, do a whole bunch of work, then restore the state at the very end, rather than having to continually worry about accidentally scrolling the window or clearing an input selection.</p>
+<p>这个应用程序的麻烦是 input 元素。无论何时在DOM中移动输入元素（例如，<code>parentElement.insertBefore(myInputElement, someOtherChild)</code>），浏览器将清除其选择状态。因此，如果用户突出选中了输入的某些文本，那么有关应用程序渲染原因导致在 DOM 中移动输入元素，该选择状态将被清除，从而使您的用户感到沮丧。为了解决这个问题，React 组件更新是在 transaction 中完成的。在 transaction 的初始化阶段，React 抓住浏览器的当前选择状态并将其存储起来。然后在关闭阶段，它需要先前的值，并确保它恢复。在 React 渲染期间发生的 transaction 处理许多其他事情，例如维护窗口的滚动位置，以及许多其他必要的状态。transactions 模式的另一个好处是容易存储浏览器的状态，做一大堆工作，然后在最后恢复状态，而不必担心意外滚动窗口或清除输入选择。</p>
+<h3 id="Feact-transactions"><a href="#Feact-transactions" class="headerlink" title="Feact transactions"></a>Feact transactions</h3><p>If Feact managed selection using transactions, it’d look something like</p>
+<p>如果 Feact 使用 transactions 来管理选择状态，那么看起来就像这样：</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">const</span> SELECTION_RESTORATION = &#123;</span><br><span class="line">  initialize() &#123;</span><br><span class="line">    <span class="keyword">const</span> focusedElem = <span class="built_in">document</span>.activeElement;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> &#123;</span><br><span class="line">      focusedElem,</span><br><span class="line">      selection: &#123;</span><br><span class="line">        start: focusedElem.selectionStart,</span><br><span class="line">        end: focusedElem.selectionEnd</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;;</span><br><span class="line">  &#125;,</span><br><span class="line"></span><br><span class="line">  close(priorSelectionInformation) &#123; </span><br><span class="line">    <span class="keyword">const</span> focusedElem = priorSelectionInformation.focusedElem; </span><br><span class="line">    focusedElem.selectionStart = </span><br><span class="line">      priorSelectionInformation.selection.start;</span><br><span class="line"></span><br><span class="line">    focusedElem.selectionEnd =</span><br><span class="line">      priorSelectionInformation.selection.end;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> updateTransaction = <span class="keyword">new</span> Transaction(SELECTION_RESTORATION);</span><br><span class="line"></span><br><span class="line">FeactReconciler = &#123;</span><br><span class="line">  ...</span><br><span class="line">  receiveComponent(internalinstance, nextElement) &#123;</span><br><span class="line">    updateTransaction.perform(<span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">      internalInstance.receiveComponent(nextElement);</span><br><span class="line">    &#125;);</span><br><span class="line">  &#125;</span><br><span class="line">  ...</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>As always with Feact, trying to keep the code as straightforward as possible. This silly little transaction doesn’t even check if the element is capable of having a selection, amongst many other problems. I don’t recommend using Feact in production.</p>
+</blockquote>
+<blockquote>
+<p>和Feact一样，尽量保持代码尽可能简单。这个愚蠢的小 transactions 甚至没有检查元素是否能够进行选择，以及许多其他问题。我不建议在生产中使用Feact。</p>
+</blockquote>
+<p>Over in React, transactions are more complicated. For starters, they allow more than one wrapper. They also deal with exceptions being thrown, and ensure transactions don’t call back into themselves.</p>
+<p>在 React 中，transactions 更复杂。对于初学者，它们允许多个包装。他们还处理抛出的异常，并确保 transaction 不会自动回调。</p>
+<h2 id="系列总结（Series-Conclusion）"><a href="#系列总结（Series-Conclusion）" class="headerlink" title="系列总结（Series Conclusion）"></a>系列总结（Series Conclusion）</h2><p>And with that, this series has covered the basics of how React works. Whenever you’re debugging your React applications, that large chunk of the call stack that is inside React should feel a little less alien now. That’s a primary reason I decided to write this series out.</p>
+<p>与此同时，本系列还介绍了 React 的基本工作原理。无论何时调试您的 React 应用程序，现在应该会感觉到 React 内部的大块调用堆栈有一点了解。这是我决定写这个系列的主要原因。</p>
+<p>If you spotted any errors or have any feedkback, feel free to <a href="mailto:matt.e.greer@gmail.com" target="_blank" rel="external">email me</a>.</p>
+
+        </div>
+        <footer class="article-footer">
+            
+    <div class="jiathis_style_24x24">
+    <span class="jiathis_txt">分享到：</span>
+    <a class="jiathis_button_qzone"></a>
+    <a class="jiathis_button_tsina"</a>
+    <a class="jiathis_button_weixin"></a>
+    <a class="jiathis_button_douban"></a>
+    <a class="jiathis_button_fb"></a>
+    <a class="jiathis_button_twitter"></a>
+    <a href="http://www.jiathis.com/share" class="jiathis jiathis_txt jiathis_separator jtico jtico_jiathis" target="_blank"></a>
+    <a class="jiathis_counter_style"></a>
+</div>
+<script type="text/javascript" src="http://v3.jiathis.com/code/jia.js" charset="utf-8"></script>
+<style>
+    .jiathis_style div:first-child:not(.jiadiv_01) {
+        width: auto !important;
+        border: none !important;
+    }
+    .jiathis_style .jiadiv_01 {
+        margin: 10px 0;
+        border-radius: 4px;
+        border: #e1e1e1 solid 1px;
+    }
+    .jiathis_style .jiadiv_01 div:first-child {
+        display: none;
+    }
+    .jiathis_style .jiadiv_02 {
+        padding: 7px 0 !important;
+    }
+    .jiathis_style .jiadiv_02 .jiatitle {
+        width: 85px;
+        border: none;
+        height: auto;
+        margin: 3px 10px;
+        padding: 6px 10px;
+        border-radius: 4px;
+    }
+    .jiathis_style .jiadiv_02 .jiatitle:hover {
+        border: none;
+    }
+    .jiathis_style .jiadiv_02 .jiatitle:nth-child(even) {
+        margin-left: 0;
+    }
+    .jiathis_style .jtico:hover {
+        opacity: 1;
+    }
+    .jiathis_style .ckepopBottom,
+    .jiathis_style .centerBottom {
+        width: auto !important;
+        padding: 5px;
+        background: #f7f7f7;
+    }
+</style>
+
+
+
+
+        </footer>
+
+    </div>
+</article>
+
+    <section id="comments">
+    
+        
+    <div id="disqus_thread">
+        <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+    </div>
+
+    
+    </section>
+
+
+              </div>
+            </section>
+            
+          </div>
+        </div>
+      </div>
+      <footer id="footer">
+    <div class="container">
+        <div class="container-inner">
+            <div class="credit">
+                <h1 class="logo-wrap">
+                    <a href="/" class="logo"></a>
+                </h1>
+                <p>&copy; 2018 tcatche</p>
+                <p>Powered by <a href="//hexo.io/" target="_blank">Hexo</a>. </p>
+                <p>Theme based <a href="//github.com/ppoffice" target="_blank">PPOffice</a> and modify by Tcatche. </p>
+                <p>Hosted by <a  href="https://pages.github.com/">Github Pages</a>. </p>
+            </div>
+        </div>
+    </div>
+</footer>
+      <div id="fixed">
+  <i class="fa fa-align-justify ins-search-icon"></i>
+  <div class="ins-search">
+    <div class="ins-search-mask"></div>
+    <div class="ins-search-container">
+        <div class="ins-input-wrapper">
+            <input type="text" class="ins-search-input" placeholder="想要查找什么..." />
+            <span class="ins-close ins-selectable"><i class="fa fa-times-circle"></i></span>
+        </div>
+        <div class="ins-section-wrapper">
+            <div class="ins-section-container"></div>
+        </div>
+    </div>
+</div>
+<script>
+(function (window) {
+    var INSIGHT_CONFIG = {
+        TRANSLATION: {
+            POSTS: '文章',
+            PAGES: '页面',
+            CATEGORIES: '分类',
+            TAGS: '标签',
+            UNTITLED: '(未命名)',
+        },
+        ROOT_URL: '/',
+        CONTENT_URL: '/content.json',
+    };
+    window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+})(window);
+</script>
+<script src="/js/insight.js"></script>
+  <i id="back-to-top" class="fa fa-arrow-up goto-top"></i>
+</div>
+      
+    
+    <script>
+    var disqus_shortname = 'tcatche';
+    
+    
+    var disqus_url = 'http://tcatche.site/2017/08/react-internals-part-five-transactions/';
+    
+    (function() {
+    var dsq = document.createElement('script');
+    dsq.type = 'text/javascript';
+    dsq.async = true;
+    dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+    </script>
+
+
+
+
+    
+        <script src="/libs/lightgallery/js/lightgallery.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-thumbnail.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-pager.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-autoplay.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-fullscreen.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-zoom.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-hash.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-share.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-video.min.js"></script>
+    
+
+
+<!-- Custom Scripts -->
+<script src="/js/main.js"></script>
+
+    </div>
+  </div>
+</body>
+</html>

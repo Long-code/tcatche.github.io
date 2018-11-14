@@ -142,13 +142,6 @@
   </url>
   
   <url>
-    <loc>http://tcatche.site/2017/06/web-browser-console/</loc>
-    
-    <lastmod>2018-08-01T10:41:24.093Z</lastmod>
-    
-  </url>
-  
-  <url>
     <loc>http://tcatche.site/2017/07/what-makes-webassembly-fast/</loc>
     
     <lastmod>2018-08-01T10:41:24.093Z</lastmod>
@@ -156,16 +149,9 @@
   </url>
   
   <url>
-    <loc>http://tcatche.site/2017/04/symbol-base-type/</loc>
+    <loc>http://tcatche.site/2017/06/web-browser-console/</loc>
     
-    <lastmod>2018-08-01T10:41:24.092Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://tcatche.site/2017/08/stacking-context-and-z-index/</loc>
-    
-    <lastmod>2018-08-01T10:41:24.092Z</lastmod>
+    <lastmod>2018-08-01T10:41:24.093Z</lastmod>
     
   </url>
   
@@ -184,7 +170,21 @@
   </url>
   
   <url>
-    <loc>http://tcatche.site/2017/03/reflect-object/</loc>
+    <loc>http://tcatche.site/2017/08/stacking-context-and-z-index/</loc>
+    
+    <lastmod>2018-08-01T10:41:24.092Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://tcatche.site/2017/04/symbol-base-type/</loc>
+    
+    <lastmod>2018-08-01T10:41:24.092Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://tcatche.site/2017/06/request-frame-animate/</loc>
     
     <lastmod>2018-08-01T10:41:24.091Z</lastmod>
     
@@ -198,7 +198,7 @@
   </url>
   
   <url>
-    <loc>http://tcatche.site/2017/06/request-frame-animate/</loc>
+    <loc>http://tcatche.site/2017/03/reflect-object/</loc>
     
     <lastmod>2018-08-01T10:41:24.091Z</lastmod>
     
@@ -296,14 +296,14 @@
   </url>
   
   <url>
-    <loc>http://tcatche.site/2017/06/react-children/</loc>
+    <loc>http://tcatche.site/2017/03/proxy-object/</loc>
     
     <lastmod>2018-08-01T10:41:24.085Z</lastmod>
     
   </url>
   
   <url>
-    <loc>http://tcatche.site/2017/03/proxy-object/</loc>
+    <loc>http://tcatche.site/2017/06/react-children/</loc>
     
     <lastmod>2018-08-01T10:41:24.085Z</lastmod>
     
@@ -352,14 +352,14 @@
   </url>
   
   <url>
-    <loc>http://tcatche.site/2017/04/generator-and-async-function/</loc>
+    <loc>http://tcatche.site/2017/08/how-javascript-work-part-1-overview/</loc>
     
     <lastmod>2018-08-01T10:41:24.080Z</lastmod>
     
   </url>
   
   <url>
-    <loc>http://tcatche.site/2017/08/how-javascript-work-part-1-overview/</loc>
+    <loc>http://tcatche.site/2017/04/generator-and-async-function/</loc>
     
     <lastmod>2018-08-01T10:41:24.080Z</lastmod>
     
@@ -380,14 +380,14 @@
   </url>
   
   <url>
-    <loc>http://tcatche.site/2018/02/dom_native_elements_and_node_query/</loc>
+    <loc>http://tcatche.site/2017/07/form-validator-design/</loc>
     
     <lastmod>2018-08-01T10:41:24.079Z</lastmod>
     
   </url>
   
   <url>
-    <loc>http://tcatche.site/2017/07/form-validator-design/</loc>
+    <loc>http://tcatche.site/2018/02/dom_native_elements_and_node_query/</loc>
     
     <lastmod>2018-08-01T10:41:24.079Z</lastmod>
     
@@ -443,14 +443,14 @@
   </url>
   
   <url>
-    <loc>http://tcatche.site/2017/03/createStore/</loc>
+    <loc>http://tcatche.site/2017/06/creating-and-working-with-webassembly-modules/</loc>
     
     <lastmod>2018-08-01T10:41:24.076Z</lastmod>
     
   </url>
   
   <url>
-    <loc>http://tcatche.site/2017/06/creating-and-working-with-webassembly-modules/</loc>
+    <loc>http://tcatche.site/2017/03/createStore/</loc>
     
     <lastmod>2018-08-01T10:41:24.076Z</lastmod>
     
@@ -464,14 +464,14 @@
   </url>
   
   <url>
-    <loc>http://tcatche.site/2017/03/compose/</loc>
+    <loc>http://tcatche.site/2017/03/combineReducers/</loc>
     
     <lastmod>2018-08-01T10:41:24.075Z</lastmod>
     
   </url>
   
   <url>
-    <loc>http://tcatche.site/2017/03/combineReducers/</loc>
+    <loc>http://tcatche.site/2017/03/compose/</loc>
     
     <lastmod>2018-08-01T10:41:24.075Z</lastmod>
     
@@ -506,14 +506,14 @@
   </url>
   
   <url>
-    <loc>http://tcatche.site/2018/01/broswer_common_form_event/</loc>
+    <loc>http://tcatche.site/2017/03/bindActionCreators/</loc>
     
     <lastmod>2018-08-01T10:41:24.071Z</lastmod>
     
   </url>
   
   <url>
-    <loc>http://tcatche.site/2017/03/bindActionCreators/</loc>
+    <loc>http://tcatche.site/2018/01/broswer_common_form_event/</loc>
     
     <lastmod>2018-08-01T10:41:24.071Z</lastmod>
     

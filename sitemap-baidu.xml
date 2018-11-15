@@ -1,6 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
+    <loc>http://tcatche.site/2018/11/css-counter/</loc>
+    <lastmod>2018-11-14T09:36:45.504Z</lastmod>
+  </url>  <url>
     <loc>http://tcatche.site/2018/10/react-use-render-props-for-cross-cutting-concerns/</loc>
     <lastmod>2018-11-11T08:39:20.716Z</lastmod>
   </url>  <url>
@@ -58,13 +61,13 @@
     <loc>http://tcatche.site/2018/03/dom_native_elements_and_node_modify/</loc>
     <lastmod>2018-08-02T09:23:05.776Z</lastmod>
   </url>  <url>
-    <loc>http://tcatche.site/2017/07/where-is-webassembly-now-and-whats-next/</loc>
+    <loc>http://tcatche.site/2017/06/web-browser-console/</loc>
     <lastmod>2018-08-01T10:41:24.093Z</lastmod>
   </url>  <url>
     <loc>http://tcatche.site/2017/07/what-makes-webassembly-fast/</loc>
     <lastmod>2018-08-01T10:41:24.093Z</lastmod>
   </url>  <url>
-    <loc>http://tcatche.site/2017/06/web-browser-console/</loc>
+    <loc>http://tcatche.site/2017/07/where-is-webassembly-now-and-whats-next/</loc>
     <lastmod>2018-08-01T10:41:24.093Z</lastmod>
   </url>  <url>
     <loc>http://tcatche.site/2017/07/tc39-ecmascript-proposals/</loc>
@@ -79,10 +82,10 @@
     <loc>http://tcatche.site/2017/04/symbol-base-type/</loc>
     <lastmod>2018-08-01T10:41:24.092Z</lastmod>
   </url>  <url>
-    <loc>http://tcatche.site/2017/06/request-frame-animate/</loc>
+    <loc>http://tcatche.site/2017/08/repaint-and-reflow/</loc>
     <lastmod>2018-08-01T10:41:24.091Z</lastmod>
   </url>  <url>
-    <loc>http://tcatche.site/2017/08/repaint-and-reflow/</loc>
+    <loc>http://tcatche.site/2017/06/request-frame-animate/</loc>
     <lastmod>2018-08-01T10:41:24.091Z</lastmod>
   </url>  <url>
     <loc>http://tcatche.site/2017/03/reflect-object/</loc>
@@ -91,16 +94,16 @@
     <loc>http://tcatche.site/2018/01/react-reconciliation/</loc>
     <lastmod>2018-08-01T10:41:24.090Z</lastmod>
   </url>  <url>
-    <loc>http://tcatche.site/2017/12/react-portals/</loc>
-    <lastmod>2018-08-01T10:41:24.090Z</lastmod>
-  </url>  <url>
     <loc>http://tcatche.site/2017/06/react-reactdom/</loc>
     <lastmod>2018-08-01T10:41:24.090Z</lastmod>
   </url>  <url>
-    <loc>http://tcatche.site/2017/06/react-refs/</loc>
+    <loc>http://tcatche.site/2017/12/react-portals/</loc>
     <lastmod>2018-08-01T10:41:24.090Z</lastmod>
   </url>  <url>
     <loc>http://tcatche.site/2017/07/react-mixins-considered-harmful/</loc>
+    <lastmod>2018-08-01T10:41:24.090Z</lastmod>
+  </url>  <url>
+    <loc>http://tcatche.site/2017/06/react-refs/</loc>
     <lastmod>2018-08-01T10:41:24.090Z</lastmod>
   </url>  <url>
     <loc>http://tcatche.site/2017/07/react-internals-part-one-basic-rendering/</loc>
@@ -136,20 +139,23 @@
     <loc>http://tcatche.site/2016/09/promise-object/</loc>
     <lastmod>2018-08-01T10:41:24.084Z</lastmod>
   </url>  <url>
-    <loc>http://tcatche.site/2017/06/object-freeze/</loc>
-    <lastmod>2018-08-01T10:41:24.083Z</lastmod>
-  </url>  <url>
     <loc>http://tcatche.site/2017/06/object-define-property/</loc>
     <lastmod>2018-08-01T10:41:24.083Z</lastmod>
   </url>  <url>
-    <loc>http://tcatche.site/2017/08/mastering_margin_collapsing_and_block_formatting_context/</loc>
-    <lastmod>2018-08-01T10:41:24.082Z</lastmod>
+    <loc>http://tcatche.site/2017/06/object-freeze/</loc>
+    <lastmod>2018-08-01T10:41:24.083Z</lastmod>
   </url>  <url>
     <loc>http://tcatche.site/2017/05/iteritor-and-for-of/</loc>
     <lastmod>2018-08-01T10:41:24.082Z</lastmod>
   </url>  <url>
+    <loc>http://tcatche.site/2017/08/mastering_margin_collapsing_and_block_formatting_context/</loc>
+    <lastmod>2018-08-01T10:41:24.082Z</lastmod>
+  </url>  <url>
     <loc>http://tcatche.site/2017/08/how-javascript-work-part-2-v8-engine-and-5-tips-optimized/</loc>
     <lastmod>2018-08-01T10:41:24.081Z</lastmod>
+  </url>  <url>
+    <loc>http://tcatche.site/2017/04/function-program-pure-function/</loc>
+    <lastmod>2018-08-01T10:41:24.080Z</lastmod>
   </url>  <url>
     <loc>http://tcatche.site/2017/08/how-javascript-work-part-1-overview/</loc>
     <lastmod>2018-08-01T10:41:24.080Z</lastmod>
@@ -157,31 +163,28 @@
     <loc>http://tcatche.site/2017/04/generator-and-async-function/</loc>
     <lastmod>2018-08-01T10:41:24.080Z</lastmod>
   </url>  <url>
-    <loc>http://tcatche.site/2017/04/function-program-pure-function/</loc>
-    <lastmod>2018-08-01T10:41:24.080Z</lastmod>
-  </url>  <url>
     <loc>http://tcatche.site/2017/04/function-program-curry-function/</loc>
     <lastmod>2018-08-01T10:41:24.080Z</lastmod>
   </url>  <url>
-    <loc>http://tcatche.site/2017/07/form-validator-design/</loc>
+    <loc>http://tcatche.site/2018/03/evolving-patterns-in-react/</loc>
     <lastmod>2018-08-01T10:41:24.079Z</lastmod>
   </url>  <url>
     <loc>http://tcatche.site/2018/02/dom_native_elements_and_node_query/</loc>
     <lastmod>2018-08-01T10:41:24.079Z</lastmod>
   </url>  <url>
-    <loc>http://tcatche.site/2018/03/evolving-patterns-in-react/</loc>
+    <loc>http://tcatche.site/2017/07/form-validator-design/</loc>
     <lastmod>2018-08-01T10:41:24.079Z</lastmod>
   </url>  <url>
     <loc>http://tcatche.site/2017/03/debounce-throttle/</loc>
+    <lastmod>2018-08-01T10:41:24.078Z</lastmod>
+  </url>  <url>
+    <loc>http://tcatche.site/2016/03/css3-transition-transform-animation/</loc>
     <lastmod>2018-08-01T10:41:24.078Z</lastmod>
   </url>  <url>
     <loc>http://tcatche.site/2017/07/dom_load_status_events/</loc>
     <lastmod>2018-08-01T10:41:24.078Z</lastmod>
   </url>  <url>
     <loc>http://tcatche.site/2017/05/decorator/</loc>
-    <lastmod>2018-08-01T10:41:24.078Z</lastmod>
-  </url>  <url>
-    <loc>http://tcatche.site/2016/03/css3-transition-transform-animation/</loc>
     <lastmod>2018-08-01T10:41:24.078Z</lastmod>
   </url>  <url>
     <loc>http://tcatche.site/2017/08/css-selector-cascade-order/</loc>

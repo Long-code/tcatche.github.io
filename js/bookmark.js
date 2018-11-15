@@ -10,7 +10,7 @@ $(function() {
       return ele.textContent.trim().length > 0;
     });
     if (hList.length > 0) {
-      var lastTagName = 'h2';
+      var lastTagName = hList[0].tagName.toLowerCase();
       var list = '<ul class="mark-list">';
       hList.forEach(function(item) {
         var currTagName = item.tagName.toLowerCase();

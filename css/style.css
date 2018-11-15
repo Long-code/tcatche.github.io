@@ -1540,7 +1540,7 @@ a.article-title:hover {
   color: #555;
   line-height: 1.6em;
   border-top: 1px solid #ddd;
-  padding: 1.6em 30px;
+  margin: 1.6em 30px;
 }
 .article-footer:before,
 .article-footer:after {
@@ -1551,11 +1551,29 @@ a.article-title:hover {
   clear: both;
 }
 .article-footer a {
-  color: #aaa;
-  text-decoration: none;
+  color: #42b983;
 }
 .article-footer a:hover {
-  color: #555;
+  text-decoration: none;
+}
+.article-footer .cc {
+  margin: 20px 0 40px;
+}
+.article-footer .cc .cc-images {
+  line-height: 36px;
+  height: 36px;
+  display: inline-block;
+  vertical-align: middle;
+}
+.article-footer .cc .cc-text {
+  line-height: 36px;
+  vertical-align: middle;
+  display: inline-block;
+}
+.article-footer .cc img {
+  width: 36px;
+  height: 36px;
+  margin-right: 12px;
 }
 .article-comment-link i,
 .article-share-link i {
@@ -1850,9 +1868,8 @@ a.article-title:hover {
 }
 #comments {
   margin: 2em 0;
-  -webkit-box-shadow: 0px 1px 3px 0px rgba(0,0,0,0.1);
-  box-shadow: 0px 1px 3px 0px rgba(0,0,0,0.1);
   padding: 30px 30px 20px;
+  max-width: 1320px;
 }
 #comments a {
   color: #42b983;
@@ -1872,26 +1889,6 @@ a.article-title:hover {
 }
 #footer .credit {
   padding: 30px;
-}
-#footer #back-to-top {
-  background: #fff;
-  color: #777;
-  overflow: hidden;
-  text-align: center;
-  width: 60px;
-  height: 30px;
-  display: block;
-  margin: 0 auto -30px;
-  border-radius: 0 0 3px 3px;
-  -webkit-box-shadow: 0 1px 1px rgba(0,0,0,0.1);
-  box-shadow: 0 1px 1px rgba(0,0,0,0.1);
-}
-#footer #back-to-top:hover {
-  color: #444;
-}
-#footer #back-to-top i {
-  font-size: 38px;
-  line-height: 22px;
 }
 #footer .logo {
   width: 80px;

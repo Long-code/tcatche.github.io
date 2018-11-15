@@ -67,6 +67,13 @@ var _hmt = _hmt || [];
     
     
 
+    <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+    <script>
+    (adsbygoogle = window.adsbygoogle || []).push({
+        google_ad_client: "ca-pub-4701262596287788",
+        enable_page_level_ads: true
+    });
+    </script>
 </head>
 
 <body>
@@ -171,8 +178,22 @@ var _hmt = _hmt || [];
 <figure class="highlight js"><table><tr><td class="code"><pre><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 检查是否支持该属性，</span></span><br><span class="line"><span class="comment"> * 经检查在火狐 v46 中'placeholder' in document.createElement('input')返回值为false，</span></span><br><span class="line"><span class="comment"> * 而火狐是支持placeholder属性的，因此加入浏览器判断</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">var</span> isSupportPlaceholder = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> navigator.userAgent.indexOf(<span class="string">"MSIE"</span>) &lt; <span class="number">0</span> || <span class="string">'placeholder'</span> <span class="keyword">in</span> <span class="built_in">document</span>.createElement(<span class="string">'input'</span>);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * IE9下不支持placeholder的解决方案</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">var</span> fixPlaceholderInIE = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="keyword">if</span>(!isSupportPlaceholder())&#123;</span><br><span class="line">        $(<span class="string">'input[placeholder]'</span>).each(<span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">            <span class="keyword">var</span> placeholderText = $(<span class="keyword">this</span>).attr(<span class="string">"placeholder"</span>);</span><br><span class="line">            <span class="keyword">if</span>($(<span class="keyword">this</span>).attr(<span class="string">"type"</span>) == <span class="string">"text"</span> &amp;&amp; $(<span class="keyword">this</span>).val() == <span class="string">''</span>)&#123;</span><br><span class="line">                $(<span class="keyword">this</span>).val(placeholderText);</span><br><span class="line">                $(<span class="keyword">this</span>).css(<span class="string">"color"</span>, <span class="string">"#666"</span>);</span><br><span class="line">            &#125;</span><br><span class="line"></span><br><span class="line">            <span class="comment">/*</span></span><br><span class="line"><span class="comment">            	提供input focus和blur事件，</span></span><br><span class="line"><span class="comment">            	当input获得焦点，若input值等于placeholder则改为''，</span></span><br><span class="line"><span class="comment">            	当input失去焦点，将placeholder值放入input。</span></span><br><span class="line"><span class="comment">            */</span></span><br><span class="line">            $(<span class="keyword">this</span>).focus(<span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">                <span class="keyword">var</span> input = $(<span class="keyword">this</span>);</span><br><span class="line">                <span class="keyword">if</span> (input.val() == input.attr(<span class="string">'placeholder'</span>)) &#123;</span><br><span class="line">                    input.val(<span class="string">''</span>);</span><br><span class="line">                &#125;</span><br><span class="line">                $(<span class="keyword">this</span>).css(<span class="string">"color"</span>, <span class="string">"#000"</span>);</span><br><span class="line">            &#125;).blur(<span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">                <span class="keyword">var</span> input = $(<span class="keyword">this</span>);</span><br><span class="line">                <span class="keyword">if</span> (input.val() == <span class="string">''</span> || input.val() == input.attr(<span class="string">'placeholder'</span>)) &#123;</span><br><span class="line">                    input.addClass(<span class="string">'placeholder'</span>);</span><br><span class="line">                    input.val(input.attr(<span class="string">'placeholder'</span>));</span><br><span class="line">                    $(<span class="keyword">this</span>).css(<span class="string">"color"</span>, <span class="string">"#666"</span>);</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;);</span><br><span class="line">        &#125;);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
 
         </div>
-        <footer class="article-footer">
-            
+        
+<footer class="article-footer">
+  <div class="cc">
+    <a class="cc-images" rel="license" href="http://creativecommons.org/licenses/by-nc/4.0/">
+      <img alt="知识共享许可协议" style="border-width:0" src="https://creativecommons.org/wp-content/themes/creativecommons.org/images/chooser_cc.png" />
+      <img alt="知识共享许可协议" style="border-width:0" src="https://creativecommons.org/wp-content/themes/creativecommons.org/images/chooser_by.png" />
+      <img alt="知识共享许可协议" style="border-width:0" src="https://creativecommons.org/wp-content/themes/creativecommons.org/images/chooser_nc.png" />
+    </a>
+    <span class="cc-text"> 本网站<strong>原创内容（非转载文章）</strong>采用 
+      <a rel="license" href="http://creativecommons.org/licenses/by-nc/4.0/">
+        知识共享署名-非商业性使用 4.0 国际许可协议</a>
+      进行许可。
+    </span>
+  </div>
+
+  
     <div class="jiathis_style_24x24">
     <span class="jiathis_txt">分享到：</span>
     <a class="jiathis_button_qzone"></a>
@@ -229,8 +250,7 @@ var _hmt = _hmt || [];
 
 
 
-        </footer>
-
+</footer>
     </div>
 </article>
 

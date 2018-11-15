@@ -38,9 +38,10 @@ $(function() {
   $(".bookmark").on('click', 'a', function(ele) {
     var id = $(ele.target).data('id');
     var top = $(id)[0].offsetTop;
+    var height = $(document).height();
     if (top) {
       $bookmark.fadeOut();
-      $('#root').animate({ scrollTop: top - 60 }, 600);
+      $('#root').animate({ scrollTop: top + height - 60 }, 600);
     }
   }).on('click', '.close', function(ele) {
     $bookmark.fadeOut();

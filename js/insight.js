@@ -20,7 +20,7 @@
       );
   }
 
-  function searchItem(icon, title, slug, preview, url) {
+  function searchItem(icon, title, slug, preview, url, count) {
     return $("<div>")
       .addClass("ins-selectable")
       .addClass("ins-search-item")
@@ -37,13 +37,9 @@
               ? title
               : CONFIG.TRANSLATION["UNTITLED"]
           )
-        //   .append(
-        //     slug
-        //       ? $("<span>")
-        //           .addClass("ins-slug")
-        //           .text(slug)
-        //       : null
-        //   )
+          .append(
+            count > 0 ? '<span class="ins-item-count">(' + count + ')</span>' : ''
+          )
       )
       .append(
         preview
@@ -81,13 +77,21 @@
             item.name,
             item.slug,
             null,
-            item.permalink
+            item.permalink,
+            item.count
           );
         });
         break;
       case "TAGS":
         $searchItems = array.map(function(item) {
-          return searchItem("tag", item.name, item.slug, null, item.permalink);
+          return searchItem(
+            "tag",
+            item.name,
+            item.slug,
+            null,
+            item.permalink,
+            item.count
+          );
         });
         break;
       default:
@@ -102,7 +106,11 @@
     entries.forEach(function(entry) {
       if (entry[key]) {
         entry[key].forEach(function(value) {
-          values[value.name] = value;
+          if (!values[value.name]) {
+            values[value.name] = value;
+            values[value.name].count = 0;
+          }
+          values[value.name].count += 1;
         });
       }
     });
@@ -223,7 +231,7 @@
         .sort(function(a, b) {
           return WEIGHTS.CATEGORY(b) - WEIGHTS.CATEGORY(a);
         })
-        .slice(0, 5),
+        .slice(0, 8),
       tags: tags.filter(FILTERS.TAG).sort(function(a, b) {
         return WEIGHTS.TAG(b) - WEIGHTS.TAG(a);
       })

@@ -149,6 +149,13 @@
   </url>
   
   <url>
+    <loc>http://tcatche.site/2017/07/what-makes-webassembly-fast/</loc>
+    
+    <lastmod>2018-08-01T10:41:24.093Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>http://tcatche.site/2017/06/web-browser-console/</loc>
     
     <lastmod>2018-08-01T10:41:24.093Z</lastmod>
@@ -163,9 +170,16 @@
   </url>
   
   <url>
-    <loc>http://tcatche.site/2017/07/what-makes-webassembly-fast/</loc>
+    <loc>http://tcatche.site/2017/04/symbol-base-type/</loc>
     
-    <lastmod>2018-08-01T10:41:24.093Z</lastmod>
+    <lastmod>2018-08-01T10:41:24.092Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://tcatche.site/2017/07/tc39-ecmascript-proposals/</loc>
+    
+    <lastmod>2018-08-01T10:41:24.092Z</lastmod>
     
   </url>
   
@@ -178,20 +192,6 @@
   
   <url>
     <loc>http://tcatche.site/2017/07/the-inner-workings-of-virtual-dom-rajaraodv-medium/</loc>
-    
-    <lastmod>2018-08-01T10:41:24.092Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://tcatche.site/2017/04/symbol-base-type/</loc>
-    
-    <lastmod>2018-08-01T10:41:24.092Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://tcatche.site/2017/07/tc39-ecmascript-proposals/</loc>
     
     <lastmod>2018-08-01T10:41:24.092Z</lastmod>
     
@@ -331,13 +331,6 @@
   </url>
   
   <url>
-    <loc>http://tcatche.site/2017/06/object-freeze/</loc>
-    
-    <lastmod>2018-08-01T10:41:24.083Z</lastmod>
-    
-  </url>
-  
-  <url>
     <loc>http://tcatche.site/2017/06/object-define-property/</loc>
     
     <lastmod>2018-08-01T10:41:24.083Z</lastmod>
@@ -345,9 +338,9 @@
   </url>
   
   <url>
-    <loc>http://tcatche.site/2017/08/mastering_margin_collapsing_and_block_formatting_context/</loc>
+    <loc>http://tcatche.site/2017/06/object-freeze/</loc>
     
-    <lastmod>2018-08-01T10:41:24.082Z</lastmod>
+    <lastmod>2018-08-01T10:41:24.083Z</lastmod>
     
   </url>
   
@@ -359,23 +352,16 @@
   </url>
   
   <url>
+    <loc>http://tcatche.site/2017/08/mastering_margin_collapsing_and_block_formatting_context/</loc>
+    
+    <lastmod>2018-08-01T10:41:24.082Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>http://tcatche.site/2017/08/how-javascript-work-part-2-v8-engine-and-5-tips-optimized/</loc>
     
     <lastmod>2018-08-01T10:41:24.081Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://tcatche.site/2017/04/generator-and-async-function/</loc>
-    
-    <lastmod>2018-08-01T10:41:24.080Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://tcatche.site/2017/08/how-javascript-work-part-1-overview/</loc>
-    
-    <lastmod>2018-08-01T10:41:24.080Z</lastmod>
     
   </url>
   
@@ -394,14 +380,28 @@
   </url>
   
   <url>
-    <loc>http://tcatche.site/2018/02/dom_native_elements_and_node_query/</loc>
+    <loc>http://tcatche.site/2017/04/generator-and-async-function/</loc>
+    
+    <lastmod>2018-08-01T10:41:24.080Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://tcatche.site/2017/08/how-javascript-work-part-1-overview/</loc>
+    
+    <lastmod>2018-08-01T10:41:24.080Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://tcatche.site/2017/07/form-validator-design/</loc>
     
     <lastmod>2018-08-01T10:41:24.079Z</lastmod>
     
   </url>
   
   <url>
-    <loc>http://tcatche.site/2017/07/form-validator-design/</loc>
+    <loc>http://tcatche.site/2018/02/dom_native_elements_and_node_query/</loc>
     
     <lastmod>2018-08-01T10:41:24.079Z</lastmod>
     
@@ -415,13 +415,6 @@
   </url>
   
   <url>
-    <loc>http://tcatche.site/2017/07/dom_load_status_events/</loc>
-    
-    <lastmod>2018-08-01T10:41:24.078Z</lastmod>
-    
-  </url>
-  
-  <url>
     <loc>http://tcatche.site/2016/03/css3-transition-transform-animation/</loc>
     
     <lastmod>2018-08-01T10:41:24.078Z</lastmod>
@@ -430,6 +423,13 @@
   
   <url>
     <loc>http://tcatche.site/2017/05/decorator/</loc>
+    
+    <lastmod>2018-08-01T10:41:24.078Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://tcatche.site/2017/07/dom_load_status_events/</loc>
     
     <lastmod>2018-08-01T10:41:24.078Z</lastmod>
     
@@ -478,14 +478,14 @@
   </url>
   
   <url>
-    <loc>http://tcatche.site/2017/03/compose/</loc>
+    <loc>http://tcatche.site/2017/03/combineReducers/</loc>
     
     <lastmod>2018-08-01T10:41:24.075Z</lastmod>
     
   </url>
   
   <url>
-    <loc>http://tcatche.site/2017/03/combineReducers/</loc>
+    <loc>http://tcatche.site/2017/03/compose/</loc>
     
     <lastmod>2018-08-01T10:41:24.075Z</lastmod>
     
@@ -520,14 +520,14 @@
   </url>
   
   <url>
-    <loc>http://tcatche.site/2018/01/broswer_common_form_event/</loc>
+    <loc>http://tcatche.site/2017/03/bindActionCreators/</loc>
     
     <lastmod>2018-08-01T10:41:24.071Z</lastmod>
     
   </url>
   
   <url>
-    <loc>http://tcatche.site/2017/03/bindActionCreators/</loc>
+    <loc>http://tcatche.site/2018/01/broswer_common_form_event/</loc>
     
     <lastmod>2018-08-01T10:41:24.071Z</lastmod>
     

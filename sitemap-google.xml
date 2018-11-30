@@ -2,6 +2,13 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>http://tcatche.site/2018/01/react-reconciliation/</loc>
+    
+    <lastmod>2018-11-27T03:02:36.170Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>http://tcatche.site/2018/11/react-momo/</loc>
     
     <lastmod>2018-11-20T12:00:21.877Z</lastmod>
@@ -177,13 +184,6 @@
   </url>
   
   <url>
-    <loc>http://tcatche.site/2017/04/symbol-base-type/</loc>
-    
-    <lastmod>2018-08-01T10:41:24.092Z</lastmod>
-    
-  </url>
-  
-  <url>
     <loc>http://tcatche.site/2017/08/stacking-context-and-z-index/</loc>
     
     <lastmod>2018-08-01T10:41:24.092Z</lastmod>
@@ -198,14 +198,14 @@
   </url>
   
   <url>
-    <loc>http://tcatche.site/2017/03/reflect-object/</loc>
+    <loc>http://tcatche.site/2017/04/symbol-base-type/</loc>
     
-    <lastmod>2018-08-01T10:41:24.091Z</lastmod>
+    <lastmod>2018-08-01T10:41:24.092Z</lastmod>
     
   </url>
   
   <url>
-    <loc>http://tcatche.site/2017/08/repaint-and-reflow/</loc>
+    <loc>http://tcatche.site/2017/03/reflect-object/</loc>
     
     <lastmod>2018-08-01T10:41:24.091Z</lastmod>
     
@@ -219,7 +219,21 @@
   </url>
   
   <url>
-    <loc>http://tcatche.site/2017/12/react-portals/</loc>
+    <loc>http://tcatche.site/2017/08/repaint-and-reflow/</loc>
+    
+    <lastmod>2018-08-01T10:41:24.091Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://tcatche.site/2017/06/react-reactdom/</loc>
+    
+    <lastmod>2018-08-01T10:41:24.090Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://tcatche.site/2017/06/react-refs/</loc>
     
     <lastmod>2018-08-01T10:41:24.090Z</lastmod>
     
@@ -233,21 +247,7 @@
   </url>
   
   <url>
-    <loc>http://tcatche.site/2017/06/react-reactdom/</loc>
-    
-    <lastmod>2018-08-01T10:41:24.090Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://tcatche.site/2018/01/react-reconciliation/</loc>
-    
-    <lastmod>2018-08-01T10:41:24.090Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://tcatche.site/2017/06/react-refs/</loc>
+    <loc>http://tcatche.site/2017/12/react-portals/</loc>
     
     <lastmod>2018-08-01T10:41:24.090Z</lastmod>
     
@@ -310,14 +310,14 @@
   </url>
   
   <url>
-    <loc>http://tcatche.site/2017/03/proxy-object/</loc>
+    <loc>http://tcatche.site/2017/06/react-children/</loc>
     
     <lastmod>2018-08-01T10:41:24.085Z</lastmod>
     
   </url>
   
   <url>
-    <loc>http://tcatche.site/2017/06/react-children/</loc>
+    <loc>http://tcatche.site/2017/03/proxy-object/</loc>
     
     <lastmod>2018-08-01T10:41:24.085Z</lastmod>
     
@@ -345,14 +345,14 @@
   </url>
   
   <url>
-    <loc>http://tcatche.site/2017/05/iteritor-and-for-of/</loc>
+    <loc>http://tcatche.site/2017/08/mastering_margin_collapsing_and_block_formatting_context/</loc>
     
     <lastmod>2018-08-01T10:41:24.082Z</lastmod>
     
   </url>
   
   <url>
-    <loc>http://tcatche.site/2017/08/mastering_margin_collapsing_and_block_formatting_context/</loc>
+    <loc>http://tcatche.site/2017/05/iteritor-and-for-of/</loc>
     
     <lastmod>2018-08-01T10:41:24.082Z</lastmod>
     
@@ -366,7 +366,7 @@
   </url>
   
   <url>
-    <loc>http://tcatche.site/2017/04/function-program-curry-function/</loc>
+    <loc>http://tcatche.site/2017/08/how-javascript-work-part-1-overview/</loc>
     
     <lastmod>2018-08-01T10:41:24.080Z</lastmod>
     
@@ -380,16 +380,23 @@
   </url>
   
   <url>
-    <loc>http://tcatche.site/2017/08/how-javascript-work-part-1-overview/</loc>
+    <loc>http://tcatche.site/2017/04/function-program-pure-function/</loc>
     
     <lastmod>2018-08-01T10:41:24.080Z</lastmod>
     
   </url>
   
   <url>
-    <loc>http://tcatche.site/2017/04/function-program-pure-function/</loc>
+    <loc>http://tcatche.site/2017/04/function-program-curry-function/</loc>
     
     <lastmod>2018-08-01T10:41:24.080Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://tcatche.site/2018/03/evolving-patterns-in-react/</loc>
+    
+    <lastmod>2018-08-01T10:41:24.079Z</lastmod>
     
   </url>
   
@@ -402,13 +409,6 @@
   
   <url>
     <loc>http://tcatche.site/2018/02/dom_native_elements_and_node_query/</loc>
-    
-    <lastmod>2018-08-01T10:41:24.079Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://tcatche.site/2018/03/evolving-patterns-in-react/</loc>
     
     <lastmod>2018-08-01T10:41:24.079Z</lastmod>
     
@@ -443,14 +443,14 @@
   </url>
   
   <url>
-    <loc>http://tcatche.site/2016/03/css-media-query/</loc>
+    <loc>http://tcatche.site/2017/08/css-selector-cascade-order/</loc>
     
     <lastmod>2018-08-01T10:41:24.077Z</lastmod>
     
   </url>
   
   <url>
-    <loc>http://tcatche.site/2017/08/css-selector-cascade-order/</loc>
+    <loc>http://tcatche.site/2016/03/css-media-query/</loc>
     
     <lastmod>2018-08-01T10:41:24.077Z</lastmod>
     
@@ -471,13 +471,6 @@
   </url>
   
   <url>
-    <loc>http://tcatche.site/2017/06/call-apply-bind/</loc>
-    
-    <lastmod>2018-08-01T10:41:24.075Z</lastmod>
-    
-  </url>
-  
-  <url>
     <loc>http://tcatche.site/2017/03/combineReducers/</loc>
     
     <lastmod>2018-08-01T10:41:24.075Z</lastmod>
@@ -486,6 +479,13 @@
   
   <url>
     <loc>http://tcatche.site/2017/03/compose/</loc>
+    
+    <lastmod>2018-08-01T10:41:24.075Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://tcatche.site/2017/06/call-apply-bind/</loc>
     
     <lastmod>2018-08-01T10:41:24.075Z</lastmod>
     
@@ -534,13 +534,6 @@
   </url>
   
   <url>
-    <loc>http://tcatche.site/2017/05/array-like-object/</loc>
-    
-    <lastmod>2018-08-01T10:41:24.070Z</lastmod>
-    
-  </url>
-  
-  <url>
     <loc>http://tcatche.site/2017/06/a-crash-course-in-memory-management/</loc>
     
     <lastmod>2018-08-01T10:41:24.070Z</lastmod>
@@ -549,6 +542,13 @@
   
   <url>
     <loc>http://tcatche.site/2017/02/applyMiddleware/</loc>
+    
+    <lastmod>2018-08-01T10:41:24.070Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://tcatche.site/2017/05/array-like-object/</loc>
     
     <lastmod>2018-08-01T10:41:24.070Z</lastmod>
     
@@ -569,14 +569,14 @@
   </url>
   
   <url>
-    <loc>http://tcatche.site/2017/06/a-cartoon-intro-to-arraybuffers-and-sharedarraybuffers/</loc>
+    <loc>http://tcatche.site/2017/06/a-cartoon-intro-to-webassembly/</loc>
     
     <lastmod>2018-08-01T10:41:24.067Z</lastmod>
     
   </url>
   
   <url>
-    <loc>http://tcatche.site/2017/06/a-cartoon-intro-to-webassembly/</loc>
+    <loc>http://tcatche.site/2017/06/a-cartoon-intro-to-arraybuffers-and-sharedarraybuffers/</loc>
     
     <lastmod>2018-08-01T10:41:24.067Z</lastmod>
     

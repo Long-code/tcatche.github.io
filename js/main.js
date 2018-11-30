@@ -128,13 +128,14 @@
         var p = (parseInt(top * 100 / h)) + '%';
         $('#page-percent div').css('width', p);
         // 更新 nav 和 fixed
-        if (top >= firstScreenHeight - 60) {
+        if (top >= firstScreenHeight / 2) {
             $('#fixed').fadeIn();
-            $('#header-nav').addClass('nav-fixed');
-            // $('#header').css('height', '60px');
-            // $('#header').css('position', 'fixed');
         } else {
             $('#fixed').fadeOut();
+        }
+        if (top >= firstScreenHeight - 60) {
+            $('#header-nav').addClass('nav-fixed');
+        } else {
             $('#header-nav').removeClass('nav-fixed');
         }
     }

@@ -28,7 +28,7 @@
       .append(
         $("<header>")
           .append(
-            $("<i>")
+            icon !=='tag' && $("<i>")
               .addClass("fa")
               .addClass("fa-" + icon)
           )

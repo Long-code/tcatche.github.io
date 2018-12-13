@@ -71,42 +71,22 @@ var _hmt = _hmt || [];
 </head>
 
 <body>
-  <div id="root">
-    <div id="page-percent">
-      <div></div>
-    </div>
-    <div id="wrap">
-      <header id="header">
-    <div id="header-outer" class="outer">
-        <div class="container">
-            <div id="header-nav" class="nav-container">
-                <div class="container-inner nav-container-inner">
-                    <ul id="main-nav">
-                        
-                                <li class="main-nav-list-item" >
-                                    <a class="main-nav-list-link" href="/">主页</a>
-                                </li>
-                        
-                                <ul class="main-nav-list"><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/Uncategory/">Uncategory</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/css/">css</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/html/">html</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/js/">js</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/翻译/">翻译</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/转载/">转载</a></li></ul>
-                            
-                    </ul>
-                </div>
-            </div>
-            <div id="header-title" style="display: none">
-                <div class="container-inner">
-                    <h1 class="logo-wrap">
-                        <a href="/" class="logo"></a>
-                    </h1>
-                    
-                        <h2 class="subtitle-wrap">
-                            <p class="subtitle">To try, then catch.</p>
-                        </h2>
-                    
-                </div>
-            </div>
-        </div>
-    </div>
+  <div id="page-percent"><div></div></div>
+  <header id="header">
+  <div id="header-nav" class="nav-container">
+    <ul>
+      
+          <li class="main-nav-list-item" >
+            <a class="main-nav-list-link" href="/">主页</a>
+          </li>
+      
+          <ul class="main-nav-list"><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/Uncategory/">Uncategory</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/css/">css</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/html/">html</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/js/">js</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/翻译/">翻译</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/转载/">转载</a></li></ul>
+        
+    </ul>
+  </div>
 </header>
+  <div id="root">
+    <div id="wrap">
       <div class="container">
         <div class="bg_content">
           <canvas id="canvas"></canvas>
@@ -174,25 +154,25 @@ var _hmt = _hmt || [];
 <p>从定义上可以看出，纯函数和数学上的函数都有要求：对于任意相同输入，其输出结果都是 <strong>唯一确定</strong> 的，不存在一个输入对应于多个输出结果的情况。</p>
 <p>纯函数和非纯函数很经常看到，比如数组的 <code>slice</code> 和 <code>splice</code> 函数，一个是纯函数，一个就是非纯函数：</p>
 <p><code>slice</code> 函数是纯函数，执行结果是可预计的、可靠的，每次输入相同的参数，执行操作的结果都一致：</p>
-<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">var</span> arr = [<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>];</span><br><span class="line"></span><br><span class="line"><span class="comment">// 纯函数的示例：</span></span><br><span class="line">arr.slice(<span class="number">0</span>, <span class="number">2</span>);</span><br><span class="line"><span class="comment">// [1, 2]</span></span><br><span class="line"></span><br><span class="line">arr.slice(<span class="number">0</span>, <span class="number">2</span>);</span><br><span class="line"><span class="comment">// [1, 2]</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight js"><table><tr><td class="code"><pre><div class="line"><span class="keyword">var</span> arr = [<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>];</div><div class="line"></div><div class="line"><span class="comment">// 纯函数的示例：</span></div><div class="line">arr.slice(<span class="number">0</span>, <span class="number">2</span>);</div><div class="line"><span class="comment">// [1, 2]</span></div><div class="line"></div><div class="line">arr.slice(<span class="number">0</span>, <span class="number">2</span>);</div><div class="line"><span class="comment">// [1, 2]</span></div></pre></td></tr></table></figure>
 <p>而 <code>splice</code> 函数不是纯函数，输入相同的参数，每次操作的结果都不一致：</p>
-<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="comment">// 非纯函数的示例：</span></span><br><span class="line">arr.splice(<span class="number">0</span>, <span class="number">2</span>);</span><br><span class="line"><span class="comment">// [1, 2]</span></span><br><span class="line"></span><br><span class="line">arr.splice(<span class="number">0</span>, <span class="number">2</span>);</span><br><span class="line"><span class="comment">// [3， 4]</span></span><br><span class="line"></span><br><span class="line">arr.splice(<span class="number">0</span>, <span class="number">2</span>);</span><br><span class="line"><span class="comment">// []</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight js"><table><tr><td class="code"><pre><div class="line"><span class="comment">// 非纯函数的示例：</span></div><div class="line">arr.splice(<span class="number">0</span>, <span class="number">2</span>);</div><div class="line"><span class="comment">// [1, 2]</span></div><div class="line"></div><div class="line">arr.splice(<span class="number">0</span>, <span class="number">2</span>);</div><div class="line"><span class="comment">// [3， 4]</span></div><div class="line"></div><div class="line">arr.splice(<span class="number">0</span>, <span class="number">2</span>);</div><div class="line"><span class="comment">// []</span></div></pre></td></tr></table></figure>
 <h2 id="副作用"><a href="#副作用" class="headerlink" title="副作用"></a>副作用</h2><p>前面提到纯函数不存在副作用，副作用的影响是这样的：</p>
 <blockquote>
 <p>副作用表示在运算过程中，系统状态的改变或者与外部进行的可观察的交互。如果一个函数与外部的可变状态发生了交互，则认为函数是有副作用的。</p>
 </blockquote>
 <p>可以看个例子：</p>
-<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">var</span> minAge = <span class="number">21</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 存在副作用的函数</span></span><br><span class="line"><span class="keyword">var</span> checkAge = <span class="function"><span class="params">age</span> =&gt;</span> age &gt; minAge;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 不存在副作用的函数</span></span><br><span class="line"><span class="keyword">var</span> checkAge = <span class="function"><span class="params">age</span> =&gt;</span> &#123;</span><br><span class="line">  <span class="keyword">var</span> minAge = <span class="number">21</span>;</span><br><span class="line">  <span class="keyword">return</span> age &gt; minAge;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight js"><table><tr><td class="code"><pre><div class="line"><span class="keyword">var</span> minAge = <span class="number">21</span>;</div><div class="line"></div><div class="line"><span class="comment">// 存在副作用的函数</span></div><div class="line"><span class="keyword">var</span> checkAge = <span class="function"><span class="params">age</span> =&gt;</span> age &gt; minAge;</div><div class="line"></div><div class="line"><span class="comment">// 不存在副作用的函数</span></div><div class="line"><span class="keyword">var</span> checkAge = <span class="function"><span class="params">age</span> =&gt;</span> &#123;</div><div class="line">  <span class="keyword">var</span> minAge = <span class="number">21</span>;</div><div class="line">  <span class="keyword">return</span> age &gt; minAge;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
 <p>从以上示例可以看到，对于同一个输入，第一个函数存在副作用，这个函数的行为不光取决于函数的参数，而且依赖外部变量 <code>minAge</code> ，如果外部修改了 <code>minAge</code> 的值，函数的执行结果可能发生改变，这种改变是不可预期的，而第二个函数不存在副作用，没有使用或修改任何的外部变量，因此可以保证它的输出结果始终是不会发生改变的。</p>
 <p>对于一个系统而言，依赖外部系统环境的状态会造成额外的复杂度，而使用纯函数可以有效降低系统的复杂度，而且还有一些其他的特性：</p>
 <h2 id="纯函数的特性"><a href="#纯函数的特性" class="headerlink" title="纯函数的特性"></a>纯函数的特性</h2><p>纯函数具有很多可靠的特性：</p>
 <h3 id="可缓存性"><a href="#可缓存性" class="headerlink" title="可缓存性"></a>可缓存性</h3><p>因为纯函数的输出结果是确定的，只和输入有关，因此对于复杂运算可以将结果存储起来，下次直接使用。</p>
 <p>如下定义了一个非常耗时的操作：</p>
-<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">var</span> complexFunc = <span class="function">(<span class="params">val</span>) =&gt;</span> &#123;</span><br><span class="line">  <span class="comment">// 耗时的操作</span></span><br><span class="line">  <span class="keyword">for</span>(<span class="keyword">var</span> i = <span class="number">0</span>; i &lt; <span class="number">100000000</span>; i ++) &#123;&#125;</span><br><span class="line">  <span class="keyword">return</span> val ++;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="built_in">console</span>.time(<span class="string">'timer'</span>);</span><br><span class="line">complexFunc(<span class="number">1</span>);</span><br><span class="line"><span class="built_in">console</span>.timeEnd(<span class="string">'timer'</span>);</span><br><span class="line"><span class="comment">// timer: 257ms</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 重复调用，函数重新运行，运行时间没有怎么发生变化。</span></span><br><span class="line"><span class="built_in">console</span>.time(<span class="string">'timer'</span>);</span><br><span class="line">complexFunc(<span class="number">1</span>);</span><br><span class="line"><span class="built_in">console</span>.timeEnd(<span class="string">'timer'</span>);</span><br><span class="line"><span class="comment">// timer: 227ms</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight js"><table><tr><td class="code"><pre><div class="line"><span class="keyword">var</span> complexFunc = <span class="function">(<span class="params">val</span>) =&gt;</span> &#123;</div><div class="line">  <span class="comment">// 耗时的操作</span></div><div class="line">  <span class="keyword">for</span>(<span class="keyword">var</span> i = <span class="number">0</span>; i &lt; <span class="number">100000000</span>; i ++) &#123;&#125;</div><div class="line">  <span class="keyword">return</span> val ++;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="built_in">console</span>.time(<span class="string">'timer'</span>);</div><div class="line">complexFunc(<span class="number">1</span>);</div><div class="line"><span class="built_in">console</span>.timeEnd(<span class="string">'timer'</span>);</div><div class="line"><span class="comment">// timer: 257ms</span></div><div class="line"></div><div class="line"><span class="comment">// 重复调用，函数重新运行，运行时间没有怎么发生变化。</span></div><div class="line"><span class="built_in">console</span>.time(<span class="string">'timer'</span>);</div><div class="line">complexFunc(<span class="number">1</span>);</div><div class="line"><span class="built_in">console</span>.timeEnd(<span class="string">'timer'</span>);</div><div class="line"><span class="comment">// timer: 227ms</span></div></pre></td></tr></table></figure>
 <p>这个操作执行较慢，每次都要花费大量时间，但是这是个纯函数，每次执行的结果是可预期的，因此，可以对其执行结果进行缓存：</p>
-<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="comment">//一个缓存函数结果的简单的实现</span></span><br><span class="line"><span class="keyword">var</span> memoize = <span class="function"><span class="keyword">function</span>(<span class="params">f</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">var</span> _cache = &#123;&#125;;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">return</span> <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="keyword">var</span> argsStr = <span class="built_in">JSON</span>.stringify(<span class="built_in">arguments</span>);</span><br><span class="line">    _cache[argsStr] = _cache.hasOwnProperty(argsStr) ? _cache[argsStr] : f(<span class="built_in">arguments</span>);</span><br><span class="line">    <span class="keyword">return</span> _cache[argsStr];</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> memoizedFunc = memoize(complexFunc);</span><br></pre></td></tr></table></figure>
+<figure class="highlight js"><table><tr><td class="code"><pre><div class="line"><span class="comment">//一个缓存函数结果的简单的实现</span></div><div class="line"><span class="keyword">var</span> memoize = <span class="function"><span class="keyword">function</span>(<span class="params">f</span>) </span>&#123;</div><div class="line">  <span class="keyword">var</span> _cache = &#123;&#125;;</div><div class="line"></div><div class="line">  <span class="keyword">return</span> <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</div><div class="line">    <span class="keyword">var</span> argsStr = <span class="built_in">JSON</span>.stringify(<span class="built_in">arguments</span>);</div><div class="line">    _cache[argsStr] = _cache.hasOwnProperty(argsStr) ? _cache[argsStr] : f(<span class="built_in">arguments</span>);</div><div class="line">    <span class="keyword">return</span> _cache[argsStr];</div><div class="line">  &#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="keyword">var</span> memoizedFunc = memoize(complexFunc);</div></pre></td></tr></table></figure>
 <p>然后再次执行这个函数：</p>
-<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="comment">// 第一次执行未缓存</span></span><br><span class="line"><span class="built_in">console</span>.time(<span class="string">'timer'</span>);</span><br><span class="line">memoizedFunc(<span class="number">1</span>);</span><br><span class="line"><span class="built_in">console</span>.timeEnd(<span class="string">'timer'</span>);</span><br><span class="line"><span class="comment">// timer: 250ms</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 此时运行结果已经被缓存，运行速度大幅增加。</span></span><br><span class="line"><span class="built_in">console</span>.time(<span class="string">'timer'</span>);</span><br><span class="line">memoizedFunc(<span class="number">1</span>);</span><br><span class="line"><span class="built_in">console</span>.timeEnd(<span class="string">'timer'</span>);</span><br><span class="line"><span class="comment">// timer: 0.0149ms</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight js"><table><tr><td class="code"><pre><div class="line"><span class="comment">// 第一次执行未缓存</span></div><div class="line"><span class="built_in">console</span>.time(<span class="string">'timer'</span>);</div><div class="line">memoizedFunc(<span class="number">1</span>);</div><div class="line"><span class="built_in">console</span>.timeEnd(<span class="string">'timer'</span>);</div><div class="line"><span class="comment">// timer: 250ms</span></div><div class="line"></div><div class="line"><span class="comment">// 此时运行结果已经被缓存，运行速度大幅增加。</span></div><div class="line"><span class="built_in">console</span>.time(<span class="string">'timer'</span>);</div><div class="line">memoizedFunc(<span class="number">1</span>);</div><div class="line"><span class="built_in">console</span>.timeEnd(<span class="string">'timer'</span>);</div><div class="line"><span class="comment">// timer: 0.0149ms</span></div></pre></td></tr></table></figure>
 <p>通过将执行结果缓存起来，虽然第一次调用的执行时间人就很长，但是当函数第二次被调用的时候，可以直接从缓存的数据中读取结果，函数的时间大大缩短。</p>
 <h3 id="可并行化"><a href="#可并行化" class="headerlink" title="可并行化"></a>可并行化</h3><p>因为纯函数不需要访问共享数据，不会受外部状态影响而进行资源竞争，纯函数可以很容易的实行并行代码或者并行操作。</p>
 <h2 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h2><ul>

@@ -71,42 +71,22 @@ var _hmt = _hmt || [];
 </head>
 
 <body>
-  <div id="root">
-    <div id="page-percent">
-      <div></div>
-    </div>
-    <div id="wrap">
-      <header id="header">
-    <div id="header-outer" class="outer">
-        <div class="container">
-            <div id="header-nav" class="nav-container">
-                <div class="container-inner nav-container-inner">
-                    <ul id="main-nav">
-                        
-                                <li class="main-nav-list-item" >
-                                    <a class="main-nav-list-link" href="/">主页</a>
-                                </li>
-                        
-                                <ul class="main-nav-list"><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/Uncategory/">Uncategory</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/css/">css</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/html/">html</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/js/">js</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/翻译/">翻译</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/转载/">转载</a></li></ul>
-                            
-                    </ul>
-                </div>
-            </div>
-            <div id="header-title" style="display: none">
-                <div class="container-inner">
-                    <h1 class="logo-wrap">
-                        <a href="/" class="logo"></a>
-                    </h1>
-                    
-                        <h2 class="subtitle-wrap">
-                            <p class="subtitle">To try, then catch.</p>
-                        </h2>
-                    
-                </div>
-            </div>
-        </div>
-    </div>
+  <div id="page-percent"><div></div></div>
+  <header id="header">
+  <div id="header-nav" class="nav-container">
+    <ul>
+      
+          <li class="main-nav-list-item" >
+            <a class="main-nav-list-link" href="/">主页</a>
+          </li>
+      
+          <ul class="main-nav-list"><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/Uncategory/">Uncategory</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/css/">css</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/html/">html</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/js/">js</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/翻译/">翻译</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/转载/">转载</a></li></ul>
+        
+    </ul>
+  </div>
 </header>
+  <div id="root">
+    <div id="wrap">
       <div class="container">
         <div class="bg_content">
           <canvas id="canvas"></canvas>
@@ -212,7 +192,7 @@ var _hmt = _hmt || [];
 <p><code>调用堆栈是一个数据结构，它记录了我们在程序的基本位置。</code>如果我们进入一个函数，我们把它放在堆栈的顶部。如果我们从一个函数返回，我们弹出堆栈的顶部。这就是堆栈做的事情。 </p>
 <p>Let’s see an example. Take a look at the following code:</p>
 <p>我们来看一个例子。看看下面的代码：</p>
-<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">multiply</span>(<span class="params">x, y</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> x * y;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">printSquare</span>(<span class="params">x</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">var</span> s = multiply(x, x);</span><br><span class="line">    <span class="built_in">console</span>.log(s);</span><br><span class="line">&#125;</span><br><span class="line">printSquare(<span class="number">5</span>);</span><br></pre></td></tr></table></figure>
+<figure class="highlight js"><table><tr><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">multiply</span>(<span class="params">x, y</span>) </span>&#123;</div><div class="line">    <span class="keyword">return</span> x * y;</div><div class="line">&#125;</div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">printSquare</span>(<span class="params">x</span>) </span>&#123;</div><div class="line">    <span class="keyword">var</span> s = multiply(x, x);</div><div class="line">    <span class="built_in">console</span>.log(s);</div><div class="line">&#125;</div><div class="line">printSquare(<span class="number">5</span>);</div></pre></td></tr></table></figure>
 <p>When the engine starts executing this code, the Call Stack will be empty. Afterwards, the steps will be the following:</p>
 <p>当引擎开始执行此代码时，调用堆栈将为空。之后，步骤如下</p>
 <p><img src="https://cdn-images-1.medium.com/max/800/1*Yp1KOt_UJ47HChmS9y7KXw.png" alt=""></p>
@@ -220,13 +200,13 @@ var _hmt = _hmt || [];
 <p>进入调用堆栈中的每个条目称为<strong>堆栈帧</strong>。</p>
 <p>And this is exactly how stack traces are being constructed when an exception is being thrown — it is basically the state of the Call Stack when the exception happened. Take a look at the following code:</p>
 <p>这正是在抛出异常时构造堆栈跟踪的方式 — 当异常发生时，它基本上是调用堆栈的状态。看看下面的代码：</p>
-<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">foo</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="keyword">throw</span> <span class="keyword">new</span> <span class="built_in">Error</span>(<span class="string">'SessionStack will help you resolve crashes :)'</span>);</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">bar</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    foo();</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">start</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    bar();</span><br><span class="line">&#125;</span><br><span class="line">start();</span><br></pre></td></tr></table></figure>
+<figure class="highlight js"><table><tr><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">foo</span>(<span class="params"></span>) </span>&#123;</div><div class="line">    <span class="keyword">throw</span> <span class="keyword">new</span> <span class="built_in">Error</span>(<span class="string">'SessionStack will help you resolve crashes :)'</span>);</div><div class="line">&#125;</div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">bar</span>(<span class="params"></span>) </span>&#123;</div><div class="line">    foo();</div><div class="line">&#125;</div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">start</span>(<span class="params"></span>) </span>&#123;</div><div class="line">    bar();</div><div class="line">&#125;</div><div class="line">start();</div></pre></td></tr></table></figure>
 <p>If this is executed in Chrome (assuming that this code is in a file called foo.js), the following stack trace will be produced:</p>
 <p>如果这是在 Chrome 中执行的（假设此代码位于一个名为foo.js的文件中），则会产生以下堆栈跟踪：</p>
 <p><img src="https://cdn-images-1.medium.com/max/800/1*T-W_ihvl-9rG4dn18kP3Qw.png" alt=""></p>
 <p><strong>Blowing the stack</strong> — this happens when you reach the maximum Call Stack size. And that could happen quite easily, especially if you’re using recursion without testing your code very extensively. Take a look at this sample code:</p>
 <p><strong>Blowing the stack</strong> — 当你达到最大调用堆栈尺寸时，会发生这种情况。这可能会非常容易发生，特别是如果你在不经过很大程度测试代码的情况下使用递归。看看这个示例代码：</p>
-<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">foo</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    foo();</span><br><span class="line">&#125;</span><br><span class="line">foo();</span><br></pre></td></tr></table></figure>
+<figure class="highlight js"><table><tr><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">foo</span>(<span class="params"></span>) </span>&#123;</div><div class="line">    foo();</div><div class="line">&#125;</div><div class="line">foo();</div></pre></td></tr></table></figure>
 <p>When the engine starts executing this code, it starts with calling the function “foo”. This function, however, is recursive and starts calling itself without any termination conditions. So at every step of the execution, the same function gets added to the Call Stack over and over again. It looks something like this:</p>
 <p>当引擎开始执行这个代码时，它首先调用 “foo” 函数。然而，此函数是递归的，并且开始调用自身而没有任何终止条件。所以在执行的每个步骤中，相同的函数都被一次又一次地添加到调用堆栈中。看起来像这样：</p>
 <p><img src="https://cdn-images-1.medium.com/max/800/1*AycFMDy9tlDmNoc5LXd9-g.png" alt="Call Stack"></p>

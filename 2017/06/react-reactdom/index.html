@@ -71,42 +71,22 @@ var _hmt = _hmt || [];
 </head>
 
 <body>
-  <div id="root">
-    <div id="page-percent">
-      <div></div>
-    </div>
-    <div id="wrap">
-      <header id="header">
-    <div id="header-outer" class="outer">
-        <div class="container">
-            <div id="header-nav" class="nav-container">
-                <div class="container-inner nav-container-inner">
-                    <ul id="main-nav">
-                        
-                                <li class="main-nav-list-item" >
-                                    <a class="main-nav-list-link" href="/">主页</a>
-                                </li>
-                        
-                                <ul class="main-nav-list"><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/Uncategory/">Uncategory</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/css/">css</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/html/">html</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/js/">js</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/翻译/">翻译</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/转载/">转载</a></li></ul>
-                            
-                    </ul>
-                </div>
-            </div>
-            <div id="header-title" style="display: none">
-                <div class="container-inner">
-                    <h1 class="logo-wrap">
-                        <a href="/" class="logo"></a>
-                    </h1>
-                    
-                        <h2 class="subtitle-wrap">
-                            <p class="subtitle">To try, then catch.</p>
-                        </h2>
-                    
-                </div>
-            </div>
-        </div>
-    </div>
+  <div id="page-percent"><div></div></div>
+  <header id="header">
+  <div id="header-nav" class="nav-container">
+    <ul>
+      
+          <li class="main-nav-list-item" >
+            <a class="main-nav-list-link" href="/">主页</a>
+          </li>
+      
+          <ul class="main-nav-list"><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/Uncategory/">Uncategory</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/css/">css</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/html/">html</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/js/">js</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/翻译/">翻译</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/转载/">转载</a></li></ul>
+        
+    </ul>
+  </div>
 </header>
+  <div id="root">
+    <div id="wrap">
       <div class="container">
         <div class="bg_content">
           <canvas id="canvas"></canvas>
@@ -139,7 +119,7 @@ var _hmt = _hmt || [];
                 
     <span class="word-count">
       <i class="icon fa fa-file-text"></i>
-      字数: 802 
+      字数: 801 
     </span>
     <span class="word-count">
       <i class="icon fa fa-clock-o"></i>
@@ -189,8 +169,8 @@ var _hmt = _hmt || [];
 <p>ReactDOM.unmountComponentAtNode(container)</p>
 </blockquote>
 <p>从指定的 <code>DOM</code> 容器中中删除已加载的 <code>React</code> 组件，并清理其事件处理程序和 <code>state</code> 。如果没有任何组件被加载在容器中则什么也不做。如果组件被从容器卸载则返回 <code>true</code> ， 如果容器内没有组件或者元素卸载则返回 <code>false</code> ：</p>
-<figure class="highlight html"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">id</span>=<span class="string">"app"</span>&gt;</span><span class="tag">&lt;/<span class="name">app</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">id</span>=<span class="string">"app2"</span>&gt;</span><span class="tag">&lt;/<span class="name">app</span>&gt;</span></span><br></pre></td></tr></table></figure>
-<figure class="highlight js"><table><tr><td class="code"><pre><span class="line">ReactDOM.render(<span class="xml"><span class="tag">&lt;<span class="name">div</span> /&gt;</span>, document.getElementById('app'));</span></span><br><span class="line"><span class="xml">console.log(ReactDOM.unmountComponentAtNode(document.getElementById('app'))) // true</span></span><br><span class="line"><span class="xml"></span></span><br><span class="line"><span class="xml">console.log(ReactDOM.unmountComponentAtNode(document.getElementById('app2'))) // false</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight html"><table><tr><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">id</span>=<span class="string">"app"</span>&gt;</span><span class="tag">&lt;/<span class="name">app</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">id</span>=<span class="string">"app2"</span>&gt;</span><span class="tag">&lt;/<span class="name">app</span>&gt;</span></div></pre></td></tr></table></figure>
+<figure class="highlight js"><table><tr><td class="code"><pre><div class="line">ReactDOM.render(<span class="xml"><span class="tag">&lt;<span class="name">div</span> /&gt;</span>, document.getElementById('app'));</span></div><div class="line">console.log(ReactDOM.unmountComponentAtNode(document.getElementById('app'))) // true</div><div class="line"></div><div class="line">console.log(ReactDOM.unmountComponentAtNode(document.getElementById('app2'))) // false</div></pre></td></tr></table></figure>
 <h3 id="findDOMNode"><a href="#findDOMNode" class="headerlink" title="findDOMNode"></a>findDOMNode</h3><blockquote>
 <p>ReactDOM.findDOMNode(component)</p>
 </blockquote>

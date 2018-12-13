@@ -71,42 +71,22 @@ var _hmt = _hmt || [];
 </head>
 
 <body>
-  <div id="root">
-    <div id="page-percent">
-      <div></div>
-    </div>
-    <div id="wrap">
-      <header id="header">
-    <div id="header-outer" class="outer">
-        <div class="container">
-            <div id="header-nav" class="nav-container">
-                <div class="container-inner nav-container-inner">
-                    <ul id="main-nav">
-                        
-                                <li class="main-nav-list-item" >
-                                    <a class="main-nav-list-link" href="/">主页</a>
-                                </li>
-                        
-                                <ul class="main-nav-list"><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/Uncategory/">Uncategory</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/css/">css</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/html/">html</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/js/">js</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/翻译/">翻译</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/转载/">转载</a></li></ul>
-                            
-                    </ul>
-                </div>
-            </div>
-            <div id="header-title" style="display: none">
-                <div class="container-inner">
-                    <h1 class="logo-wrap">
-                        <a href="/" class="logo"></a>
-                    </h1>
-                    
-                        <h2 class="subtitle-wrap">
-                            <p class="subtitle">To try, then catch.</p>
-                        </h2>
-                    
-                </div>
-            </div>
-        </div>
-    </div>
+  <div id="page-percent"><div></div></div>
+  <header id="header">
+  <div id="header-nav" class="nav-container">
+    <ul>
+      
+          <li class="main-nav-list-item" >
+            <a class="main-nav-list-link" href="/">主页</a>
+          </li>
+      
+          <ul class="main-nav-list"><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/Uncategory/">Uncategory</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/css/">css</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/html/">html</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/js/">js</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/翻译/">翻译</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/转载/">转载</a></li></ul>
+        
+    </ul>
+  </div>
 </header>
+  <div id="root">
+    <div id="wrap">
       <div class="container">
         <div class="bg_content">
           <canvas id="canvas"></canvas>
@@ -202,10 +182,10 @@ var _hmt = _hmt || [];
 <script async src="https://production-assets.codepen.io/assets/embed/ei.js"></script>
 
 <p>出现这一个问题的原因在于，示例中指定了每个颜色块的父元素top 元素一个透明度属性 <code>opacity: 0.99;</code> 如果不使用该属性，元素的层级大概以认为如下（注意，这里只是为了说明，并不代表元素的真实层级）：</p>
-<figure class="highlight html"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"top top1"</span>&gt;</span><span class="comment">&lt;!-- top1: 1 --&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">span</span> <span class="attr">class</span>=<span class="string">"red"</span>&gt;</span><span class="comment">&lt;!-- red：4 --&gt;</span><span class="tag">&lt;/<span class="name">span</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"top top2"</span>&gt;</span><span class="comment">&lt;!-- top2: 2 --&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">span</span> <span class="attr">class</span>=<span class="string">"green"</span>&gt;</span><span class="comment">&lt;!-- 3 --&gt;</span><span class="tag">&lt;<span class="name">span</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight html"><table><tr><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"top top1"</span>&gt;</span><span class="comment">&lt;!-- top1: 1 --&gt;</span></div><div class="line">  <span class="tag">&lt;<span class="name">span</span> <span class="attr">class</span>=<span class="string">"red"</span>&gt;</span><span class="comment">&lt;!-- red：4 --&gt;</span><span class="tag">&lt;/<span class="name">span</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"top top2"</span>&gt;</span><span class="comment">&lt;!-- top2: 2 --&gt;</span></div><div class="line">  <span class="tag">&lt;<span class="name">span</span> <span class="attr">class</span>=<span class="string">"green"</span>&gt;</span><span class="comment">&lt;!-- 3 --&gt;</span><span class="tag">&lt;<span class="name">span</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></div></pre></td></tr></table></figure>
 <p>当使用该属性将 top 元素变成了层叠上下文元素，在确定位置的时候首先定位 top1 和 top2，确定 top2 的层级在 top1 之上。而后确定 top1 和 top2 内部元素的层级，而 top1 内的子元素指定的 z-index 仅影响其在 top1 中的层级，并无法改变 top1 在更上的层级，因此不起作用。</p>
 <p>此时，可以认为元素的层级大概如下：</p>
-<figure class="highlight html"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"top top1"</span>&gt;</span><span class="comment">&lt;!-- top1: 1 --&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">span</span> <span class="attr">class</span>=<span class="string">"red"</span>&gt;</span><span class="comment">&lt;!-- red: 1.1 --&gt;</span><span class="tag">&lt;/<span class="name">span</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"top top2"</span>&gt;</span><span class="comment">&lt;!-- top2: 2 --&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">span</span> <span class="attr">class</span>=<span class="string">"green"</span>&gt;</span><span class="comment">&lt;!-- green: 2.1 --&gt;</span><span class="tag">&lt;<span class="name">span</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight html"><table><tr><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"top top1"</span>&gt;</span><span class="comment">&lt;!-- top1: 1 --&gt;</span></div><div class="line">  <span class="tag">&lt;<span class="name">span</span> <span class="attr">class</span>=<span class="string">"red"</span>&gt;</span><span class="comment">&lt;!-- red: 1.1 --&gt;</span><span class="tag">&lt;/<span class="name">span</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"top top2"</span>&gt;</span><span class="comment">&lt;!-- top2: 2 --&gt;</span></div><div class="line">  <span class="tag">&lt;<span class="name">span</span> <span class="attr">class</span>=<span class="string">"green"</span>&gt;</span><span class="comment">&lt;!-- green: 2.1 --&gt;</span><span class="tag">&lt;<span class="name">span</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></div></pre></td></tr></table></figure>
 <h2 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h2><ul>
 <li><a href="https://www.w3.org/TR/CSS22/visuren.html#z-index" target="_blank" rel="external">Cascading Style Sheets Level 2 Revision 2 (CSS 2.2) Specification</a></li>
 <li><a href="https://www.w3.org/TR/CSS22/zindex.html" target="_blank" rel="external">Appendix E. Elaborate description of Stacking Contexts</a></li>

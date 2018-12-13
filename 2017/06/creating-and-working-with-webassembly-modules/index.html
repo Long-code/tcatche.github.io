@@ -71,42 +71,22 @@ var _hmt = _hmt || [];
 </head>
 
 <body>
-  <div id="root">
-    <div id="page-percent">
-      <div></div>
-    </div>
-    <div id="wrap">
-      <header id="header">
-    <div id="header-outer" class="outer">
-        <div class="container">
-            <div id="header-nav" class="nav-container">
-                <div class="container-inner nav-container-inner">
-                    <ul id="main-nav">
-                        
-                                <li class="main-nav-list-item" >
-                                    <a class="main-nav-list-link" href="/">主页</a>
-                                </li>
-                        
-                                <ul class="main-nav-list"><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/Uncategory/">Uncategory</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/css/">css</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/html/">html</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/js/">js</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/翻译/">翻译</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/转载/">转载</a></li></ul>
-                            
-                    </ul>
-                </div>
-            </div>
-            <div id="header-title" style="display: none">
-                <div class="container-inner">
-                    <h1 class="logo-wrap">
-                        <a href="/" class="logo"></a>
-                    </h1>
-                    
-                        <h2 class="subtitle-wrap">
-                            <p class="subtitle">To try, then catch.</p>
-                        </h2>
-                    
-                </div>
-            </div>
-        </div>
-    </div>
+  <div id="page-percent"><div></div></div>
+  <header id="header">
+  <div id="header-nav" class="nav-container">
+    <ul>
+      
+          <li class="main-nav-list-item" >
+            <a class="main-nav-list-link" href="/">主页</a>
+          </li>
+      
+          <ul class="main-nav-list"><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/Uncategory/">Uncategory</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/css/">css</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/html/">html</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/js/">js</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/翻译/">翻译</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/转载/">转载</a></li></ul>
+        
+    </ul>
+  </div>
 </header>
+  <div id="root">
+    <div id="wrap">
       <div class="container">
         <div class="bg_content">
           <canvas id="canvas"></canvas>
@@ -139,7 +119,7 @@ var _hmt = _hmt || [];
                 
     <span class="word-count">
       <i class="icon fa fa-file-text"></i>
-      字数: 3,958 
+      字数: 3,952 
     </span>
     <span class="word-count">
       <i class="icon fa fa-clock-o"></i>
@@ -226,7 +206,7 @@ var _hmt = _hmt || [];
 <p>不管你使用什么样的工具链，最终的结果是生成以 <code>.wasm</code> 结尾的文件。我将在下面详细解释 <code>.wasm</code> 文件的结构。首先，我们来看看如何在 JS 中使用它。</p>
 <h2 id="在JavaScript中加载-wasm模块"><a href="#在JavaScript中加载-wasm模块" class="headerlink" title="在JavaScript中加载.wasm模块"></a>在JavaScript中加载.wasm模块</h2><p>The .wasm file is the WebAssembly module, and it can be loaded in JavaScript. As of this moment, the loading process is a little bit complicated.</p>
 <p><code>.wasm</code> 文件是 <code>WebAssembly</code> 模块，可以在 JavaScript 中加载。目前，装载过程有点复杂。</p>
-<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">fetchAndInstantiate</span>(<span class="params">url, importObject</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">return</span> fetch(url).then(<span class="function"><span class="params">response</span> =&gt;</span></span><br><span class="line">    response.arrayBuffer()</span><br><span class="line">  ).then(<span class="function"><span class="params">bytes</span> =&gt;</span></span><br><span class="line">    WebAssembly.instantiate(bytes, importObject)</span><br><span class="line">  ).then(<span class="function"><span class="params">results</span> =&gt;</span></span><br><span class="line">    results.instance</span><br><span class="line">  );</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight js"><table><tr><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">fetchAndInstantiate</span>(<span class="params">url, importObject</span>) </span>&#123;</div><div class="line">  <span class="keyword">return</span> fetch(url).then(<span class="function"><span class="params">response</span> =&gt;</span></div><div class="line">    response.arrayBuffer()</div><div class="line">  ).then(<span class="function"><span class="params">bytes</span> =&gt;</span></div><div class="line">    WebAssembly.instantiate(bytes, importObject)</div><div class="line">  ).then(<span class="function"><span class="params">results</span> =&gt;</span></div><div class="line">    results.instance</div><div class="line">  );</div><div class="line">&#125;</div></pre></td></tr></table></figure>
 <p>You can see this in more depth in <a href="https://developer.mozilla.org/en-US/docs/WebAssembly" target="_blank" rel="external">our docs</a>.</p>
 <p>详细用法可以参考<a href="https://developer.mozilla.org/en-US/docs/WebAssembly" target="_blank" rel="external">文档</a></p>
 <p>We’re working on making this process easier. We expect to make improvements to the toolchain and integrate with existing module bundlers like webpack or loaders like SystemJS. We believe that loading WebAssembly modules can be as easy as as loading JavaScript ones.</p>
@@ -253,11 +233,11 @@ var _hmt = _hmt || [];
 <p>如果还没有阅读之前汇编的文章，我们建议你先阅读。</p>
 <p>Here’s a C function that we’ll turn into WebAssembly:</p>
 <p>这是一个C函数，我们会将其转换为 <code>WebAssembly</code>：</p>
-<figure class="highlight js"><table><tr><td class="code"><pre><span class="line">int add42(int num) &#123;</span><br><span class="line">  <span class="keyword">return</span> num + <span class="number">42</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight js"><table><tr><td class="code"><pre><div class="line">int add42(int num) &#123;</div><div class="line">  <span class="keyword">return</span> num + <span class="number">42</span>;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
 <p>You can try using the <a href="http://mbebenita.github.io/WasmExplorer/" target="_blank" rel="external">WASM Explorer</a> to compile this function.</p>
 <p>If you open up the .wasm file (and if your editor supports displaying it), you’ll see something like this.</p>
 <p>你可以尝试使用 <code>WASM Explorer</code> 编译此功能。 如果你打开了 <code>.wasm</code> 文件（如果你的编辑器支持显示它），你会看到这样的内容：</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">00 61 73 6D 0D 00 00 00 01 86 80 80 80 00 01 60</span><br><span class="line">01 7F 01 7F 03 82 80 80 80 00 01 00 04 84 80 80</span><br><span class="line">80 00 01 70 00 00 05 83 80 80 80 00 01 00 01 06</span><br><span class="line">81 80 80 80 00 00 07 96 80 80 80 00 02 06 6D 65</span><br><span class="line">6D 6F 72 79 02 00 09 5F 5A 35 61 64 64 34 32 69</span><br><span class="line">00 00 0A 8D 80 80 80 00 01 87 80 80 80 00 00 20</span><br><span class="line">00 41 2A 6A 0B</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">00 61 73 6D 0D 00 00 00 01 86 80 80 80 00 01 60</div><div class="line">01 7F 01 7F 03 82 80 80 80 00 01 00 04 84 80 80</div><div class="line">80 00 01 70 00 00 05 83 80 80 80 00 01 00 01 06</div><div class="line">81 80 80 80 00 00 07 96 80 80 80 00 02 06 6D 65</div><div class="line">6D 6F 72 79 02 00 09 5F 5A 35 61 64 64 34 32 69</div><div class="line">00 00 0A 8D 80 80 80 00 01 87 80 80 80 00 00 20</div><div class="line">00 41 2A 6A 0B</div></pre></td></tr></table></figure>
 <p>That is the module in its “binary” representation. I put quotes around binary because it’s usually displayed in hexadecimal notation, but that can be easily converted to binary notation, or to a human readable format.</p>
 <p>For example, here’s what num + 42 looks like.</p>
 <p>那就是“二进制”表示的的模块。我用引号把“二进制”括起来，因为它通常以十六进制表示法显示，但可以很容易地转换成二进制符号，或者以人类可读的格式。</p>

@@ -71,42 +71,22 @@ var _hmt = _hmt || [];
 </head>
 
 <body>
-  <div id="root">
-    <div id="page-percent">
-      <div></div>
-    </div>
-    <div id="wrap">
-      <header id="header">
-    <div id="header-outer" class="outer">
-        <div class="container">
-            <div id="header-nav" class="nav-container">
-                <div class="container-inner nav-container-inner">
-                    <ul id="main-nav">
-                        
-                                <li class="main-nav-list-item" >
-                                    <a class="main-nav-list-link" href="/">主页</a>
-                                </li>
-                        
-                                <ul class="main-nav-list"><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/Uncategory/">Uncategory</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/css/">css</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/html/">html</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/js/">js</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/翻译/">翻译</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/转载/">转载</a></li></ul>
-                            
-                    </ul>
-                </div>
-            </div>
-            <div id="header-title" style="display: none">
-                <div class="container-inner">
-                    <h1 class="logo-wrap">
-                        <a href="/" class="logo"></a>
-                    </h1>
-                    
-                        <h2 class="subtitle-wrap">
-                            <p class="subtitle">To try, then catch.</p>
-                        </h2>
-                    
-                </div>
-            </div>
-        </div>
-    </div>
+  <div id="page-percent"><div></div></div>
+  <header id="header">
+  <div id="header-nav" class="nav-container">
+    <ul>
+      
+          <li class="main-nav-list-item" >
+            <a class="main-nav-list-link" href="/">主页</a>
+          </li>
+      
+          <ul class="main-nav-list"><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/Uncategory/">Uncategory</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/css/">css</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/html/">html</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/js/">js</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/翻译/">翻译</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/转载/">转载</a></li></ul>
+        
+    </ul>
+  </div>
 </header>
+  <div id="root">
+    <div id="wrap">
       <div class="container">
         <div class="bg_content">
           <canvas id="canvas"></canvas>
@@ -174,12 +154,12 @@ var _hmt = _hmt || [];
 <li><strong>return (Function):</strong> 返回把所有的参数从右向左合成的结果</li>
 </ul>
 <h2 id="函数组合"><a href="#函数组合" class="headerlink" title="函数组合"></a>函数组合</h2><p>组合是函数式编程的常用工具，我们在学习数学的时候会学到复合函数：</p>
-<figure class="highlight js"><table><tr><td class="code"><pre><span class="line">f(x) = <span class="number">2</span> * x;</span><br><span class="line">g(x) = x + <span class="number">1</span>;</span><br><span class="line"></span><br><span class="line">(f ∘ g)(x) = f(g(x)) = <span class="number">2</span> * (x + <span class="number">1</span>) = <span class="number">2</span> * x + <span class="number">2</span>;</span><br></pre></td></tr></table></figure>
+<figure class="highlight js"><table><tr><td class="code"><pre><div class="line">f(x) = <span class="number">2</span> * x;</div><div class="line">g(x) = x + <span class="number">1</span>;</div><div class="line"></div><div class="line">(f ∘ g)(x) = f(g(x)) = <span class="number">2</span> * (x + <span class="number">1</span>) = <span class="number">2</span> * x + <span class="number">2</span>;</div></pre></td></tr></table></figure>
 <p>可以很容易把这个组合形式扩展到组合更多的函数上，而函数组合就是将多个函组合成单个的新的函数的过程：</p>
-<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">var</span> compose = <span class="function"><span class="keyword">function</span>(<span class="params">f, g</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">return</span> <span class="function"><span class="keyword">function</span>(<span class="params">x</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> f(g(x));</span><br><span class="line">  &#125;;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<figure class="highlight js"><table><tr><td class="code"><pre><div class="line"><span class="keyword">var</span> compose = <span class="function"><span class="keyword">function</span>(<span class="params">f, g</span>) </span>&#123;</div><div class="line">  <span class="keyword">return</span> <span class="function"><span class="keyword">function</span>(<span class="params">x</span>) </span>&#123;</div><div class="line">    <span class="keyword">return</span> f(g(x));</div><div class="line">  &#125;;</div><div class="line">&#125;;</div></pre></td></tr></table></figure>
 <p>和层层嵌套的函数调用相比较，函数组合创建了一个从右向左的数据流，数据的处理和流向非常清晰。</p>
 <h2 id="源码注释"><a href="#源码注释" class="headerlink" title="源码注释"></a>源码注释</h2><p>源代码如下：</p>
-<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * Composes single-argument functions from right to left. The rightmost</span></span><br><span class="line"><span class="comment"> * function can take multiple arguments as it provides the signature for</span></span><br><span class="line"><span class="comment"> * the resulting composite function.</span></span><br><span class="line"><span class="comment"> *</span></span><br><span class="line"><span class="comment"> * @param &#123;...Function&#125; funcs The functions to compose.</span></span><br><span class="line"><span class="comment"> * @returns &#123;Function&#125; A function obtained by composing the argument functions</span></span><br><span class="line"><span class="comment"> * from right to left. For example, compose(f, g, h) is identical to doing</span></span><br><span class="line"><span class="comment"> * (...args) =&gt; f(g(h(...args))).</span></span><br><span class="line"><span class="comment"> * </span></span><br><span class="line"><span class="comment"> * 也就是说，组合实际上就是把 compose(f, g, h) 转换为 f(g(h(...args))) 其中...args 是 h 的参数</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> <span class="function"><span class="keyword">function</span> <span class="title">compose</span>(<span class="params">...funcs</span>) </span>&#123;</span><br><span class="line">  <span class="comment">//没有参数返回一个不作任何变换的函数，即 f(x) = x ；</span></span><br><span class="line">  <span class="keyword">if</span> (funcs.length === <span class="number">0</span>) &#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="function"><span class="params">arg</span> =&gt;</span> arg</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="comment">//只有一个函数参数，返回原参数</span></span><br><span class="line">  <span class="keyword">if</span> (funcs.length === <span class="number">1</span>) &#123;</span><br><span class="line">    <span class="keyword">return</span> funcs[<span class="number">0</span>]</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="comment">//利用 reduceRight 从右向左组合函数</span></span><br><span class="line">  <span class="comment">//reduceRight 和 reduce 类似，只不过是从数组结尾向开始方向合并</span></span><br><span class="line">  <span class="keyword">const</span> last = funcs[funcs.length - <span class="number">1</span>]</span><br><span class="line">  <span class="keyword">const</span> rest = funcs.slice(<span class="number">0</span>, <span class="number">-1</span>)</span><br><span class="line">  <span class="keyword">return</span> <span class="function">(<span class="params">...args</span>) =&gt;</span> rest.reduceRight(<span class="function">(<span class="params">composed, f</span>) =&gt;</span> f(composed), last(...args))</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight js"><table><tr><td class="code"><pre><div class="line"><span class="comment">/**</span></div><div class="line"> * Composes single-argument functions from right to left. The rightmost</div><div class="line"> * function can take multiple arguments as it provides the signature for</div><div class="line"> * the resulting composite function.</div><div class="line"> *</div><div class="line"> * @param &#123;...Function&#125; funcs The functions to compose.</div><div class="line"> * @returns &#123;Function&#125; A function obtained by composing the argument functions</div><div class="line"> * from right to left. For example, compose(f, g, h) is identical to doing</div><div class="line"> * (...args) =&gt; f(g(h(...args))).</div><div class="line"> * </div><div class="line"> * 也就是说，组合实际上就是把 compose(f, g, h) 转换为 f(g(h(...args))) 其中...args 是 h 的参数</div><div class="line"> */</div><div class="line"><span class="keyword">export</span> <span class="keyword">default</span> <span class="function"><span class="keyword">function</span> <span class="title">compose</span>(<span class="params">...funcs</span>) </span>&#123;</div><div class="line">  <span class="comment">//没有参数返回一个不作任何变换的函数，即 f(x) = x ；</span></div><div class="line">  <span class="keyword">if</span> (funcs.length === <span class="number">0</span>) &#123;</div><div class="line">    <span class="keyword">return</span> <span class="function"><span class="params">arg</span> =&gt;</span> arg</div><div class="line">  &#125;</div><div class="line"></div><div class="line">  <span class="comment">//只有一个函数参数，返回原参数</span></div><div class="line">  <span class="keyword">if</span> (funcs.length === <span class="number">1</span>) &#123;</div><div class="line">    <span class="keyword">return</span> funcs[<span class="number">0</span>]</div><div class="line">  &#125;</div><div class="line"></div><div class="line">  <span class="comment">//利用 reduceRight 从右向左组合函数</span></div><div class="line">  <span class="comment">//reduceRight 和 reduce 类似，只不过是从数组结尾向开始方向合并</span></div><div class="line">  <span class="keyword">const</span> last = funcs[funcs.length - <span class="number">1</span>]</div><div class="line">  <span class="keyword">const</span> rest = funcs.slice(<span class="number">0</span>, <span class="number">-1</span>)</div><div class="line">  <span class="keyword">return</span> <span class="function">(<span class="params">...args</span>) =&gt;</span> rest.reduceRight(<span class="function">(<span class="params">composed, f</span>) =&gt;</span> f(composed), last(...args))</div><div class="line">&#125;</div></pre></td></tr></table></figure>
 <h2 id="相关"><a href="#相关" class="headerlink" title="相关"></a>相关</h2><p><code>Redux</code> 源码阅读笔记：</p>
 <ul>
 <li><a href="/2017/03/createStore/">createStore.js 源码阅读笔记</a></li>

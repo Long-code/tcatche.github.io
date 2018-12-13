@@ -71,42 +71,22 @@ var _hmt = _hmt || [];
 </head>
 
 <body>
-  <div id="root">
-    <div id="page-percent">
-      <div></div>
-    </div>
-    <div id="wrap">
-      <header id="header">
-    <div id="header-outer" class="outer">
-        <div class="container">
-            <div id="header-nav" class="nav-container">
-                <div class="container-inner nav-container-inner">
-                    <ul id="main-nav">
-                        
-                                <li class="main-nav-list-item" >
-                                    <a class="main-nav-list-link" href="/">主页</a>
-                                </li>
-                        
-                                <ul class="main-nav-list"><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/Uncategory/">Uncategory</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/css/">css</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/html/">html</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/js/">js</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/翻译/">翻译</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/转载/">转载</a></li></ul>
-                            
-                    </ul>
-                </div>
-            </div>
-            <div id="header-title" style="display: none">
-                <div class="container-inner">
-                    <h1 class="logo-wrap">
-                        <a href="/" class="logo"></a>
-                    </h1>
-                    
-                        <h2 class="subtitle-wrap">
-                            <p class="subtitle">To try, then catch.</p>
-                        </h2>
-                    
-                </div>
-            </div>
-        </div>
-    </div>
+  <div id="page-percent"><div></div></div>
+  <header id="header">
+  <div id="header-nav" class="nav-container">
+    <ul>
+      
+          <li class="main-nav-list-item" >
+            <a class="main-nav-list-link" href="/">主页</a>
+          </li>
+      
+          <ul class="main-nav-list"><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/Uncategory/">Uncategory</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/css/">css</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/html/">html</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/js/">js</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/翻译/">翻译</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/转载/">转载</a></li></ul>
+        
+    </ul>
+  </div>
 </header>
+  <div id="root">
+    <div id="wrap">
       <div class="container">
         <div class="bg_content">
           <canvas id="canvas"></canvas>
@@ -139,7 +119,7 @@ var _hmt = _hmt || [];
                 
     <span class="word-count">
       <i class="icon fa fa-file-text"></i>
-      字数: 1,093 
+      字数: 1,090 
     </span>
     <span class="word-count">
       <i class="icon fa fa-clock-o"></i>
@@ -181,7 +161,7 @@ var _hmt = _hmt || [];
 <p>这四个接口的工作方法一致，接收多个参数，展示效果如下：</p>
 <p><img src="http://tcatche-github-io.oss-cn-shanghai.aliyuncs.com/posts/20170627103049.jpg" alt="四种级别的日志输出，左边 Firefox 右边 Chrome"></p>
 <h2 id="字符串替换"><a href="#字符串替换" class="headerlink" title="字符串替换"></a>字符串替换</h2><p>字符串替换允许使用其他内容替换输出中的指定字符串，比如：</p>
-<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="built_in">console</span>.log(<span class="string">'string %s'</span>, <span class="string">'substitutions'</span>);</span><br><span class="line"><span class="comment">// string substitutions</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight js"><table><tr><td class="code"><pre><div class="line"><span class="built_in">console</span>.log(<span class="string">'string %s'</span>, <span class="string">'substitutions'</span>);</div><div class="line"><span class="comment">// string substitutions</span></div></pre></td></tr></table></figure>
 <p>支持的字符串替换有以下几种：</p>
 <ul>
 <li><code>%s</code> ：使用字符串替换</li>
@@ -191,16 +171,16 @@ var _hmt = _hmt || [];
 <li><code>%c</code> ：应用提供的 <code>css</code></li>
 </ul>
 <p>看几个例子：</p>
-<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">var</span> obj = &#123; <span class="attr">hello</span>: <span class="string">'hello'</span> &#125;</span><br><span class="line"><span class="built_in">console</span>.log(<span class="string">'this is an string %s'</span>, obj);</span><br><span class="line"><span class="comment">// this is an string [object Object] </span></span><br><span class="line"><span class="built_in">console</span>.log(<span class="string">'this is an object %o'</span>, obj);</span><br><span class="line"><span class="comment">// this is an object  Object &#123; hello: "hello" &#125;</span></span><br><span class="line"></span><br><span class="line"><span class="built_in">console</span>.log(<span class="string">'int: %d, float: %f, float to int: %d'</span>, <span class="number">1</span>, <span class="number">1.5</span>, <span class="number">1.5</span>);</span><br><span class="line"><span class="comment">// int: 1, float: 1.500000, float to int: 1</span></span><br><span class="line"><span class="built_in">console</span>.log(<span class="string">'format float: %.3f'</span>, <span class="number">1.5</span>);</span><br><span class="line"><span class="comment">// format float: 1.500</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight js"><table><tr><td class="code"><pre><div class="line"><span class="keyword">var</span> obj = &#123; <span class="attr">hello</span>: <span class="string">'hello'</span> &#125;</div><div class="line"><span class="built_in">console</span>.log(<span class="string">'this is an string %s'</span>, obj);</div><div class="line"><span class="comment">// this is an string [object Object] </span></div><div class="line"><span class="built_in">console</span>.log(<span class="string">'this is an object %o'</span>, obj);</div><div class="line"><span class="comment">// this is an object  Object &#123; hello: "hello" &#125;</span></div><div class="line"></div><div class="line"><span class="built_in">console</span>.log(<span class="string">'int: %d, float: %f, float to int: %d'</span>, <span class="number">1</span>, <span class="number">1.5</span>, <span class="number">1.5</span>);</div><div class="line"><span class="comment">// int: 1, float: 1.500000, float to int: 1</span></div><div class="line"><span class="built_in">console</span>.log(<span class="string">'format float: %.3f'</span>, <span class="number">1.5</span>);</div><div class="line"><span class="comment">// format float: 1.500</span></div></pre></td></tr></table></figure>
 <p>使用 <code>%c</code> 可以让文本呈现出指定的 <code>css</code> 样式，比如我们定义了成功的消息用红色背景，失败的消息用绿色背景：</p>
-<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">const</span> success = [</span><br><span class="line"> <span class="string">'background: green'</span>,</span><br><span class="line"> <span class="string">'color: white'</span>,</span><br><span class="line"> <span class="string">'display: block'</span>,</span><br><span class="line"> <span class="string">'text-align: center'</span></span><br><span class="line">].join(<span class="string">';'</span>);</span><br><span class="line"><span class="keyword">const</span> failure = [</span><br><span class="line"> <span class="string">'background: red'</span>,</span><br><span class="line"> <span class="string">'color: white'</span>,</span><br><span class="line"> <span class="string">'display: block'</span>,</span><br><span class="line"> <span class="string">'text-align: center'</span></span><br><span class="line">].join(<span class="string">';'</span>);</span><br><span class="line"><span class="built_in">console</span>.info(<span class="string">'%c /dancing/bears was Successful!'</span>, success);</span><br><span class="line"><span class="built_in">console</span>.error(<span class="string">'%c /dancing/bats failed!'</span>, failure);</span><br></pre></td></tr></table></figure>
+<figure class="highlight js"><table><tr><td class="code"><pre><div class="line"><span class="keyword">const</span> success = [</div><div class="line"> <span class="string">'background: green'</span>,</div><div class="line"> <span class="string">'color: white'</span>,</div><div class="line"> <span class="string">'display: block'</span>,</div><div class="line"> <span class="string">'text-align: center'</span></div><div class="line">].join(<span class="string">';'</span>);</div><div class="line"><span class="keyword">const</span> failure = [</div><div class="line"> <span class="string">'background: red'</span>,</div><div class="line"> <span class="string">'color: white'</span>,</div><div class="line"> <span class="string">'display: block'</span>,</div><div class="line"> <span class="string">'text-align: center'</span></div><div class="line">].join(<span class="string">';'</span>);</div><div class="line"><span class="built_in">console</span>.info(<span class="string">'%c /dancing/bears was Successful!'</span>, success);</div><div class="line"><span class="built_in">console</span>.error(<span class="string">'%c /dancing/bats failed!'</span>, failure);</div></pre></td></tr></table></figure>
 <p><img src="http://tcatche-github-io.oss-cn-shanghai.aliyuncs.com/posts/20170627105150.jpg" alt="带样式的日志输出，左边 Firefox 右边 Chrome"></p>
 <p>当然注意到样式在不同浏览器下有很大的差别，有些样式在其他浏览器并不被支持。</p>
 <h2 id="断言（console-assert-）"><a href="#断言（console-assert-）" class="headerlink" title="断言（console.assert()）"></a>断言（console.assert()）</h2><blockquote>
 <p>console.assert(assertion, obj1 [, obj2, …, objN])</p>
 </blockquote>
 <p>如果断言为 <code>false</code> ，则将一个错误消息写入控制台，写入方式是 <code>console.error</code> 。如果断言是 <code>true</code> ，不执行任何操作。</p>
-<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">let</span> isTrue = <span class="literal">false</span>;</span><br><span class="line"><span class="built_in">console</span>.assert(isTrue, <span class="string">'This will display'</span>);</span><br><span class="line"><span class="comment">// This will display</span></span><br><span class="line"></span><br><span class="line">isTrue = <span class="literal">true</span>;</span><br><span class="line"><span class="built_in">console</span>.assert(isTrue, <span class="string">'This will not'</span>);</span><br><span class="line"><span class="comment">// 什么都不输出</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight js"><table><tr><td class="code"><pre><div class="line"><span class="keyword">let</span> isTrue = <span class="literal">false</span>;</div><div class="line"><span class="built_in">console</span>.assert(isTrue, <span class="string">'This will display'</span>);</div><div class="line"><span class="comment">// This will display</span></div><div class="line"></div><div class="line">isTrue = <span class="literal">true</span>;</div><div class="line"><span class="built_in">console</span>.assert(isTrue, <span class="string">'This will not'</span>);</div><div class="line"><span class="comment">// 什么都不输出</span></div></pre></td></tr></table></figure>
 <h2 id="树形展示对象（console-dir-）"><a href="#树形展示对象（console-dir-）" class="headerlink" title="树形展示对象（console.dir()）"></a>树形展示对象（console.dir()）</h2><blockquote>
 <p>console.dir(object);</p>
 </blockquote>
@@ -215,38 +195,38 @@ var _hmt = _hmt || [];
 <p>console.table(object)</p>
 </blockquote>
 <p>把数组或者对象用表格呈现：</p>
-<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="built_in">console</span>.table([<span class="string">'Javascript'</span>, <span class="string">'PHP'</span>, <span class="string">'Perl'</span>, <span class="string">'C++'</span>]); <span class="comment">// on firefox</span></span><br><span class="line"><span class="built_in">console</span>.table([[<span class="string">'Javascript'</span>, <span class="string">'PHP'</span>, <span class="string">'Perl'</span>, <span class="string">'C++'</span>]]); <span class="comment">// on chrome</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight js"><table><tr><td class="code"><pre><div class="line"><span class="built_in">console</span>.table([<span class="string">'Javascript'</span>, <span class="string">'PHP'</span>, <span class="string">'Perl'</span>, <span class="string">'C++'</span>]); <span class="comment">// on firefox</span></div><div class="line"><span class="built_in">console</span>.table([[<span class="string">'Javascript'</span>, <span class="string">'PHP'</span>, <span class="string">'Perl'</span>, <span class="string">'C++'</span>]]); <span class="comment">// on chrome</span></div></pre></td></tr></table></figure>
 <p>呈现效果如下：</p>
 <p><img src="http://tcatche-github-io.oss-cn-shanghai.aliyuncs.com/posts/20170627112301.jpg" alt="数组表格呈现，左边 Firefox 右边 Chrome"></p>
 <p>使用表格查看对象：</p>
-<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">Person</span>(<span class="params">firstName, lastName</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">this</span>.firstName = firstName;</span><br><span class="line">  <span class="keyword">this</span>.lastName = lastName;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> family = &#123;&#125;;</span><br><span class="line"></span><br><span class="line">family.mother = <span class="keyword">new</span> Person(<span class="string">"Jane"</span>, <span class="string">"Smith"</span>);</span><br><span class="line">family.father = <span class="keyword">new</span> Person(<span class="string">"John"</span>, <span class="string">"Smith"</span>);</span><br><span class="line">family.daughter = <span class="keyword">new</span> Person(<span class="string">"Emily"</span>, <span class="string">"Smith"</span>);</span><br></pre></td></tr></table></figure>
+<figure class="highlight js"><table><tr><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">Person</span>(<span class="params">firstName, lastName</span>) </span>&#123;</div><div class="line">  <span class="keyword">this</span>.firstName = firstName;</div><div class="line">  <span class="keyword">this</span>.lastName = lastName;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="keyword">var</span> family = &#123;&#125;;</div><div class="line"></div><div class="line">family.mother = <span class="keyword">new</span> Person(<span class="string">"Jane"</span>, <span class="string">"Smith"</span>);</div><div class="line">family.father = <span class="keyword">new</span> Person(<span class="string">"John"</span>, <span class="string">"Smith"</span>);</div><div class="line">family.daughter = <span class="keyword">new</span> Person(<span class="string">"Emily"</span>, <span class="string">"Smith"</span>);</div></pre></td></tr></table></figure>
 <p>呈现效果如下：</p>
 <p><img src="http://tcatche-github-io.oss-cn-shanghai.aliyuncs.com/posts/20170627112415.jpg" alt="使用表格查看对象，左边 Firefox 右边 Chrome"></p>
 <p>限制列：</p>
-<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="built_in">console</span>.table(family, [<span class="string">"firstName"</span>]);</span><br></pre></td></tr></table></figure>
+<figure class="highlight js"><table><tr><td class="code"><pre><div class="line"><span class="built_in">console</span>.table(family, [<span class="string">"firstName"</span>]);</div></pre></td></tr></table></figure>
 <p><img src="http://tcatche-github-io.oss-cn-shanghai.aliyuncs.com/posts/20170627112525.jpg" alt="限制列，左边 Firefox 右边 Chrome"></p>
 <h2 id="分组（console-group-）"><a href="#分组（console-group-）" class="headerlink" title="分组（console.group()）"></a>分组（console.group()）</h2><blockquote>
 <p>console.group(label)<br>console.groupCollapsed(label)<br>console.groupEnd(label)</p>
 </blockquote>
 <p>在 <code>Web</code> 控制台上创建一个新的分组，随后输出到控制台上的内容都会被添加一个缩进，表示该内容属于当前分组,直到调用 <code>console.groupEnd()</code> 之后,当前分组结束。</p>
-<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="built_in">console</span>.group(<span class="string">'outer'</span>);</span><br><span class="line"><span class="built_in">console</span>.log(<span class="string">'I will output'</span>);</span><br><span class="line"><span class="built_in">console</span>.group(<span class="string">'inner'</span>);</span><br><span class="line"><span class="built_in">console</span>.log(<span class="string">'more indents'</span>)</span><br><span class="line"><span class="built_in">console</span>.groupEnd(<span class="string">'inner'</span>);</span><br><span class="line"><span class="built_in">console</span>.log(<span class="string">'ohh look a bear'</span>);</span><br><span class="line"><span class="built_in">console</span>.groupEnd(<span class="string">'outer'</span>);</span><br></pre></td></tr></table></figure>
+<figure class="highlight js"><table><tr><td class="code"><pre><div class="line"><span class="built_in">console</span>.group(<span class="string">'outer'</span>);</div><div class="line"><span class="built_in">console</span>.log(<span class="string">'I will output'</span>);</div><div class="line"><span class="built_in">console</span>.group(<span class="string">'inner'</span>);</div><div class="line"><span class="built_in">console</span>.log(<span class="string">'more indents'</span>)</div><div class="line"><span class="built_in">console</span>.groupEnd(<span class="string">'inner'</span>);</div><div class="line"><span class="built_in">console</span>.log(<span class="string">'ohh look a bear'</span>);</div><div class="line"><span class="built_in">console</span>.groupEnd(<span class="string">'outer'</span>);</div></pre></td></tr></table></figure>
 <p><img src="http://tcatche-github-io.oss-cn-shanghai.aliyuncs.com/posts/20170627113344.jpg" alt="分组，左边 Firefox 右边 Chrome"></p>
 <p><code>console.groupCollapsed</code> 创建一个默认折叠的分组。</p>
 <h2 id="计时（console-time-）"><a href="#计时（console-time-）" class="headerlink" title="计时（console.time()）"></a>计时（console.time()）</h2><blockquote>
 <p>console.time(label)<br>console.timeEnd(label)</p>
 </blockquote>
 <p>追踪某一操作的执行时间，使用 <code>timeEnd</code> 结束：</p>
-<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="built_in">console</span>.time(<span class="string">'loop'</span>);</span><br><span class="line"><span class="keyword">for</span>(<span class="keyword">var</span> i = <span class="number">0</span>; i &lt; <span class="number">100000000</span>; i ++)&#123;&#125;;</span><br><span class="line"><span class="built_in">console</span>.timeEnd(<span class="string">'loop'</span>);</span><br><span class="line"><span class="comment">// loop: 203.9521484375ms</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight js"><table><tr><td class="code"><pre><div class="line"><span class="built_in">console</span>.time(<span class="string">'loop'</span>);</div><div class="line"><span class="keyword">for</span>(<span class="keyword">var</span> i = <span class="number">0</span>; i &lt; <span class="number">100000000</span>; i ++)&#123;&#125;;</div><div class="line"><span class="built_in">console</span>.timeEnd(<span class="string">'loop'</span>);</div><div class="line"><span class="comment">// loop: 203.9521484375ms</span></div></pre></td></tr></table></figure>
 <h2 id="计数（console-count-）"><a href="#计数（console-count-）" class="headerlink" title="计数（console.count()）"></a>计数（console.count()）</h2><blockquote>
 <p>console.count(label)</p>
 </blockquote>
 <p>输出 <code>count()</code> 被调用的次数。此函数接受一个可选参数 <code>label</code>。</p>
-<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">var</span> user = <span class="string">""</span>;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">greet</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="built_in">console</span>.count(user);</span><br><span class="line">  <span class="keyword">return</span> <span class="string">"hi "</span> + user;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">user = <span class="string">"bob"</span>;</span><br><span class="line">greet();</span><br><span class="line"><span class="comment">// bob: 1 </span></span><br><span class="line">user = <span class="string">"alice"</span>;</span><br><span class="line">greet();</span><br><span class="line"><span class="comment">// alice: 1 </span></span><br><span class="line">greet();</span><br><span class="line"><span class="comment">// alice: 2 </span></span><br><span class="line"><span class="built_in">console</span>.count(<span class="string">"alice"</span>);</span><br><span class="line"><span class="comment">// alice: 3</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight js"><table><tr><td class="code"><pre><div class="line"><span class="keyword">var</span> user = <span class="string">""</span>;</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">greet</span>(<span class="params"></span>) </span>&#123;</div><div class="line">  <span class="built_in">console</span>.count(user);</div><div class="line">  <span class="keyword">return</span> <span class="string">"hi "</span> + user;</div><div class="line">&#125;</div><div class="line"></div><div class="line">user = <span class="string">"bob"</span>;</div><div class="line">greet();</div><div class="line"><span class="comment">// bob: 1 </span></div><div class="line">user = <span class="string">"alice"</span>;</div><div class="line">greet();</div><div class="line"><span class="comment">// alice: 1 </span></div><div class="line">greet();</div><div class="line"><span class="comment">// alice: 2 </span></div><div class="line"><span class="built_in">console</span>.count(<span class="string">"alice"</span>);</div><div class="line"><span class="comment">// alice: 3</span></div></pre></td></tr></table></figure>
 <h2 id="堆栈跟踪（console-trace-）"><a href="#堆栈跟踪（console-trace-）" class="headerlink" title="堆栈跟踪（console.trace()）"></a>堆栈跟踪（console.trace()）</h2><blockquote>
 <p>console.trace(obj1[, obj2…]);</p>
 </blockquote>
 <p>从函数调用的位置输出一个调用堆栈追踪：</p>
-<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">foo</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="function"><span class="keyword">function</span> <span class="title">bar</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.trace();</span><br><span class="line">  &#125;</span><br><span class="line">  bar();</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">foo();</span><br></pre></td></tr></table></figure>
+<figure class="highlight js"><table><tr><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">foo</span>(<span class="params"></span>) </span>&#123;</div><div class="line">  <span class="function"><span class="keyword">function</span> <span class="title">bar</span>(<span class="params"></span>) </span>&#123;</div><div class="line">    <span class="built_in">console</span>.trace();</div><div class="line">  &#125;</div><div class="line">  bar();</div><div class="line">&#125;</div><div class="line"></div><div class="line">foo();</div></pre></td></tr></table></figure>
 <p><img src="http://tcatche-github-io.oss-cn-shanghai.aliyuncs.com/posts/20170627141453.jpg" alt="堆栈跟踪，左边 Firefox 右边 Chrome"></p>
 <h2 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h2><ul>
 <li><a href="https://developer.mozilla.org/zh-CN/docs/Web/API/console" target="_blank" rel="external">MDN-Console</a></li>

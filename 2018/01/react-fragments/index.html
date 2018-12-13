@@ -71,42 +71,22 @@ var _hmt = _hmt || [];
 </head>
 
 <body>
-  <div id="root">
-    <div id="page-percent">
-      <div></div>
-    </div>
-    <div id="wrap">
-      <header id="header">
-    <div id="header-outer" class="outer">
-        <div class="container">
-            <div id="header-nav" class="nav-container">
-                <div class="container-inner nav-container-inner">
-                    <ul id="main-nav">
-                        
-                                <li class="main-nav-list-item" >
-                                    <a class="main-nav-list-link" href="/">主页</a>
-                                </li>
-                        
-                                <ul class="main-nav-list"><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/Uncategory/">Uncategory</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/css/">css</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/html/">html</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/js/">js</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/翻译/">翻译</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/转载/">转载</a></li></ul>
-                            
-                    </ul>
-                </div>
-            </div>
-            <div id="header-title" style="display: none">
-                <div class="container-inner">
-                    <h1 class="logo-wrap">
-                        <a href="/" class="logo"></a>
-                    </h1>
-                    
-                        <h2 class="subtitle-wrap">
-                            <p class="subtitle">To try, then catch.</p>
-                        </h2>
-                    
-                </div>
-            </div>
-        </div>
-    </div>
+  <div id="page-percent"><div></div></div>
+  <header id="header">
+  <div id="header-nav" class="nav-container">
+    <ul>
+      
+          <li class="main-nav-list-item" >
+            <a class="main-nav-list-link" href="/">主页</a>
+          </li>
+      
+          <ul class="main-nav-list"><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/Uncategory/">Uncategory</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/css/">css</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/html/">html</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/js/">js</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/翻译/">翻译</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/转载/">转载</a></li></ul>
+        
+    </ul>
+  </div>
 </header>
+  <div id="root">
+    <div id="wrap">
       <div class="container">
         <div class="bg_content">
           <canvas id="canvas"></canvas>
@@ -139,7 +119,7 @@ var _hmt = _hmt || [];
                 
     <span class="word-count">
       <i class="icon fa fa-file-text"></i>
-      字数: 602 
+      字数: 600 
     </span>
     <span class="word-count">
       <i class="icon fa fa-clock-o"></i>
@@ -164,16 +144,16 @@ var _hmt = _hmt || [];
         
         <div class="article-entry" itemprop="articleBody">
             <h2 id="问题描述"><a href="#问题描述" class="headerlink" title="问题描述"></a>问题描述</h2><p>在 React16 以前的版本，组件渲染的返回值必须为一个子元素，而不允许是一个子元素的列表，我们经常需要为其包括一层 <code>div</code> 或者 <code>span</code> 等：</p>
-<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="comment">// 对于：</span></span><br><span class="line">Some text.</span><br><span class="line">&lt;h2&gt;A heading&lt;<span class="regexp">/h2&gt;</span></span><br><span class="line"><span class="regexp">More text.</span></span><br><span class="line"><span class="regexp">&lt;h2&gt;Another heading&lt;/</span>h2&gt;</span><br><span class="line">Even more text.</span><br><span class="line"></span><br><span class="line"><span class="comment">// React 16 以前需要包裹一层额外的 div</span></span><br><span class="line">render() &#123;</span><br><span class="line">  <span class="keyword">return</span> (</span><br><span class="line">    &lt;div&gt;</span><br><span class="line">      Some text.</span><br><span class="line">      &lt;h2&gt;A heading&lt;<span class="regexp">/h2&gt;</span></span><br><span class="line"><span class="regexp">      More text.</span></span><br><span class="line"><span class="regexp">      &lt;h2&gt;Another heading&lt;/</span>h2&gt;</span><br><span class="line">      Even more text.</span><br><span class="line">    &lt;<span class="regexp">/div&gt;</span></span><br><span class="line"><span class="regexp">  )</span></span><br><span class="line"><span class="regexp">&#125;</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight"><table><tr><td class="code"><pre><div class="line">// 对于：</div><div class="line">Some text.</div><div class="line">&lt;h2&gt;A heading&lt;/h2&gt;</div><div class="line">More text.</div><div class="line">&lt;h2&gt;Another heading&lt;/h2&gt;</div><div class="line">Even more text.</div><div class="line"></div><div class="line">// React 16 以前需要包裹一层额外的 div</div><div class="line">render() &#123;</div><div class="line">  return (</div><div class="line">    &lt;div&gt;</div><div class="line">      Some text.</div><div class="line">      &lt;h2&gt;A heading&lt;/h2&gt;</div><div class="line">      More text.</div><div class="line">      &lt;h2&gt;Another heading&lt;/h2&gt;</div><div class="line">      Even more text.</div><div class="line">    &lt;/div&gt;</div><div class="line">  )</div><div class="line">&#125;</div></pre></td></tr></table></figure>
 <h2 id="返回数组"><a href="#返回数组" class="headerlink" title="返回数组"></a>返回数组</h2><p>为了解决这样大部分无意义的 DOM 包装，React16.0 提供了返回数组的支持，允许我们返回一个数组：</p>
-<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="comment">// React 16.0 以后可以返回数组</span></span><br><span class="line">render() &#123;</span><br><span class="line">  <span class="keyword">return</span> [</span><br><span class="line">    <span class="string">"Some text."</span>,</span><br><span class="line">    &lt;h2 key=<span class="string">"heading-1"</span>&gt;A heading&lt;<span class="regexp">/h2&gt;,</span></span><br><span class="line"><span class="regexp">    "More text.",</span></span><br><span class="line"><span class="regexp">    &lt;h2 key="heading-2"&gt;Another heading&lt;/</span>h2&gt;,</span><br><span class="line">    <span class="string">"Even more text."</span></span><br><span class="line">  ];</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight"><table><tr><td class="code"><pre><div class="line">// React 16.0 以后可以返回数组</div><div class="line">render() &#123;</div><div class="line">  return [</div><div class="line">    "Some text.",</div><div class="line">    &lt;h2 key="heading-1"&gt;A heading&lt;/h2&gt;,</div><div class="line">    "More text.",</div><div class="line">    &lt;h2 key="heading-2"&gt;Another heading&lt;/h2&gt;,</div><div class="line">    "Even more text."</div><div class="line">  ];</div><div class="line">&#125;</div></pre></td></tr></table></figure>
 <p>但是返回数组也很麻烦，比如，我们需要把文本用引号括起来、需要在每一行末尾加上逗号，而且数组元素还会报出没有 <code>key</code> 的错误，有需要为每一个元素指定 <code>key</code> 属性，这样一点也不好用，反而需要修改更多内容。</p>
 <h2 id="Fragment"><a href="#Fragment" class="headerlink" title="Fragment"></a>Fragment</h2><p>为了彻底解决这个问题，React16.2 重新引入了 <code>React.Fragment</code> 标签，专门用于解决这个问题：</p>
-<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">const</span> &#123; Fragment &#125; = React;</span><br><span class="line">render() &#123;</span><br><span class="line">  <span class="keyword">return</span> (</span><br><span class="line">    &lt;Fragment&gt;</span><br><span class="line">      Some text.</span><br><span class="line">      &lt;h2&gt;A heading&lt;<span class="regexp">/h2&gt;</span></span><br><span class="line"><span class="regexp">      More text.</span></span><br><span class="line"><span class="regexp">      &lt;h2&gt;Another heading&lt;/</span>h2&gt;</span><br><span class="line">      Even more text.</span><br><span class="line">    &lt;<span class="regexp">/Fragment&gt;</span></span><br><span class="line"><span class="regexp">  );</span></span><br><span class="line"><span class="regexp">&#125;</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight js"><table><tr><td class="code"><pre><div class="line"><span class="keyword">const</span> &#123; Fragment &#125; = React;</div><div class="line">render() &#123;</div><div class="line">  <span class="keyword">return</span> (</div><div class="line">    <span class="xml"><span class="tag">&lt;<span class="name">Fragment</span>&gt;</span></span></div><div class="line">      Some text.</div><div class="line">      <span class="tag">&lt;<span class="name">h2</span>&gt;</span>A heading<span class="tag">&lt;/<span class="name">h2</span>&gt;</span></div><div class="line">      More text.</div><div class="line">      <span class="tag">&lt;<span class="name">h2</span>&gt;</span>Another heading<span class="tag">&lt;/<span class="name">h2</span>&gt;</span></div><div class="line">      Even more text.</div><div class="line">    <span class="tag">&lt;/<span class="name">Fragment</span>&gt;</span></div><div class="line">  );</div><div class="line">&#125;</div></pre></td></tr></table></figure>
 <p>乍一看，这个和之前使用 <code>div</code> 包装的方式很相似，但是 <code>Fragment</code> 并不会真的在外面包装一层，看下面的例子：</p>
-<figure class="highlight js"><table><tr><td class="code"><pre><span class="line">render() &#123;</span><br><span class="line">  <span class="keyword">return</span> (</span><br><span class="line">    &lt;table&gt;</span><br><span class="line">      &lt;tr&gt;</span><br><span class="line">        &lt;Columns /&gt;</span><br><span class="line">      &lt;<span class="regexp">/tr&gt;</span></span><br><span class="line"><span class="regexp">    &lt;/</span>table&gt;</span><br><span class="line">  );</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 自己包装，需要多注意应用场合，不然可能包装出来错误的结构：</span></span><br><span class="line"><span class="keyword">const</span> Columns = <span class="function"><span class="params">()</span> =&gt;</span> (</span><br><span class="line">  &lt;div&gt;</span><br><span class="line">    &lt;td&gt;Hello&lt;<span class="regexp">/td&gt;</span></span><br><span class="line"><span class="regexp">    &lt;td&gt;World&lt;/</span>td&gt;</span><br><span class="line">  &lt;<span class="regexp">/div&gt;</span></span><br><span class="line"><span class="regexp">);</span></span><br><span class="line"><span class="regexp"></span></span><br><span class="line"><span class="regexp">/</span><span class="regexp">/ 结果，结构明显错误</span></span><br><span class="line"><span class="regexp">&lt;table&gt;</span></span><br><span class="line"><span class="regexp">  &lt;tr&gt;</span></span><br><span class="line"><span class="regexp">    &lt;div&gt;</span></span><br><span class="line"><span class="regexp">      &lt;td&gt;Hello&lt;/</span>td&gt;</span><br><span class="line">      &lt;td&gt;World&lt;<span class="regexp">/td&gt;</span></span><br><span class="line"><span class="regexp">    &lt;/</span>div&gt;</span><br><span class="line">  &lt;<span class="regexp">/tr&gt;</span></span><br><span class="line"><span class="regexp">&lt;/</span>table&gt;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 使用 Fragment</span></span><br><span class="line"><span class="keyword">return</span> (</span><br><span class="line">  &lt;React.Fragment&gt;</span><br><span class="line">    &lt;td&gt;Hello&lt;<span class="regexp">/td&gt;</span></span><br><span class="line"><span class="regexp">    &lt;td&gt;World&lt;/</span>td&gt;</span><br><span class="line">  &lt;<span class="regexp">/React.Fragment&gt;</span></span><br><span class="line"><span class="regexp">);</span></span><br><span class="line"><span class="regexp"></span></span><br><span class="line"><span class="regexp">/</span><span class="regexp">/ 结果，结构正确，也没有额外的无意义的结点出现</span></span><br><span class="line"><span class="regexp">&lt;table&gt;</span></span><br><span class="line"><span class="regexp">  &lt;tr&gt;</span></span><br><span class="line"><span class="regexp">    &lt;td&gt;Hello&lt;/</span>td&gt;</span><br><span class="line">    &lt;td&gt;World&lt;<span class="regexp">/td&gt;</span></span><br><span class="line"><span class="regexp">  &lt;/</span>tr&gt;</span><br><span class="line">&lt;<span class="regexp">/table&gt;</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight"><table><tr><td class="code"><pre><div class="line">render() &#123;</div><div class="line">  return (</div><div class="line">    &lt;table&gt;</div><div class="line">      &lt;tr&gt;</div><div class="line">        &lt;Columns /&gt;</div><div class="line">      &lt;/tr&gt;</div><div class="line">    &lt;/table&gt;</div><div class="line">  );</div><div class="line">&#125;</div><div class="line"></div><div class="line">// 自己包装，需要多注意应用场合，不然可能包装出来错误的结构：</div><div class="line">const Columns = () =&gt; (</div><div class="line">  &lt;div&gt;</div><div class="line">    &lt;td&gt;Hello&lt;/td&gt;</div><div class="line">    &lt;td&gt;World&lt;/td&gt;</div><div class="line">  &lt;/div&gt;</div><div class="line">);</div><div class="line"></div><div class="line">// 结果，结构明显错误</div><div class="line">&lt;table&gt;</div><div class="line">  &lt;tr&gt;</div><div class="line">    &lt;div&gt;</div><div class="line">      &lt;td&gt;Hello&lt;/td&gt;</div><div class="line">      &lt;td&gt;World&lt;/td&gt;</div><div class="line">    &lt;/div&gt;</div><div class="line">  &lt;/tr&gt;</div><div class="line">&lt;/table&gt;</div><div class="line"></div><div class="line">// 使用 Fragment</div><div class="line">return (</div><div class="line">  &lt;React.Fragment&gt;</div><div class="line">    &lt;td&gt;Hello&lt;/td&gt;</div><div class="line">    &lt;td&gt;World&lt;/td&gt;</div><div class="line">  &lt;/React.Fragment&gt;</div><div class="line">);</div><div class="line"></div><div class="line">// 结果，结构正确，也没有额外的无意义的结点出现</div><div class="line">&lt;table&gt;</div><div class="line">  &lt;tr&gt;</div><div class="line">    &lt;td&gt;Hello&lt;/td&gt;</div><div class="line">    &lt;td&gt;World&lt;/td&gt;</div><div class="line">  &lt;/tr&gt;</div><div class="line">&lt;/table&gt;</div></pre></td></tr></table></figure>
 <h2 id="缩写标签-lt-gt-lt-gt"><a href="#缩写标签-lt-gt-lt-gt" class="headerlink" title="缩写标签 &lt;&gt;&lt;/&gt;"></a>缩写标签 &lt;&gt;&lt;/&gt;</h2><p>由于这个会比较常用，又引入了简写的标签： <code>&lt;&gt;&lt;/&gt;</code>:</p>
-<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">return</span> (</span><br><span class="line">  &lt;&gt;</span><br><span class="line">    Some text.</span><br><span class="line">    &lt;h2&gt;A heading&lt;<span class="regexp">/h2&gt;</span></span><br><span class="line"><span class="regexp">    More text.</span></span><br><span class="line"><span class="regexp">    &lt;h2&gt;Another heading&lt;/</span>h2&gt;</span><br><span class="line">    Even more text.</span><br><span class="line">  &lt;<span class="regexp">/&gt;</span></span><br><span class="line"><span class="regexp">);</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight js"><table><tr><td class="code"><pre><div class="line"><span class="keyword">return</span> (</div><div class="line">  <span class="xml"><span class="tag">&lt;&gt;</span></span></div><div class="line">    Some text.</div><div class="line">    <span class="tag">&lt;<span class="name">h2</span>&gt;</span>A heading<span class="tag">&lt;/<span class="name">h2</span>&gt;</span></div><div class="line">    More text.</div><div class="line">    <span class="tag">&lt;<span class="name">h2</span>&gt;</span>Another heading<span class="tag">&lt;/<span class="name">h2</span>&gt;</span></div><div class="line">    Even more text.</div><div class="line">  <span class="tag">&lt;/&gt;</span></div><div class="line">);</div></pre></td></tr></table></figure>
 <p>注意：目前版本，<code>React.Fragment</code> 只能接受 <code>key</code> 这一个属性，未来版本可能做出改进：</p>
 <blockquote>
 <p>key is the only attribute that can be passed to Fragment. In the future, we may add support for additional attributes, such as event handlers.</p>

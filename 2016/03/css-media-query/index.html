@@ -71,42 +71,22 @@ var _hmt = _hmt || [];
 </head>
 
 <body>
-  <div id="root">
-    <div id="page-percent">
-      <div></div>
-    </div>
-    <div id="wrap">
-      <header id="header">
-    <div id="header-outer" class="outer">
-        <div class="container">
-            <div id="header-nav" class="nav-container">
-                <div class="container-inner nav-container-inner">
-                    <ul id="main-nav">
-                        
-                                <li class="main-nav-list-item" >
-                                    <a class="main-nav-list-link" href="/">主页</a>
-                                </li>
-                        
-                                <ul class="main-nav-list"><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/Uncategory/">Uncategory</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/css/">css</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/html/">html</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/js/">js</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/翻译/">翻译</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/转载/">转载</a></li></ul>
-                            
-                    </ul>
-                </div>
-            </div>
-            <div id="header-title" style="display: none">
-                <div class="container-inner">
-                    <h1 class="logo-wrap">
-                        <a href="/" class="logo"></a>
-                    </h1>
-                    
-                        <h2 class="subtitle-wrap">
-                            <p class="subtitle">To try, then catch.</p>
-                        </h2>
-                    
-                </div>
-            </div>
-        </div>
-    </div>
+  <div id="page-percent"><div></div></div>
+  <header id="header">
+  <div id="header-nav" class="nav-container">
+    <ul>
+      
+          <li class="main-nav-list-item" >
+            <a class="main-nav-list-link" href="/">主页</a>
+          </li>
+      
+          <ul class="main-nav-list"><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/Uncategory/">Uncategory</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/css/">css</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/html/">html</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/js/">js</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/翻译/">翻译</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/转载/">转载</a></li></ul>
+        
+    </ul>
+  </div>
 </header>
+  <div id="root">
+    <div id="wrap">
       <div class="container">
         <div class="bg_content">
           <canvas id="canvas"></canvas>
@@ -174,7 +154,7 @@ var _hmt = _hmt || [];
 <li><em>user-scalable：</em> 用户是否可以手动缩放（默认设置为no，因为我们不希望用户放大缩小页面）<h2 id="语法"><a href="#语法" class="headerlink" title="语法"></a>语法</h2></li>
 </ul>
 <p>媒体查询包含了一个媒体类型 和如CSS3规范中描述的包含一个或多个表达式的媒体属性，这些媒体属性会被解析成真或假。如果媒体查询中的媒体类型与文档要展示的设备相符则查询结果为真，并且媒体查询中的所有表达式为真。</p>
-<figure class="highlight html"><table><tr><td class="code"><pre><span class="line"><span class="comment">&lt;!-- link元素中的CSS媒体查询 --&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">link</span> <span class="attr">rel</span>=<span class="string">"stylesheet"</span> <span class="attr">media</span>=<span class="string">"(max-width: 800px)"</span> <span class="attr">href</span>=<span class="string">"example.css"</span> /&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="comment">&lt;!-- 样式表中的CSS媒体查询 --&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">style</span>&gt;</span><span class="undefined"></span></span><br><span class="line"><span class="css">@<span class="keyword">media</span> (max-width: <span class="number">600px</span>) &#123;</span></span><br><span class="line"><span class="css">  <span class="selector-class">.facet_sidebar</span> &#123;</span></span><br><span class="line"><span class="undefined">    display: none;</span></span><br><span class="line"><span class="undefined">  &#125;</span></span><br><span class="line"><span class="undefined">&#125;</span></span><br><span class="line"><span class="undefined"></span><span class="tag">&lt;/<span class="name">style</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight html"><table><tr><td class="code"><pre><div class="line"><span class="comment">&lt;!-- link元素中的CSS媒体查询 --&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">link</span> <span class="attr">rel</span>=<span class="string">"stylesheet"</span> <span class="attr">media</span>=<span class="string">"(max-width: 800px)"</span> <span class="attr">href</span>=<span class="string">"example.css"</span> /&gt;</span></div><div class="line"></div><div class="line"><span class="comment">&lt;!-- 样式表中的CSS媒体查询 --&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">style</span>&gt;</span><span class="css"></span></div><div class="line">@<span class="keyword">media</span> (max-width: <span class="number">600px</span>) &#123;</div><div class="line">  <span class="selector-class">.facet_sidebar</span> &#123;</div><div class="line">    <span class="attribute">display</span>: none;</div><div class="line">  &#125;</div><div class="line">&#125;</div><div class="line"><span class="tag">&lt;/<span class="name">style</span>&gt;</span></div></pre></td></tr></table></figure>
 <p>当媒体查询为真时，相关的样式表或样式规则就会按照正常的级联规则被应用。即使媒体查询返回假， <code>&lt;link&gt;</code> 标签上带有媒体查询的样式表仍将被下载（只不过不会被应用）。</p>
 <p>在不使用 <code>not</code> 或 <code>only</code> 操作符的情况下，媒体类型是可选的，默认为 <code>all</code> 。</p>
 <h3 id="逻辑操作符"><a href="#逻辑操作符" class="headerlink" title="逻辑操作符"></a>逻辑操作符</h3><p>操作符 <code>not，and 和 only</code>可以用来构建复杂的媒体查询。</p>
@@ -190,7 +170,7 @@ var _hmt = _hmt || [];
 <p><strong>or</strong> <strong>逗号分隔列表</strong><br>媒体查询中使用逗号分隔效果等同于<code>or</code> 逻辑操作符。<br>例如，如果你想在最小宽度为700像素或是横屏的手持设备上应用一组样式，你可以这样写：<br><code>@media (min-width: 700px), handheld and (orientation: landscape) { ... }</code><br>如上文，如果是一个800像素宽的屏幕设备，媒体语句将会返回真，因为第一部分相当于 <code>@media all and (min-width: 700px)</code> 将会应用于该设备并且返回真，尽管我的屏幕媒体类型并不与第二部分的手持媒体类型相符。同样地，如果我是一个500像素宽的横屏手持设备，尽管第一部分因为宽度问题而不匹配，第二部分仍会成功，因此整个媒体查询返回真。</p>
 <p><strong>not</strong></p>
 <p>not 关键字应用于整个媒体查询，在媒体查询为假时返回真 (比如 monochrome 应用于彩色显示设备上或一个600像素的屏幕应用于 <code>min-width: 700px</code> 属性查询上 )。<br>在逗号媒体查询列表中 <code>not</code> 仅会否定它应用到的媒体查询上而不影响其它的媒体查询。</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">not 在下面的查询中最后被计算：</span><br><span class="line">@media not all and (monochrome) &#123; ... &#125;</span><br><span class="line">等价于：@media not (all and (monochrome)) &#123; ... &#125;</span><br><span class="line">而不是：@media (not all) and (monochrome) &#123; ... &#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">not 在下面的查询中最后被计算：</div><div class="line">@media not all and (monochrome) &#123; ... &#125;</div><div class="line">等价于：@media not (all and (monochrome)) &#123; ... &#125;</div><div class="line">而不是：@media (not all) and (monochrome) &#123; ... &#125;</div></pre></td></tr></table></figure>
 <p><strong>only</strong></p>
 <p><code>only</code> 关键字防止老旧的浏览器不支持带媒体属性的查询而应用到给定的样式：<br><code>&lt;link rel=&quot;stylesheet&quot; media=&quot;only screen and (color)&quot; href=&quot;example.css&quot; /&gt;</code></p>
 <h2 id="Media所有参数汇总"><a href="#Media所有参数汇总" class="headerlink" title="Media所有参数汇总"></a>Media所有参数汇总</h2><p>以上就是我们最常需要用到的媒体查询器的几个特性，其他参数用法解释：</p>
@@ -208,14 +188,14 @@ var _hmt = _hmt || [];
 <li>resolution: 检测屏幕或打印机的分辨率。(例如：min-resolution:300dpi或min-resolution:118dpcm)。</li>
 <li>grid: 检测输出的设备是网格的还是位图设备。</li>
 </ul>
-<h2 id="常见媒体查询"><a href="#常见媒体查询" class="headerlink" title="常见媒体查询"></a>常见媒体查询</h2><figure class="highlight css"><table><tr><td class="code"><pre><span class="line">//实际应用一 判断设备横竖屏：</span><br><span class="line"><span class="comment">/* 这是匹配横屏的状态，横屏时的css代码 */</span></span><br><span class="line">@<span class="keyword">media</span> all and (orientation :landscape)&#123;&#125;</span><br><span class="line"><span class="comment">/* 这是匹配竖屏的状态，竖屏时的css代码 */</span></span><br><span class="line">@<span class="keyword">media</span> all and (orientation :portrait)&#123;&#125;</span><br><span class="line"></span><br><span class="line">//实际应用二 判断设备类型：</span><br><span class="line">@<span class="keyword">media</span> X and (min-width:<span class="number">200px</span>)&#123;&#125;</span><br><span class="line">X为设备类型》比如print/screen/TV等等</span><br><span class="line"></span><br><span class="line">//实际应用三 判断设备宽高：</span><br><span class="line"><span class="comment">/* 宽度大于600px小于960之间时，隐藏footer结构 */</span></span><br><span class="line">@<span class="keyword">media</span> all and (min-height:<span class="number">640px</span>) and (max-height:<span class="number">960px</span>)&#123;</span><br><span class="line">    <span class="selector-tag">footer</span>&#123;<span class="attribute">display</span>:none;&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="常见媒体查询"><a href="#常见媒体查询" class="headerlink" title="常见媒体查询"></a>常见媒体查询</h2><figure class="highlight"><table><tr><td class="code"><pre><div class="line">//实际应用一 判断设备横竖屏：</div><div class="line">/* 这是匹配横屏的状态，横屏时的css代码 */</div><div class="line">@media all and (orientation :landscape)&#123;&#125;</div><div class="line">/* 这是匹配竖屏的状态，竖屏时的css代码 */</div><div class="line">@media all and (orientation :portrait)&#123;&#125;</div><div class="line"></div><div class="line">//实际应用二 判断设备类型：</div><div class="line">@media X and (min-width:200px)&#123;&#125;</div><div class="line">X为设备类型》比如print/screen/TV等等</div><div class="line"></div><div class="line">//实际应用三 判断设备宽高：</div><div class="line">/* 宽度大于600px小于960之间时，隐藏footer结构 */</div><div class="line">@media all and (min-height:640px) and (max-height:960px)&#123;</div><div class="line">    footer&#123;display:none;&#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
 <h2 id="组织媒体查询"><a href="#组织媒体查询" class="headerlink" title="组织媒体查询"></a>组织媒体查询</h2><p>第一个方法是为不同屏幕大小指定完全不同的样式表。<br>规则可以保存在独立样式表中，这使得显示逻辑能够清楚地划分出来，更便于团队进行维护。另一个优势是源代码分支之间的合并变得更为容易。<br>缺点是如果要为每个媒体查询创建单独的样式表，则无法将一个元素的所有样式表放在同一文件夹的同一位置。当改变一个 CSS 中的一个元素时，需要创建多个位置进行查看，这使得网站 CSS 的维护变得更加困难。</p>
 <p>第二个方法是在现有样式表中使用媒体查询，该样式表就在定义其余元素样式表的位置的旁边。<br>这种方法的优势是可以将所有元素样式保存在同一个位置。当在团队模式下工作时，这种做法可以创建更多源代码合并工作，但这是所有基于团队的软件开发都可以管理且常见的一部分。</p>
 <blockquote>
 <p>没有所谓正确或错误方法。只需选择最适合的方法即可。</p>
 </blockquote>
-<h2 id="浏览器兼容"><a href="#浏览器兼容" class="headerlink" title="浏览器兼容"></a>浏览器兼容</h2><h3 id="加载兼容文件JS"><a href="#加载兼容文件JS" class="headerlink" title="加载兼容文件JS"></a>加载兼容文件JS</h3><p>因为IE8既不支持HTML5也不支持CSS3 Media，所以我们需要加载JS文件，来保证我们的代码实现兼容效果。Respond.js 是一个极小的增强 Web 浏览器的 JavaScript 库，使得原本不支持 CSS 媒体查询的浏览器能够支持它们。该脚本循环遍历页面上的所有 CSS 引用，并使用媒体查询分析 CSS 规则。然后，该脚本会监控浏览器宽度变化，添加或删除与 CSS 中媒体查询匹配的样式。最终结果是，能够在原本不支持的浏览器上运行媒体查询：<br><figure class="highlight html"><table><tr><td class="code"><pre><span class="line"><span class="comment">&lt;!--[if lt IE 9]&gt;</span></span><br><span class="line"><span class="comment">  &lt;script src="libs/respond.js/"&gt;&lt;/script&gt;</span></span><br><span class="line"><span class="comment">&lt;![endif]--&gt;</span></span><br></pre></td></tr></table></figure></p>
-<h3 id="设置IE渲染方式默认为最高-这部分可以选择添加也可以不添加"><a href="#设置IE渲染方式默认为最高-这部分可以选择添加也可以不添加" class="headerlink" title="设置IE渲染方式默认为最高(这部分可以选择添加也可以不添加)"></a>设置IE渲染方式默认为最高(这部分可以选择添加也可以不添加)</h3><p>现在有很多人的IE浏览器都升级到IE9以上了，所以这个时候就有又很多诡异的事情发生了，例如现在是IE9的浏览器，但是浏览器的文档模式却是IE8:<br><img src="/public/img/webfront/2.png" alt="浏览器文档模式"><br>为了防止这种情况，我们需要下面这段代码来让IE的文档模式永远都是最新的：<br><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&lt;meta http-equiv=&quot;X-UA-Compatible&quot; content=&quot;IE=Edge&quot;&gt;</span><br><span class="line">&lt;meta http-equiv=&quot;X-UA-Compatible&quot; content=&quot;IE=Edge，chrome=1&quot;&gt;</span><br></pre></td></tr></table></figure></p>
+<h2 id="浏览器兼容"><a href="#浏览器兼容" class="headerlink" title="浏览器兼容"></a>浏览器兼容</h2><h3 id="加载兼容文件JS"><a href="#加载兼容文件JS" class="headerlink" title="加载兼容文件JS"></a>加载兼容文件JS</h3><p>因为IE8既不支持HTML5也不支持CSS3 Media，所以我们需要加载JS文件，来保证我们的代码实现兼容效果。Respond.js 是一个极小的增强 Web 浏览器的 JavaScript 库，使得原本不支持 CSS 媒体查询的浏览器能够支持它们。该脚本循环遍历页面上的所有 CSS 引用，并使用媒体查询分析 CSS 规则。然后，该脚本会监控浏览器宽度变化，添加或删除与 CSS 中媒体查询匹配的样式。最终结果是，能够在原本不支持的浏览器上运行媒体查询：<br><figure class="highlight html"><table><tr><td class="code"><pre><div class="line"><span class="comment">&lt;!--[if lt IE 9]&gt;</span></div><div class="line">  &lt;script src="libs/respond.js/"&gt;&lt;/script&gt;</div><div class="line">&lt;![endif]--&gt;</div></pre></td></tr></table></figure></p>
+<h3 id="设置IE渲染方式默认为最高-这部分可以选择添加也可以不添加"><a href="#设置IE渲染方式默认为最高-这部分可以选择添加也可以不添加" class="headerlink" title="设置IE渲染方式默认为最高(这部分可以选择添加也可以不添加)"></a>设置IE渲染方式默认为最高(这部分可以选择添加也可以不添加)</h3><p>现在有很多人的IE浏览器都升级到IE9以上了，所以这个时候就有又很多诡异的事情发生了，例如现在是IE9的浏览器，但是浏览器的文档模式却是IE8:<br><img src="/public/img/webfront/2.png" alt="浏览器文档模式"><br>为了防止这种情况，我们需要下面这段代码来让IE的文档模式永远都是最新的：<br><figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">&lt;meta http-equiv=&quot;X-UA-Compatible&quot; content=&quot;IE=Edge&quot;&gt;</div><div class="line">&lt;meta http-equiv=&quot;X-UA-Compatible&quot; content=&quot;IE=Edge，chrome=1&quot;&gt;</div></pre></td></tr></table></figure></p>
 <p>如果有的用户电脑里面装了这个chrome的插件，<code>chrome=1</code>就可以让电脑里面的IE不管是哪个版本的都可以使用Webkit引擎及V8引擎进行排版及运算。</p>
 <h2 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h2><p><a href="http://www.ibm.com/developerworks/cn/web/wa-cssqueries/" target="_blank" rel="external">1. 使用 CSS 媒体查询创建响应式网站</a><br><a href="https://developer.mozilla.org/zh-CN/docs/Web/Guide/CSS/Media_queries" target="_blank" rel="external">2. CSS媒体查询</a><br><a href="http://www.520ued.com" target="_blank" rel="external">3. 520UED</a><br><a href="http://www.w3cfuns.com/article-1318-1.html" target="_blank" rel="external">4. css3媒体查询实现网站响应式布局</a></p>
 

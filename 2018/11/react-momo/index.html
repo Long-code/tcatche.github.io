@@ -71,42 +71,22 @@ var _hmt = _hmt || [];
 </head>
 
 <body>
-  <div id="root">
-    <div id="page-percent">
-      <div></div>
-    </div>
-    <div id="wrap">
-      <header id="header">
-    <div id="header-outer" class="outer">
-        <div class="container">
-            <div id="header-nav" class="nav-container">
-                <div class="container-inner nav-container-inner">
-                    <ul id="main-nav">
-                        
-                                <li class="main-nav-list-item" >
-                                    <a class="main-nav-list-link" href="/">主页</a>
-                                </li>
-                        
-                                <ul class="main-nav-list"><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/Uncategory/">Uncategory</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/css/">css</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/html/">html</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/js/">js</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/翻译/">翻译</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/转载/">转载</a></li></ul>
-                            
-                    </ul>
-                </div>
-            </div>
-            <div id="header-title" style="display: none">
-                <div class="container-inner">
-                    <h1 class="logo-wrap">
-                        <a href="/" class="logo"></a>
-                    </h1>
-                    
-                        <h2 class="subtitle-wrap">
-                            <p class="subtitle">To try, then catch.</p>
-                        </h2>
-                    
-                </div>
-            </div>
-        </div>
-    </div>
+  <div id="page-percent"><div></div></div>
+  <header id="header">
+  <div id="header-nav" class="nav-container">
+    <ul>
+      
+          <li class="main-nav-list-item" >
+            <a class="main-nav-list-link" href="/">主页</a>
+          </li>
+      
+          <ul class="main-nav-list"><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/Uncategory/">Uncategory</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/css/">css</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/html/">html</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/js/">js</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/翻译/">翻译</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/转载/">转载</a></li></ul>
+        
+    </ul>
+  </div>
 </header>
+  <div id="root">
+    <div id="wrap">
       <div class="container">
         <div class="bg_content">
           <canvas id="canvas"></canvas>
@@ -165,11 +145,11 @@ var _hmt = _hmt || [];
         <div class="article-entry" itemprop="articleBody">
             <h2 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h2><p>如果你经常使用 <code>PureComponent</code> 或 <code>shouldComponentUpdate</code> 进行性能优化的时候，那么一定对纯函数组件（SFC 组件）缺失这样的功能而感觉不爽，甚至有时候不得不对有些复杂的组件进行一层包装，包装成类组件。</p>
 <p>现在，<code>React</code> 官方终于提供了对这个功能的支持。在 React v16.6.0 新引入了一个高阶组件 <code>React.momo</code>，它的作用类似于 <code>React.PureComponent</code> 但是是作用在纯函数组件（SFC 组件）上的。</p>
-<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">const</span> MyComponent = React.memo(<span class="function"><span class="keyword">function</span> <span class="title">MyComponent</span>(<span class="params">props</span>) </span>&#123;</span><br><span class="line">  <span class="comment">/* 只有在 props 改变的时候才会重新渲染 */</span></span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+<figure class="highlight js"><table><tr><td class="code"><pre><div class="line"><span class="keyword">const</span> MyComponent = React.memo(<span class="function"><span class="keyword">function</span> <span class="title">MyComponent</span>(<span class="params">props</span>) </span>&#123;</div><div class="line">  <span class="comment">/* 只有在 props 改变的时候才会重新渲染 */</span></div><div class="line">&#125;);</div></pre></td></tr></table></figure>
 <p>也就是说，在 props 没有改变的情况下，Reactc将跳过重新渲染组件，而是重用最近一次的渲染结果。</p>
 <h2 id="自定义比较函数"><a href="#自定义比较函数" class="headerlink" title="自定义比较函数"></a>自定义比较函数</h2><p>当然，与 <code>React.PureComponent</code> 一样，在默认情况下，它只会浅比较 props 对象中的复杂对象。</p>
 <p>如果要更加准确的控制比较的结果，还可以提供自定义的比较函数作为 <code>React.momo</code> 的第二个参数。</p>
-<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">MyComponent</span>(<span class="params">props</span>) </span>&#123;</span><br><span class="line">  <span class="comment">/* render using props */</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">areEqual</span>(<span class="params">prevProps, nextProps</span>) </span>&#123;</span><br><span class="line">  <span class="comment">/*</span></span><br><span class="line"><span class="comment">  return true if passing nextProps to render would return</span></span><br><span class="line"><span class="comment">  the same result as passing prevProps to render,</span></span><br><span class="line"><span class="comment">  otherwise return false</span></span><br><span class="line"><span class="comment">  */</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> React.memo(MyComponent, areEqual);</span><br></pre></td></tr></table></figure>
+<figure class="highlight js"><table><tr><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">MyComponent</span>(<span class="params">props</span>) </span>&#123;</div><div class="line">  <span class="comment">/* render using props */</span></div><div class="line">&#125;</div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">areEqual</span>(<span class="params">prevProps, nextProps</span>) </span>&#123;</div><div class="line">  <span class="comment">/*</span></div><div class="line">  return true if passing nextProps to render would return</div><div class="line">  the same result as passing prevProps to render,</div><div class="line">  otherwise return false</div><div class="line">  */</div><div class="line">&#125;</div><div class="line"><span class="keyword">export</span> <span class="keyword">default</span> React.memo(MyComponent, areEqual);</div></pre></td></tr></table></figure>
 <p>注意，这个自定义的比较函数和 <code>shouldComponentUpdate()</code> 对返回结果的处理<strong>正好相反</strong>，也就是说<strong>两次的 props 相同的时候返回 true，不同则返回 false</strong>。返回 true 会<strong>阻止更新，使用上次渲染的结果</strong>，而返回 false 则重新渲染。</p>
 <p>需要注意的是，根据官方文档，这个函数仅仅被定义为进行性能优化，<strong>不要出于业务逻辑的需要使用它来阻止</strong>更新，否则可能造成一些问题。</p>
 <blockquote>
@@ -177,9 +157,9 @@ var _hmt = _hmt || [];
 </blockquote>
 <h2 id="自己实现"><a href="#自己实现" class="headerlink" title="自己实现"></a>自己实现</h2><p>知道了怎么用，以及它的原理，也可以来写一下实现：</p>
 <h3 id="使用类包装"><a href="#使用类包装" class="headerlink" title="使用类包装"></a>使用类包装</h3><p>这是最简单的一种方式，通过将函数式组件包装成为类组件：</p>
-<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">const</span> momo = <span class="function">(<span class="params">sfcRender, compareFunc</span>) =&gt;</span> &#123;</span><br><span class="line">  <span class="keyword">if</span> (compareFunc) &#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="class"><span class="keyword">class</span> <span class="keyword">extends</span> <span class="title">React</span>.<span class="title">Component</span> </span>&#123;</span><br><span class="line">      shouldComponentUpdate(prevProps, nextProps) &#123;</span><br><span class="line">        <span class="comment">// 这里行为要相反</span></span><br><span class="line">        <span class="keyword">return</span> !compareFunc(prevProps, nextProps);</span><br><span class="line">      &#125;</span><br><span class="line">      render() &#123;</span><br><span class="line">        <span class="keyword">return</span> sfcRender(<span class="keyword">this</span>.props);</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">return</span> <span class="class"><span class="keyword">class</span> <span class="keyword">extends</span> <span class="title">React</span>.<span class="title">PureComponent</span> </span>&#123;</span><br><span class="line">    render() &#123;</span><br><span class="line">      <span class="keyword">return</span> sfcRender(<span class="keyword">this</span>.props);</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight js"><table><tr><td class="code"><pre><div class="line"><span class="keyword">const</span> momo = <span class="function">(<span class="params">sfcRender, compareFunc</span>) =&gt;</span> &#123;</div><div class="line">  <span class="keyword">if</span> (compareFunc) &#123;</div><div class="line">    <span class="keyword">return</span> <span class="class"><span class="keyword">class</span> <span class="keyword">extends</span> <span class="title">React</span>.<span class="title">Component</span> </span>&#123;</div><div class="line">      shouldComponentUpdate(prevProps, nextProps) &#123;</div><div class="line">        <span class="comment">// 这里行为要相反</span></div><div class="line">        <span class="keyword">return</span> !compareFunc(prevProps, nextProps);</div><div class="line">      &#125;</div><div class="line">      render() &#123;</div><div class="line">        <span class="keyword">return</span> sfcRender(<span class="keyword">this</span>.props);</div><div class="line">      &#125;</div><div class="line">    &#125;</div><div class="line">  &#125;</div><div class="line">  <span class="keyword">return</span> <span class="class"><span class="keyword">class</span> <span class="keyword">extends</span> <span class="title">React</span>.<span class="title">PureComponent</span> </span>&#123;</div><div class="line">    render() &#123;</div><div class="line">      <span class="keyword">return</span> sfcRender(<span class="keyword">this</span>.props);</div><div class="line">    &#125;</div><div class="line">  &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
 <h3 id="使用函数缓存"><a href="#使用函数缓存" class="headerlink" title="使用函数缓存"></a>使用函数缓存</h3><p>另一种实现方式是将相关数据缓存到函数上。</p>
-<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">const</span> momo = <span class="function">(<span class="params">sfcRender, compareFunc</span>) =&gt;</span> &#123;</span><br><span class="line">  sfcRender.__prevResult = <span class="literal">null</span>;</span><br><span class="line">  sfcRender.__prevProps = <span class="literal">null</span>;</span><br><span class="line">  sfcRender.__isFirstRender = <span class="literal">true</span>;</span><br><span class="line">  <span class="keyword">return</span> <span class="function"><span class="keyword">function</span>(<span class="params">nextProps</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (sfcRender.__isFirstRender) &#123;</span><br><span class="line">      sfcRender.__isFirstRender = <span class="literal">false</span>;</span><br><span class="line">      sfcRender.__prevResult = sfcRender(nextProps);</span><br><span class="line">      sfcRender.__prevProps = nextProps;</span><br><span class="line">      <span class="keyword">return</span> sfcRender.__prevResult;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">const</span> isCustomeSame = compareFunc &amp;&amp; compareFunc(sfcRender.__prevProps, nextProps);</span><br><span class="line">    <span class="keyword">const</span> isShadowSame = !compareFunc &amp;&amp; nextProps === sfcRender.__prevProps;</span><br><span class="line">    sfcRender.__prevProps = nextProps;</span><br><span class="line">    <span class="keyword">if</span> (!isCustomeSame &amp;&amp; !isShadowSame) &#123;</span><br><span class="line">      sfcRender.__prevResult = sfcRender(nextProps);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> sfcRender.__prevResult;</span><br><span class="line">  &#125;;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight js"><table><tr><td class="code"><pre><div class="line"><span class="keyword">const</span> momo = <span class="function">(<span class="params">sfcRender, compareFunc</span>) =&gt;</span> &#123;</div><div class="line">  sfcRender.__prevResult = <span class="literal">null</span>;</div><div class="line">  sfcRender.__prevProps = <span class="literal">null</span>;</div><div class="line">  sfcRender.__isFirstRender = <span class="literal">true</span>;</div><div class="line">  <span class="keyword">return</span> <span class="function"><span class="keyword">function</span>(<span class="params">nextProps</span>) </span>&#123;</div><div class="line">    <span class="keyword">if</span> (sfcRender.__isFirstRender) &#123;</div><div class="line">      sfcRender.__isFirstRender = <span class="literal">false</span>;</div><div class="line">      sfcRender.__prevResult = sfcRender(nextProps);</div><div class="line">      sfcRender.__prevProps = nextProps;</div><div class="line">      <span class="keyword">return</span> sfcRender.__prevResult;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="keyword">const</span> isCustomeSame = compareFunc &amp;&amp; compareFunc(sfcRender.__prevProps, nextProps);</div><div class="line">    <span class="keyword">const</span> isShadowSame = !compareFunc &amp;&amp; nextProps === sfcRender.__prevProps;</div><div class="line">    sfcRender.__prevProps = nextProps;</div><div class="line">    <span class="keyword">if</span> (!isCustomeSame &amp;&amp; !isShadowSame) &#123;</div><div class="line">      sfcRender.__prevResult = sfcRender(nextProps);</div><div class="line">    &#125;</div><div class="line">    <span class="keyword">return</span> sfcRender.__prevResult;</div><div class="line">  &#125;;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
 <p><strong>注意</strong>，这两种实现仅供参考。这两种方式如果使用在单个的组件上，则其行为一致。但是，当应用到多个组件上时，具有较大的行为差异。第一种方式由于每次在使用的时候都生成了一个新的示例，所以仅在每次父组件更新时，才会触发比较判断是否更新。第二种方式由于是函数的实现方式，所以当首次渲染渲染多个包装过的函数式组件时，即进行判断。</p>
 <h2 id="TODO-React-源码实现方式"><a href="#TODO-React-源码实现方式" class="headerlink" title="TODO:React 源码实现方式"></a>TODO:React 源码实现方式</h2>
         </div>

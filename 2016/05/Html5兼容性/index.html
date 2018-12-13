@@ -71,42 +71,22 @@ var _hmt = _hmt || [];
 </head>
 
 <body>
-  <div id="root">
-    <div id="page-percent">
-      <div></div>
-    </div>
-    <div id="wrap">
-      <header id="header">
-    <div id="header-outer" class="outer">
-        <div class="container">
-            <div id="header-nav" class="nav-container">
-                <div class="container-inner nav-container-inner">
-                    <ul id="main-nav">
-                        
-                                <li class="main-nav-list-item" >
-                                    <a class="main-nav-list-link" href="/">主页</a>
-                                </li>
-                        
-                                <ul class="main-nav-list"><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/Uncategory/">Uncategory</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/css/">css</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/html/">html</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/js/">js</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/翻译/">翻译</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/转载/">转载</a></li></ul>
-                            
-                    </ul>
-                </div>
-            </div>
-            <div id="header-title" style="display: none">
-                <div class="container-inner">
-                    <h1 class="logo-wrap">
-                        <a href="/" class="logo"></a>
-                    </h1>
-                    
-                        <h2 class="subtitle-wrap">
-                            <p class="subtitle">To try, then catch.</p>
-                        </h2>
-                    
-                </div>
-            </div>
-        </div>
-    </div>
+  <div id="page-percent"><div></div></div>
+  <header id="header">
+  <div id="header-nav" class="nav-container">
+    <ul>
+      
+          <li class="main-nav-list-item" >
+            <a class="main-nav-list-link" href="/">主页</a>
+          </li>
+      
+          <ul class="main-nav-list"><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/Uncategory/">Uncategory</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/css/">css</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/html/">html</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/js/">js</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/翻译/">翻译</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/转载/">转载</a></li></ul>
+        
+    </ul>
+  </div>
 </header>
+  <div id="root">
+    <div id="wrap">
       <div class="container">
         <div class="bg_content">
           <canvas id="canvas"></canvas>
@@ -165,7 +145,7 @@ var _hmt = _hmt || [];
         <div class="article-entry" itemprop="articleBody">
             <h2 id="input标签-placeholder-属性"><a href="#input标签-placeholder-属性" class="headerlink" title="input标签 placeholder 属性"></a>input标签 placeholder 属性</h2><p>placeholder属性是html5提供给 <code>&lt;input&gt;</code> 标签的新属性，用于提供输入内容预期的输入提示。</p>
 <p>该属性在IE10以下不兼容，处理方法是使用js将placeholder的值取出放入input，并为input绑定处理获得焦点移除placeholder值和失去焦点填入placeholder的值的事件，具体实现如下：</p>
-<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 检查是否支持该属性，</span></span><br><span class="line"><span class="comment"> * 经检查在火狐 v46 中'placeholder' in document.createElement('input')返回值为false，</span></span><br><span class="line"><span class="comment"> * 而火狐是支持placeholder属性的，因此加入浏览器判断</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">var</span> isSupportPlaceholder = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> navigator.userAgent.indexOf(<span class="string">"MSIE"</span>) &lt; <span class="number">0</span> || <span class="string">'placeholder'</span> <span class="keyword">in</span> <span class="built_in">document</span>.createElement(<span class="string">'input'</span>);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * IE9下不支持placeholder的解决方案</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">var</span> fixPlaceholderInIE = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="keyword">if</span>(!isSupportPlaceholder())&#123;</span><br><span class="line">        $(<span class="string">'input[placeholder]'</span>).each(<span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">            <span class="keyword">var</span> placeholderText = $(<span class="keyword">this</span>).attr(<span class="string">"placeholder"</span>);</span><br><span class="line">            <span class="keyword">if</span>($(<span class="keyword">this</span>).attr(<span class="string">"type"</span>) == <span class="string">"text"</span> &amp;&amp; $(<span class="keyword">this</span>).val() == <span class="string">''</span>)&#123;</span><br><span class="line">                $(<span class="keyword">this</span>).val(placeholderText);</span><br><span class="line">                $(<span class="keyword">this</span>).css(<span class="string">"color"</span>, <span class="string">"#666"</span>);</span><br><span class="line">            &#125;</span><br><span class="line"></span><br><span class="line">            <span class="comment">/*</span></span><br><span class="line"><span class="comment">            	提供input focus和blur事件，</span></span><br><span class="line"><span class="comment">            	当input获得焦点，若input值等于placeholder则改为''，</span></span><br><span class="line"><span class="comment">            	当input失去焦点，将placeholder值放入input。</span></span><br><span class="line"><span class="comment">            */</span></span><br><span class="line">            $(<span class="keyword">this</span>).focus(<span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">                <span class="keyword">var</span> input = $(<span class="keyword">this</span>);</span><br><span class="line">                <span class="keyword">if</span> (input.val() == input.attr(<span class="string">'placeholder'</span>)) &#123;</span><br><span class="line">                    input.val(<span class="string">''</span>);</span><br><span class="line">                &#125;</span><br><span class="line">                $(<span class="keyword">this</span>).css(<span class="string">"color"</span>, <span class="string">"#000"</span>);</span><br><span class="line">            &#125;).blur(<span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">                <span class="keyword">var</span> input = $(<span class="keyword">this</span>);</span><br><span class="line">                <span class="keyword">if</span> (input.val() == <span class="string">''</span> || input.val() == input.attr(<span class="string">'placeholder'</span>)) &#123;</span><br><span class="line">                    input.addClass(<span class="string">'placeholder'</span>);</span><br><span class="line">                    input.val(input.attr(<span class="string">'placeholder'</span>));</span><br><span class="line">                    $(<span class="keyword">this</span>).css(<span class="string">"color"</span>, <span class="string">"#666"</span>);</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;);</span><br><span class="line">        &#125;);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<figure class="highlight js"><table><tr><td class="code"><pre><div class="line"></div><div class="line"><span class="comment">/**</span></div><div class="line"> * 检查是否支持该属性，</div><div class="line"> * 经检查在火狐 v46 中'placeholder' in document.createElement('input')返回值为false，</div><div class="line"> * 而火狐是支持placeholder属性的，因此加入浏览器判断</div><div class="line"> */</div><div class="line"><span class="keyword">var</span> isSupportPlaceholder = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</div><div class="line">    <span class="keyword">return</span> navigator.userAgent.indexOf(<span class="string">"MSIE"</span>) &lt; <span class="number">0</span> || <span class="string">'placeholder'</span> <span class="keyword">in</span> <span class="built_in">document</span>.createElement(<span class="string">'input'</span>);</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="comment">/**</span></div><div class="line"> * IE9下不支持placeholder的解决方案</div><div class="line"> */</div><div class="line"><span class="keyword">var</span> fixPlaceholderInIE = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</div><div class="line">    <span class="keyword">if</span>(!isSupportPlaceholder())&#123;</div><div class="line">        $(<span class="string">'input[placeholder]'</span>).each(<span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</div><div class="line">            <span class="keyword">var</span> placeholderText = $(<span class="keyword">this</span>).attr(<span class="string">"placeholder"</span>);</div><div class="line">            <span class="keyword">if</span>($(<span class="keyword">this</span>).attr(<span class="string">"type"</span>) == <span class="string">"text"</span> &amp;&amp; $(<span class="keyword">this</span>).val() == <span class="string">''</span>)&#123;</div><div class="line">                $(<span class="keyword">this</span>).val(placeholderText);</div><div class="line">                $(<span class="keyword">this</span>).css(<span class="string">"color"</span>, <span class="string">"#666"</span>);</div><div class="line">            &#125;</div><div class="line"></div><div class="line">            <span class="comment">/*</span></div><div class="line">            	提供input focus和blur事件，</div><div class="line">            	当input获得焦点，若input值等于placeholder则改为''，</div><div class="line">            	当input失去焦点，将placeholder值放入input。</div><div class="line">            */</div><div class="line">            $(<span class="keyword">this</span>).focus(<span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</div><div class="line">                <span class="keyword">var</span> input = $(<span class="keyword">this</span>);</div><div class="line">                <span class="keyword">if</span> (input.val() == input.attr(<span class="string">'placeholder'</span>)) &#123;</div><div class="line">                    input.val(<span class="string">''</span>);</div><div class="line">                &#125;</div><div class="line">                $(<span class="keyword">this</span>).css(<span class="string">"color"</span>, <span class="string">"#000"</span>);</div><div class="line">            &#125;).blur(<span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</div><div class="line">                <span class="keyword">var</span> input = $(<span class="keyword">this</span>);</div><div class="line">                <span class="keyword">if</span> (input.val() == <span class="string">''</span> || input.val() == input.attr(<span class="string">'placeholder'</span>)) &#123;</div><div class="line">                    input.addClass(<span class="string">'placeholder'</span>);</div><div class="line">                    input.val(input.attr(<span class="string">'placeholder'</span>));</div><div class="line">                    $(<span class="keyword">this</span>).css(<span class="string">"color"</span>, <span class="string">"#666"</span>);</div><div class="line">                &#125;</div><div class="line">            &#125;);</div><div class="line">        &#125;);</div><div class="line">    &#125;</div><div class="line">&#125;;</div></pre></td></tr></table></figure>
 
         </div>
         

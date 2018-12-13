@@ -71,42 +71,22 @@ var _hmt = _hmt || [];
 </head>
 
 <body>
-  <div id="root">
-    <div id="page-percent">
-      <div></div>
-    </div>
-    <div id="wrap">
-      <header id="header">
-    <div id="header-outer" class="outer">
-        <div class="container">
-            <div id="header-nav" class="nav-container">
-                <div class="container-inner nav-container-inner">
-                    <ul id="main-nav">
-                        
-                                <li class="main-nav-list-item" >
-                                    <a class="main-nav-list-link" href="/">主页</a>
-                                </li>
-                        
-                                <ul class="main-nav-list"><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/Uncategory/">Uncategory</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/css/">css</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/html/">html</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/js/">js</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/翻译/">翻译</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/转载/">转载</a></li></ul>
-                            
-                    </ul>
-                </div>
-            </div>
-            <div id="header-title" style="display: none">
-                <div class="container-inner">
-                    <h1 class="logo-wrap">
-                        <a href="/" class="logo"></a>
-                    </h1>
-                    
-                        <h2 class="subtitle-wrap">
-                            <p class="subtitle">To try, then catch.</p>
-                        </h2>
-                    
-                </div>
-            </div>
-        </div>
-    </div>
+  <div id="page-percent"><div></div></div>
+  <header id="header">
+  <div id="header-nav" class="nav-container">
+    <ul>
+      
+          <li class="main-nav-list-item" >
+            <a class="main-nav-list-link" href="/">主页</a>
+          </li>
+      
+          <ul class="main-nav-list"><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/Uncategory/">Uncategory</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/css/">css</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/html/">html</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/js/">js</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/翻译/">翻译</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/转载/">转载</a></li></ul>
+        
+    </ul>
+  </div>
 </header>
+  <div id="root">
+    <div id="wrap">
       <div class="container">
         <div class="bg_content">
           <canvas id="canvas"></canvas>
@@ -139,7 +119,7 @@ var _hmt = _hmt || [];
                 
     <span class="word-count">
       <i class="icon fa fa-file-text"></i>
-      字数: 647 
+      字数: 646 
     </span>
     <span class="word-count">
       <i class="icon fa fa-clock-o"></i>
@@ -162,15 +142,15 @@ var _hmt = _hmt || [];
         
         <div class="article-entry" itemprop="articleBody">
             <p>在开发中有一些情景下需要隐藏过多的文本，比如文章列表中文章的描述或者摘要，并加以省略号给用户提醒，在这里对常用的方法进行简单的总结：</p>
-<h2 id="单行文本省略"><a href="#单行文本省略" class="headerlink" title="单行文本省略"></a>单行文本省略</h2><p>单行文本省略很简单，只需三行css属性即可：<br><figure class="highlight html"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">p</span>&gt;</span>这里是一段用脸滚出来的文字：卡技术的恢复了开始发说说的反馈啦活动福利很好的数量咖啡还<span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br></pre></td></tr></table></figure></p>
-<figure class="highlight css"><table><tr><td class="code"><pre><span class="line"><span class="selector-tag">p</span> &#123;</span><br><span class="line">  <span class="attribute">width</span>: <span class="number">200px</span>; </span><br><span class="line">  white-space: nowrap; //强制文本单行显示</span><br><span class="line">  overflow: hidden; //溢出内容隐藏</span><br><span class="line">  text-overflow: ellipsis; //文本溢出内容添加省略号提醒</span><br><span class="line">  <span class="selector-tag">border</span>: 3<span class="selector-tag">px</span> <span class="selector-tag">solid</span> <span class="selector-id">#333</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="单行文本省略"><a href="#单行文本省略" class="headerlink" title="单行文本省略"></a>单行文本省略</h2><p>单行文本省略很简单，只需三行css属性即可：<br><figure class="highlight html"><table><tr><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">p</span>&gt;</span>这里是一段用脸滚出来的文字：卡技术的恢复了开始发说说的反馈啦活动福利很好的数量咖啡还<span class="tag">&lt;/<span class="name">p</span>&gt;</span></div></pre></td></tr></table></figure></p>
+<figure class="highlight"><table><tr><td class="code"><pre><div class="line">p &#123;</div><div class="line">  width: 200px; </div><div class="line">  white-space: nowrap; //强制文本单行显示</div><div class="line">  overflow: hidden; //溢出内容隐藏</div><div class="line">  text-overflow: ellipsis; //文本溢出内容添加省略号提醒</div><div class="line">  border: 3px solid #333</div><div class="line">&#125;</div></pre></td></tr></table></figure>
 <p>这种方法现在已经被主流浏览器支持，不再多言。</p>
 <h2 id="多行文本省略"><a href="#多行文本省略" class="headerlink" title="多行文本省略"></a>多行文本省略</h2><p>多行文本省略在有些情况下也会用到，这个功能目前没有通用的纯CSS的实现方式，在不同浏览器的实现方式不一致，主要有以下几种实现方式：</p>
 <h3 id="Webkit-浏览器的专有方法"><a href="#Webkit-浏览器的专有方法" class="headerlink" title="Webkit 浏览器的专有方法"></a>Webkit 浏览器的专有方法</h3><p>webkit 内核的浏览器提供了一些专用属性 <code>-webkit-line-clamp</code> 支持指定多行文本省略：</p>
-<figure class="highlight css"><table><tr><td class="code"><pre><span class="line"><span class="selector-tag">p</span> &#123;</span><br><span class="line">  <span class="attribute">width</span>: <span class="number">200px</span>; </span><br><span class="line">  <span class="attribute">display</span>: -webkit-box;</span><br><span class="line">  <span class="attribute">-webkit-line-clamp</span>: <span class="number">3</span>;</span><br><span class="line">  <span class="attribute">-webkit-box-orient</span>: vertical;</span><br><span class="line">  <span class="attribute">overflow</span>: hidden;</span><br><span class="line">  <span class="attribute">border</span>: <span class="number">3px</span> solid <span class="number">#333</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h3 id="Opera-浏览器的专有方法："><a href="#Opera-浏览器的专有方法：" class="headerlink" title="Opera 浏览器的专有方法："></a>Opera 浏览器的专有方法：</h3><p>webkit 内核的浏览器提供了一些专用属性值 <code>-o-ellipsis-lastline</code> 支持指定多行文本省略：<br><figure class="highlight css"><table><tr><td class="code"><pre><span class="line"><span class="selector-tag">p</span> &#123;</span><br><span class="line">  <span class="attribute">line-height</span>: <span class="number">20px</span>;</span><br><span class="line">  <span class="attribute">max-height</span>: <span class="number">60px</span>;</span><br><span class="line">  <span class="attribute">overflow</span>: hidden;</span><br><span class="line">  <span class="attribute">text-overflow</span>: -o-ellipsis-lastline;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<figure class="highlight css"><table><tr><td class="code"><pre><div class="line"><span class="selector-tag">p</span> &#123;</div><div class="line">  <span class="attribute">width</span>: <span class="number">200px</span>; </div><div class="line">  <span class="attribute">display</span>: -webkit-box;</div><div class="line">  <span class="attribute">-webkit-line-clamp</span>: <span class="number">3</span>;</div><div class="line">  <span class="attribute">-webkit-box-orient</span>: vertical;</div><div class="line">  <span class="attribute">overflow</span>: hidden;</div><div class="line">  <span class="attribute">border</span>: <span class="number">3px</span> solid <span class="number">#333</span>;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h3 id="Opera-浏览器的专有方法："><a href="#Opera-浏览器的专有方法：" class="headerlink" title="Opera 浏览器的专有方法："></a>Opera 浏览器的专有方法：</h3><p>webkit 内核的浏览器提供了一些专用属性值 <code>-o-ellipsis-lastline</code> 支持指定多行文本省略：<br><figure class="highlight css"><table><tr><td class="code"><pre><div class="line"><span class="selector-tag">p</span> &#123;</div><div class="line">  <span class="attribute">line-height</span>: <span class="number">20px</span>;</div><div class="line">  <span class="attribute">max-height</span>: <span class="number">60px</span>;</div><div class="line">  <span class="attribute">overflow</span>: hidden;</div><div class="line">  <span class="attribute">text-overflow</span>: -o-ellipsis-lastline;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
 <h3 id="支持-Firefox-和-IE-浏览器上的方法："><a href="#支持-Firefox-和-IE-浏览器上的方法：" class="headerlink" title="支持 Firefox 和 IE 浏览器上的方法："></a>支持 Firefox 和 IE 浏览器上的方法：</h3><p>以上两种方法在火狐和ie上并不被支持，但是可以通过限制内容块的高度，并且为内容块设置一个额外的省略号的代码块覆盖在段落最后：</p>
-<figure class="highlight css"><table><tr><td class="code"><pre><span class="line"><span class="selector-tag">p</span> &#123;</span><br><span class="line">  //为p元素增加相对定位</span><br><span class="line">  <span class="selector-tag">position</span>: <span class="selector-tag">relative</span>;</span><br><span class="line">  <span class="selector-tag">width</span>: 200<span class="selector-tag">px</span>; </span><br><span class="line">  <span class="selector-tag">display</span>: <span class="selector-tag">-webkit-box</span>;</span><br><span class="line">  <span class="selector-tag">-webkit-line-clamp</span>: 3;</span><br><span class="line">  <span class="selector-tag">-webkit-box-orient</span>: <span class="selector-tag">vertical</span>;</span><br><span class="line">  <span class="selector-tag">overflow</span>: <span class="selector-tag">hidden</span>;</span><br><span class="line">  <span class="selector-tag">border</span>: 3<span class="selector-tag">px</span> <span class="selector-tag">solid</span> <span class="selector-id">#333</span>;</span><br><span class="line"></span><br><span class="line">  //火狐下保证仅显示三行</span><br><span class="line">  <span class="selector-tag">line-height</span>: 20<span class="selector-tag">px</span>;</span><br><span class="line">  <span class="selector-tag">max-height</span>: 60<span class="selector-tag">px</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="selector-tag">p</span><span class="selector-pseudo">::after</span> &#123;</span><br><span class="line">  <span class="attribute">position</span>: absolute;</span><br><span class="line">  content: '\02026'; //省略号的编码</span><br><span class="line">  <span class="selector-tag">background</span>: <span class="selector-id">#fff</span>;</span><br><span class="line">  <span class="selector-tag">bottom</span>: 0;</span><br><span class="line">  <span class="selector-tag">right</span>: 0;</span><br><span class="line">  <span class="selector-tag">padding-left</span>: 30<span class="selector-tag">px</span>;</span><br><span class="line">  //颜色和p的背景色保持一致</span><br><span class="line">2<span class="selector-tag">background</span>: <span class="selector-tag">linear-gradient</span>(<span class="selector-tag">to</span> <span class="selector-tag">right</span>, <span class="selector-tag">rgba</span>(255, 255, 255, 0), <span class="selector-tag">white</span> 50%, <span class="selector-tag">white</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight"><table><tr><td class="code"><pre><div class="line">p &#123;</div><div class="line">  //为p元素增加相对定位</div><div class="line">  position: relative;</div><div class="line">  width: 200px; </div><div class="line">  display: -webkit-box;</div><div class="line">  -webkit-line-clamp: 3;</div><div class="line">  -webkit-box-orient: vertical;</div><div class="line">  overflow: hidden;</div><div class="line">  border: 3px solid #333;</div><div class="line"></div><div class="line">  //火狐下保证仅显示三行</div><div class="line">  line-height: 20px;</div><div class="line">  max-height: 60px;</div><div class="line">&#125;</div><div class="line"></div><div class="line">p::after &#123;</div><div class="line">  position: absolute;</div><div class="line">  content: '\02026'; //省略号的编码</div><div class="line">  background: #fff;</div><div class="line">  bottom: 0;</div><div class="line">  right: 0;</div><div class="line">  padding-left: 30px;</div><div class="line">  //颜色和p的背景色保持一致</div><div class="line">2background: linear-gradient(to right, rgba(255, 255, 255, 0), white 50%, white);</div><div class="line">&#125;</div></pre></td></tr></table></figure>
 <p>这种方法的实现效果会和前两种有所差异，如果对展示的一致性要求较高，可以只采用这种方法，或者下一节的js方法实现。</p>
 <h3 id="使用js"><a href="#使用js" class="headerlink" title="使用js"></a>使用js</h3><p>使用js基本可以保证在不同的浏览器下有相同的效果，支持这个功能的 js库有好多，比如 <code>Clamp.js</code> 等，相关细节可以参考文档。</p>
 <h2 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h2><ul>

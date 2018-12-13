@@ -71,42 +71,22 @@ var _hmt = _hmt || [];
 </head>
 
 <body>
-  <div id="root">
-    <div id="page-percent">
-      <div></div>
-    </div>
-    <div id="wrap">
-      <header id="header">
-    <div id="header-outer" class="outer">
-        <div class="container">
-            <div id="header-nav" class="nav-container">
-                <div class="container-inner nav-container-inner">
-                    <ul id="main-nav">
-                        
-                                <li class="main-nav-list-item" >
-                                    <a class="main-nav-list-link" href="/">主页</a>
-                                </li>
-                        
-                                <ul class="main-nav-list"><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/Uncategory/">Uncategory</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/css/">css</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/html/">html</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/js/">js</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/翻译/">翻译</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/转载/">转载</a></li></ul>
-                            
-                    </ul>
-                </div>
-            </div>
-            <div id="header-title" style="display: none">
-                <div class="container-inner">
-                    <h1 class="logo-wrap">
-                        <a href="/" class="logo"></a>
-                    </h1>
-                    
-                        <h2 class="subtitle-wrap">
-                            <p class="subtitle">To try, then catch.</p>
-                        </h2>
-                    
-                </div>
-            </div>
-        </div>
-    </div>
+  <div id="page-percent"><div></div></div>
+  <header id="header">
+  <div id="header-nav" class="nav-container">
+    <ul>
+      
+          <li class="main-nav-list-item" >
+            <a class="main-nav-list-link" href="/">主页</a>
+          </li>
+      
+          <ul class="main-nav-list"><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/Uncategory/">Uncategory</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/css/">css</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/html/">html</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/js/">js</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/翻译/">翻译</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/转载/">转载</a></li></ul>
+        
+    </ul>
+  </div>
 </header>
+  <div id="root">
+    <div id="wrap">
       <div class="container">
         <div class="bg_content">
           <canvas id="canvas"></canvas>
@@ -240,7 +220,7 @@ var _hmt = _hmt || [];
 <p>大多数 JavaScript 解释器都使用类似字典的结构（基于<a href="http://en.wikipedia.org/wiki/Hash_function" target="_blank" rel="external">哈希函数</a>）将对象属性值的位置存储在内存中。这种结构使得检索 JavaScript 中的属性的值比在 Java 或 C# 这样的非动态编程语言中更昂贵。在 Java 中，所有对象属性都是由编译前的固定对象布局确定的，并且不能在运行时动态添加或删除（C# 具有动态类型，这是另一个话题了）。因此，属性值（或指向这些属性的指针）可以作为连续缓冲区存储在存储器中，它们之间具有固定偏移量，偏移量的长度可以根据属性类型容易地确定。而在 JavaScript中，属性类型可能会在运行时间内发生变化，这样做是不可能的。 </p>
 <p>Since using dictionaries to find the location of object properties in the memory is very inefficient, V8 uses a different method instead: <strong>hidden classes</strong>. Hidden classes work similarly to the fixed object layouts (classes) used in languages like Java, except they are created at runtime. Now, let’s see what they actually look like:</p>
 <p>由于使用字典来查找对象属性在内存中的位置是非常低效的，所以 V8 使用不同的方法替代：<strong>隐藏类</strong>。隐藏类工作原理类似于 Java 语言中使用的固定对象布局（类），除了它们在运行时被创建。现在，我们来看看它们的实际情况：</p>
-<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">Point</span>(<span class="params">x, y</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">this</span>.x = x;</span><br><span class="line">    <span class="keyword">this</span>.y = y;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">var</span> p1 = <span class="keyword">new</span> Point(<span class="number">1</span>, <span class="number">2</span>);</span><br></pre></td></tr></table></figure>
+<figure class="highlight js"><table><tr><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">Point</span>(<span class="params">x, y</span>) </span>&#123;</div><div class="line">    <span class="keyword">this</span>.x = x;</div><div class="line">    <span class="keyword">this</span>.y = y;</div><div class="line">&#125;</div><div class="line"><span class="keyword">var</span> p1 = <span class="keyword">new</span> Point(<span class="number">1</span>, <span class="number">2</span>);</div></pre></td></tr></table></figure>
 <p>Once the <code>new Point(1,2)</code> invocation happens, V8 will create a hidden class called <code>C0</code>.</p>
 <p>一旦 <code>new Point(1,2)</code> 被调用，V8 将创建一个隐藏的类 <code>C0</code>。</p>
 <p><img src="https://cdn-images-1.medium.com/max/800/1*pVnIrMZiB9iAz5sW28AixA.png" alt=""></p>
@@ -258,7 +238,7 @@ var _hmt = _hmt || [];
 <p><img src="https://cdn-images-1.medium.com/max/800/1*spJ8v7GWivxZZzTAzqVPtA.png" alt=""></p>
 <p>Hidden class transitions are dependent on the order in which properties are added to an object. Take a look at the code snippet below:</p>
 <p>隐藏类的转换取决于将属性添加到对象的顺序。看下面的代码片段：</p>
-<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">Point</span>(<span class="params">x, y</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">this</span>.x = x;</span><br><span class="line">    <span class="keyword">this</span>.y = y;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">var</span> p1 = <span class="keyword">new</span> Point(<span class="number">1</span>, <span class="number">2</span>);</span><br><span class="line">p1.a = <span class="number">5</span>;</span><br><span class="line">p1.b = <span class="number">6</span>;</span><br><span class="line"><span class="keyword">var</span> p2 = <span class="keyword">new</span> Point(<span class="number">3</span>, <span class="number">4</span>);</span><br><span class="line">p2.b = <span class="number">7</span>;</span><br><span class="line">p2.a = <span class="number">8</span>;</span><br></pre></td></tr></table></figure>
+<figure class="highlight js"><table><tr><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">Point</span>(<span class="params">x, y</span>) </span>&#123;</div><div class="line">    <span class="keyword">this</span>.x = x;</div><div class="line">    <span class="keyword">this</span>.y = y;</div><div class="line">&#125;</div><div class="line"><span class="keyword">var</span> p1 = <span class="keyword">new</span> Point(<span class="number">1</span>, <span class="number">2</span>);</div><div class="line">p1.a = <span class="number">5</span>;</div><div class="line">p1.b = <span class="number">6</span>;</div><div class="line"><span class="keyword">var</span> p2 = <span class="keyword">new</span> Point(<span class="number">3</span>, <span class="number">4</span>);</div><div class="line">p2.b = <span class="number">7</span>;</div><div class="line">p2.a = <span class="number">8</span>;</div></pre></td></tr></table></figure>
 <p>Now, you would assume that for both p1 and p2 the same hidden classes and transitions would be used. Well, not really. For <code>p1</code>, first the property <code>a</code> will be added and then the property <code>b</code>. For <code>p2</code>, however, first <code>b</code> is being assigned, followed by <code>a</code>. Thus, <code>p1</code> and <code>p2</code> end up with different hidden classes as a result of the different transition paths. <strong>In such cases, it’s much better to initialize dynamic properties in the same order so that the hidden classes can be reused.</strong></p>
 <p>现在，你可以假设对于p1和p2，将使用相同的隐藏类和转换。实际并不相同。对于<code>p1</code>，首先将添加属性<code>a</code>，然后添加属性<code>b</code>。但是，对于<code>p2</code>，首先分配<code>b</code>，然后再分配<code>a</code>。因此，由于不同的转换路径，<code>p1</code>和<code>p2</code>最终会有不同的隐藏类。<strong>在这种情况下，以相同的顺序初始化动态属性要更好，以便隐藏的类可以重用。</strong></p>
 <h2 id="内联缓存（Inline-caching）"><a href="#内联缓存（Inline-caching）" class="headerlink" title="内联缓存（Inline caching）"></a>内联缓存（Inline caching）</h2><p>V8 takes advantage of another technique for optimizing dynamically typed languages called inline caching. Inline caching relies on the observation that repeated calls to the same method tend to occur on the same type of object. An in-depth explanation of inline caching can be found <a href="https://github.com/sq/JSIL/wiki/Optimizing-dynamic-JavaScript-with-inline-caches" target="_blank" rel="external">here</a>.</p>

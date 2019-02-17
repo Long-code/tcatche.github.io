@@ -7,6 +7,7 @@
   var $input = $main.find(".ins-search-input");
   var $wrapper = $main.find(".ins-section-wrapper");
   var $container = $main.find(".ins-section-container");
+  var $bookmark = $main.find(".ins-bookmark-container");
   $main.parent().remove(".ins-search");
   $("body").append($main);
 
@@ -290,16 +291,55 @@
     $input.trigger("input");
   });
 
+  var isRendered = false;
+  function renderBookmark() {
+    if (isRendered) return;
+    isRendered = true;
+    var hList = [].filter.call($('article').find('h2, h3, h4'), function(ele) {
+      return ele.textContent.trim().length > 0;
+    });
+    if (hList.length > 0) {
+      var lastTagName = hList[0].tagName.toLowerCase();
+      var list = '<ul class="mark-list">';
+      hList.forEach(function(item) {
+        var currTagName = item.tagName.toLowerCase();
+        var text = item.textContent.trim();
+        if (currTagName > lastTagName) {
+          list += '<ul class="mark-' + currTagName +'">'
+          list += '<li class="mark-' + currTagName +'">' + '<a href="#" data-id="#' + item.id + '" title="' + text + '">' + text +'</a>';
+        } else if (currTagName === lastTagName) {
+          list += '</li><li class="mark-' + currTagName +'">' + '<a href="#" data-id="#' + item.id + '" title="' + text + '">' + text +'</a>';
+        } else {
+          list += '</ul></li>';
+          list += '<li class="mark-' + currTagName +'">' + '<a href="#" data-id="#' + item.id + '" title="' + text + '">' + text +'</a>';
+        }
+        lastTagName = currTagName;
+      });
+      list += '</ul>';
+      $bookmark.append(list);
+    } else {
+      $main.find(".ins-bookmark-wrapper").hide();
+    }
+  }
+  renderBookmark();
   $(document)
     .on("click focus", ".search-form-input, .ins-search-icon", function() {
-      $main.addClass("show");
+      $main.fadeIn();
       $main.find(".ins-search-input").focus();
     })
     .on("click", ".ins-search-item", function() {
       gotoLink($(this));
     })
-    .on("click", ".ins-close", function() {
-      $main.removeClass("show");
+    .on("click", ".ins-search-close", function() {
+      $main.fadeOut();
+    })
+    .on("click", ".ins-bookmark-wrapper a", function(ele) {
+      var id = $(ele.target).data('id');
+      var top = $(id)[0].offsetTop;
+      if (top) {
+        $main.fadeOut();
+        $('html').animate({ scrollTop: top }, 600);
+      }
     })
     .on("keydown", function(e) {
       if (!$main.hasClass("show")) return;

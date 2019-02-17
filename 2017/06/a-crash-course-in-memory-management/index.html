@@ -85,17 +85,11 @@ var _hmt = _hmt || [];
     </ul>
   </div>
 </header>
-  <div id="root">
-    <div id="wrap">
-      <div class="container">
-        <div class="bg_content">
-          <canvas id="canvas"></canvas>
-        </div>
-        <div class="main-body container-inner">
-          <div class="main-body-inner">
-            <section id="main">
-              <div class="main-body-content">
-                <article id="post-a-crash-course-in-memory-management" class="article article-single article-type-post" itemscope itemprop="blogPost">
+  <div class="main-body container-inner">
+    <div class="main-body-inner">
+      <section id="main">
+        <div class="main-body-content">
+          <article id="post-a-crash-course-in-memory-management" class="article article-single article-type-post" itemscope itemprop="blogPost">
     
     
         <h1 class="article-title" itemprop="name">
@@ -285,48 +279,49 @@ window._bd_share_config={"common":{"bdSnsKey":{},"bdText":"","bdMini":"2","bdMin
 <div id="comment-container"></div>
 <script>
   $(function() {
-    var gitalk = new Gitalk({
-      clientID: '010a558ff67c828f318a',
-      clientSecret: '08a6f4955996cb3d6ecb5fdfb4d564a9297a264b',
-      repo: 'tcatche.github.io.comments',
-      owner: 'tcatche',
-      admin: ['tcatche'],
-      id: location.pathname.substr(0, 50),      // Ensure uniqueness and length less than 50
-      distractionFreeMode: true,
-      perPage: 30
-    });
-    gitalk.render('comment-container');
-
-    // var gitment = new Gitment({
-    //   id: location.pathname, // 可选。默认为 location.href
-    //   owner: 'tcatche',
-    //   repo: 'tcatche.github.io.comments',
-    //   oauth: {
-    //     client_id: '010a558ff67c828f318a',
-    //     client_secret: '08a6f4955996cb3d6ecb5fdfb4d564a9297a264b',
-    //   },
-    // })
-    // gitment.render('comment-container')
+    setTimeout(function() {
+      var gitalk = new Gitalk({
+        clientID: '010a558ff67c828f318a',
+        clientSecret: '08a6f4955996cb3d6ecb5fdfb4d564a9297a264b',
+        repo: 'tcatche.github.io.comments',
+        owner: 'tcatche',
+        admin: ['tcatche'],
+        id: location.pathname.substr(0, 50),      // Ensure uniqueness and length less than 50
+        distractionFreeMode: true,
+        perPage: 30
+      });
+      gitalk.render('comment-container');
+  
+      // var gitment = new Gitment({
+      //   id: location.pathname, // 可选。默认为 location.href
+      //   owner: 'tcatche',
+      //   repo: 'tcatche.github.io.comments',
+      //   oauth: {
+      //     client_id: '010a558ff67c828f318a',
+      //     client_secret: '08a6f4955996cb3d6ecb5fdfb4d564a9297a264b',
+      //   },
+      // })
+      // gitment.render('comment-container');
+    }, 100)
   })
 </script>
     
     </section>
 
 
-              </div>
-            </section>
-            
-          </div>
         </div>
-      </div>
-      <footer id="footer">
+      </section>
+      
+    </div>
+  </div>
+  <footer id="footer">
     <div class="container">
         <div class="container-inner">
             <div class="credit">
                 <h1 class="logo-wrap">
                     <a href="/" class="logo"></a>
                 </h1>
-                <p>&copy; 2018 tcatche</p>
+                <p>&copy; 2019 tcatche</p>
                 <p>Powered by <a href="//hexo.io/" target="_blank">Hexo</a>. </p>
                 <p>Theme based <a href="//github.com/ppoffice" target="_blank">PPOffice</a> and modify by Tcatche. </p>
                 <p>Hosted by <a  href="https://pages.github.com/">Github Pages</a>. </p>
@@ -334,35 +329,22 @@ window._bd_share_config={"common":{"bdSnsKey":{},"bdText":"","bdMini":"2","bdMin
         </div>
     </div>
 </footer>
-    </div>
-  </div>
   <div id="fixed">
-  
-  <i id="open-bookmark" class="fa fa-bookmark" name="list"></i>
-  <div class="bookmark">
-  <div class="bookmark-container">
-    <div class="bookmark-header">
-      <span>Table of Content</span>
-      <span class="close">&times;</span>
-    </div>
-    <div class="bookmark-content">
-    </div>
-  </div>
-</div>
-<script src="/js/bookmark.js"></script>
-  
   <i class="fa fa-search ins-search-icon" name="search"></i>
   <div class="ins-search">
     <div class="ins-search-mask"></div>
     <div class="ins-search-container">
         <div class="ins-image-wrapper"></div>
+        <div class="ins-bookmark-wrapper">
+            <div class="ins-bookmark-container"></div>
+        </div>
         <div class="ins-input-wrapper">
             <input type="text" class="ins-search-input" placeholder="想要查找什么..." />
-            <span class="ins-close ins-selectable"><i class="fa fa-times-circle"></i></span>
         </div>
         <div class="ins-section-wrapper">
             <div class="ins-section-container"></div>
         </div>
+        <div class="ins-search-close">&times;</div>
     </div>
 </div>
 <script>
